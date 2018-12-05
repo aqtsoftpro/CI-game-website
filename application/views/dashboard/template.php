@@ -57,7 +57,10 @@
 				<!-- LOGO -->
 				<div class="topbar-left">
 					<div class="text-center">
-						<a href="<?php echo site_url(''); ?>" class="logo"><?php if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?></a>
+						<a href="<?php echo site_url(''); ?>" class="logo">
+				<?php //if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?>
+					<img src="<?php echo base_url();?>uploads/admin_header.png">
+						</a>
 					</div>
 				</div>
 
@@ -222,6 +225,15 @@
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/categories/'); ?>" class="waves-effect"><i class="ti-package"></i><span> <?php echo $this->lang->line('categories'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/keywords/'); ?>" class="waves-effect"><i class="ti-pin-alt"></i><span> <?php echo $this->lang->line('keywords'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/pages/'); ?>" class="waves-effect"><i class="ti-files"></i><span> <?php echo $this->lang->line('pages'); ?> </span> </a></li>
+						<!--Adding title images --- -->
+						<li class="has_sub">
+						  <a href="<?php echo site_url('dashboard/pages/header_image'); ?>" class="waves-effect">
+						  <i class="ti-files"></i>
+						  <span> <?php echo $this->lang->line('title_image'); ?></span> 
+						  </a>
+						</li>						
+						<!-----Ends Adding image  ---->
+
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/users/'); ?>" class="waves-effect"><i class="ti-user"></i><span> <?php echo $this->lang->line('users'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/comments/'); ?>" class="waves-effect"><i class="ti-comments"></i><!-- <span class="label label-primary pull-right">9</span> --><span> <?php echo $this->lang->line('comments'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/medias/'); ?>" class="waves-effect"><i class="ti-image"></i><span> <?php echo $this->lang->line('medias'); ?> </span> </a></li>

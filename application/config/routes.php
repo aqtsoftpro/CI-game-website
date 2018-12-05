@@ -62,6 +62,7 @@ $route['dashboard'] = 'dashboard/index/$1';
 
 // Frontend routes
 $route['page/(:any)'] = 'page/index/$1';
+$route['pages/header_image']='header_image';
 $route['user/(:any)'] = 'user/index/$1';
 $route['category/(:any)'] = 'category/index/$1';
 $route['category/(:any)/(:num)'] = 'category/index/$1//$2';
@@ -73,6 +74,7 @@ $route['(:any)'] = 'home/index/$1';
 $route['(:any)/(:num)'] = 'home/index/$1/$2';
 
 // Dashboard routes
+
 $route['dashboard/(:any)'] = '$1';
 $route['dashboard/(:any)/(:any)'] = '$1/$2';
 $route['dashboard/(:any)/(:any)/(:any)'] = '$1/$2/$3';

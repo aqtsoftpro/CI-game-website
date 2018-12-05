@@ -40,8 +40,8 @@ class Dashboard extends CI_Controller
         $data['getBestPlayedGames'] = $this->dashboardModel->getBestPlayedGames($data['nbPlayed']);
         $data['getLastGamesAdded'] = $this->dashboardModel->getLastGamesAdded();
         $data['getLastcomments'] = $this->dashboardModel->getLastcomments();
-        $content = $this->load->view('dashboard/home', $data, true);
+        $content = $this->load->view('dashboard/home', $data, true);       
         $this->load->view('dashboard/template', array('content' => $content));
     }
-
+     
 }
