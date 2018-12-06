@@ -336,5 +336,57 @@ $(document).ready(function() {
             $(this).parent().parent().prev().click(); // click the item to make it drop
         }
     });
+    $('#logo_submit').submit(function(e){
+      e.preventDefault(); 
+         $.ajax({
+             url:$(this).attr('action'),
+             type:"post",
+             data:new FormData(this),
+             processData:false,
+             contentType:false,
+             cache:false,
+             async:false,
+             dataType:'json',
+              success: function(data){
+              if (data.status == true) {
+                $('#site_logo').val(data.img_tag);
+                $('#logo_submit')[0].reset();
+                alert('Your Image is uploaded \n Now Submit For Saving');  
+              }else{
+                alert(data.error_info);
+              }
+           }
+         });
+    });
 });
+
+// $('#image_upload').onchange(function(e){
+//     e.preventDefault(); 
+//          $.ajax({
+//              url:'pages/add_image',
+//              type:"post",
+//              data:new FormData(this),
+//              processData:false,
+//              contentType:false,
+//              cache:false,
+//              async:false,
+//               success: function(data){
+//                   alert(data);
+//            }
+//          });
+//     });
+function showPreview(objFileInput) {
+    if (objFileInput.files[0]) {
+        var fileReader = new FileReader();
+        fileReader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+      $("#targetLayer").html('<img src="'+e.target.result+'" width="400px" height="100px" class="upload-preview" />');
+      $("#targetLayer").css('opacity','0.7');
+      $(".icon-choose-image").css('opacity','0.5');
+        }
+    fileReader.readAsDataURL(objFileInput.files[0]);
+    }
+}
+
+
 

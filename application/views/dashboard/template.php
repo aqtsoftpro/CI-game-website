@@ -58,8 +58,7 @@
 				<div class="topbar-left">
 					<div class="text-center">
 						<a href="<?php echo site_url(''); ?>" class="logo">
-				<?php //if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?>
-					<img src="<?php echo base_url();?>uploads/admin_header.png">
+				<?php if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?>	
 						</a>
 					</div>
 				</div>

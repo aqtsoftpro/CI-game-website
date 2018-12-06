@@ -111,29 +111,42 @@ class Pages extends CI_Controller
         $this->load->view('dashboard/template', array('content' => $content));
     }
     public function add_image(){
-        $this->load->model('header_image_model');
-        var_dump($this->header_image_model->insert_image());
-        $this->load->library('form_validation');
-                    $config['upload_path'] = './uploads/';
-                    $config['allowed_types']        = 'gif|jpg|png';
-                    $config['max_size']             = 100;
-                    $config['max_width']            = 1024;
-                    $config['max_height']           = 768;
-                    $this->load->library('upload', $config);                 
-                    $this->upload->initialize($config);
+      
+        $this->load->helper('url');
+        // $this->load->model('ImageModel');
+        $this->load->helper('form');     
+  
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|png|jpeg';
+                $config['max_size']             = 2000;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 1024;            
+                $this->load->library('upload', $config);                
+                $this->upload->initialize($config);
         
     // if the file is uploaded
-      if ($this->upload->do_upload('header_file'))
+       if (!$this->upload->do_upload('userImage'))
         {
-        $header_img =  $this->upload->data('file_name'); 
-        $header_type =  $this->upload->data('image_type'); 
-        $header_height =  $this->upload->data('file_height'); 
-        echo $header_img .' '. $header_type.' '.$header_height;
-        } 
+            $error = $this->upload->display_errors();
+            //$this->load->view('dashboard/template', array('content' => $content));
+            $response= array('status'=>false,'error_info'=>$error);
+        }
+        else
+        {
+            $file_name =$this->upload->data('file_name');            
+            $path = $this->upload->data('file_path'); 
+            $path = base_url().'uploads/';
+         
+            $response = array('status'=>true, 'img_tag'=>'<img src="'.$path.$file_name.'" alt="Your site" >');
+            
+           
+        }
+        echo json_encode($response);
+            exit();
 
-
+    
 
     }
-
+    
 
 }

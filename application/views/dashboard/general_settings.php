@@ -14,7 +14,7 @@
 						</div>
 						<div class="form-group">
 							<label for="logo"><?php echo $this->lang->line('logo'); ?></label> <small>(<a href="http://www.coffeetheme.com/forums/topic/how-to-change-the-logo/" target="_blank">How to change the logo ?</a>)</small>
-							<input type="text" class="form-control" name="logo" value="<?php echo html_escape($this->config->item('logo')); ?>" placeholder="" />
+							<input type="text" class="form-control" name="logo" id="site_logo" value="<?php echo html_escape($this->config->item('logo')); ?>" placeholder="" />
 						</div>
 						<div class="form-group">
 							<label for="emailsite"><?php echo $this->lang->line('email'); ?></label>
@@ -68,6 +68,28 @@
 						</div>
 					</form>
 				</div> <!-- End col -->
+			<div class="col-sm-6">				
+						<div id="targetLayer" class="form-group"><?php echo $this->config->item('logo'); ?></div>	
+							<!--Adding file upload tag---->
+						 <form method="post" action="<?php echo base_url('pages/add_image'); ?>" id="logo_submit" enctype="multipart/form-data" >
+						<div id="targetOuter" class="col-sm-6">
+							<div class="icon-choose-image" >
+							<input name="userImage" type="file" class="inputFile form-control"  id="userImage" onChange="showPreview(this);"  />
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<button type="submit"  class="btnSubmit btn btn-info " />
+							Upload</button>
+						</div>
+	                   </form>
+	                   <br />
+						<div class="form-group col-sm-12">
+						Please Select a File and Then Upload	
+						</div>
+						</div>
+			</div>
+
+
 			</div> <!-- End row -->
 
 		</div> <!-- End card-box -->
