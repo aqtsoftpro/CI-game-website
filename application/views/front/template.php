@@ -33,6 +33,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		<link href="<?php echo site_url('assets/css/icons.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/pages.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/responsive.css'); ?>" rel="stylesheet" type="text/css" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 
 		<?php if(isset($JaxonCSS)) echo $JaxonCSS; ?>
 
@@ -69,14 +70,27 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 								<li><a href="<?php echo site_url(''); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
 								<?php if(isset($getCategories)) echo $getCategories; ?>
 								<li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tags<span class="caret"></span></a>
+									<ul class="dropdown-menu">							
+								    <?php if(isset($tags)) echo $tags;?>
+									</ul>
+								</li>
 							</ul>
 
 							<form role="search" class="navbar-left app-search pull-left hidden-xs hidden-md">
-								 <input type="text" id="search" name="q" placeholder="<?php echo $this->lang->line('searchForm'); ?>" class="form-control">
+								 <input type="text" id="search" name="q" placeholder="<?php echo $this->lang->line('searchForm'); ?>" value="<?php echo $_REQUEST['q'] ?>" class="form-control">
 								 <a href="#" onclick="window.location.href='<?php echo site_url('search?q='); ?>'+document.getElementById('search').value;"><i class="fa fa-search"></i></a>
 							</form>
 
 							<ul class="nav navbar-nav navbar-right pull-right">
+								<li class="language_switch dropdown top-menu-item-xs">
+									<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon <?php if($this->session->userdata('site_lang')=='english'){ echo "flag-icon-us";} if($this->session->userdata('site_lang')=='french'){ echo "flag-icon-fr";} ?>"> </span><?php echo ucfirst($this->session->userdata('site_lang'));?></a>
+		                            <div class="dropdown-menu" aria-labelledby="dropdown09">
+		                                <a class="dropdown-item" href="<?php site_url()?>langswitch/switchlang/english"><span class="flag-icon flag-icon-us"> </span>  English</a>
+		                                <a class="dropdown-item" href="<?php site_url()?>langswitch/switchlang/french"><span class="flag-icon flag-icon-fr"> </span>French</a>
+		                            </div>
+								</li>
 								<li class="dropdown top-menu-item-xs">
 									<a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="<?php echo (isset($this->session->name_image)) ? (site_url('uploads/images/users/'.$this->session->name_image)) : (site_url('assets/images/default-user.png')); ?>" alt="<?php echo $this->session->username; ?>" class="img-circle"> </a>
 									<ul class="dropdown-menu">

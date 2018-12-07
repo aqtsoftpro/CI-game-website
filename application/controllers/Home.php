@@ -31,26 +31,43 @@ class Home extends CI_Controller
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/template', $data, true);
         $this->load->model(array('homeModel'));
+
+        $this->lang->load('front','english');
+
+        $this->load->model(array('KeywordsModel'));
+        $data['tags'] = $this->KeywordsModel->keywords_tags();
     }
 
-    public function index($getOrder = '', $getPag = '')
+    public function index()
+    {
+        $data['tags'] = $this->KeywordsModel->keywords_tags();
+        $content = $this->load->view('front/index',$data,true);
+        $this->load->view('front/template', array('content' => $content));
+    }
+    public function loadGames($getOrder = '', $getPag = '')
     {
         // Displaying all the games with pagination
+        $getPag = $this->input->post('page');
+        $getOrder = $this->input->post('orderby');
         $data = $this->homeModel->getBlocsGame($getOrder, $getPag);
+        echo $data['getBlocGame'];
+        //echo "<pre>";
+        //    print_r($data);
+        //echo "</pre>";
         // Displaying pagination
-        $this->load->library('pagination');
-        $segment2 = $this->uri->segment(1, 0);
-        if($segment2 === 'news' || $segment2 === 'popular' || $segment2 === 'rated') {
-            $segment2 = $segment2;
-        } else {
-            $segment2 = '';
-        }
-        $config["base_url"] = site_url($segment2);
-        $config['total_rows'] = $data['nbRows'];
-        $config['per_page'] = $this->config->item('home_pag');
-        $this->pagination->initialize($config);
-        $data['pagination'] = $this->pagination->create_links();
-        $content = $this->load->view('front/home', $data, true);
-        $this->load->view('front/template', array('content' => $content));
+        //$this->load->library('pagination');
+        //$segment2 = $this->uri->segment(1, 0);
+        //if($segment2 === 'news' || $segment2 === 'popular' || $segment2 === 'rated') {
+        //    $segment2 = $segment2;
+        //} else {
+            //$segment2 = '';
+        //}
+        //$config["base_url"] = site_url($segment2);
+        //$config['total_rows'] = $data['nbRows'];
+        //$config['per_page'] = $this->config->item('home_pag');
+        //$this->pagination->initialize($config);
+        //$data['pagination'] = $this->pagination->create_links();
+        //$content = $this->load->view('front/home', $data, true);
+        //$this->load->view('front/template', array('content' => $content));
     }
 }

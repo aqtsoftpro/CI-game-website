@@ -17,7 +17,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="text-right">
-							<?php if(isset($pagination)) echo $pagination; ?>
+							<?php //if(isset($pagination)) echo $pagination; ?>
 						</div>
 					</div> <!-- end col -->
 				</div> <!-- end row -->

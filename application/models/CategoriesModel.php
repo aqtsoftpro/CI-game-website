@@ -18,29 +18,30 @@ class CategoriesModel extends CI_Model
             }
             $getCategories .= 
              '<tr class="text-center">
-					<td>'.$row->id.'</td>
-					<td>'.$row->title.'</td>
-					<td>'.$row->url.'</td>
-					<td>'.$subCategory.'</td>
-					<td>
-						<a class="btn btn-icon waves-effect btn-primary waves-light btn-xs" href="'.site_url('category/'.$row->url.'/').'"> <i class="fa fa-search"></i> </a>
-						<a class="btn btn-icon waves-effect btn-default waves-light btn-xs" href="'.site_url('dashboard/categories/edit/'.$row->id.'/').'"> <i class="fa fa-pencil"></i> </a>
-						<a class="btn btn-icon waves-effect btn-danger waves-light btn-xs" href="'.site_url('dashboard/categories/?del='.$row->id.'').'"> <i class="fa fa-trash-o"></i> </a>
-					</td>
-				</tr>';
+                    <td>'.$row->id.'</td>
+                    <td>'.$row->title.'</td>
+                    <td>'.$row->url.'</td>
+                    <td>'.$subCategory.'</td>
+                    <td>
+                        <a class="btn btn-icon waves-effect btn-primary waves-light btn-xs" href="'.site_url('category/'.$row->url.'/').'"> <i class="fa fa-search"></i> </a>
+                        <a class="btn btn-icon waves-effect btn-default waves-light btn-xs" href="'.site_url('dashboard/categories/edit/'.$row->id.'/').'"> <i class="fa fa-pencil"></i> </a>
+                        <a class="btn btn-icon waves-effect btn-danger waves-light btn-xs" href="'.site_url('dashboard/categories/?del='.$row->id.'').'"> <i class="fa fa-trash-o"></i> </a>
+                    </td>
+                </tr>';
         }
         return $getCategories;
     }
 
     public function getCategorie($idCategory)
     {
-        $sql = "SELECT title, url, id_relation FROM 2d_categories WHERE id = ?";
+        $sql = "SELECT title, url, id_relation,display_front FROM 2d_categories WHERE id = ?";
         $query = $this->db->query($sql, array($idCategory));
         if($result = $query->row()) {
             return array(
              'title_categorie' => $result->title,
              'url_categorie'   => $result->url,
-             'id_relation'     => $result->id_relation
+             'id_relation'     => $result->id_relation,
+             'display_front'    => $result->display_front
              );
         } else {
             return null;
@@ -64,37 +65,37 @@ class CategoriesModel extends CI_Model
         return $getListCats;
     }
 
-    public function addCategorie($postTitle, $postURL, $postParentCat)
+    public function addCategorie($postTitle, $postURL, $postParentCat,$display_front)
     {
         $sql = "SELECT title, url FROM 2d_categories WHERE title = ? OR url = ?";
         $query = $this->db->query($sql, array(ucfirst($postTitle), $postURL));
         if($query->num_rows() > 0) {
             $msg = alert('The category already exists', 'danger');
         } else {
-            $sql = "INSERT INTO 2d_categories (title, url, id_relation) VALUES (?, ?, ?)";
-            $this->db->query($sql, array(ucfirst($postTitle), $postURL, $postParentCat));
-            $msg = alert('The category was created. <a href="/dashboard/categories/edit/'.$this->db->insert_id().'">Edit it</a> now !');
+            $sql = "INSERT INTO 2d_categories (title, url, id_relation,display_front) VALUES (?, ?, ?,?)";
+            $this->db->query($sql, array(ucfirst($postTitle), $postURL, $postParentCat,$display_front));
+            $msg = alert('The category was created. <a href="'.base_url().'dashboard/categories/edit/'.$this->db->insert_id().'">Edit it</a> now !');
         }
         return $msg;
     }
 
-    public function editCategorie($idCategory, $postTitle, $postURL, $postParentCat) 
+    public function editCategorie($idCategory, $postTitle, $postURL, $postParentCat,$display_front) 
     {
         $sql = "SELECT title, url FROM 2d_categories WHERE title = ? OR url = ?";
         $query = $this->db->query($sql, array($postTitle, $postURL));
         if($result = $query->row()) {
             if($result->title === $postTitle) {
-                $sql = "UPDATE 2d_categories SET url = ?, id_relation = ? WHERE id = ?";
-                $this->db->query($sql, array($postURL, $postParentCat, $idCategory));
+                $sql = "UPDATE 2d_categories SET url = ?, id_relation = ?,display_front =? WHERE id = ?";
+                $this->db->query($sql, array($postURL, $postParentCat,$display_front,$idCategory));
                 $msg = alert('Saved changes');
             } elseif($result->url === $postURL) {
-                $sql = "UPDATE 2d_categories SET title = ?, id_relation = ? WHERE id = ?";
-                $this->db->query($sql, array(ucfirst($postTitle), $postParentCat, $idCategory));
+                $sql = "UPDATE 2d_categories SET title = ?, id_relation = ?,display_front=? WHERE id = ?";
+                $this->db->query($sql, array(ucfirst($postTitle), $postParentCat,$display_front,$idCategory));
                 $msg = alert('Saved changes');
             }
         } else {
-            $sql = "UPDATE 2d_categories SET title = ?, url = ?, id_relation = ? WHERE id = ?";
-            $this->db->query($sql, array(ucfirst($postTitle), $postURL, $postParentCat, $idCategory));
+            $sql = "UPDATE 2d_categories SET title = ?, url = ?, id_relation = ?,display_front=? WHERE id = ?";
+            $this->db->query($sql, array(ucfirst($postTitle), $postURL, $postParentCat,$display_front,$idCategory));
             $msg = alert('Saved changes');
         }
         return $msg;

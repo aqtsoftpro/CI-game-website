@@ -31,6 +31,7 @@ class Search extends CI_Controller
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/search', $data, true);
         $this->load->model(array('searchModel'));
+        $this->lang->load('front','english');
     }
 
     public function index() 

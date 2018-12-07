@@ -90,6 +90,7 @@ $lang['newCategory'] = "Nouvel catégorie";
 $lang['categoryTitle'] = "Titre de la catégorie";
 $lang['categoryUrl'] = "URL de la catégorie";
 $lang['parentCategory'] = "Categorie parente";
+$lang['DisplayFront'] = "Affichage sur le devant";
 $lang['keyword'] = "Mot clé";
 $lang['newKeyword'] = "Nouveau mot clé";
 $lang['keywordTitle'] = "Titre du mot clé";

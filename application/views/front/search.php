@@ -5,7 +5,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<form role="search" action="<?php echo site_url('search'); ?>" method="get">
 					<div class="input-group m-t-10">
-						<input type="text" name="q" class="form-control input-lg" placeholder="<?php echo $this->lang->line('search'); ?>...">
+						<input type="text" name="q" class="form-control input-lg" value="<?php echo $_REQUEST['q'] ?>" placeholder="<?php echo $this->lang->line('search'); ?>...">
 						<span class="input-group-btn">
 							<button type="submit" class="btn waves-effect waves-light btn-default btn-lg"><i class="fa fa-search m-r-5"></i> <?php echo $this->lang->line('search'); ?></button>
 						</span>

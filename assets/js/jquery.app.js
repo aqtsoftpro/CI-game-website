@@ -358,6 +358,14 @@ $(document).ready(function() {
            }
          });
     });
+
+    $("#search").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            $(this).siblings('a').trigger('click');
+        }
+    });
+
 });
 
 // $('#image_upload').onchange(function(e){

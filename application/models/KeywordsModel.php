@@ -11,15 +11,15 @@ class KeywordsModel extends CI_Model
         foreach ($query->result() as $row) {
             $getKeywords .= 
              '<tr class="text-center">
-					<td>'.$row->id.'</td>
-					<td>'.$row->title.'</td>
-					<td>'.$row->url.'</td>
-					<td>
-						<a class="btn btn-icon waves-effect btn-primary waves-light btn-xs" href="'.site_url('keyword/'.$row->url.'/').'"> <i class="fa fa-search"></i> </a>
-						<a class="btn btn-icon waves-effect btn-default waves-light btn-xs" href="'.site_url('dashboard/keywords/edit/'.$row->id.'/').'"> <i class="fa fa-pencil"></i> </a>
-						<a class="btn btn-icon waves-effect btn-danger waves-light btn-xs" href="'.site_url('dashboard/keywords/?del='.$row->id.'').'"> <i class="fa fa-trash-o"></i> </a>
-					</td>
-				</tr>';
+                    <td>'.$row->id.'</td>
+                    <td>'.$row->title.'</td>
+                    <td>'.$row->url.'</td>
+                    <td>
+                        <a class="btn btn-icon waves-effect btn-primary waves-light btn-xs" href="'.site_url('keyword/'.$row->url.'/').'"> <i class="fa fa-search"></i> </a>
+                        <a class="btn btn-icon waves-effect btn-default waves-light btn-xs" href="'.site_url('dashboard/keywords/edit/'.$row->id.'/').'"> <i class="fa fa-pencil"></i> </a>
+                        <a class="btn btn-icon waves-effect btn-danger waves-light btn-xs" href="'.site_url('dashboard/keywords/?del='.$row->id.'').'"> <i class="fa fa-trash-o"></i> </a>
+                    </td>
+                </tr>';
         }
         return $getKeywords;
     }
@@ -81,5 +81,20 @@ class KeywordsModel extends CI_Model
         $sql = 'DELETE FROM 2d_keywords WHERE id = ?';
         $this->db->query($sql, array($idKeyword));
         return alert('Keyword deleted');
+    }
+    public function keywords_tags($keyword= NULL ){
+        if(isset($keyword)){
+            $sql ='SELECT  * FROM 2d_keywords WHERE title ='.$keyword.'';
+            $query = $this->db->query($sql);
+            return $query->row->id;
+        }else{      
+         $getKeywords = '';
+            $sql = "SELECT id, title, url FROM 2d_keywords";
+            $query = $this->db->query($sql);
+            foreach ($query->result() as $row) {
+                $getKeywords .='<li><a href="'.$row->title.'">'.$row->title.'</a></li>';
+            }
+        return $getKeywords;
+        }
     }
 }

@@ -24,6 +24,8 @@ class Categories extends CI_Controller
         }
         $content = $this->load->view('dashboard/categories', array(), true);
         $this->load->model(array('categoriesModel'));
+        $this->load->model(array('KeywordsModel'));
+       
     }
 
     public function index()
@@ -36,6 +38,9 @@ class Categories extends CI_Controller
         }
         // View categories
         $data['getCategories'] = $this->categoriesModel->getCategories();
+        // var_dump($data['getCategories']);
+        // exit();
+         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $content = $this->load->view('dashboard/categories', $data, true);
         $this->load->view('dashboard/template', array('content' => $content));
     }
@@ -50,13 +55,17 @@ class Categories extends CI_Controller
         $postTitle = $this->input->post('title', true);
         $postURL = $this->input->post('url', true);
         $postParentCat = $this->input->post('parent_cat', true);
+        $display_front =0;
+        if($this->input->post('fornt_display', true)){
+            $display_front =1;
+        }
         if(isset($postTitle) && ($postTitle) != '' && !$this->config->item('demo')) {
             if($postURL == '') {
                 $postURL = url_title(convert_accented_characters($postTitle), $separator = '-', $lowercase = true);
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->categoriesModel->addCategorie($postTitle, $postURL, $postParentCat);
+            $data['msg'] = $this->categoriesModel->addCategorie($postTitle, $postURL, $postParentCat,$display_front);
         }
         $data['getListCats'] = $this->categoriesModel->getListCats();
         $content = $this->load->view('dashboard/categorie_edit', $data, true);
@@ -70,17 +79,23 @@ class Categories extends CI_Controller
         $postTitle = $this->input->post('title', true);
         $postURL = $this->input->post('url', true);
         $postParentCat = $this->input->post('parent_cat', true);
+        $display_front =0;
+        if($this->input->post('fornt_display', true)){
+            $display_front =1;
+        }
         if(isset($postTitle) && ($postTitle) != '' && !$this->config->item('demo')) {
             if($postURL == '') {
                 $postURL = url_title(convert_accented_characters($postTitle), $separator = '-', $lowercase = true);
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->categoriesModel->editCategorie($idCategory, $postTitle, $postURL, $postParentCat);
+            $data['msg'] = $this->categoriesModel->editCategorie($idCategory, $postTitle, $postURL, $postParentCat,$display_front);
+            redirect('dashboard/categories','refresh'); // redirecting back to main categoris page
         }
         $data = $this->categoriesModel->getCategorie($idCategory);
         $data['getListCats'] = $this->categoriesModel->getListCats($data['id_relation'], $idCategory);
         $content = $this->load->view('dashboard/categorie_edit', $data, true);
         $this->load->view('dashboard/template', array('content' => $content));
+
     }
 }

@@ -2250,3 +2250,19 @@ body.fixed-left .side-menu.left {
     margin-top: 0px;
   }
 }
+.navbar {
+    margin-bottom: 20px;
+}
+.language_switch .dropdown-menu{
+  width:100%;
+  min-width: 100% !important;
+}
+.language_switch .dropdown-menu .dropdown-item{
+  display: block;
+  padding: 5px 7px;
+}
+#loadingDiv{
+  width:100%;
+  text-align: center;
+  display: none;
+}

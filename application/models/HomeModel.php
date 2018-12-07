@@ -5,6 +5,7 @@ class HomeModel extends CI_Model
 
     public function getBlocsGame($getOrder, $getPag)
     {
+        $getPag = $getPag*(int)$this->config->item('home_pag')-(int)$this->config->item('home_pag');
         if($getOrder === 'rated') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload FROM 2d_games WHERE status = 1 ORDER BY note DESC LIMIT ?,?";
         } elseif($getOrder === 'news') {

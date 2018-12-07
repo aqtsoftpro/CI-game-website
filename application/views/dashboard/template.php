@@ -225,12 +225,12 @@
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/keywords/'); ?>" class="waves-effect"><i class="ti-pin-alt"></i><span> <?php echo $this->lang->line('keywords'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/pages/'); ?>" class="waves-effect"><i class="ti-files"></i><span> <?php echo $this->lang->line('pages'); ?> </span> </a></li>
 						<!--Adding title images --- -->
-						<li class="has_sub">
+						<!--<li class="has_sub">
 						  <a href="<?php echo site_url('dashboard/pages/header_image'); ?>" class="waves-effect">
 						  <i class="ti-files"></i>
 						  <span> <?php echo $this->lang->line('title_image'); ?></span> 
 						  </a>
-						</li>						
+						</li>-->						
 						<!-----Ends Adding image  ---->
 
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/users/'); ?>" class="waves-effect"><i class="ti-user"></i><span> <?php echo $this->lang->line('users'); ?> </span> </a></li>

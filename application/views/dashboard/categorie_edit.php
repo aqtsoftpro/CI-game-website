@@ -22,6 +22,10 @@
 								<?php if(isset($getListCats)) echo $getListCats; ?>
 							</select>
 						</div>
+						<div class="form-group m-b-20">
+							<label for="fornt_display"><?php echo $this->lang->line('DisplayFront'); ?></label><br/>
+							<input <?php if($display_front==1){ echo "checked";}?> type="checkbox" id="fornt_display" name="fornt_display">
+						</div>
 						<div class="form-group text-right m-b-0">
 							<button class="btn btn-inverse waves-effect waves-light" type="submit"><?php echo $this->lang->line('submit'); ?></button>
 							<button type="reset" class="btn btn-default waves-effect waves-light m-l-5"><?php echo $this->lang->line('cancel'); ?></button>

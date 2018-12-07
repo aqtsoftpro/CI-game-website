@@ -72,6 +72,8 @@ $route['category/(:any)/(:any)/(:any)'] = 'category/index/$1/$2/$3';
 $route['(:num)'] = 'home/index//$1';
 $route['(:any)'] = 'home/index/$1';
 $route['(:any)/(:num)'] = 'home/index/$1/$2';
+$route['langswitch/switchlang/(:any)'] = 'langswitch/switchlang/$1';
+$route['(:any)/langswitch/switchlang/(:any)'] = 'langswitch/switchlang/$2';
 
 // Dashboard routes
 

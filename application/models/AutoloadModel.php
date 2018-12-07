@@ -4,11 +4,11 @@ class AutoloadModel extends CI_Model
 {
     public function getCategories() 
     {
-        $sql = "SELECT id, title FROM 2d_categories WHERE id_relation = ?";
+        $sql = "SELECT `id`, `title` FROM `2d_categories` WHERE (`id_relation` = ? OR `id_relation` IS NULL) AND `display_front`='1' ORDER BY `title`";
         $query = $this->db->query($sql, 0);
         $getCategories = '';
         foreach ($query->result() as $row) {
-            $sql = "SELECT title, url FROM 2d_categories WHERE id_relation = ? ORDER BY title";
+            $sql = "SELECT title, url FROM 2d_categories WHERE id_relation = ? AND display_front=1  ORDER BY title";
             $query1 = $this->db->query($sql, $row->id);
             $getSubCategories = '';
             foreach ($query1->result() as $row1) {

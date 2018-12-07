@@ -26,6 +26,8 @@ class Category extends CI_Controller
         if($this->config->item('cache_activation') === 2) {
             $this->output->delete_cache();
         }
+        $this->load->model(array('KeywordsModel'));
+        $data['tags'] = $this->KeywordsModel->keywords_tags();
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/template', $data, true);

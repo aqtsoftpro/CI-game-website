@@ -89,6 +89,7 @@ $lang['newCategory'] = "New category";
 $lang['categoryTitle'] = "Category title";
 $lang['categoryUrl'] = "Category URL";
 $lang['parentCategory'] = "Parent category";
+$lang['DisplayFront'] = "Display On Front";
 $lang['keyword'] = "Keyword";
 $lang['newKeyword'] = "New keyword";
 $lang['keywordTitle'] = "Keyword title";
@@ -217,3 +218,4 @@ $lang['moreComments'] = "More comments";
 $lang['shoutbox'] = "Shoutbox";
 $lang['logo'] = "Forgot";
 $lang['logo'] = "Forgot";
+
