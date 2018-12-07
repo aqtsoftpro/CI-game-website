@@ -85,6 +85,11 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 
 							<ul class="nav navbar-nav navbar-right pull-right">
 								<li class="language_switch dropdown top-menu-item-xs">
+									<?php
+									if(!$this->session->userdata('site_lang')){
+										$this->session->set_userdata('site_lang','english');
+									}
+									?>
 									<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon <?php if($this->session->userdata('site_lang')=='english'){ echo "flag-icon-us";} if($this->session->userdata('site_lang')=='french'){ echo "flag-icon-fr";} ?>"> </span><?php echo ucfirst($this->session->userdata('site_lang'));?></a>
 		                            <div class="dropdown-menu" aria-labelledby="dropdown09">
 		                                <a class="dropdown-item" href="<?php site_url()?>langswitch/switchlang/english"><span class="flag-icon flag-icon-us"> </span>  English</a>
