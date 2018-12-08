@@ -7,13 +7,13 @@ class HomeModel extends CI_Model
     {
         $getPag = $getPag*(int)$this->config->item('home_pag')-(int)$this->config->item('home_pag');
         if($getOrder === 'rated') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 ORDER BY note DESC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 GROUP BY id ORDER BY note DESC LIMIT ?,?";
         } elseif($getOrder === 'news') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 ORDER BY date_publish ASC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 GROUP BY id ORDER BY date_publish ASC LIMIT ?,?";
         } elseif($getOrder === 'popular') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 ORDER BY played DESC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 GROUP BY id ORDER BY played DESC LIMIT ?,?";
         } else {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 ORDER BY title LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 GROUP BY id ORDER BY title LIMIT ?,?";
         }
         $query = $this->db->query($sql, array((int)$getPag, (int)$this->config->item('home_pag')));
         $nbRows = $this->db->count_all('2d_games');
