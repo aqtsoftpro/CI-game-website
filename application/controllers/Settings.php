@@ -45,6 +45,7 @@ class Settings extends CI_Controller
             $file .= '$config["google"] = "'.$_POST['google'].'";'."\n";
             $file .= '$config["roms"] = '.($_POST['roms']?'TRUE':'FALSE').';'."\n";
             $file .= '$config["terms"] = "'.$postTerms.'";'."\n";
+            $file .= '$config["header_background"] = "'.$_POST['header_background'].'";'."\n";
             $file .= '?'.'>';
             if(!write_file('./application/config/general_settings.php', $file)) {
                 $msg = '<div class="alert alert-danger" role="alert">

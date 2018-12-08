@@ -62,6 +62,16 @@
 							<label for="termsOfUse"><?php echo $this->lang->line('termOfUse'); ?></label>
 							<select class="form-control select2" name="termsOfUse"> <?php if(isset($getPages)) echo $getPages; ?> </select>
 						</div>
+						<div class="form-group">
+							<label for="twitter">Header Background Color</label>
+							<div id="colorSelector1">
+		                        <?php
+		                        $color=$this->config->item('header_background');
+		                        ?>
+		                        <div style="background-color: <?php echo $color; ?>"></div>
+		                        <input type="hidden" name="header_background" id="header_background" value="<?php echo $color; ?>">
+		                    </div>
+						</div>
 						<div class="form-group text-right m-b-0">
 							<button class="btn btn-inverse waves-effect waves-light" type="submit"><?php echo $this->lang->line('submit'); ?></button>
 							<button type="reset" class="btn btn-default waves-effect waves-light m-l-5"><?php echo $this->lang->line('cancel'); ?></button>

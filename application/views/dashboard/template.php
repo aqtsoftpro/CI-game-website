@@ -34,7 +34,8 @@
 		<link href="<?php echo site_url('assets/css/pages.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/menu.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/responsive.css'); ?>" rel="stylesheet" type="text/css" />
-
+		<link href="<?php echo site_url('assets/plugins/color_picker/css/colorpicker.css'); ?>" rel="stylesheet">
+		<link href="<?php echo site_url('assets/plugins/color_picker/css/layout.css'); ?>" rel="stylesheet">
 		<!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -43,7 +44,6 @@
 		<![endif]-->
 
 		<script src="<?php echo site_url('assets/js/modernizr.min.js'); ?>"></script>
-
 	</head>
 
 	<body class="fixed-left">
@@ -349,6 +349,11 @@
 
 		<!--form validation init-->
         <script src="<?php echo site_url('assets/plugins/tinymce/tinymce.min.js'); ?>"></script>
+
+        <script src="<?php echo site_url('assets/plugins/color_picker/js/colorpicker.js'); ?>"></script>
+		<script src="<?php echo site_url('assets/plugins/color_picker/js/eye.js'); ?>"></script>
+		<script src="<?php echo site_url('assets/plugins/color_picker/js/layout.js'); ?>"></script>
+		<script src="<?php echo site_url('assets/plugins/color_picker/js/utils.js'); ?>"></script>
 
         <script type="text/javascript">
 			$(document).ready(function () {
