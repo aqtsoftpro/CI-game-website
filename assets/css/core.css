@@ -2266,3 +2266,9 @@ body.fixed-left .side-menu.left {
   text-align: center;
   display: none;
 }
+.game-list-box a video{
+  display: none;
+  position: absolute;
+  width:100%;
+  top: 0;
+}

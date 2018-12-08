@@ -50,13 +50,14 @@ class Games extends CI_Controller
         $postDescription = $this->input->post('description', true);
         $postIdCategory = $this->input->post('category', true);
         $postStatus = $this->input->post('status', true);
+        $postVideo = $this->input->post('video_url', true);
         if(($postTitle) != '' && !$this->config->item('demo')) {
             if($postURL == '') {
                 $postURL = url_title(convert_accented_characters($postTitle), $separator = '-', $lowercase = true);
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription, $postIdCategory, $postStatus);
+            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription, $postIdCategory, $postStatus,$postVideo);
         }
         $data['status_game'] = '1';
         // Retrieving categories
@@ -79,13 +80,24 @@ class Games extends CI_Controller
         $postEmbed = $this->input->post('embed', true);
         $postConsole = $this->input->post('console', true);
         $postStatus = $this->input->post('status', true);
+        $postVideo = $this->input->post('video_url', true);
+        
+        if(isset($_FILES['game_video'])){
+            $upload_path = './uploads/videos/';
+            $temp_name = $_FILES['game_video']['tmp_name'];
+            $file_name = $upload_path.$_FILES['game_video']['name'];
+            if(move_uploaded_file($temp_name,$file_name)){
+                $postVideo = site_url('uploads/videos/'.$_FILES['game_video']['name']);
+            }
+        }
+
         if(isset($postTitle) && ($postTitle) != '' && !$this->config->item('demo')) {
             if($postURL == '') {
                 $postURL = url_title(convert_accented_characters($postTitle), $separator = '-', $lowercase = true);
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->gamesModel->editGame($idGame, $postTitle, $postURL, $postDescription, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus);
+            $data['msg'] = $this->gamesModel->editGame($idGame, $postTitle, $postURL, $postDescription, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$postVideo);
         }
         // Processing the form for sending the image
         if(null !== $this->input->post('hiddenImage', true) && !$this->config->item('demo')) {

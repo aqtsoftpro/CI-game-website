@@ -30,7 +30,6 @@
 	            load_data($("#page").val());
 	        }
 		});
-
 	};
 	function load_data(page,orderby){
 		$.ajax({
@@ -47,11 +46,17 @@
 	            $('#loadGames').append(html);
             	var cw = $('.thumb-img').width()/1.3;
 				$('.thumb-img').css({'height':cw+'px'});
-				$(".game-list-box img").hover(function() {
+	            $("#page").val(Number($("#page").val())+Number(1));
+
+	            $(".game-list-box img").mouseover(function() {
 				//   $(this).parent().next().next().slideToggle();
 				  $(this).parent().next().slideToggle();
+
+				  $(this).parent().find('video').show();
 				});
-	            $("#page").val(Number($("#page").val())+Number(1));
+	            $(".game-list-box").mouseleave(function() {
+				  $(this).parent().find('video').hide();
+				});
 	        }
 	    });
 	}

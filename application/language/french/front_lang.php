@@ -217,3 +217,4 @@ $lang['moreFavorites'] = "Plus de favoris";
 $lang['moreNotes'] = "Plus de notes";
 $lang['moreComments'] = "Plus de commentaires";
 $lang['shoutbox'] = "Shoutbox";
+$lang['videoURL'] = "URL de la vidéo";

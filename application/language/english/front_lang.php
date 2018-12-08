@@ -218,4 +218,4 @@ $lang['moreComments'] = "More comments";
 $lang['shoutbox'] = "Shoutbox";
 $lang['logo'] = "Forgot";
 $lang['logo'] = "Forgot";
-
+$lang['videoURL'] = "Video URL";

@@ -10,7 +10,7 @@
 			<div class="row">
 
 				<div class="col-sm-9">
-					<form method="post" action="<?php echo current_url().'/'; ?>" role="form">
+					<form method="post" action="<?php echo current_url().'/'; ?>" enctype="multipart/form-data" role="form">
 						<div class="form-group m-b-20">
 							<label for="title"><?php echo $this->lang->line('gameTitle'); ?></label>
 							<input type="text" class="form-control" name="title" placeholder="<?php echo $this->lang->line('gameTitle'); ?>" value="<?php if(isset($title_game)) echo $title_game; ?>">
@@ -61,6 +61,11 @@
 								<option value="1" <?php if($status_game === '1') echo 'selected'; ?>><?php echo $this->lang->line('active'); ?></option>
 								<option value="0" <?php if($status_game === '0') echo 'selected'; ?>><?php echo $this->lang->line('inactive'); ?></option>
 							</select>
+						</div>
+						<div class="form-group m-b-20">
+							<label for="video_url"><?php echo $this->lang->line('videoURL'); ?></label> <span class="text-muted">(embed)</span>
+							<input type="url" class="form-control" name="video_url" placeholder="Game Video URL" value="<?php if(isset($video_url)) echo $video_url; ?>">
+							<input type="file" class="form-control" name="game_video">
 						</div>
 						<div class="form-group text-right m-b-0">
 							<button class="btn btn-inverse waves-effect waves-light" type="submit"><?php echo $this->lang->line('submit'); ?></button>
