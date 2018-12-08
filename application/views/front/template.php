@@ -92,8 +92,8 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 									?>
 									<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon <?php if($this->session->userdata('site_lang')=='english'){ echo "flag-icon-us";} if($this->session->userdata('site_lang')=='french'){ echo "flag-icon-fr";} ?>"> </span><?php echo ucfirst($this->session->userdata('site_lang'));?></a>
 		                            <div class="dropdown-menu" aria-labelledby="dropdown09">
-		                                <a class="dropdown-item" href="<?php site_url()?>langswitch/switchlang/english"><span class="flag-icon flag-icon-us"> </span>  English</a>
-		                                <a class="dropdown-item" href="<?php site_url()?>langswitch/switchlang/french"><span class="flag-icon flag-icon-fr"> </span>French</a>
+		                                <a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/english"><span class="flag-icon flag-icon-us"> </span>  English</a>
+		                                <a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/french"><span class="flag-icon flag-icon-fr"> </span>French</a>
 		                            </div>
 								</li>
 								<li class="dropdown top-menu-item-xs">
