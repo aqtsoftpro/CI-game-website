@@ -64,6 +64,7 @@ class HomeModel extends CI_Model
          'getBlocGame' => $getBlocGame,
          'nbRows'      => $nbRows
          );
+        exit;
     }
 
     public function getNote($idGame)
