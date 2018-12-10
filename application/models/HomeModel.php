@@ -6,20 +6,23 @@ class HomeModel extends CI_Model
     public function getBlocsGame($getOrder, $getPag)
     {
         $getPag = $getPag*(int)$this->config->item('home_pag')-(int)$this->config->item('home_pag');
+
         if($getOrder === 'rated') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY note DESC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY note DESC LIMIT";
         } elseif($getOrder === 'news') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY date_publish ASC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY date_publish ASC LIMIT";
         } elseif($getOrder === 'popular') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
 
         } elseif($getOrder === 'featured') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY title ASC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY title ASC LIMIT";
         }
         else {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title";
         }
-        $query = $this->db->query($sql, array((int)$getPag, (int)$this->config->item('home_pag')));
+        $limit = ' limit '.(int)$getPag.','.(int)$this->config->item('home_pag');
+        $sql.=$limit;
+        $query = $this->db->query($sql);
         //echo $this->db->last_query($query);
         $nbRows = $this->db->count_all('2d_games');
         $getBlocGame = '';
