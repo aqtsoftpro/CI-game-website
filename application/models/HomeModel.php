@@ -19,7 +19,8 @@ class HomeModel extends CI_Model
         else {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title LIMIT ?,?";
         }
-        //echo $sql;
+        echo $sql."<br/>";
+
         $query = $this->db->query($sql, array((int)$getPag, (int)$this->config->item('home_pag')));
         $nbRows = $this->db->count_all('2d_games');
         $getBlocGame = '';
