@@ -27,6 +27,7 @@ class Search extends CI_Controller
             $this->output->delete_cache();
         }
         $data['title'] = 'Search';
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/search', $data, true);

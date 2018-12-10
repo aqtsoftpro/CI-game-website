@@ -92,9 +92,23 @@ class KeywordsModel extends CI_Model
             $sql = "SELECT id, title, url FROM 2d_keywords";
             $query = $this->db->query($sql);
             foreach ($query->result() as $row) {
-                $getKeywords .='<li><a href="'.$row->title.'">'.$row->title.'</a></li>';
+                //$getKeywords .='<li><a href="'.$row->title.'">'.$row->title.'</a></li>';
+                $getKeywords .='<a href="'.base_url('keyword/index/').trim($row->title).'">'.$row->title.'</a>';
             }
         return $getKeywords;
+        }
+    }
+
+    public function keywords_id($keyword){
+        if(isset($keyword)){
+            
+            $key = strtolower($keyword);
+            
+            $sql ="SELECT * FROM 2d_keywords WHERE url='$key'";
+
+            $query = $this->db->query($sql);
+            $result = $query->row();
+            return $result->id;  
         }
     }
 }

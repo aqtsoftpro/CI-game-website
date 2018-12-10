@@ -11,5 +11,5 @@ $config["twitter"] = "";
 $config["google"] = "";
 $config["roms"] = FALSE;
 $config["terms"] = "privacy";
-$config["header_background"] = "#101821";
+$config["header_background"] = "#0661c2";
 ?>

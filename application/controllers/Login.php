@@ -22,6 +22,7 @@ class Login extends CI_Controller
         parent::__construct();
         $data['title'] = 'Login - '.$this->config->item('sitename');
         $this->input->cookie('remember_me', true);
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('front/login', $data, true);
         $this->load->model(array('loginModel'));
     }

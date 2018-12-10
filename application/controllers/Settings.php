@@ -23,6 +23,9 @@ class Settings extends CI_Controller
         if(!isset($this->session->admin)) {
             redirect('/login/');
         }
+        $this->load->model('AutoloadModel');
+        $data['languages'] = $this->autoloadModel->getLanguages();
+        $this->load->helper('form');
         $this->load->model(array('settingsModel'));
     }
 
@@ -191,5 +194,27 @@ class Settings extends CI_Controller
         $content = $this->load->view('dashboard/ads_settings', $data, true);
         $this->load->view('dashboard/template', array('content' => $content));
     }
+
+    public function language(){
+        $data['title'] ='Language Settings' ;//$this->lang->line('generalSettings');
+        $postTerms = $this->input->post('termsOfUse', true);
+        $this->load->helper('file');
+    
+        $data['lang'] = $this->AutoloadModel->display_languages();
+        $data['getPages'] = $this->settingsModel->getPages();
+        $content = $this->load->view('dashboard/language_settings', $data, true);
+        $this->load->view('dashboard/template', array('content' => $content));
+    }
+    public function change_lang(){
+       $languages = $this->input->post();
+       $this->AutoloadModel->hide_all();
+       foreach($languages['language'] as $lang_id=>$language){
+            // echo $lang_id ."=>".$language."<br/>";
+            if (isset($lang_id)) {
+            $this->AutoloadModel->lang_show($lang_id);
+            }
+        } //ends foreach
+    redirect('settings/language');  
+    }//end change_lang
 
 }

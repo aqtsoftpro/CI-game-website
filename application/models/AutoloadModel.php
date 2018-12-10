@@ -14,12 +14,17 @@ class AutoloadModel extends CI_Model
             foreach ($query1->result() as $row1) {
                 $getSubCategories .= '<li><a href="'.site_url('category/'.$row1->url.'/').'">'.$row1->title.'</a></li>';
             }
-            $getCategories .= '<li class="dropdown">
+            /*$getCategories .= '<li class="dropdown">
 									<a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row->title.' <span class="caret"></span></a>
 									<ul class="dropdown-menu">
 										'.$getSubCategories.'
 									</ul>
-								</li>';
+								</li>';*/
+
+            $getCategories .= '<li>
+                                    <a href="'.site_url('category/'.strtolower($row->title)).'">'.$row->title.'</a>
+                                
+                                </li>';
         }
         return $getCategories;
     }
@@ -33,5 +38,67 @@ class AutoloadModel extends CI_Model
             $getFooter .= '<li><a href="'.site_url('page/'.$row->url.'/').'">'.$row->title.'</a></li>';
         }
         return $getFooter;
+    }
+    public function getLanguages() 
+    {
+        $sql = "SELECT * from language_settings where lang_flag=1 order by lang_name asc";
+        $query = $this->db->query($sql);
+        
+        return $query->result();
+    }
+    public function lang_settings($lang){  
+         
+
+            $data = array(
+                'lang_name'=>$lang
+            );
+            
+            if($this->db->insert('language_settings',$data)){
+               return true;
+             }     
+       
+    }//ends lang settin g
+    public function display_languages(){
+   
+    $query = $this->db->get('language_settings');
+        if(!empty($query)){
+        return $query->result();
+        }
+
+    }
+    public function lang_id($lang){
+        $data = array(
+        'lang_name'=>$lang
+        );
+        if($query = $this->db->get_where('language_settings',$data)){
+        foreach($query->row() as $item){
+            return $item;
+        }
+      }
+    }
+    public function lang_show($id=NULL){
+        if(isset($id)){
+        $data = array(
+        'lang_flag'=>1
+        );
+        $this->db->where('lang_id',$id);
+        return $this->db->update('language_settings',$data);    
+        }
+
+    }//ends lang_show
+    public function lang_hide($id=NULL){
+        if(isset($id)){
+        $data = array(
+        'lang_flag'=>0
+        );
+        $this->db->where('lang_id',$id);
+        return $this->db->update('language_settings',$data);    
+        }
+    }
+    public function hide_all(){
+        $data = array(
+        'lang_flag'=>0
+        );
+    return $this->db->update('language_settings',$data);
     }
 }

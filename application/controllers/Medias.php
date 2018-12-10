@@ -23,6 +23,7 @@ class Medias extends CI_Controller
         if(!isset($this->session->admin)) {
             redirect('/login/');
         }
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/categories', array(), true);
         $this->load->model(array('mediasModel'));
         $this->load->helper(array('file'));

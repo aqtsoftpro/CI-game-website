@@ -46,7 +46,7 @@ class CategoryModel extends CI_Model
                 $interval = date_diff($datetime1, $datetime2);
                 $time = $interval->format('%a');
                 $classShow = ($time <= 90) ? 'show' : '';
-                $getBlocGame .= '<div class=" col-sm-2 p-b-20">
+                /*$getBlocGame .= '<div class=" col-sm-2 p-b-20">
                                     <div class="game-list-box">
                                         <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                             <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="">
@@ -62,7 +62,24 @@ class CategoryModel extends CI_Model
                                             <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 17, '...').'</a> </h2>
                                         </div>
                                     </div>
-                                </div>';
+                                </div>';*/
+                $getBlocGame .= '<div class="col-sm-12  col-md-2 col-lg-game-'.$this->config->item('home_nb').' p-b-20">
+                                <div class="game-list-box">
+                                    <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+                                        <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+
+                                    <!--<div class="game-action '.$classShow.'">
+                                        <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
+                                    </div>-->
+
+                                    '.rating($this->getNote($row->id), 'game-rating').'
+
+                                    <div class="game-title">
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 17, '...').'</a> </h2>
+                                    </div>
+                                </div>
+                            </div>';
             }
             return array(
              'getBlocGame' => $getBlocGame,
@@ -163,6 +180,59 @@ class CategoryModel extends CI_Model
                         </div>';
         }
         return $getComs;
+    }
+
+    public function getBlocsGame_keyword($keyword)
+    {
+        // Total of results in this category (pagination)
+        $sql = "SELECT * FROM 2d_games WHERE ids_keywords LIKE '%$keyword%'";       
+        
+        $query = $this->db->query($sql);
+
+        if($query->num_rows() > 0) {
+            $getBlocGame = '';
+            foreach ($query->result() as $row) {
+                // Comparison of dates for displaying the new tab on the game
+                $date_upload = date_parse($row->date_upload);
+                $datetime1 = date_create($date_upload['year'].'-'.$date_upload['month'].'-'.$date_upload['day']);
+                $datetime2 = date_create(date("Y-m-d"));
+                $interval = date_diff($datetime1, $datetime2);
+                $time = $interval->format('%a');
+                $classShow = ($time <= 90) ? 'show' : '';
+              $getBlocGame .= '<div class="col-sm-12  col-md-2 col-lg-game-'.$this->config->item('home_nb').' p-b-20">
+                                <div class="game-list-box">
+                                    <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+                                        <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+
+                                    <!--<div class="game-action '.$classShow.'">
+                                        <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
+                                    </div>-->
+
+                                    '.rating($this->getNote($row->id), 'game-rating').'
+
+                                    <div class="game-title">
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 17, '...').'</a> </h2>
+                                    </div>
+                                </div>
+                            </div>';
+            }
+            return array(
+             'getBlocGame' => $getBlocGame,
+             'cat_title'   => $row->cat_title,
+             'cat_url'     => $row->cat_url,
+             'id_category' => $row->id_category,
+             'nbRows'      => $nbRows
+             );
+        } else {
+            return array(
+             'getBlocGame' => null,
+             'cat_title'   => null,
+             'cat_url'     => null,
+             'id_category' => null,
+             'nbRows'      => null
+             );
+        }
     }
 
 }

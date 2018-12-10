@@ -28,6 +28,8 @@ class Home extends CI_Controller
         }
         $data['title'] = $this->config->item('sitename').' - '.$this->config->item('description');
         $data['getCategories'] = $this->autoloadModel->getCategories();
+        $data['languages'] = $this->autoloadModel->getLanguages();
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/template', $data, true);
         $this->load->model(array('homeModel'));

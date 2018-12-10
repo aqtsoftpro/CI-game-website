@@ -30,6 +30,7 @@ class Users extends CI_Controller
         $config['max_size']      = 200;
         $config['max_width']     = 2050;
         $config['max_height']    = 2050;
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $this->load->library('upload', $config);
     }
 

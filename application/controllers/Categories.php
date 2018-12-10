@@ -23,6 +23,7 @@ class Categories extends CI_Controller
             redirect('/login/');
         }
         $content = $this->load->view('dashboard/categories', array(), true);
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $this->load->model(array('categoriesModel'));
         $this->load->model(array('KeywordsModel'));
        

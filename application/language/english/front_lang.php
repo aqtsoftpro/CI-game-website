@@ -222,3 +222,4 @@ $lang['videoURL'] = "Video URL";
 $lang['displayHome'] = "Display on Home Page";
 $lang['isFeature'] = "Is Feature";
 $lang['featured'] = "Featured";
+$lang['languageSettings'] = 'Language Settings';

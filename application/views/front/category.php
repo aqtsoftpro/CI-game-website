@@ -11,7 +11,7 @@
 		</div> <!-- end row -->
 
 		<div class="row m-t-20">
-			<div class="col-sm-12 col-lg-9 col-md-12">
+			<div class="col-sm-12 col-lg-12 col-md-12">
 				<?php if(isset($getBlocGame)) echo $getBlocGame; ?>
 
 				<div class="row">
@@ -23,43 +23,43 @@
 				</div> <!-- end row -->
 			</div>
 
-			<div class="col-sm-12 col-lg-3 col-md-12">
+			<!--<div class="col-sm-12 col-lg-3 col-md-12">
 				<ul class="nav nav-tabs navtab-bg nav-justified">
 					<li class="active">
 						<a href="#home1" data-toggle="tab" aria-expanded="false">
 							<span class="visible-xs"><i class="fa fa-home"></i></span>
-							<span class="hidden-xs"><?php echo $this->lang->line('topRated'); ?></span>
+							<span class="hidden-xs"><?php //echo $this->lang->line('topRated'); ?></span>
 						</a>
 					</li>
 					<li class="">
 						<a href="#profile1" data-toggle="tab" aria-expanded="true">
 							<span class="visible-xs"><i class="fa fa-user"></i></span>
-							<span class="hidden-xs"><?php echo $this->lang->line('mostPlayed'); ?></span>
+							<span class="hidden-xs"><?php //echo $this->lang->line('mostPlayed'); ?></span>
 						</a>
 					</li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="home1">
-						<?php if(isset($getBestGamesNote)) echo $getBestGamesNote; ?>
+						<?php //if(isset($getBestGamesNote)) echo $getBestGamesNote; ?>
 					</div>
 					<div class="tab-pane" id="profile1">
-						<?php if(isset($getBestGamesClic)) echo $getBestGamesClic; ?>
+						<?php //if(isset($getBestGamesClic)) echo $getBestGamesClic; ?>
 					</div>
 				</div>
 
 				<div class="panel panel-color panel-inverse">
 					<div class="panel-heading">
-						<h3 class="panel-title"><?php echo $this->lang->line('latestComments'); ?></h3>
+						<h3 class="panel-title"><?php //echo $this->lang->line('latestComments'); ?></h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-12">
-								<?php if(isset($getComs)) echo $getComs; ?>
+								<?php //if(isset($getComs)) echo $getComs; ?>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>-->
 
 		</div> <!-- end row -->
 

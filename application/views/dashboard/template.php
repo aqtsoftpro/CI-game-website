@@ -242,6 +242,10 @@
 								<a href="javascript:void(0);" class="waves-effect"><i class="ti-settings"></i> <span> <?php echo $this->lang->line('appSettings'); ?> </span> <span class="menu-arrow"></span></a>
 								<ul class="list-unstyled">
 									<li><a href="<?php echo site_url('dashboard/settings/'); ?>" class="waves-effect"><i class="ti-package "></i> <span> <?php echo $this->lang->line('generalSettings'); ?> </span></a></li>
+
+									<li><a href="<?php echo site_url('dashboard/settings/language'); ?>" class="waves-effect"><i class="ti-flag-alt-2"></i> <span><?php echo $this->lang->line('languageSettings'); ?> </span></a></li>
+
+
 									<li><a href="<?php echo site_url('dashboard/settings/seo/'); ?>" class="waves-effect"><i class="ti-stats-up"></i> <span> <?php echo $this->lang->line('seoSettings'); ?> </span></a></li>
 									<li><a href="<?php echo site_url('dashboard/settings/mail/'); ?>" class="waves-effect"><i class="ti-email "></i> <span> <?php echo $this->lang->line('mailSettings'); ?> </span></a></li>
 									<li><a href="<?php echo site_url('dashboard/settings/advertisements/'); ?>" class="waves-effect"><i class="ti-layout-media-center-alt "></i> <span> <?php echo $this->lang->line('adsSettings'); ?> </span></a></li>

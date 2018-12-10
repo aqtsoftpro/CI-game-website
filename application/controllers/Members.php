@@ -25,6 +25,7 @@ class Members extends CI_Controller
         if($this->config->item('cache_activation') === 2) {
             $this->output->delete_cache();
         }
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $data['title'] = 'Members - '.$this->config->item('sitename');
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['getFooter'] = $this->autoloadModel->getFooter();

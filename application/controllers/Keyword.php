@@ -14,10 +14,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * @link      http://coffeetheme.com/
 */
 
-class Category extends CI_Controller
+class Keyword extends CI_Controller
 {
 
-    public function __construct()
+     public function __construct()
     {
         parent::__construct();
         if($this->config->item('cache_activation') === 1) {
@@ -28,17 +28,23 @@ class Category extends CI_Controller
         }
         $this->load->model(array('KeywordsModel'));
         $data['tags'] = $this->KeywordsModel->keywords_tags();
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['getFooter'] = $this->autoloadModel->getFooter();
-        $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('front/template', $data, true);
         $this->load->model(array('categoryModel'));
+        $this->lang->load('front','english');
     }
-
-    public function index($getUrl = '', $getOrder = '', $getPag = '')
-    {
+    public function index($keyword=NULL)
+    {   
+        $keyword =trim($this->uri->segment(3,0));
+        //echo $keyword;        
+        $key_id = $this->KeywordsModel->keywords_id($keyword);        
+      
         // Displaying all the games of this category
-        $data = $this->categoryModel->getBlocsGame($getUrl, $getOrder, $getPag);
+        $data = $this->categoryModel->getBlocsGame_keyword($key_id);
+        // var_dump($data);
+        // exit();
         // Displaying pagination
         $this->load->library('pagination');
         $segment3 = $this->uri->segment(3, 0);
@@ -63,4 +69,5 @@ class Category extends CI_Controller
         $content = $this->load->view('front/category', $data, true);
         $this->load->view('front/template', array('content' => $content));
     }
+    
 }

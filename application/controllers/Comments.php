@@ -23,7 +23,9 @@ class Comments extends CI_Controller
         if(!isset($this->session->admin)) {
             redirect('/login/');
         }
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/comments', array(), true);
+
         $this->load->model(array('commentsModel'));
     }
 

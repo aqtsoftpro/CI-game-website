@@ -23,7 +23,9 @@ class Pages extends CI_Controller
         if(!isset($this->session->admin)) {
             redirect('/login/');
         }
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/games', array(), true);
+
         $this->load->model(array('pagesModel'));
     }
 

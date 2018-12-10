@@ -221,4 +221,5 @@ $lang['videoURL'] = "URL de la vidéo";
 $lang['displayHome'] = "Afficher sur la page d'accueil";
 $lang['isFeature'] = "Est caractéristique";
 $lang['displayHome'] = "Display on Home Page";
-$lang['isFeature'] = "Is Feature";
+$lang['featured'] = "En vedette";
+$lang['languageSettings'] = 'Paramètres de langue';

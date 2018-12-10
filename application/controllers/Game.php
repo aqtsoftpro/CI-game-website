@@ -27,6 +27,7 @@ class Game extends CI_Controller
             $this->output->delete_cache();
         }
         $this->load->model(array('KeywordsModel'));
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['getFooter'] = $this->autoloadModel->getFooter();

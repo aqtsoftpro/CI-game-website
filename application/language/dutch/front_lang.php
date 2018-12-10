@@ -13,8 +13,8 @@
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['home'] = "Home";
-$lang['members'] = "Members";
+$lang['home'] = "Huis";
+$lang['members'] = "Leden";
 $lang['searchForm'] = "Search...";
 $lang['profile'] = "Profile";
 $lang['settings'] = "Settings";
@@ -221,3 +221,5 @@ $lang['logo'] = "Forgot";
 $lang['videoURL'] = "Video URL";
 $lang['displayHome'] = "Display on Home Page";
 $lang['isFeature'] = "Is Feature";
+$lang['featured'] = "Featured";
+$lang['languageSettings'] = 'Language Settings';

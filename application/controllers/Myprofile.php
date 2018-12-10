@@ -25,6 +25,7 @@ class Myprofile extends CI_Controller
         }
         $data['title'] = 'Profile settings - '.$this->config->item('sitename');
         $data['getCategories'] = $this->autoloadModel->getCategories();
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/template', $data, true);
         $this->load->model(array('myprofileModel'));

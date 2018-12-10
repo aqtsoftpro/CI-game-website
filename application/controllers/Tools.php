@@ -22,6 +22,7 @@ class Tools extends CI_Controller
         if(!isset($this->session->admin)) {
             redirect('/login/');
         }
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/tools', array(), true);
         $this->load->model(array('toolsModel'));
         set_time_limit(0);

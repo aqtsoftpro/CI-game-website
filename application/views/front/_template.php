@@ -28,21 +28,12 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
         <link href="<?php echo site_url('assets/css/bootstrap-slider.min.css'); ?>" rel="stylesheet" type="text/css"/>
 
 		<link href="<?php echo site_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
-		<link href="<?php echo site_url('assets/css/new.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/core.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/components.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/icons.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/pages.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="<?php echo site_url('assets/css/responsive.css'); ?>" rel="stylesheet" type="text/css" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
-		<style>
-			#top,.searchForm input,#language-select{
-				background-color: <?php echo $this->config->item('header_background'); ?> !important;
-			}
-			.searchForm input,#language-select{
-				border:1px solid #CECECE;
-			}
-		</style>
 
 		<?php if(isset($JaxonCSS)) echo $JaxonCSS; ?>
 
@@ -57,222 +48,25 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 	</head>
 
 	<body class="fixed-left front">
-	<div id="top">
-<div id="burger">
-<a href="#">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAXCAQAAADT28WeAAAATUlEQVR4AWP4z0gZZEAH/43/G4GhMQhDSQQ0gvARqmAkTAbTwHrKIKaBDZRB2rsQEWYIiBAjDDENZKIMMtAaDNF0OJoOR9PhaDocTYcASNRT+6FODmgAAAAASUVORK5CYII=" alt="" width="40" /><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAXCAQAAABzRK1wAAAARElEQVR42mP4z4AOGQa5kPT/2P+KyEIC/1P/N/zP+i8ME4IIgGDmf1GQkBiQ0QCHef+lGP7b/k/4HwWH8f89GIZOSAAAUzjZPVfRpesAAAAASUVORK5CYII=" width="9" id="burgerArrow" alt="" />
-</a>
-</div>
-<div id="close">
-<a href="#">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAQAAAADHm0dAAABEklEQVR4AW3RA27uQRRA8fuWUNsO277adqPuqw5qm5+1ktpYRU8xSW5uvv9vwsnJUBCEbhYpRzxHPjMMIoggtHEN+MjxCNM5Ap7pQ4QBrnEuk+JU9nGeGBcWUQFyNSSDE9SWUIYf5SPbhaRxiEpQLQi5+JLiVBtSjLgVss3KZzSwg4pTiLjUrXyJukVFKUE0dStfoDQsQrApQg7HWH4NbSrUcYO6pwXxTtPY5AtQh+TY1L6jdUE2NiWDI9Qjykc+mpJmwiDtnKACbmW34gEqRgFCtv1BchEhz6wYd8+TFPspEeZNWKw3Jo8Aal0Y5xkn4lY0n3KJ88mUIPTxZFc0sQ/4YJx/bmKINWoQz1HCMpMI8g11K4krMjn8SAAAAABJRU5ErkJggg==" alt="" width="15" height="15" />
-</a>
-</div>
-<div id="topMid">
-<?php if(!empty($this->config->item('logo'))){ ?>
-<a href="<?php echo site_url(''); ?>" class="logo"><?php if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?></a>
-<?php }else{ ?>
-<a href="<?php base_url();?>">
-<h2 id="headerTop">
-	<span class="green">C</span><span class="yellow">r</span><span class="orange">a</span><span class="red">z</span><span class="purple">y</span>Games
-</h2>
-</a>
-<?php } ?>
-<div id="language-select">
-	<ul class="nav navbar-nav navbar-right pull-right">
-		<li class="language_switch dropdown top-menu-item-xs">
-			<?php
-			if(!$this->session->userdata('site_lang')){
-				$this->session->set_userdata('site_lang','english');
-			}
-
-			$flag = "";
-
-    		if($this->session->userdata('site_lang')=='english'){
-    			$flag = 'flag-icon-us';
-    		}
-    		if($this->session->userdata('site_lang')=='french'){
-    			$flag = 'flag-icon-fr';
-    		}
-    		if($this->session->userdata('site_lang')=='chinese'){
-    			$flag = 'flag-icon-cc';
-    		}
-    		if($this->session->userdata('site_lang')=='dutch'){
-    			$flag = 'flag-icon-nl';
-    		}
-    		if($this->session->userdata('site_lang')=='philipine'){
-    			$flag = 'flag-icon-ph';
-    		}
-    		if($this->session->userdata('site_lang')=='german'){
-    			$flag = 'flag-icon-de';
-    		}
-    		if($this->session->userdata('site_lang')=='hindi'){
-    			$flag = 'flag-icon-in';
-    		}
-    		if($this->session->userdata('site_lang')=='indonasian'){
-    			$flag = 'flag-icon-is';
-    		}
-    		if($this->session->userdata('site_lang')=='italian'){
-    			$flag = 'flag-icon-it';
-    		}
-    		if($this->session->userdata('site_lang')=='japanese'){
-    			$flag = 'flag-icon-jp';
-    		}
-    		if($this->session->userdata('site_lang')=='korean'){
-    			$flag = 'flag-icon-lv';
-    		}
-    		if($this->session->userdata('site_lang')=='polish'){
-    			$flag = 'flag-icon-pl';
-    		}
-    		if($this->session->userdata('site_lang')=='portuguese'){
-    			$flag = 'flag-icon-ru';
-    		}
-    		if($this->session->userdata('site_lang')=='romanian'){
-    			$flag = 'flag-icon-ro';
-    		}
-    		if($this->session->userdata('site_lang')=='russian'){
-    			$flag = 'flag-icon-sn';
-    		}
-    		if($this->session->userdata('site_lang')=='spanish'){
-    			$flag = 'flag-icon-es';
-    		}
-    		if($this->session->userdata('site_lang')=='turkish'){
-    			$flag = 'flag-icon-tr';
-    		}
-    		if($this->session->userdata('site_lang')=='vietnamese'){
-    			$flag = 'flag-icon-vi';
-    		}
-
-			?>
-			<a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon <?php echo $flag; ?>"> </span><?php echo ucfirst($this->session->userdata('site_lang'));?></a>
-		    <div class="dropdown-menu" aria-labelledby="dropdown09">
-		    	<?php 
-		    	foreach($languages as $language){
-		    		$flag = "";
-
-		    		if(lcfirst($language->lang_name)=='english'){
-		    			$flag = 'flag-icon-us';
-		    		}
-		    		if(lcfirst($language->lang_name)=='french'){
-		    			$flag = 'flag-icon-fr';
-		    		}
-		    		if(lcfirst($language->lang_name)=='chinese'){
-		    			$flag = 'flag-icon-cc';
-		    		}
-		    		if(lcfirst($language->lang_name)=='dutch'){
-		    			$flag = 'flag-icon-nl';
-		    		}
-		    		if(lcfirst($language->lang_name)=='philipine'){
-		    			$flag = 'flag-icon-ph';
-		    		}
-		    		if(lcfirst($language->lang_name)=='german'){
-		    			$flag = 'flag-icon-de';
-		    		}
-		    		if(lcfirst($language->lang_name)=='hindi'){
-		    			$flag = 'flag-icon-in';
-		    		}
-		    		if(lcfirst($language->lang_name)=='indonasian'){
-		    			$flag = 'flag-icon-is';
-		    		}
-		    		if(lcfirst($language->lang_name)=='italian'){
-		    			$flag = 'flag-icon-it';
-		    		}
-		    		if(lcfirst($language->lang_name)=='japanese'){
-		    			$flag = 'flag-icon-jp';
-		    		}
-		    		if(lcfirst($language->lang_name)=='korean'){
-		    			$flag = 'flag-icon-lv';
-		    		}
-		    		if(lcfirst($language->lang_name)=='polish'){
-		    			$flag = 'flag-icon-pl';
-		    		}
-		    		if(lcfirst($language->lang_name)=='portuguese'){
-		    			$flag = 'flag-icon-ru';
-		    		}
-		    		if(lcfirst($language->lang_name)=='romanian'){
-		    			$flag = 'flag-icon-ro';
-		    		}
-		    		if(lcfirst($language->lang_name)=='russian'){
-		    			$flag = 'flag-icon-sn';
-		    		}
-		    		if(lcfirst($language->lang_name)=='spanish'){
-		    			$flag = 'flag-icon-es';
-		    		}
-		    		if(lcfirst($language->lang_name)=='turkish'){
-		    			$flag = 'flag-icon-tr';
-		    		}
-		    		if(lcfirst($language->lang_name)=='vietnamese'){
-		    			$flag = 'flag-icon-vi';
-		    		}
-		    		?>
-		    			<a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/<?php echo lcfirst($language->lang_name); ?>"><span class="flag-icon <?php echo $flag;?>"></span><?php echo ucfirst($language->lang_name);?></a>	
-		    		<?php
-		    	}
-		    	?>
-		        <!--<a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/english"><span class="flag-icon flag-icon-us"> </span>  English</a>
-		        <a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/french"><span class="flag-icon flag-icon-fr"> </span> French</a>-->
-		    </div>
-		</li>
-	</ul>
-</div>
-<form class="searchForm cf" method="get">
-<input id="search" type="text" name="q" placeholder="" required />
-<input type="button" class="button" value="search" id="search_form_submit" onclick="window.location='<?php echo site_url('search?q='); ?>'+document.getElementById('search').value;"/>
-</form>
-
-</div>
-</div>
-<div id="rest">
-<div id="menu">
-<ul>
-<li><a href="<?php echo site_url(''); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
-								<?php if(isset($getCategories)) echo $getCategories; ?>
-								<li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li>
-
-<li id="tags" class="cf">
-<div>
-<a href="https://www.crazygames.com/tags">tags <img border="0" src="data:image/gif;base64,R0lGODlhBwAIALMAAAAAAP///xMTFF1gYlteYCgqKzEzNDo8PTk7PB8gIP///wAAAAAAAAAAAAAAAAAAACH5BAEAAAoALAAAAAAHAAgAAAQTcMg5kLjXjAJ6IhL3UQdInWgaAQA7" alt="arrow" width="7" />
-</a>
-<span>
-<?php if(isset($tags)) echo $tags;?>
-</span>
-</div>
-</li>
-</ul>
-</div>
-</div>
-
 
 		<!-- Begin page -->
 		<div id="wrapper">
 
 			<!-- Top Bar Start -->
-		<!-- 	<div class="topbar">
+			<div class="topbar">
 
 				<!-- LOGO -->
-				
-				<!-- Button mobile view to collapse sidebar menu -->
-				<!-- <div class="navbar navbar-default" role="navigation">
+				<div class="topbar-left">
+					<div class="text-center">
+						<a href="<?php echo site_url(''); ?>" class="logo"><?php if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?></a>
+					</div>
+				</div>
 
-				<div class="container bg-primary">
-				<div class="col-lg-6">
-				<div class="col-lg-1">
-				 <button class="toggle-button" data-toggle="collapse" data-target="#"
-    				aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">    				
-    				<i class="glyphicon glyphicon-align-justify"></i>
-    			</button>
-				</div>
-				<div class="col-lg-5 col-lg-offset-4">
-					<div class="topbar-left">
-						<div class="text-center">
-							<a href="<?php echo site_url(''); ?>" class="logo"><?php if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?></a>
-						</div>
-				    </div>
-				</div>
-				</div>
-				<div class="col-lg-6"> -->
-						
-							<!-- <ul class="nav navbar-nav">
+				<!-- Button mobile view to collapse sidebar menu -->
+				<div class="navbar navbar-default" role="navigation">
+					<div class="container">
+						<div class="">
+							<ul class="nav navbar-nav">
 								<li><a href="<?php echo site_url(''); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
 								<?php if(isset($getCategories)) echo $getCategories; ?>
 								<li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li>
@@ -282,17 +76,15 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 								    <?php if(isset($tags)) echo $tags;?>
 									</ul>
 								</li>
-							</ul> -->
+							</ul>
 
-
-							<!-- <ul class="nav navbar-nav">
-								<li>
-								<form role="search" class="navbar-left app-search pull-left hidden-xs hidden-md">
+							<form role="search" class="navbar-left app-search pull-left hidden-xs hidden-md">
 								 <input type="text" id="search" name="q" placeholder="<?php echo $this->lang->line('searchForm'); ?>" value="<?php echo $_REQUEST['q'] ?>" class="form-control">
 								 <a href="#" onclick="window.location.href='<?php echo site_url('search?q='); ?>'+document.getElementById('search').value;"><i class="fa fa-search"></i></a>
-							    </form>
-								</li> -->
-							<!-- 	<li class="language_switch dropdown top-menu-item-xs">
+							</form>
+
+							<ul class="nav navbar-nav navbar-right pull-right">
+								<li class="language_switch dropdown top-menu-item-xs">
 									<?php
 									if(!$this->session->userdata('site_lang')){
 										$this->session->set_userdata('site_lang','english');
@@ -303,8 +95,8 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		                                <a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/english"><span class="flag-icon flag-icon-us"> </span>  English</a>
 		                                <a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/french"><span class="flag-icon flag-icon-fr"> </span>French</a>
 		                            </div>
-								</li> -->
-							<!-- 	<li class="dropdown top-menu-item-xs">
+								</li>
+								<li class="dropdown top-menu-item-xs">
 									<a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="<?php echo (isset($this->session->name_image)) ? (site_url('uploads/images/users/'.$this->session->name_image)) : (site_url('assets/images/default-user.png')); ?>" alt="<?php echo $this->session->username; ?>" class="img-circle"> </a>
 									<ul class="dropdown-menu">
 
@@ -324,33 +116,13 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 										<li class="divider"></li>
 										<li><a href="<?php echo site_url((isset($_SESSION['username'])) ? 'login/logout' : 'login/'); ?>"><i class="ti-power-off m-r-10 <?php echo (isset($_SESSION['username'])) ? 'text-danger' : 'text-success'; ?>"></i> <?php echo (isset($_SESSION['username'])) ? $this->lang->line('logout') : $this->lang->line('login'); ?></a></li>
 									</ul>
-								</li> -->
-					<!-- 		</ul>
-					</div> -->
-						<!--/.nav-collapse -->
-				<!-- 	</div>
-					<div class="row">
-					<div class="lower-nav">
-						<div class="col-lg-1">
-						</div>
-						<div class="col-lg-11">
-						<ul class="nav navbar-nav">
-								<li><a href="<?php echo site_url(''); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
-								<?php if(isset($getCategories)) echo $getCategories; ?>
-								<li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tags<span class="caret"></span></a>
-									<ul class="dropdown-menu">							
-								    <?php if(isset($tags)) echo $tags;?>
-									</ul>
 								</li>
 							</ul>
 						</div>
+						<!--/.nav-collapse -->
 					</div>
 				</div>
-				</div>
-			</div> -->
-
+			</div>
 			<!-- Top Bar End -->
 
 			<!-- ============================================================== -->
@@ -431,12 +203,5 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		<script src="<?php echo site_url('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js');?>"></script>
 		<!-- Google Analytic -->
 		<?php echo $this->config->item('google_analytics'); ?>
-<script>
-$(document).ready(function(){
-    $("#burger").click(function(){
-        $("#rest").toggle();
-    });
-});
-</script>
 	</body>
 </html>

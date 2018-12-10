@@ -30,6 +30,7 @@ class Page extends CI_Controller
         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['getFooter'] = $this->autoloadModel->getFooter();
+        $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('front/template', $data, true);
         $this->load->model(array('pageModel'));
     }
