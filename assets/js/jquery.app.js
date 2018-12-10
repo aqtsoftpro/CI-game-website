@@ -362,7 +362,7 @@ $(document).ready(function() {
     $("#search").on('keyup', function (e) {
         if (e.keyCode == 13) {
             e.preventDefault();
-            $(this).siblings('a').trigger('click');
+            $(this).siblings('#search_form_submit').trigger('click');
         }
     });
 
