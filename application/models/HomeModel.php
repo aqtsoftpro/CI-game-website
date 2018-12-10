@@ -14,7 +14,7 @@ class HomeModel extends CI_Model
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC LIMIT ?,?";
 
         } elseif($getOrder === 'featured') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 and is_feature=1 GROUP BY id ORDER BY title ASC LIMIT ?,?";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY title ASC LIMIT ?,?";
         }
         else {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title LIMIT ?,?";
