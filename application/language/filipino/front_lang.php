@@ -13,7 +13,7 @@
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['home'] = 'Inicio';
+$lang['home'] = "Home";
 $lang['members'] = "Members";
 $lang['searchForm'] = "Search...";
 $lang['profile'] = "Profile";

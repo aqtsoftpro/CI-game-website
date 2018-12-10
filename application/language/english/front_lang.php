@@ -219,3 +219,6 @@ $lang['shoutbox'] = "Shoutbox";
 $lang['logo'] = "Forgot";
 $lang['logo'] = "Forgot";
 $lang['videoURL'] = "Video URL";
+$lang['displayHome'] = "Display on Home Page";
+$lang['isFeature'] = "Is Feature";
+$lang['featured'] = "Featured";

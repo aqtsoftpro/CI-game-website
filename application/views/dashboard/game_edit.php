@@ -67,6 +67,16 @@
 							<input type="url" class="form-control" name="video_url" placeholder="Game Video URL" value="<?php if(isset($video_url)) echo $video_url; ?>">
 							<input type="file" class="form-control" name="game_video">
 						</div>
+						<div class="form-group m-b-20">
+							<label for="display_home"><?php echo $this->lang->line('displayHome'); ?></label>
+							<br/>
+							<input type="checkbox" <?php if($display_home==1){ echo "checked";} ?> name="display_home">
+						</div>
+						<div class="form-group m-b-20">
+							<label for="is_feature"><?php echo $this->lang->line('isFeature'); ?></label>
+							<br/>
+							<input type="checkbox" <?php if($is_feature==1){ echo "checked";} ?> name="is_feature">
+						</div>
 						<div class="form-group text-right m-b-0">
 							<button class="btn btn-inverse waves-effect waves-light" type="submit"><?php echo $this->lang->line('submit'); ?></button>
 							<button type="reset" class="btn btn-default waves-effect waves-light m-l-5"><?php echo $this->lang->line('cancel'); ?></button>

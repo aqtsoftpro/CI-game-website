@@ -218,3 +218,7 @@ $lang['moreNotes'] = "Plus de notes";
 $lang['moreComments'] = "Plus de commentaires";
 $lang['shoutbox'] = "Shoutbox";
 $lang['videoURL'] = "URL de la vidéo";
+$lang['displayHome'] = "Afficher sur la page d'accueil";
+$lang['isFeature'] = "Est caractéristique";
+$lang['displayHome'] = "Display on Home Page";
+$lang['isFeature'] = "Is Feature";
