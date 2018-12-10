@@ -40,11 +40,11 @@
 	        beforeSend:function(){
 	            //$('.load-more').show();
 	            $('#loadingDiv').show('');
+	            $("#page").val(Number($("#page").val())+Number(1));
 	        },
 	        success:function(html){
 	            // /$('.load-more').remove();
 	            $('#loadingDiv').hide();
-	            $("#page").val(Number($("#page").val())+Number(1));
 	            $('#loadGames').append(html);
             	var cw = $('.thumb-img').width()/1.3;
 				$('.thumb-img').css({'height':cw+'px'});
