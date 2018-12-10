@@ -44,11 +44,10 @@
 	        success:function(html){
 	            // /$('.load-more').remove();
 	            $('#loadingDiv').hide();
+	            $("#page").val(Number($("#page").val())+Number(1));
 	            $('#loadGames').append(html);
             	var cw = $('.thumb-img').width()/1.3;
 				$('.thumb-img').css({'height':cw+'px'});
-	            $("#page").val(Number($("#page").val())+Number(1));
-
 	            $(".game-list-box img").mouseover(function() {
 				//   $(this).parent().next().next().slideToggle();
 				  $(this).parent().next().slideToggle();
@@ -58,6 +57,7 @@
 	            $(".game-list-box").mouseleave(function() {
 				  $(this).parent().find('video').hide();
 				});
+
 	        }
 	    });
 	}
