@@ -8,14 +8,14 @@ class HomeModel extends CI_Model
         $getPag = $getPag*(int)$this->config->item('home_pag')-(int)$this->config->item('home_pag');
 
         if($getOrder === 'rated') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY note DESC LIMIT";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY note DESC";
         } elseif($getOrder === 'news') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY date_publish ASC LIMIT";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY date_publish ASC";
         } elseif($getOrder === 'popular') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
 
         } elseif($getOrder === 'featured') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY title ASC LIMIT";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY title ASC";
         }
         else {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title";
