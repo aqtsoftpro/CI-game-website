@@ -95,12 +95,12 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
     			$flag = 'flag-icon-fr';
     		}
     		if($this->session->userdata('site_lang')=='chinese'){
-    			$flag = 'flag-icon-cc';
+    			$flag = 'flag-icon-cn';
     		}
     		if($this->session->userdata('site_lang')=='dutch'){
     			$flag = 'flag-icon-nl';
     		}
-    		if($this->session->userdata('site_lang')=='philipino'){
+    		if($this->session->userdata('site_lang')=='philipine'){
     			$flag = 'flag-icon-ph';
     		}
     		if($this->session->userdata('site_lang')=='german'){
@@ -110,7 +110,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
     			$flag = 'flag-icon-in';
     		}
     		if($this->session->userdata('site_lang')=='indonasian'){
-    			$flag = 'flag-icon-is';
+    			$flag = 'flag-icon-id';
     		}
     		if($this->session->userdata('site_lang')=='italian'){
     			$flag = 'flag-icon-it';
@@ -119,13 +119,13 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
     			$flag = 'flag-icon-jp';
     		}
     		if($this->session->userdata('site_lang')=='korean'){
-    			$flag = 'flag-icon-lv';
+    			$flag = 'flag-icon-kr';
     		}
     		if($this->session->userdata('site_lang')=='polish'){
     			$flag = 'flag-icon-pl';
     		}
-    		if($this->session->userdata('site_lang')=='portuguese'){
-    			$flag = 'flag-icon-ru';
+    		if($this->session->userdata('site_lang')=='purtaguese'){
+    			$flag = 'flag-icon-pt';
     		}
     		if($this->session->userdata('site_lang')=='romanian'){
     			$flag = 'flag-icon-ro';
@@ -157,12 +157,12 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		    			$flag = 'flag-icon-fr';
 		    		}
 		    		if(lcfirst($language->lang_name)=='chinese'){
-		    			$flag = 'flag-icon-cc';
+		    			$flag = 'flag-icon-cn';
 		    		}
 		    		if(lcfirst($language->lang_name)=='dutch'){
 		    			$flag = 'flag-icon-nl';
 		    		}
-		    		if(lcfirst($language->lang_name)=='philipino'){
+		    		if(lcfirst($language->lang_name)=='philipine'){
 		    			$flag = 'flag-icon-ph';
 		    		}
 		    		if(lcfirst($language->lang_name)=='german'){
@@ -172,7 +172,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		    			$flag = 'flag-icon-in';
 		    		}
 		    		if(lcfirst($language->lang_name)=='indonasian'){
-		    			$flag = 'flag-icon-is';
+		    			$flag = 'flag-icon-id';
 		    		}
 		    		if(lcfirst($language->lang_name)=='italian'){
 		    			$flag = 'flag-icon-it';
@@ -181,13 +181,13 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		    			$flag = 'flag-icon-jp';
 		    		}
 		    		if(lcfirst($language->lang_name)=='korean'){
-		    			$flag = 'flag-icon-lv';
+		    			$flag = 'flag-icon-kr';
 		    		}
 		    		if(lcfirst($language->lang_name)=='polish'){
 		    			$flag = 'flag-icon-pl';
 		    		}
-		    		if(lcfirst($language->lang_name)=='portuguese'){
-		    			$flag = 'flag-icon-ru';
+		    		if(lcfirst($language->lang_name)=='purtaguese'){
+		    			$flag = 'flag-icon-pt';
 		    		}
 		    		if(lcfirst($language->lang_name)=='romanian'){
 		    			$flag = 'flag-icon-ro';
