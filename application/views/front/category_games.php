@@ -17,7 +17,7 @@
 			<input type="hidden" name="cat_url" id="cat_url" value="<?php  echo $this->uri->segment(2);?>">
 			<div id="loadGames" class="col-sm-12 col-lg-12 col-md-12">
 			</div> <!-- end col -->
-			<div id="loadingDiv"><img src="<?php echo  CUSTOM_BASE_URL;?>assets/images/loading.gif" /></div>
+			<div id="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
 		</div> <!-- end row -->
 
 	</div> <!-- end container -->
