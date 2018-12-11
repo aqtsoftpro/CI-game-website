@@ -6,32 +6,42 @@ class CategoryModel extends CI_Model
     public function getBlocsGame($getUrl, $getOrder, $getPag)
     {
         // Total of results in this category (pagination)
+        $getPag = $getPag*(int)$this->config->item('cat_pag')-(int)$this->config->item('cat_pag');
         $sql = "SELECT ca.id FROM 2d_games ga, 2d_categories ca WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1))";
         $query = $this->db->query($sql, array($getUrl));
         $nbRows = $query->num_rows();
         // Query requests for each filter (rated, news, popular, name)
         if($getOrder === 'rated') {
-            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload, ca.title AS cat_title, ca.url AS cat_url
+            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload,ga.video_url, ca.title AS cat_title, ca.url AS cat_url
                 FROM 2d_games ga, 2d_categories ca
-                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1))
+                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1)) GROUP BY ga.id 
                 ORDER BY note DESC
                 LIMIT ?,?";
         } elseif($getOrder === 'news') {
-            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload, ca.title AS cat_title, ca.url AS cat_url
+            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload,ga.video_url, ca.title AS cat_title, ca.url AS cat_url
                 FROM 2d_games ga, 2d_categories ca
-                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1))
+                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1)) 
+                GROUP BY ga.id
                 ORDER BY date_upload DESC
                 LIMIT ?,?";
         } elseif($getOrder === 'popular') {
-            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload, ca.title AS cat_title, ca.url AS cat_url
+            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload,ga.video_url, ca.title AS cat_title, ca.url AS cat_url
                 FROM 2d_games ga, 2d_categories ca
-                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1))
+                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1)) 
+                GROUP BY ga.id
+                ORDER BY played DESC
+                LIMIT ?,?";
+        }elseif($getOrder === 'featured') {
+            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload,ga.video_url, ca.title AS cat_title, ca.url AS cat_url
+                FROM 2d_games ga, 2d_categories ca
+                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1))  and ga.is_feature=1
+                GROUP BY ga.id
                 ORDER BY played DESC
                 LIMIT ?,?";
         } else {
-            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload, ca.title AS cat_title, ca.url AS cat_url
+            $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload,ga.video_url, ca.title AS cat_title, ca.url AS cat_url
                 FROM 2d_games ga, 2d_categories ca
-                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1))
+                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1)) GROUP BY ga.id
                 ORDER BY title
                 LIMIT ?,?";
         }
@@ -66,6 +76,9 @@ class CategoryModel extends CI_Model
                 $getBlocGame .= '<div class="col-sm-12  col-md-2 col-lg-game-'.$this->config->item('home_nb').' p-b-20">
                                 <div class="game-list-box">
                                     <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+                                        <video autoplay loop muted playsinline>
+                                                <source src="'.$row->video_url.'" type="video/mp4">
+                                            </video>
                                         <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
                                     </a>
 

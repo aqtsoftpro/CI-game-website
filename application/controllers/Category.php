@@ -35,13 +35,13 @@ class Category extends CI_Controller
         $this->load->model(array('categoryModel'));
     }
 
-    public function index($getUrl = '', $getOrder = '', $getPag = '')
+    public function index()
     {
-        // Displaying all the games of this category
-        $data = $this->categoryModel->getBlocsGame($getUrl, $getOrder, $getPag);
+        $data['tags'] = $this->KeywordsModel->keywords_tags();
         // Displaying pagination
         $this->load->library('pagination');
         $segment3 = $this->uri->segment(3, 0);
+        $data['cat_url'] = $this->uri->segment(2, 0);
         if($segment3 === 'news' || $segment3 === 'popular' || $segment3 === 'rated') {
             $segment3 = $segment3;
         } else {
@@ -60,7 +60,18 @@ class Category extends CI_Controller
         $data['getBestGamesClic'] = $this->categoryModel->getBestGamesClic($data['id_category']);
         // Retrieving the latest comments
         $data['getComs'] = $this->categoryModel->getComs();
-        $content = $this->load->view('front/category', $data, true);
+        $content = $this->load->view('front/category_games',$data,true);
         $this->load->view('front/template', array('content' => $content));
+    }
+    public function loadGames($getUrl = '', $getOrder = '', $getPag = ''){
+        // Displaying all the games of this category
+        $getUrl = $this->input->post('cat_url');
+        $getOrder = $this->input->post('orderby');
+        $getPag = $this->input->post('page');
+        $data = $this->categoryModel->getBlocsGame($getUrl, $getOrder, $getPag);
+        echo $data['getBlocGame'];
+        exit;
+        //$content = $this->load->view('front/category', $data, true);
+        //$this->load->view('front/template', array('content' => $content));
     }
 }

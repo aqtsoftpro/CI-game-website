@@ -28,7 +28,7 @@
 
 		$(window).scroll(function(){
 		 	if(($(window).scrollTop() == $(document).height() - $(window).height())){
-	            load_data($("#page").val());
+	            load_data($("#page").val(),$("#orderby").val());
 	        }
 		});
 	};
@@ -48,16 +48,6 @@
 	            $('#loadGames').append(html);
             	var cw = $('.thumb-img').width()/1.3;
 				$('.thumb-img').css({'height':cw+'px'});
-	            $(".game-list-box img").mouseover(function() {
-				//   $(this).parent().next().next().slideToggle();
-				  $(this).parent().next().slideToggle();
-
-				  $(this).parent().find('video').show();
-				});
-	            $(".game-list-box").mouseleave(function() {
-				  $(this).parent().find('video').hide();
-				});
-
 	        }
 	    });
 	}

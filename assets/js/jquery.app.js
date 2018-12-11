@@ -336,6 +336,13 @@ $(document).ready(function() {
             $(this).parent().parent().prev().click(); // click the item to make it drop
         }
     });
+    $(document).on('mouseover','.game-list-box img', function(e){
+      $(this).parent().next().slideToggle();
+        $(this).parent().find('video').show();
+    });
+    $(document).on('mouseleave','.game-list-box', function(e){
+      $(this).parent().find('video').hide();
+    });
     $('#logo_submit').submit(function(e){
       e.preventDefault(); 
          $.ajax({
