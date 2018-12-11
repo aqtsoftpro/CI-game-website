@@ -131,7 +131,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
     			$flag = 'flag-icon-ro';
     		}
     		if($this->session->userdata('site_lang')=='russian'){
-    			$flag = 'flag-icon-sn';
+    			$flag = 'flag-icon-ru';
     		}
     		if($this->session->userdata('site_lang')=='spanish'){
     			$flag = 'flag-icon-es';
@@ -140,7 +140,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
     			$flag = 'flag-icon-tr';
     		}
     		if($this->session->userdata('site_lang')=='vietnamese'){
-    			$flag = 'flag-icon-vi';
+    			$flag = 'flag-icon-vn';
     		}
 
 			?>
@@ -193,7 +193,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		    			$flag = 'flag-icon-ro';
 		    		}
 		    		if(lcfirst($language->lang_name)=='russian'){
-		    			$flag = 'flag-icon-sn';
+		    			$flag = 'flag-icon-ru';
 		    		}
 		    		if(lcfirst($language->lang_name)=='spanish'){
 		    			$flag = 'flag-icon-es';
@@ -202,7 +202,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		    			$flag = 'flag-icon-tr';
 		    		}
 		    		if(lcfirst($language->lang_name)=='vietnamese'){
-		    			$flag = 'flag-icon-vi';
+		    			$flag = 'flag-icon-vn';
 		    		}
 		    		?>
 		    			<a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/<?php echo lcfirst($language->lang_name); ?>"><span class="flag-icon <?php echo $flag;?>"></span><?php echo ucfirst($language->lang_name);?></a>	
