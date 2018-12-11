@@ -216,7 +216,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 	</ul>
 </div>
 <form class="searchForm cf" method="get">
-<input id="search" type="text" name="q" placeholder="" required />
+<input id="search" type="text" name="q" placeholder="" value="<?php echo $_REQUEST['q']; ?>" required />
 <input type="button" class="button" value="search" id="search_form_submit" onclick="window.location='<?php echo site_url('search?q='); ?>'+document.getElementById('search').value;"/>
 </form>
 
