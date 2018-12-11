@@ -100,7 +100,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
     		if($this->session->userdata('site_lang')=='dutch'){
     			$flag = 'flag-icon-nl';
     		}
-    		if($this->session->userdata('site_lang')=='philipine'){
+    		if($this->session->userdata('site_lang')=='philipino'){
     			$flag = 'flag-icon-ph';
     		}
     		if($this->session->userdata('site_lang')=='german'){
@@ -162,7 +162,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		    		if(lcfirst($language->lang_name)=='dutch'){
 		    			$flag = 'flag-icon-nl';
 		    		}
-		    		if(lcfirst($language->lang_name)=='philipine'){
+		    		if(lcfirst($language->lang_name)=='philipino'){
 		    			$flag = 'flag-icon-ph';
 		    		}
 		    		if(lcfirst($language->lang_name)=='german'){
