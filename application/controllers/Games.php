@@ -23,7 +23,7 @@ class Games extends CI_Controller
         if(!isset($this->session->admin)) {
             redirect('/login/');
         }
-        $this->load->helper('session');
+        
         $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/games', array(), true);
         $this->load->model(array('gamesModel'));
