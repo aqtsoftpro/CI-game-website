@@ -46,9 +46,9 @@ class CategoryModel extends CI_Model
                 LIMIT ?,?";
         }
         $query = $this->db->query($sql, array($getUrl, (int)$getPag, (int)$this->config->item('cat_pag')));
-        echo "<pre>";
+        /*echo "<pre>";
         echo $this->db->last_query();
-        echo "</pre>";
+        echo "</pre>";*/
         if($query->num_rows() > 0) {
             $getBlocGame = '';
             foreach ($query->result() as $row) {
