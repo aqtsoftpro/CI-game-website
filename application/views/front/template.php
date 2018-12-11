@@ -432,6 +432,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		<!-- Google Analytic -->
 		<?php echo $this->config->item('google_analytics'); ?>
 <script>
+	
 $(document).ready(function(){
     $("#burger").click(function(){
         $("#rest").toggle();
