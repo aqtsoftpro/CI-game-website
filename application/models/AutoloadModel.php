@@ -14,17 +14,17 @@ class AutoloadModel extends CI_Model
             foreach ($query1->result() as $row1) {
                 $getSubCategories .= '<li><a href="'.site_url('category/'.$row1->url.'/').'">'.$row1->title.'</a></li>';
             }
-            /*$getCategories .= '<li class="dropdown">
+            $getCategories .= '<li class="dropdown">
 									<a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row->title.' <span class="caret"></span></a>
 									<ul class="dropdown-menu">
 										'.$getSubCategories.'
 									</ul>
-								</li>';*/
+								</li>';
 
-            $getCategories .= '<li>
-                                    <a href="'.site_url('category/'.strtolower($row->title)).'">'.$row->title.'</a>
+            // $getCategories .= '<li>
+            //                         <a href="'.site_url('category/'.strtolower($row->title)).'">'.$row->title.'</a>
                                 
-                                </li>';
+            //                     </li>';
         }
         return $getCategories;
     }
