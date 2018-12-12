@@ -32,10 +32,8 @@ class Home extends CI_Controller
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/template', $data, true);
         $this->load->model(array('homeModel'));
+
         $this->lang->load('front','english');
-        if($this->session->userdata('site_lang')){
-            $this->lang->load('front',$this->session->userdata('site_lang'));
-        }
 
         $this->load->model(array('KeywordsModel'));
         $data['tags'] = $this->KeywordsModel->keywords_tags();
