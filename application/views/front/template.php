@@ -56,8 +56,8 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		<script src="<?php echo site_url('assets/js/modernizr.min.js'); ?>"></script>
 	</head>
 
-	<body class="fixed-left front">
-	<div id="top">
+<body class="fixed-left front">
+<div id="top">
 <div id="burger">
 <a href="#">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAXCAQAAADT28WeAAAATUlEQVR4AWP4z0gZZEAH/43/G4GhMQhDSQQ0gvARqmAkTAbTwHrKIKaBDZRB2rsQEWYIiBAjDDENZKIMMtAaDNF0OJoOR9PhaDocTYcASNRT+6FODmgAAAAASUVORK5CYII=" alt="" width="40" /><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAXCAQAAABzRK1wAAAARElEQVR42mP4z4AOGQa5kPT/2P+KyEIC/1P/N/zP+i8ME4IIgGDmf1GQkBiQ0QCHef+lGP7b/k/4HwWH8f89GIZOSAAAUzjZPVfRpesAAAAASUVORK5CYII=" width="9" id="burgerArrow" alt="" />
@@ -78,6 +78,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 </h2>
 </a>
 <?php } ?>
+
 <div id="language-select">
 	<ul class="nav navbar-nav navbar-right pull-right">
 		<li class="language_switch dropdown top-menu-item-xs">
@@ -224,13 +225,13 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 </div>
 <div id="rest">
 <div id="menu">
-<ul>
+<ul  style="display:block;">
 <li><a href="<?php echo site_url(''); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
 								<?php if(isset($getCategories)) echo $getCategories; ?>
-								<li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li>
+								<!-- <li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li> -->
 
 <li id="tags" class="cf">
-<div>
+<div class="d-inline">
 <a href="#">tags <img border="0" src="data:image/gif;base64,R0lGODlhBwAIALMAAAAAAP///xMTFF1gYlteYCgqKzEzNDo8PTk7PB8gIP///wAAAAAAAAAAAAAAAAAAACH5BAEAAAoALAAAAAAHAAgAAAQTcMg5kLjXjAJ6IhL3UQdInWgaAQA7" alt="arrow" width="7" />
 </a>
 <span>
@@ -241,8 +242,6 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 </ul>
 </div>
 </div>
-
-
 		<!-- Begin page -->
 		<div id="wrapper">
 
@@ -431,12 +430,14 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 		<script src="<?php echo site_url('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js');?>"></script>
 		<!-- Google Analytic -->
 		<?php //echo $this->config->item('google_analytics'); ?>
-<script>
+
+<script type="text/javascript">
 $(document).ready(function(){
     $("#burger").click(function(){
-        $("#rest").toggle();
+        $("#rest").toggleClass("hidden-xs hidden-xs hidden-lg");
     });
 });
 </script>
-	</body>
+
+</body>
 </html>

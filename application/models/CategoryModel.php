@@ -76,7 +76,7 @@ class CategoryModel extends CI_Model
                                         </div>
                                     </div>
                                 </div>';*/
-                $getBlocGame .= '<div class="col-sm-12  col-md-2 col-lg-game-'.$this->config->item('home_nb').' p-b-20">
+                $getBlocGame .= '<div class="col-xs-4 col-sm-3 col-md-2 col-lg-3  col-lg-game-'.$this->config->item('home_nb').' p-b-20">
                                 <div class="game-list-box">
                                     <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
