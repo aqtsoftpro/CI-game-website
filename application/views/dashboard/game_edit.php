@@ -68,6 +68,10 @@
 							<input type="file" class="form-control" name="game_video">
 						</div>
 						<div class="form-group m-b-20">
+							<label for="video_url">Feature Order<?php //echo $this->lang->line('videoURL'); ?></label>
+							<input type="text" class="form-control" name="feature_order" placeholder="Enter Number Display Place On Homepage" value="<?php if(isset($feature_order)) echo $feature_order; ?>">							
+						</div>
+						<div class="form-group m-b-20">
 							<label for="display_home"><?php echo $this->lang->line('displayHome'); ?></label>
 							<br/>
 							<input type="checkbox" <?php if($display_home==1){ echo "checked";} ?> name="display_home">

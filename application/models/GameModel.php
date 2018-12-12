@@ -5,7 +5,7 @@ class GameModel extends CI_Model
 
     public function getGame($getUrl)
     {
-        $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.description AS description, ga.control AS control, ga.tips AS tips, ga.id_category AS id_category, ga.ids_keywords AS ids_keywords, ga.note AS note, ga.played AS played, ga.status AS status, ga.type AS type, ga.console AS console, ga.embed AS embed, ga.image AS image,  ga.file AS file, ga.author AS author, ga.date_upload AS date_upload, ca.title AS category, ca.url AS url_category FROM 2d_games ga, 2d_categories ca WHERE ((ga.url = '$getUrl') AND (ca.id = ga.id_category))";
+        $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.description AS description, ga.control AS control, ga.tips AS tips, ga.id_category AS id_category, ga.ids_keywords AS ids_keywords, ga.note AS note, ga.played AS played, ga.status AS status, ga.type AS type, ga.console AS console, ga.embed AS embed,ga.feature_order AS f_order,   ga.image AS image,  ga.file AS file, ga.author AS author, ga.date_upload AS date_upload, ca.title AS category, ca.url AS url_category FROM 2d_games ga, 2d_categories ca WHERE ((ga.url = '$getUrl') AND (ca.id = ga.id_category))";
         $query = $this->db->query($sql);
         if($result = $query->row()) {
             return array(
@@ -24,6 +24,7 @@ class GameModel extends CI_Model
              'type'         => $result->type,
              'console'      => $result->console,
              'embed'        => $result->embed,
+             'feature_order'=>$result->f_order,
              'status'       => $result->status,
              'image'        => $result->image,
              'file'         => $result->file,
