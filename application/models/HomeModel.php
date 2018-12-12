@@ -23,7 +23,6 @@ class HomeModel extends CI_Model
         $limit = ' limit '.(int)$getPag.','.(int)$this->config->item('home_pag');
         $sql.=$limit;
         $query = $this->db->query($sql);
-        //echo $this->db->last_query($query);
         $nbRows = $this->db->count_all('2d_games');
         $getBlocGame = '';
         foreach ($query->result() as $row) {
@@ -34,8 +33,8 @@ class HomeModel extends CI_Model
             $interval = date_diff($datetime1, $datetime2);
             $time = $interval->format('%a');
             $classShow = ($time<=90)?'show':'';
-            $getBlocGame .= '<div class="col-sm-12  col-md-2 col-lg-game-'.$this->config->item('home_nb').' p-b-20">
-                                <div class="game-list-box">
+            $getBlocGame .= '<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 p-b-20 col-lg-game-'.$this->config->item('home_nb').'">
+                                <div class="game-list-box" style="height:100%;width:100%;">
                                     <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
                                             <source src="'.$row->video_url.'" type="video/mp4">
