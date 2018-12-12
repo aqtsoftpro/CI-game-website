@@ -26,13 +26,12 @@ class Home extends CI_Controller
         if($this->config->item('cache_activation') === 2) {
             $this->output->delete_cache();
         }
+        $this->load->model(array('homeModel','autoloadModel'));
         $data['title'] = $this->config->item('sitename').' - '.$this->config->item('description');
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['languages'] = $this->autoloadModel->getLanguages();
-        $data['languages'] = $this->autoloadModel->getLanguages();
         $data['getFooter'] = $this->autoloadModel->getFooter();
         $content = $this->load->view('front/template', $data, true);
-        $this->load->model(array('homeModel'));
 
         $this->lang->load('front','english');
 
