@@ -16,12 +16,18 @@ class AutoloadModel extends CI_Model
 		$getSubCategories.='<li><a href="'.site_url('category/'.$row1->url.'/').'">'.$row1->title.'</a></li>';
 		}
 		}
-		$getCategories.='<li class="dropdown">
-											<a href="#" class="dropdown-togglewaves-effectwaves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row->title.'</a>
+		$getCategories.='<li class="dropdown">';
+		if($getSubCategories){
+			$getCategories.='<a href="#" class="dropdown-togglewaves-effectwaves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row->title.'</a>
 											<ul class="dropdown-menu new-dropdown-menu">
 												'.$getSubCategories.'
-											</ul>
-										</li>'; 
+											</ul>';
+		}
+		else{
+			$getCategories.='<a href="'.site_url('category/'.lcfirst($row->title)).'">'.$row->title.'</a>';
+		}
+											
+		$getCategories.='</li>'; 
 
 		//$getCategories.='<li>
 		//<ahref="'.site_url('category/'.strtolower($row->title)).'">'.$row->title.'</a>
