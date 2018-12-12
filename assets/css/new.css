@@ -4,5 +4,12 @@ body{margin:0;padding:0;background-color:#eeefef;line-height:0;font-family:Arial
     
     background-color:#414446;
 }
+.new-dropdown-menu{
+	display:none;
+}
 .new-dropdown-menu>li>a:hover {
     background-color: #2b2c2d;}
+.dropdown:hover .new-dropdown-menu {
+	display:block;
+
+}
