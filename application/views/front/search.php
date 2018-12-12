@@ -5,7 +5,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<form role="search" action="<?php echo site_url('search'); ?>" method="get">
 					<div class="input-group m-t-10">
-						<input type="text" name="q" class="form-control input-lg" value="<?php echo $_REQUEST['q'] ?>" placeholder="<?php echo $this->lang->line('search'); ?>...">
+						<input type="text" name="q" class="form-control input-lg" placeholder="<?php echo $this->lang->line('search'); ?>...">
 						<span class="input-group-btn">
 							<button type="submit" class="btn waves-effect waves-light btn-default btn-lg"><i class="fa fa-search m-r-5"></i> <?php echo $this->lang->line('search'); ?></button>
 						</span>
@@ -44,9 +44,9 @@
 							<div class="row">
 								<div class="col-md-12">
 									<?php if(isset($getSearchGames)) echo $getSearchGames; ?>
-									<div class="text-right">
+									<!-- <div class="text-right">
 										<?php if(isset($paginationGames)) echo $paginationGames; ?>
-									</div>
+									</div> -->
 									<div class="clearfix"></div>
 								</div>
 							</div>
@@ -65,3 +65,13 @@
 
 	</div> <!-- end container -->
 </section>
+
+<script type="text/javascript">
+	window.onload = function() {
+		var cw = $('.thumb-img').width()/1.3;
+		$('.thumb-img').css({'height':cw+'px'});
+	
+		load_data($("#page").val(),$("#query").val());
+		
+	};
+	</script>
