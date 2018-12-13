@@ -1865,8 +1865,7 @@ margin:0;
 }
 .game-list-box .game-title {
 	/*display: none;*/
-
-	background: #f2f3e5;
+	background:#f2f3e5;
     border-radius: 5px;
 	text-align: center;
 	/*//border-radius: 0 0 5px 5px;*/
@@ -1875,6 +1874,9 @@ margin:0;
     bottom: 0;
 	pointer-events: none;
 }
+.rating .p-num{
+float:right;
+} 
 .game-list-box .game-title h2 {
 	padding: 0;
     margin: 0;
