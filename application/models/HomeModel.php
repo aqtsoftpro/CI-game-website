@@ -10,7 +10,7 @@ class HomeModel extends CI_Model
         if($getOrder === 'rated') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url, is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY note DESC";
         } elseif($getOrder === 'news') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY date_publish ASC";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id DESC";
         } elseif($getOrder === 'popular') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
 
@@ -34,7 +34,7 @@ class HomeModel extends CI_Model
             $interval = date_diff($datetime1, $datetime2);
             $time = $interval->format('%a');
             $classShow = ($time<=90)?'show':'';
-            $getBlocGame .= '<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 p-b-20 col-lg-game-'.$this->config->item('home_nb').'">
+            $getBlocGame .= '<div class="game-div p-b-20 col-lg-game-'.$this->config->item('home_nb').'">
                                 <div class="game-list-box" style="height:100%;width:100%;">
                                     <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
@@ -45,14 +45,16 @@ class HomeModel extends CI_Model
 
                                     <!--<div class="game-action '.$classShow.'">
                                         <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
-                                    </div>-->
+                                    </div>--> 
 
-                                    '.rating($this->getNote($row->id), 'game-rating').'
+                                    
 
-                                    <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 17, '...').'</a> </h2>
-                                    </div>
                                 </div>
+                                <div class="game-title">
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 17, '...').'</a></h2>
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span>'.$row->played.'plays</span>
+                                                                         
+                                    </div>
                             </div>';
         }
         return array(

@@ -27,7 +27,7 @@ class AutoloadModel extends CI_Model
 			$getCategories.='<a href="'.site_url('category/'.lcfirst($row->title)).'">'.$row->title.'</a>';
 		}
 											
-		$getCategories.='</li>'; 
+		$getCategories.='<span class="caret"></span></li>'; 
 
 		//$getCategories.='<li>
 		//<ahref="'.site_url('category/'.strtolower($row->title)).'">'.$row->title.'</a>
