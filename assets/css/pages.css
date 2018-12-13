@@ -1795,9 +1795,9 @@
 }
 @media (min-width: 1200px) {
 	.col-lg-game-10 {
-		width: calc(100%/10);
+		width: calc(100%/9);
 		float: left;
-		padding: 0 10px;
+		padding: 0;
 	}
 	.col-lg-game-9 {
 		width: calc(100%/9);
