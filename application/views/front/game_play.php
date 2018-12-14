@@ -435,8 +435,11 @@
                 <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <a href="" style="margin-right: 40px; color: black;"><b>Contact Form</b></a>
-                        <a href="" style="margin-right: 40px; color: black;"><b>Submit a Game or Video</b></a>
+                        <?php foreach ($getPages as $page) {
+                            if ($page->display_footer == 1) { ?>
+                                <a href="<?php echo site_url('page/'.$page->url.'/'); ?>" style="margin-right: 40px; color: black;"><b><?= $page->title; ?></b></a>
+                            <?php }
+                        } ?>
                     </div>
                 </div>
             </div>

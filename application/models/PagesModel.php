@@ -31,6 +31,13 @@ class PagesModel extends CI_Model
         return $getPages;
     }
 
+    public function getAllPages()
+    {
+        $sql = "SELECT id, title, url, content, display_footer, date_creation, date_modified FROM 2d_pages";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
     public function getPage($idPage)
     {
         $sql = "SELECT title, url, content, display_footer FROM 2d_pages WHERE id = ?";
