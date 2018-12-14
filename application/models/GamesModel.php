@@ -30,6 +30,13 @@ class GamesModel extends CI_Model
         return $getGames;
     }
 
+    public function getRelatedGamesByCategory($category_id)
+    {
+        $sql = "SELECT * FROM 2d_games WHERE id_category=".$category_id." LIMIT 8";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
     public function getCategories($idCategory = '') 
     {
         $getCategories = '';
@@ -67,7 +74,7 @@ class GamesModel extends CI_Model
 
     public function getGame($idGame) 
     {
-        $sql = "SELECT ga.title AS title, ga.url AS url, ga.description AS description, ga.type AS type, ga.console AS console, ga.embed AS embed, ga.status AS status, ga.image AS image, ga.file AS file,ga.video_url,ga.display_home,ga.is_feature,ga.feature_order,ca.title AS category, ca.id AS id_category FROM 2d_games ga, 2d_categories ca WHERE ((ga.id = ?) AND (ga.id_category = ca.id))";
+        $sql = "SELECT ga.title AS title, ga.url AS url, id_category, ga.description AS description, ga.type AS type, ga.console AS console, ga.embed AS embed, ga.status AS status, ga.image AS image, ga.file AS file,ga.video_url,ga.display_home,ga.is_feature,ga.feature_order,ca.title AS category, ca.id AS id_category FROM 2d_games ga, 2d_categories ca WHERE ((ga.id = ?) AND (ga.id_category = ca.id))";
         $query = $this->db->query($sql, array($idGame));
         if($result = $query->row()) {
             return array(
