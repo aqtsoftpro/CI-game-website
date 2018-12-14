@@ -314,66 +314,111 @@ class GameModel extends CI_Model
                     if($this->session->id) {
                         $data = $this->checkLikesComs($row3->id, $this->session->id);
                     }
-                    $related2 .= '<div class="comment">
-		                            <img src="'.(empty($row3->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row3->image)).'" alt="'.$row3->username.'" class="comment-avatar">
-		                            <div class="comment-body">
-		                                <div class="comment-text">
-		                                    <div class="comment-header">
-		                                        <a href="'.site_url('user/'.$row3->url.'/').'">'.$row3->username.'</a><span>about '.$time.' ago</span>
-		                                    </div>
-		                                    '.$row3->comment.'
-		                                </div>
-		                                <div class="comment-footer" data-id="'.$row3->id.'">
-		                                    <a href="#comments" class="finger-up"><i class="fa fa-thumbs-o-up '.(($this->session->id) && ($data['nbLike'] == 1) ? 'text-primary' : '').'"></i></a>
-											<a href="#comments" class="finger-down"><i class="fa fa-thumbs-o-down '.(($this->session->id) && ($data['nbUnlike'] == 1) ? 'text-danger' : '').'"></i></a>
-		                                </div>
-		                            </div>
-		                        </div>';
+//                    $related2 .= '<div class="comment">
+//		                            <img src="'.(empty($row3->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row3->image)).'" alt="'.$row3->username.'" class="comment-avatar">
+//		                            <div class="comment-body">
+//		                                <div class="comment-text">
+//		                                    <div class="comment-header">
+//		                                        <a href="'.site_url('user/'.$row3->url.'/').'">'.$row3->username.'</a><span>about '.$time.' ago</span>
+//		                                    </div>
+//		                                    '.$row3->comment.'
+//		                                </div>
+//		                                <div class="comment-footer" data-id="'.$row3->id.'">
+//		                                    <a href="#comments" class="finger-up"><i class="fa fa-thumbs-o-up '.(($this->session->id) && ($data['nbLike'] == 1) ? 'text-primary' : '').'"></i></a>
+//											<a href="#comments" class="finger-down"><i class="fa fa-thumbs-o-down '.(($this->session->id) && ($data['nbUnlike'] == 1) ? 'text-danger' : '').'"></i></a>
+//		                                </div>
+//		                            </div>
+//		                        </div>';
+                    $related2 .= '<div class="col-sm-4" >
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <img class="img-responsive" src="'.(empty($row3->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row3->image)).'" alt="'.$row3->username.'">
+                                                </div>
+                                                <div class="col-sm-9" style="margin-top: 5px;">
+                                                    <b class="inline">'.$row3->username.'</b><p class="inline"> '.$time.' hrs ago</p>
+                                                    <p>'.$row3->comment.'</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>';
                 }
                 $time = timespan(strtotime($row2->date_creation), time(), 1);
                 if($this->session->id) {
                     $data = $this->checkLikesComs($row2->id, $this->session->id);
                 }
-                $related1 .= '<div class="comment">
-	                            <img src="'.(empty($row2->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row2->image)).'" alt="'.$row2->username.'" class="comment-avatar">
-	                            <div class="comment-body">
-	                                <div class="comment-text">
-	                                    <div class="comment-header">
-	                                        <a href="'.site_url('user/'.$row2->url.'/').'">'.$row2->username.'</a><span>about '.$time.' ago</span>
-	                                    </div>
-	                                    '.$row2->comment.'
-	                                </div>
-	                                <div class="comment-footer" data-id="'.$row2->id.'">
-	                                    <a href="#comments" class="finger-up"><i class="fa fa-thumbs-o-up '.(($this->session->id) && ($data['nbLike'] == 1) ? 'text-primary' : '').'"></i></a>
-										<a href="#comments" class="finger-down"><i class="fa fa-thumbs-o-down '.(($this->session->id) && ($data['nbUnlike'] == 1) ? 'text-danger' : '').'"></i></a>
-	                                    <a href="#comments" id="reply" >Reply</a>
-	                                </div>
-	                            </div>
-	                           	'.$related2.'
-	                        </div>';
+//                $related1 .= '<div class="comment">
+//	                            <img src="'.(empty($row2->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row2->image)).'" alt="'.$row2->username.'" class="comment-avatar">
+//	                            <div class="comment-body">
+//	                                <div class="comment-text">
+//	                                    <div class="comment-header">
+//	                                        <a href="'.site_url('user/'.$row2->url.'/').'">'.$row2->username.'</a><span>about '.$time.' ago</span>
+//	                                    </div>
+//	                                    '.$row2->comment.'
+//	                                </div>
+//	                                <div class="comment-footer" data-id="'.$row2->id.'">
+//	                                    <a href="#comments" class="finger-up"><i class="fa fa-thumbs-o-up '.(($this->session->id) && ($data['nbLike'] == 1) ? 'text-primary' : '').'"></i></a>
+//										<a href="#comments" class="finger-down"><i class="fa fa-thumbs-o-down '.(($this->session->id) && ($data['nbUnlike'] == 1) ? 'text-danger' : '').'"></i></a>
+//	                                    <a href="#comments" id="reply" >Reply</a>
+//	                                </div>
+//	                            </div>
+//	                           	'.$related2.'
+//	                        </div>';
+                    $related1 .= '<div class="col-sm-4" >
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <img class="img-responsive" src="'.(empty($row2->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row2->image)).'" alt="'.$row2->username.'">
+                                                </div>
+                                                <div class="col-sm-9" style="margin-top: 5px;">
+                                                    <b class="inline">'.$row2->username.'</b><p class="inline"> '.$time.' hrs ago</p>
+                                                    <p>'.$row2->comment.'</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>';
             }
             $time = timespan(strtotime($row1->date_creation), time(), 1);
             if($this->session->id) {
                 $data = $this->checkLikesComs($row1->id, $this->session->id);
             }
-            $getComs .= '<div class="comment">
-							<img src="'.(empty($row1->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row1->image)).'" alt="'.$row1->username.'" class="comment-avatar">
-							<div class="comment-body">
-								<div class="comment-text">
-									<div class="comment-header">
-										<a href="'.site_url('user/'.$row1->url.'/').'">'.$row1->username.'</a><span>about '.$time.' ago</span>
-									</div>
-									'.$row1->comment.'
-								</div>
-
-								<div class="comment-footer" data-id="'.$row1->id.'">
-									<a href="#comments" class="finger-up"><i class="fa fa-thumbs-o-up '.(($this->session->id) && ($data['nbLike'] == 1) ? 'text-primary' : '').'"></i></a>
-									<a href="#comments" class="finger-down"><i class="fa fa-thumbs-o-down '.(($this->session->id) && ($data['nbUnlike'] == 1) ? 'text-danger' : '').'"></i></a>
-									<a href="#comments" id="reply">Reply</a>
-								</div>
-							</div>
-							'.$related1.'
-						</div>';
+//            $getComs .= '<div class="comment">
+//							<img src="'.(empty($row1->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row1->image)).'" alt="'.$row1->username.'" class="comment-avatar">
+//							<div class="comment-body">
+//								<div class="comment-text">
+//									<div class="comment-header">
+//										<a href="'.site_url('user/'.$row1->url.'/').'">'.$row1->username.'</a><span>about '.$time.' ago</span>
+//									</div>
+//									'.$row1->comment.'
+//								</div>
+//
+//								<div class="comment-footer" data-id="'.$row1->id.'">
+//									<a href="#comments" class="finger-up"><i class="fa fa-thumbs-o-up '.(($this->session->id) && ($data['nbLike'] == 1) ? 'text-primary' : '').'"></i></a>
+//									<a href="#comments" class="finger-down"><i class="fa fa-thumbs-o-down '.(($this->session->id) && ($data['nbUnlike'] == 1) ? 'text-danger' : '').'"></i></a>
+//									<a href="#comments" id="reply">Reply</a>
+//								</div>
+//							</div>
+//							'.$related1.'
+//						</div>';
+            $getComs .= '<div class="col-sm-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <img class="img-responsive" src="'.(empty($row1->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row1->image)).'" alt="'.$row1->username.'">
+                                                </div>
+                                                <div class="col-sm-9" style="margin-top: 5px;">
+                                                    <b class="inline">'.$row1->username.'</b><p class="inline"> '.$time.' ago</p>
+                                                    <p>'.$row1->comment.'</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>';
         }
         return array(
          'nbRows' => $nbRows,
