@@ -7,7 +7,7 @@ $config["home_nb"] = "9";
 $config["cat_nb"] = "2";
 $config["home_pag"] = "54";
 $config["cat_pag"] = "30";
-$config["coms_pag"] = "10";
+$config["coms_pag"] = "6";
 $config["more_pag"] = "40";
 $config["google_analytics"] = '<script>
   (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
