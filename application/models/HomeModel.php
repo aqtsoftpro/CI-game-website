@@ -3,7 +3,7 @@
 class HomeModel extends CI_Model
 {
 
-    public function getBlocsGame($getOrder, $getPag)
+    public function getBlocsGame($getOrder, $getPag,$search)
     {
         $getPag = $getPag*(int)$this->config->item('home_pag')-(int)$this->config->item('home_pag');
 
@@ -16,10 +16,11 @@ class HomeModel extends CI_Model
 
         } elseif($getOrder === 'featured') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,feature_order FROM 2d_games WHERE status = 1 and is_feature=1 ORDER BY feature_order ASC";
-        } 
-        // elseif(!empty($search)) {
-        //     $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE title ="."%".$search."%"." GROUP BY title DESC";
-        // }
+        } elseif(!empty($search)) {
+            $sql = "SELECT * FROM 2d_games WHERE title LIKE '%".$search."%' OR description LIKE '%".$search."%' OR url LIKE '%".$search."%'";
+            // echo $sql;
+            // exit();
+        }
         else {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title";
         }
@@ -27,6 +28,7 @@ class HomeModel extends CI_Model
         $sql.=$limit;
         $query = $this->db->query($sql);
         //echo $this->db->last_query($query);
+
         $nbRows = $this->db->count_all('2d_games');
         $getBlocGame = '';
         foreach ($query->result() as $row) {
