@@ -93,7 +93,7 @@ class KeywordsModel extends CI_Model
             $query = $this->db->query($sql);
             foreach ($query->result() as $row) {
                 //$getKeywords .='<li><a href="'.$row->title.'">'.$row->title.'</a></li>';
-                $getKeywords .='<a href="'.base_url('keyword/index/').trim($row->title).'">'.$row->title.'</a>';
+                $getKeywords .='<a href="'.base_url('keyword/').trim($row->title).'">'.$row->title.'</a>';
             }
         return $getKeywords;
         }
