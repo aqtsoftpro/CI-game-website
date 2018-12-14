@@ -15,10 +15,11 @@ class HomeModel extends CI_Model
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
 
         } elseif($getOrder === 'featured') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY feature_order DESC";
-        } elseif($getOrder === 'search') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE title =  and is_feature=1 GROUP BY title DESC";
-        }
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY feature_order ASC";
+        } 
+        // elseif(!empty($search)) {
+        //     $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE title ="."%".$search."%"." GROUP BY title DESC";
+        // }
         else {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title";
         }
