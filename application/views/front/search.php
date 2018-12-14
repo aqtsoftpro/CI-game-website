@@ -1,19 +1,5 @@
 <section>
 	<div class="container">
-
-		<div class="row m-t-20">
-			<div class="col-md-8 col-md-offset-2">
-				<form role="search" action="<?php echo site_url('search'); ?>" method="get">
-					<div class="input-group m-t-10">
-						<input type="text" name="q" class="form-control input-lg" placeholder="<?php echo $this->lang->line('search'); ?>...">
-						<span class="input-group-btn">
-							<button type="submit" class="btn waves-effect waves-light btn-default btn-lg"><i class="fa fa-search m-r-5"></i> <?php echo $this->lang->line('search'); ?></button>
-						</span>
-					</div>
-				</form>
-			</div>
-		</div>
-
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2 text-center m-t-30">
 				<h3 class="h4"><b><?php echo $this->lang->line('searchResultsFor'); ?> "<?php if(isset($searchResult)) echo $searchResult; ?>"</b></h3>

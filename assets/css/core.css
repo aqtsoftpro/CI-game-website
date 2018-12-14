@@ -2258,6 +2258,9 @@ body.fixed-left .side-menu.left {
   min-width: 100% !important;*/
   width:400px;
 }
+.new-dropdown-menu{
+  background-color:#4c4949;
+}
 
 .language_switch .dropdown-menu .dropdown-item{
   display: block;
@@ -2273,8 +2276,7 @@ body.fixed-left .side-menu.left {
 .game-list-box a video{
   display: none;
   position: absolute;
-  width:100%;
-  height: auto;
+  object-fit:fill;
   top: 0;
 }
 #language-select .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{

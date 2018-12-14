@@ -18,7 +18,7 @@ class AutoloadModel extends CI_Model
 		}
 		$getCategories.='<li class="dropdown">';
 		if($getSubCategories){
-			$getCategories.='<a href="#" class="dropdown-togglewaves-effectwaves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row->title.'</a>
+			$getCategories.='<a href="#" class="dropdown-togglewaves-effectwaves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$row->title.'<span class="caret"></span></a>
 											<ul class="dropdown-menu new-dropdown-menu">
 												'.$getSubCategories.'
 											</ul>';

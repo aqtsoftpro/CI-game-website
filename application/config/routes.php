@@ -61,6 +61,7 @@ $route['myprofile'] = 'myprofile/index/$1';
 $route['dashboard'] = 'dashboard/index/$1';
 
 // Frontend routes
+$route['keyword/(:any)']='keyword/index/$1';
 $route['page/(:any)'] = 'page/index/$1';
 $route['pages/header_image']='header_image';
 $route['user/(:any)'] = 'user/index/$1';
