@@ -2,15 +2,6 @@
 	<div class="container">
 
 		<div class="row m-t-20">
-			<div class="col-sm-12 m-l-10">
-				<a href="<?php echo site_url('category/'.$cat_url.'/news/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('news'); ?></a>
-				<a href="<?php echo site_url('category/'.$cat_url.'/popular/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('popular'); ?></a>
-				<a href="<?php echo site_url('category/'.$cat_url.'/rated/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('topRated'); ?></a>
-				<a href="<?php echo site_url('category/'.$cat_url.'/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('alphabetic'); ?></a>
-			</div> <!-- end col -->
-		</div> <!-- end row -->
-
-		<div class="row m-t-20">
 			<div class="col-sm-12 col-lg-12 col-md-12">
 				<?php if(isset($getBlocGame)) echo $getBlocGame; ?>
 

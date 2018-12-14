@@ -219,22 +219,29 @@ class CategoryModel extends CI_Model
                 $interval = date_diff($datetime1, $datetime2);
                 $time = $interval->format('%a');
                 $classShow = ($time <= 90) ? 'show' : '';
-              $getBlocGame .= '<div class="col-sm-12  col-md-2 col-lg-game-'.$this->config->item('home_nb').' p-b-20">
-                                <div class="game-list-box">
+            $getBlocGame .= '<div class="game-div col-xs-6 col-sm-4 col-md-3 col-lg-3 p-b-20 col-lg-game-'.$this->config->item('home_nb').'">
+                                <div class="inner-div">
+                                <div class="game-list-box" style="height:100%;width:100%;">
                                     <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+                                        <video autoplay loop muted playsinline>
+                                            <source src="'.$row->video_url.'" type="video/mp4">
+                                        </video>
                                         <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
                                     </a>
 
                                     <!--<div class="game-action '.$classShow.'">
                                         <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
-                                    </div>-->
+                                    </div>--> 
 
-                                    '.rating($this->getNote($row->id), 'game-rating').'
+                                    
 
-                                    <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 17, '...').'</a> </h2>
-                                    </div>
                                 </div>
+                                <div class="game-title">
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 15, '...').'</a></h2>
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
+                                                                         
+                                    </div>
+                                    </div>
                             </div>';
             }
             return array(
