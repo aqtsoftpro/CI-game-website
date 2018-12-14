@@ -1795,12 +1795,12 @@
 }
 @media (min-width: 1200px) {
 	.col-lg-game-10 {
-		width: calc(100%/9);
+		width: calc(100%/8);
 		float: left;
 		padding: 0 5px;
 	}
 	.col-lg-game-9 {
-		width: calc(100%/9);
+		width: calc(100%/7);
 		float: left;
 		padding: 0 5px;
 	}
@@ -1856,7 +1856,6 @@
 	display: block;
 }
 .rating{
-width:70px;
 margin:0;
 }
 
@@ -1875,8 +1874,10 @@ margin:0;
     padding: 1px;
     border-radius: 0 0 7px 7px;
 }
-.rating .p-num{
+.p-num{
 float:right;
+padding-right: 4px;
+padding-top: 6px;
 } 
 .game-list-box .game-title h2 {
 	padding: 0;
@@ -2295,6 +2296,9 @@ ul.social-icons li a i {
 .list-inline{
 	padding-left: 5px;
     padding-bottom: 6px;
+}
+.h5{
+width:100%;
 }
 .h5 a{
 	/*font-size: 14px;*/
