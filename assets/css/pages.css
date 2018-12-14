@@ -1805,17 +1805,17 @@
 		padding: 0 5px;
 	}
 	.col-lg-game-8 {
-		width: calc(100%/8);
+		width: calc(100%/7);
 		float: left;
 		padding: 0 5px;
 	}
 	.col-lg-game-7 {
-		width: calc(100%/7);
+		width: calc(100%/6);
 		float: left;
 		padding: 0 10px;
 	}
 	.col-lg-game-6 {
-		width: calc(100%/6);
+		width: calc(100%/5);
 		float: left;
 		padding: 0 10px;
 	}
