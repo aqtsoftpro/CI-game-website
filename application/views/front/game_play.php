@@ -2,7 +2,7 @@
 	<div class="container fullscreen">
 
 		<div class="row">
-            <div class="col-sm-2" style="width: 20%;">
+            <div class="col-sm-2" style="width: 20%; margin-top: 20px;"">
                 <div style="width: 300px; height: 600px;">
                     <img class="img-responsive" src="http://visarity-ad-pakfiles.s3.amazonaws.com/web/images/v3ad-8b8f-9a7f-8ea7-7c30b_regular.jpg" style="width: 80%; height: 100%; float: right;">
                 </div>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-			<div class="col-sm-8" style="width: 60%;">
+			<div class="col-sm-8" style="width: 60%; margin-top: 20px;"">
 
 				<div class="game-full-box text-center">
 <!--					--><?php //if($type != 2) { ?>
@@ -358,14 +358,14 @@
                     </div>
                 </div>
 			</div>
-            <div class="col-sm-2" style="width: 17%;">
-                <div class="card-box">
-                    <img class="img-responsive" style="height: 250px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
+            <div class="col-sm-2" style="width: 17%; margin-top: 40px;">
+                <div class="card-box" style="width: 255px;">
+                    <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
                 </div>
-                <div class="card-box">
-                    <img class="img-responsive" style="height: 250px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
+                <div class="card-box" style="width: 255px;">
+                    <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
                 </div>
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="margin-top: 50px;">
                     <div class="panel-heading" style="padding: 0px;">
                         <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
