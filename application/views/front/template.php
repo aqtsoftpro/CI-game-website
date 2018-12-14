@@ -231,7 +231,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
         <li><a href="<?php echo site_url(''); ?>" class="<?php echo ($this->uri->segment(1) == '')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
         <li><a href="<?php echo site_url('featured/'); ?>" class="<?php echo ($this->uri->segment(1) == 'featured')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('featured'); ?></a></li>
         <li><a href="<?php echo site_url('news/'); ?>" class="<?php echo ($this->uri->segment(1) == 'news')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('news'); ?></a></li>
-        <li><a href="<?php echo site_url('popular/'); ?>" class="<?php echo ($this->uri->segment(1) == 'popular')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('popular'); ?></a></li>
+        <li><a href="<?php echo site_url('popular/'); ?>" class="<?php echo ($this->uri->segment(1) == 'best')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('best'); ?></a></li>
         <li><a href="<?php echo site_url('rated/'); ?>" class="<?php echo ($this->uri->segment(1) == 'rated')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('topRated'); ?></a></li>
         <!--<li><a href="<?php echo site_url(); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('alphabetic'); ?></a></li>-->
    </ul>
