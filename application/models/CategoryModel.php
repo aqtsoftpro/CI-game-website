@@ -94,7 +94,7 @@ class CategoryModel extends CI_Model
 
                                 </div>
                                 <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 15, '...').'</a></h2>
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 25, '...').'</a></h2>
                                      '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
                                                                          
                                     </div>
@@ -237,7 +237,7 @@ class CategoryModel extends CI_Model
 
                                 </div>
                                 <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 15, '...').'</a></h2>
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 25, '...').'</a></h2>
                                      '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
                                                                          
                                     </div>
