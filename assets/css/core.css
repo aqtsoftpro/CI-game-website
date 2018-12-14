@@ -2276,6 +2276,8 @@ body.fixed-left .side-menu.left {
 .game-list-box a video{
   display: none;
   position: absolute;
+  width: 100%;
+  height: 100%;
   object-fit:fill;
   top: 0;
 }
