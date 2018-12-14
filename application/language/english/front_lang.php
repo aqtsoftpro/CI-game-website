@@ -26,6 +26,7 @@ $lang['navigation'] = "Navigation";
 $lang['categories'] = "Categories";
 $lang['keywords'] = "Keywords";
 $lang['pages'] = "Pages";
+$lang['menus'] = "Menus";
 $lang['title_image']="Header Image";
 $lang['header_logo']="Header log size must be 400X100 ";
 $lang['users'] = "Users";
