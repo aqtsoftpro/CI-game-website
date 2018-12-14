@@ -1,16 +1,6 @@
 <section>
 	<div class="container">
 
-		<!-- <div class="row m-t-20">
-			<div class="col-sm-12 m-l-10">
-				<a href="<?php echo site_url('category/'.$cat_url.'/featured/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('featured'); ?></a>
-				<a href="<?php echo site_url('category/'.$cat_url.'/news/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('news'); ?></a>
-				<a href="<?php echo site_url('category/'.$cat_url.'/popular/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('popular'); ?></a>
-				<a href="<?php echo site_url('category/'.$cat_url.'/rated/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('topRated'); ?></a>
-				<a href="<?php echo site_url('category/'.$cat_url.'/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('alphabetic'); ?></a>
-			</div> <!-- end col -->
-		</div> <!-- end row -->
-
 		<div class="row m-t-20">
 			<input type="hidden" name="page" id="page" value="1">
 			<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(3);?>">
@@ -40,7 +30,9 @@
 	        data:{page:page,orderby:orderby,cat_url:cat_url},
 	        beforeSend:function(){
 	            //$('.load-more').show();
+	            if($("#page").val()>1){
 	            $('#loadingDiv').show('');
+	        	}
 	            $("#page").val(Number($("#page").val())+Number(1));
 	        },
 	        success:function(html){
