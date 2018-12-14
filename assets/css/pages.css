@@ -1840,7 +1840,7 @@
 	height: auto;
 	margin: 0 auto;
 	display: block;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 	padding-bottom:0;
 }
 .game-list-box .game-action {
