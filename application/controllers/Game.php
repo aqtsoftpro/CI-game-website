@@ -34,6 +34,7 @@ class Game extends CI_Controller
         $content = $this->load->view('front/template', $data, true);
         $this->load->model(array('gameModel'));
         $this->load->model(array('PagesModel'));
+        $this->load->model(array('GamesModel'));
     }
 
     public function show($getUrl = '', $getPag = '')
@@ -121,6 +122,7 @@ class Game extends CI_Controller
             $data['getFav'] = 0;
         }
         $data['getPages'] = $this->PagesModel->getAllPages();
+        $data['getRelatedGames'] = $this->GamesModel->getRelatedGamesByCategory($data['id_category']);
         // Get comments with pagination
         $data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
         $data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
