@@ -12,8 +12,9 @@
 		</div> <!-- end row --> 
 
 		<div class="row m-t-20">
-			<input type="hidden" name="page" id="page" value="1">
-			<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(1);?>">
+		<input type="hidden" name="page" id="page" value="1">
+		<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(1);?>">
+		<input type="hidden" name="search_para" id="search_para" value="<?php echo $_REQUEST['q']; ?>"> 
 			<div id="loadGames" class="col-sm-12 col-lg-12 col-md-12">
 			</div> <!-- end col -->
 			<div id="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
@@ -24,22 +25,24 @@
 
 <script>
 	window.onload = function() {
-		load_data($("#page").val(),$("#orderby").val());
+		load_data($("#page").val(),$("#orderby").val(),$("#search_para").val());
 
 		$(window).scroll(function(){
 		 	if(($(window).scrollTop() == $(document).height() - $(window).height())){
-	            load_data($("#page").val(),$("#orderby").val());
+	            load_data($("#page").val(),$("#orderby").val(),$("#search_para").val());
 	        }
 		});
 	};
-	function load_data(page,orderby){
+	function load_data(page,orderby,search){
 		$.ajax({
 	        type:'POST',
 	        url:'<?php echo base_url('Home/loadGames');?>',
-	        data:{page:page,orderby:orderby},
+	        data:{page:page,orderby:orderby,search:search},
 	        beforeSend:function(){
 	            //$('.load-more').show();
+	            if($("#page").val()>1){
 	            $('#loadingDiv').show('');
+	        	}
 	            $("#page").val(Number($("#page").val())+Number(1));
 	        },
 	        success:function(html){

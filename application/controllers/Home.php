@@ -45,12 +45,16 @@ class Home extends CI_Controller
         $content = $this->load->view('front/index',$data,true);
         $this->load->view('front/template', array('content' => $content));
     }
-    public function loadGames($getOrder = '', $getPag = '')
+    public function loadGames($getOrder = '', $getPag = '',$search='')
     {
+
         // Displaying all the games with pagination
         $getPag = $this->input->post('page');
         $getOrder = $this->input->post('orderby');
-        $data = $this->homeModel->getBlocsGame($getOrder, $getPag);
+        $search= $this->input->post('search');
+        // echo $getOrder;
+        // echo 'search'.$search;    
+        $data = $this->homeModel->getBlocsGame($getOrder, $getPag,$search);
         echo $data['getBlocGame'];
         //echo "<pre>";
         //    print_r($data);
