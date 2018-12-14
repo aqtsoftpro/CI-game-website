@@ -1,7 +1,7 @@
 <section>
 	<div class="container">
 
-		<div class="row m-t-20">
+		<!-- <div class="row m-t-20">
 			<div class="col-sm-12 m-l-10">
 				<a href="<?php echo site_url('category/'.$cat_url.'/featured/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('featured'); ?></a>
 				<a href="<?php echo site_url('category/'.$cat_url.'/news/'); ?>" class="btn btn-inverse btn-custom btn-rounded waves-effect waves-light"><?php echo $this->lang->line('news'); ?></a>
