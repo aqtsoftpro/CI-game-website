@@ -358,16 +358,14 @@
                     </div>
                 </div>
 			</div>
-            <div class="col-sm-2" style="width: 20%;">
-                <div class="card-box" style="height: 290px;">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
-                </div>
-                <div class="card-box" style="height: 290px;">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
+            <div class="col-sm-2" style="width: 17%;">
+                <div class="card-box" style="height: 600px;">
+                    <img class="img-responsive" style="height: 280px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
+                    <img class="img-responsive" style="height: 280px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
+                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
                     <div class="panel-body">
                         <b>Game Name</b>
@@ -376,7 +374,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
+                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
                     <div class="panel-body">
                         <b>Game Name</b>
@@ -385,7 +383,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
+                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
                     <div class="panel-body">
                         <b>Game Name</b>
@@ -394,7 +392,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
+                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
                     <div class="panel-body">
                         <b>Game Name</b>
@@ -403,7 +401,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
+                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
                     <div class="panel-body">
                         <b>Game Name</b>
@@ -412,7 +410,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
+                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
                     <div class="panel-body">
                         <b>Game Name</b>
@@ -421,7 +419,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
+                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
                     </div>
                     <div class="panel-body">
                         <b>Game Name</b>
