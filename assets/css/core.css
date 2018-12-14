@@ -2276,8 +2276,7 @@ body.fixed-left .side-menu.left {
 .game-list-box a video{
   display: none;
   position: absolute;
-  width:100%;
-  height: auto;
+  object-fit:fill;
   top: 0;
 }
 #language-select .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
