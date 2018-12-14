@@ -1797,7 +1797,7 @@
 	.col-lg-game-10 {
 		width: calc(100%/9);
 		float: left;
-		padding: 0 10px;
+		padding: 0 5px;
 	}
 	.col-lg-game-9 {
 		width: calc(100%/9);
@@ -1807,7 +1807,7 @@
 	.col-lg-game-8 {
 		width: calc(100%/8);
 		float: left;
-		padding: 0 10px;
+		padding: 0 5px;
 	}
 	.col-lg-game-7 {
 		width: calc(100%/7);
@@ -1870,7 +1870,7 @@ margin:0;
     left: 0;
     bottom: 0;
 	pointer-events: none;
-	background-color:#ffffff;
+	background-color:white;
     margin-top: -7px;
     padding: 1px;
     border-radius: 0 0 7px 7px;
@@ -2297,6 +2297,15 @@ ul.social-icons li a i {
     padding-bottom: 6px;
 }
 .h5 a{
-	font-size: 14px;
+	/*font-size: 14px;*/
     color: #171414;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 6px;
+}
+
+.inner-div{
+    background-color:#FFF;
+    border-radius: 5px;
+    overflow: hidden;
 }

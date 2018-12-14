@@ -16,6 +16,8 @@ class HomeModel extends CI_Model
 
         } elseif($getOrder === 'featured') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and is_feature=1 GROUP BY id ORDER BY feature_order DESC";
+        } elseif($getOrder === 'search') {
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE title =  and is_feature=1 GROUP BY title DESC";
         }
         else {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title";
@@ -35,6 +37,7 @@ class HomeModel extends CI_Model
             $time = $interval->format('%a');
             $classShow = ($time<=90)?'show':'';
             $getBlocGame .= '<div class="game-div col-xs-6 col-sm-4 col-md-3 col-lg-3 p-b-20 col-lg-game-'.$this->config->item('home_nb').'">
+                                <div class="inner-div">
                                 <div class="game-list-box" style="height:100%;width:100%;">
                                     <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
@@ -52,8 +55,9 @@ class HomeModel extends CI_Model
                                 </div>
                                 <div class="game-title">
                                         <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 15, '...').'</a></h2>
-                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'plays</span>
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
                                                                          
+                                    </div>
                                     </div>
                             </div>';
         }
