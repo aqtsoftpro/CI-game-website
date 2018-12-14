@@ -32,7 +32,7 @@ class GamesModel extends CI_Model
 
     public function getRelatedGamesByCategory($category_id)
     {
-        $sql = "SELECT * FROM 2d_games WHERE id_category=".$category_id." LIMIT 8";
+        $sql = "SELECT * FROM 2d_games WHERE id_category=".$category_id." ORDER BY RAND() LIMIT 8";
         $query = $this->db->query($sql);
         return $query->result();
     }
