@@ -1878,6 +1878,7 @@ margin:0;
 float:right;
 padding-right: 4px;
 padding-top: 6px;
+font-size: 12px;
 } 
 .game-list-box .game-title h2 {
 	padding: 0;
@@ -1977,7 +1978,7 @@ padding-top: 6px;
 	margin: 0;
 }
 .rating ul li {
-	padding: 0;
+	padding-left:0.1px;
 }
 .rating ul li a {
 	color: #ffbd4a;
