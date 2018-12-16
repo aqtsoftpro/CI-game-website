@@ -55,19 +55,20 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 
 		<script src="<?php echo site_url('assets/js/modernizr.min.js'); ?>"></script>
 	</head>
-
+<style>
+#caret{
+	vertical-align:middle;
+	padding-bottom:12px;
+}
+</style>
 <body class="fixed-left front">
 <div id="top">
 <div id="burger">
 <a href="#">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAXCAQAAADT28WeAAAATUlEQVR4AWP4z0gZZEAH/43/G4GhMQhDSQQ0gvARqmAkTAbTwHrKIKaBDZRB2rsQEWYIiBAjDDENZKIMMtAaDNF0OJoOR9PhaDocTYcASNRT+6FODmgAAAAASUVORK5CYII=" alt="" width="40" /><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAXCAQAAABzRK1wAAAARElEQVR42mP4z4AOGQa5kPT/2P+KyEIC/1P/N/zP+i8ME4IIgGDmf1GQkBiQ0QCHef+lGP7b/k/4HwWH8f89GIZOSAAAUzjZPVfRpesAAAAASUVORK5CYII=" width="9" id="burgerArrow" alt="" />
+<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+<i class="fa fa-caret-up fa-lg" id="caret"></i>
 </a>
 </div>
-<!-- <div id="close">
-<a href="#">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAQAAAADHm0dAAABEklEQVR4AW3RA27uQRRA8fuWUNsO277adqPuqw5qm5+1ktpYRU8xSW5uvv9vwsnJUBCEbhYpRzxHPjMMIoggtHEN+MjxCNM5Ap7pQ4QBrnEuk+JU9nGeGBcWUQFyNSSDE9SWUIYf5SPbhaRxiEpQLQi5+JLiVBtSjLgVss3KZzSwg4pTiLjUrXyJukVFKUE0dStfoDQsQrApQg7HWH4NbSrUcYO6pwXxTtPY5AtQh+TY1L6jdUE2NiWDI9Qjykc+mpJmwiDtnKACbmW34gEqRgFCtv1BchEhz6wYd8+TFPspEeZNWKw3Jo8Aal0Y5xkn4lY0n3KJ88mUIPTxZFc0sQ/4YJx/bmKINWoQz1HCMpMI8g11K4krMjn8SAAAAABJRU5ErkJggg==" alt="" width="15" height="15" />
-</a>
-</div> -->
 <div id="topMid">
 <?php if(!empty($this->config->item('logo'))){ ?>
 <a href="<?php echo site_url(''); ?>" class="logo"><?php if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?></a>
@@ -444,8 +445,9 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#burger").click(function(){
-        $("#rest").toggleClass("hidden-xs hidden-sm hidden-md hidden-lg");
-        $("#content").toggleClass("m-t-40 m-t-0");
+        $("#rest").toggleClass("hidden-xs hidden-sm hidden-md hidden-lg");      
+        $("#content").toggleClass("m-t-40 m-t-0");        
+        $("#caret").toggleClass("fa-caret-down fa-caret-up");
     });
 });
 </script>
