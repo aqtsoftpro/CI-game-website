@@ -42,6 +42,10 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 			.searchForm input,#language-select{
 				border:1px solid #CECECE;
 			}
+		#caret{
+			vertical-align:middle;
+			padding-bottom:12px;
+		}
 		</style>
 
 		<?php if(isset($JaxonCSS)) echo $JaxonCSS; ?>
@@ -55,12 +59,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 
 		<script src="<?php echo site_url('assets/js/modernizr.min.js'); ?>"></script>
 	</head>
-<style>
-#caret{
-	vertical-align:middle;
-	padding-bottom:12px;
-}
-</style>
+
 <body class="fixed-left front">
 <div id="top">
 <div id="burger">
