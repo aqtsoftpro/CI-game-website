@@ -10,7 +10,7 @@ class HomeModel extends CI_Model
         if($getOrder === 'rated') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url, is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY note DESC";
         } elseif($getOrder === 'news') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id DESC";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 GROUP BY id DESC";
         } elseif($getOrder === 'popular') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
 
