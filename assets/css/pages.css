@@ -2321,3 +2321,6 @@ width:100%;
 	vertical-align:middle;
 	padding-bottom:12px;
 }
+#burger>a>i{
+	    color: #b9b5b5;
+}
