@@ -40,8 +40,8 @@ class Keyword extends CI_Controller
         $keyword =trim($this->uri->segment(2,0));
         // echo $keyword;        
         $key_id = $this->KeywordsModel->keywords_id($keyword);  
-        // echo ($key_id);
-        // exit();      
+        echo ($key_id);
+        exit();      
       
         // Displaying all the games of this category
         $data = $this->categoryModel->getBlocsGame_keyword($key_id);
