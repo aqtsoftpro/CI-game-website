@@ -69,6 +69,7 @@ $route['category/(:any)'] = 'category/index/$1';
 $route['category/(:any)/(:num)'] = 'category/index/$1//$2';
 $route['category/(:any)/(:any)'] = 'category/index/$1/$2';
 $route['category/(:any)/(:any)/(:any)'] = 'category/index/$1/$2/$3';
+$route['game/(:any)']="game/play/$1";
 
 $route['(:num)'] = 'home/index//$1';
 $route['(:any)'] = 'home/index/$1';
