@@ -3,7 +3,14 @@
 
 		<div class="row m-t-20">
 			<div class="col-sm-12 col-lg-12 col-md-12">
-				<?php if(isset($getBlocGame)) echo $getBlocGame; ?>
+				<?php 
+				if(isset($getBlocGame)){
+				echo $getBlocGame; 
+			}else{
+				echo '<h2>No Game Found</h2>';
+			}
+
+				?>
 
 				<div class="row">
 					<div class="col-sm-12">
