@@ -38,15 +38,15 @@ class Keyword extends CI_Controller
     public function index($keyword=NULL)
     {   
         $keyword =trim($this->uri->segment(2,0));
-         echo $keyword;        
+         // echo $keyword;        
         $key_id = $this->KeywordsModel->keywords_id($keyword);  
-        echo 'key_id'. ($key_id);
+        // echo 'key_id'. ($key_id);
            
       
         // Displaying all the games of this category
         $data = $this->categoryModel->getBlocsGame_keyword($key_id);
-        var_dump($data);
-        exit();
+        // var_dump($data);
+        // exit();
         // Displaying pagination
         $this->load->library('pagination');
         $segment3 = $this->uri->segment(3, 0);
