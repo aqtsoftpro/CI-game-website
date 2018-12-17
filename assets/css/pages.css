@@ -1851,8 +1851,8 @@
 	border-radius: 5px;
 }
 .game-list-box {
-	width:180px;
-	height:134px;
+	/*width:180px;
+	height:134px;*/
 	position: relative;
 }
 .game-list-box img {
