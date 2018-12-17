@@ -17,7 +17,7 @@ class HomeModel extends CI_Model
         } elseif($getOrder === 'featured') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,feature_order FROM 2d_games WHERE status = 1 and is_feature=1 ORDER BY feature_order ASC";
         } elseif(!empty($search)) {
-            $sql = "SELECT * FROM 2d_games WHERE title LIKE '%".$search."%' OR description LIKE '%".$search."%' OR url LIKE '%".$search."%'";
+            $sql = "SELECT * FROM 2d_games WHERE title LIKE '%".$search."%'";
             // echo $sql;
             // exit();
         }
