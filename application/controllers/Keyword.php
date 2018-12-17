@@ -37,7 +37,7 @@ class Keyword extends CI_Controller
     }
     public function index($keyword=NULL)
     {   
-        $keyword =trim($this->uri->segment(3,0));
+        $keyword =trim($this->uri->segment(2,0));
          echo $keyword;        
         $key_id = $this->KeywordsModel->keywords_id($keyword);  
         echo ($key_id);
