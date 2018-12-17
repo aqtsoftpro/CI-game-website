@@ -84,7 +84,7 @@ class KeywordsModel extends CI_Model
     }
     public function keywords_tags($keyword= NULL ){
         if(isset($keyword)){
-        echo   $sql ='SELECT  * FROM 2d_keywords WHERE title ='.$keyword.'';
+        $sql ="SELECT  * FROM 2d_keywords WHERE title ='".$keyword."'";
             $query = $this->db->query($sql);
             return $query->row->id;
         }else{      
