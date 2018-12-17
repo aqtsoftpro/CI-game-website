@@ -45,8 +45,8 @@ class Keyword extends CI_Controller
       
         // Displaying all the games of this category
         $data = $this->categoryModel->getBlocsGame_keyword($key_id);
-        // var_dump($data);
-        // exit();
+        var_dump($data);
+        exit();
         // Displaying pagination
         $this->load->library('pagination');
         $segment3 = $this->uri->segment(3, 0);
