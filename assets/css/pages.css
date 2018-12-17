@@ -1793,14 +1793,17 @@
 .game-full-box {
 	background: black;
 }
+@media(max-width:768px){
+#menu li#tags{display:none;}
+}
 @media (min-width: 1200px) {
 	.col-lg-game-10 {
-		width: calc(100%/8);
+		width: calc(100%/9);
 		float: left;
 		padding: 0 5px;
 	}
 	.col-lg-game-9 {
-		width: calc(100%/7);
+		width: calc(100%/8);
 		float: left;
 		padding: 0 5px;
 	}
@@ -2313,4 +2316,8 @@ width:100%;
     background-color:#FFF;
     border-radius: 5px;
     overflow: hidden;
+}
+#caret{
+	vertical-align:middle;
+	padding-bottom:12px;
 }
