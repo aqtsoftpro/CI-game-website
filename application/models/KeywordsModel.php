@@ -101,7 +101,7 @@ class KeywordsModel extends CI_Model
 
     public function keywords_id($keyword){
         $key = strtolower($keyword);
-    echo    $query = $this->db->get_where('2d_keywords', array('url' => $key));      
+        $query = $this->db->get_where('2d_keywords', array('url' => $key));      
         foreach ($query->row() as $keyword) {
         return $keyword['id'];
         }      
