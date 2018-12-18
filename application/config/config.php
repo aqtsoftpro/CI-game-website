@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://www.flashgames.com/';
-$config['base_url'] = 'http://agames.aqtdemos.com/';
-//$config['base_url'] = 'http://localhost/agames/';
+//$config['base_url'] = 'http://agames.aqtdemos.com/';
+$config['base_url'] = 'http://localhost/agames/';
 /*
 |--------------------------------------------------------------------------
 | Index File
