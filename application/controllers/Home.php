@@ -43,6 +43,7 @@ class Home extends CI_Controller
     {
         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $search = $_REQUEST['q'];
+        $getOrder = $this->uri->segment(1);
         $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
 
         $content = $this->load->view('front/index',$data,true);

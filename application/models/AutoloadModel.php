@@ -12,9 +12,13 @@ class AutoloadModel extends CI_Model
 		$query1=$this->db->query($sql,$row->id);
 		$getSubCategories='';
 		foreach($query1->result() as $row1){
-		if(!empty($row1)){
-		$getSubCategories.='<li><a href="'.site_url('category/'.$row1->url.'/').'">'.$row1->title.'</a></li>';
-		}
+			if(!empty($row1)){
+				$url = $row1->url;
+				if($_REQUEST['q']){
+					$url.="/?q=".$_REQUEST['q'];
+				}
+			$getSubCategories.='<li><a href="'.site_url('category/'.$url).'">'.$row1->title.'</a></li>';
+			}
 		}
 		$getCategories.='<li class="dropdown">';
 		if($getSubCategories){

@@ -218,7 +218,16 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 </div>
 <form class="searchForm cf" method="get">
 <input id="search" type="text" name="q" placeholder="" value="<?php echo $_REQUEST['q']; ?>" required />
-<input type="button" class="button" value="search" id="search_form_submit" onclick="window.location='<?php echo site_url('/'); ?>?q='+document.getElementById('search').value;"/>
+<?php
+	$search_url = site_url('/');
+	if($this->uri->segment(1)){
+		$search_url.=$this->uri->segment(1)."/";
+	}
+	if($this->uri->segment(2)){
+		$search_url.=$this->uri->segment(2)."/";
+	}
+?>
+<input type="button" class="button" value="search" id="search_form_submit" onclick="window.location='<?php echo $search_url; ?>?q='+document.getElementById('search').value;"/>
 </form>
 
 </div>
@@ -228,11 +237,51 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 <ul  style="display:block;">
 <li>
     <ul class="menu_main">
-        <li><a href="<?php echo site_url(''); ?>" class="<?php echo ($this->uri->segment(1) == '')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
-        <li><a href="<?php echo site_url('popular/'); ?>" class="<?php echo ($this->uri->segment(1) == 'best')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('best'); ?></a></li>
-        <li><a href="<?php echo site_url('news/'); ?>" class="<?php echo ($this->uri->segment(1) == 'news')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('news'); ?></a></li>        
-        <li><a href="<?php echo site_url('rated/'); ?>" class="<?php echo ($this->uri->segment(1) == 'rated')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('topRated'); ?></a></li>
-        <li><a href="<?php echo site_url('featured/'); ?>" class="<?php echo ($this->uri->segment(1) == 'featured')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('featured'); ?></a></li>
+        <li>
+        	<?php
+        		$home_url = site_url('');
+        		if($_REQUEST['q']){
+        			$home_url .="?q=".$_REQUEST['q'];
+        		}
+        	?>
+        	<a href="<?php echo $home_url; ?>" class="<?php echo ($this->uri->segment(1) == '')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a>
+        </li>
+        <li>
+        	<?php
+        		$popular_url = site_url('popular/');
+        		if($_REQUEST['q']){
+        			$popular_url .="?q=".$_REQUEST['q'];
+        		}
+        	?>
+        	<a href="<?php echo $popular_url; ?>" class="<?php echo ($this->uri->segment(1) == 'best')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('best'); ?></a>
+        </li>
+        <li>
+        	<?php
+        		$news_url = site_url('news/');
+        		if($_REQUEST['q']){
+        			$news_url .="?q=".$_REQUEST['q'];
+        		}
+        	?>
+        	<a href="<?php echo $news_url; ?>" class="<?php echo ($this->uri->segment(1) == 'news')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('news'); ?></a>
+        </li>        
+        <li>
+        	<?php
+        		$rated_url = site_url('rated/');
+        		if($_REQUEST['q']){
+        			$rated_url .="?q=".$_REQUEST['q'];
+        		}
+        	?>
+        	<a href="<?php echo $rated_url; ?>" class="<?php echo ($this->uri->segment(1) == 'rated')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('topRated'); ?></a>
+        </li>
+        <li>
+        	<?php
+        		$featured_url = site_url('featured/');
+        		if($_REQUEST['q']){
+        			$featured_url .="?q=".$_REQUEST['q'];
+        		}
+        	?>
+        	<a href="<?php echo $featured_url; ?>" class="<?php echo ($this->uri->segment(1) == 'featured')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('featured'); ?></a>
+        </li>
         
         <!--<li><a href="<?php echo site_url(); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('alphabetic'); ?></a></li>-->
    </ul>

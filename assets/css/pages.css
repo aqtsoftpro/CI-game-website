@@ -1799,44 +1799,44 @@
 }
 @media (min-width: 1200px) {
 	.col-lg-game-10 {
-		width: calc(100%/7);
+		/*width: calc(100%/7);*/
 		float: left;
 		margin: 4px;
 		background-color:#fbfbea;
 		/*padding: 0 5px;*/
 	}
 	.col-lg-game-9 {
-		width: calc(100%/7.35);
-		height:193px;
+		/*width: calc(100%/7.35);*/
+		/*height:193px;*/
 		float: left;
 		margin: 4px;
 		background-color:#fbfbea;
 		/*padding: 0 5px;*/
 	}
 	.col-lg-game-8 {
-		width: calc(100%/7);
-		height:193px;
+		/*width: calc(100%/7);
+		height:193px;*/
 		float: left;
 		margin: 4px;
 		background-color:#fbfbea;
 		/*padding: 0 5px;*/
 	}
 	.col-lg-game-7 {
-		width: calc(100%/6);
+		/*width: calc(100%/6);*/
 		float: left;
 		margin: 4px;
 		background-color:#fbfbea;
 		/*padding: 0 10px;*/
 	}
 	.col-lg-game-6 {
-		width: calc(100%/5);
+		/*width: calc(100%/5);*/
 		float: left;
 		margin: 4px;
 		background-color:#fbfbea;
 		
 	}
 	.col-lg-game-5 {
-		width: calc(100%/5);
+		/*width: calc(100%/5);*/
 		float: left;
 		margin: 4px;
 		background-color:#fbfbea;
@@ -1900,6 +1900,8 @@ padding-right: 4px;
 padding-top: 6px;
 font-size: 12px;
 width:48%;
+float: right;
+text-align: right;
 } 
 .game-list-box .game-title h2 {
 	padding: 0;
@@ -2382,5 +2384,35 @@ width:100%;
 	width: 100px !important;
 }*/
 .scroll_cats{
-	height: 450px;
+	height: 300px;
+	overflow-y: scroll;
+	width:200px !important;
+}
+.game-div{
+	width:180px;
+	height: 193.187px;
+	border-radius: 5px;
+}
+.game-div .game-list-box{
+	width:inherit;
+	height: 134px
+}
+.game-div .game-list-box a{
+	height: 134px;
+}
+.game-div .game-list-box a .thumb-img{
+	height: 134px;
+}
+.game-div .game-title{
+	overflow: hidden;
+}
+#loadGames{
+	align-content: center;
+}
+.game-rating{
+	width:50%;
+	padding: 5px;
+}
+.game-rating span{
+	color:#00D63A;
 }

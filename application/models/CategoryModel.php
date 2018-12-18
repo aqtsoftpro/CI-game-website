@@ -3,7 +3,7 @@
 class CategoryModel extends CI_Model
 {
 
-    public function getBlocsGame($getUrl, $getOrder, $getPag)
+    public function getBlocsGame($getUrl, $getOrder, $getPag,$search)
     {
         // Total of results in this category (pagination)
         $getPag = $getPag*(int)$this->config->item('cat_pag')-(int)$this->config->item('cat_pag');
@@ -40,8 +40,13 @@ class CategoryModel extends CI_Model
                 LIMIT ?,?";
         } else {
             $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.id_category AS id_category, ga.played AS played, ga.image AS image, ga.note AS note, ga.date_upload AS date_upload,ga.video_url, ca.title AS cat_title, ca.url AS cat_url
-                FROM 2d_games ga, 2d_categories ca
-                WHERE ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1)) GROUP BY ga.id
+                FROM 2d_games ga, 2d_categories ca WHERE ";
+
+                if($search){
+                    $sql.=" ga.title like '%$search%' AND ";
+                }
+
+                $sql.= " ((ca.url = ?) AND (ca.id = ga.id_category) AND (ga.status = 1)) GROUP BY ga.id
                 ORDER BY title
                 LIMIT ?,?";
         }
@@ -76,9 +81,9 @@ class CategoryModel extends CI_Model
                                         </div>
                                     </div>
                                 </div>';*/
-                $getBlocGame .= '<div class="game-div col-xs-6 col-sm-4 col-md-3 col-lg-3 p-b-20 col-lg-game-'.$this->config->item('home_nb').'">
-                                <div class="inner-div">
-                                <div class="game-list-box" style="height:100%;width:100%;">
+                $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
+                                <!--<div class="inner-div">-->
+                                <div class="game-list-box">
                                     <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
                                             <source src="'.$row->video_url.'" type="video/mp4">
@@ -89,16 +94,17 @@ class CategoryModel extends CI_Model
                                     <!--<div class="game-action '.$classShow.'">
                                         <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
                                     </div>--> 
-
+                                </div>
                                     
 
-                                </div>
+                               <!-- </div>-->
                                 <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 25, '...').'</a></h2>
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,22, '...').'</a></h2>
+                                 </div>
                                      '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
                                                                          
-                                    </div>
-                                    </div>
+                                    
+                                   
                             </div>';
             }
             return array(
@@ -220,10 +226,10 @@ class CategoryModel extends CI_Model
                 $interval = date_diff($datetime1, $datetime2);
                 $time = $interval->format('%a');
                 $classShow = ($time <= 90) ? 'show' : '';
-            $getBlocGame .= '<div class="game-div col-xs-6 col-sm-4 col-md-3 col-lg-3 p-b-20 col-lg-game-'.$this->config->item('home_nb').'">
-                                <div class="inner-div">
-                                <div class="game-list-box" style="height:100%;width:100%;">
-                                    <a href="'.site_url('game/show/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+            $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
+                                <!--<div class="inner-div">-->
+                                <div class="game-list-box">
+                                    <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
                                             <source src="'.$row->video_url.'" type="video/mp4">
                                         </video>
@@ -233,16 +239,17 @@ class CategoryModel extends CI_Model
                                     <!--<div class="game-action '.$classShow.'">
                                         <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
                                     </div>--> 
-
+                                </div>
                                     
 
-                                </div>
+                               <!-- </div>-->
                                 <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0, 25, '...').'</a></h2>
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,22, '...').'</a></h2>
+                                 </div>
                                      '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
                                                                          
-                                    </div>
-                                    </div>
+                                    
+                                   
                             </div>';
             }
             return array(

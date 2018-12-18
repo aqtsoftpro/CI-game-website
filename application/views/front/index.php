@@ -1,5 +1,5 @@
 <section>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row m-t-20">
 		<input type="hidden" name="page" id="page" value="2">
 		<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(1);?>">
@@ -16,8 +16,8 @@
 <script>
 	window.onload = function() {
 		//sload_data($("#page").val(),$("#orderby").val(),$("#search_para").val());
-		var cw = $('.thumb-img').width()/1.3;
-				$('.thumb-img').css({'height':cw+'px'});
+		/*var cw = $('.thumb-img').width()/1.3;
+				$('.thumb-img').css({'height':cw+'px'});*/
 		$(window).scroll(function(){
 		 	if(($(window).scrollTop() == $(document).height() - $(window).height())){
 	            load_data($("#page").val(),$("#orderby").val(),$("#search_para").val());
@@ -40,8 +40,8 @@
 	            // /$('.load-more').remove();
 	            $('#loadingDiv').hide();
 	            $('#loadGames').append(html);
-	            var cw = $('.thumb-img').width()/1.3;
-				$('.thumb-img').css({'height':cw+'px'});
+	            /*var cw = $('.thumb-img').width()/1.3;
+				$('.thumb-img').css({'height':cw+'px'});*/
 	        }
 	    });
 	}

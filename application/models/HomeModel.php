@@ -6,28 +6,44 @@ class HomeModel extends CI_Model
     public function getBlocsGame($getOrder, $getPag,$search)
     {
         $getPag = $getPag*(int)$this->config->item('home_pag')-(int)$this->config->item('home_pag');
-
         if($getOrder === 'rated') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url, is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY note DESC";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url, is_feature FROM 2d_games WHERE";
+            if($search){
+                $sql.=" title like '%$search%' and ";
+            }
+            $sql.=" status = 1 and display_home=1 GROUP BY id ORDER BY note DESC";
         } elseif($getOrder === 'news') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 GROUP BY id DESC";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE";
+            if($search){
+                $sql.=" title like '%$search%' and ";
+            }
+            $sql.=" status = 1 GROUP BY id DESC";
         } elseif($getOrder === 'popular') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE";
+            if($search){
+                $sql.=" title like '%$search%' and ";
+            }
+            $sql.=" status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
 
         } elseif($getOrder === 'featured') {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,feature_order FROM 2d_games WHERE status = 1 and is_feature=1 ORDER BY feature_order ASC";
-        } elseif(!empty($search)) {
-            $sql = "SELECT * FROM 2d_games WHERE title LIKE '%".$search."%'";
-            // echo $sql;
-            // exit();
-        }
-        else {
-            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE status = 1 and display_home=1 GROUP BY id ORDER BY title";
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,feature_order FROM 2d_games WHERE";
+
+            if($search){
+                $sql.=" title like '%$search%' and ";
+            }
+            $sql.=" status = 1 and is_feature=1 ORDER BY feature_order ASC";
+        } 
+        else{
+            $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url FROM 2d_games WHERE ";
+            if($search){
+                $sql.=" title like '%$search%' and ";
+            }
+            $sql.=" status = 1 and display_home=1 GROUP BY id ORDER BY feature_order ASC";
         }
         $limit = ' limit '.(int)$getPag.','.(int)$this->config->item('home_pag');
         $sql.=$limit;
         $query = $this->db->query($sql);
-        //echo $this->db->last_query($query);
+        /*echo $this->db->last_query($query);*/
 
         $nbRows = $this->db->count_all('2d_games');
         $getBlocGame = '';
