@@ -49,8 +49,8 @@ function emul($console, $aspect)
 
 function rating($nb, $class = '')
 {
-    $is_int = (is_int($nb))?0:1;
-    $i = $j = ceil($nb);
+    //$is_int = (is_int($nb))?0:1;
+    /*$i = $j = ceil($nb);
     $rating = '<div class="'.$class.' rating">
 	            	<ul class="list-inline">';
     for ($i; $i > $is_int; $i--) {
@@ -62,6 +62,11 @@ function rating($nb, $class = '')
     }
     $rating .= '	</ul>
 				</div>';                   
+    return $rating;*/
+    $rating = '<div class="'.$class.' rating">Rating:<span>';
+    $rating .= ($nb/5)*100;
+    $rating .='%</span></div>';
+
     return $rating;
 }
 

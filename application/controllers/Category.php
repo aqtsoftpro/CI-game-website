@@ -60,6 +60,14 @@ class Category extends CI_Controller
         $data['getBestGamesClic'] = $this->categoryModel->getBestGamesClic($data['id_category']);
         // Retrieving the latest comments
         $data['getComs'] = $this->categoryModel->getComs();
+        $getUrl = $this->uri->segment(2);
+        $getOrder = "";
+        $getPag = 1;
+        $search = "";
+        if(isset($_REQUEST['q'])){
+            $search = $_REQUEST['q'];
+        }
+        $data['getBlocGame'] = $this->categoryModel->getBlocsGame($getUrl, $getOrder, $getPag,$search);
         $content = $this->load->view('front/category_games',$data,true);
         $this->load->view('front/template', array('content' => $content));
     }

@@ -1,13 +1,17 @@
 <section>
-	<div class="container">
+	<div class="container-fluid">
 
 		<div class="row m-t-20">
-			<input type="hidden" name="page" id="page" value="1">
+			<input type="hidden" name="page" id="page" value="2">
 			<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(3);?>">
 			<input type="hidden" name="cat_url" id="cat_url" value="<?php  echo $this->uri->segment(2);?>">
 			<div id="loadGames" class="col-sm-12 col-lg-12 col-md-12">
+				<?php 
+					echo $getBlocGame['getBlocGame'];
+				?>
 			</div> <!-- end col -->
-			<div id="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
+			<div id="loadingDiv">
+				<img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
 		</div> <!-- end row -->
 
 	</div> <!-- end container -->
@@ -15,7 +19,7 @@
 
 <script>
 	window.onload = function() {
-		load_data($("#page").val(),$("#orderby").val(),$("#cat_url").val());
+		//load_data($("#page").val(),$("#orderby").val(),$("#cat_url").val());
 
 		$(window).scroll(function(){
 		 	if(($(window).scrollTop() == $(document).height() - $(window).height())){
@@ -39,8 +43,8 @@
 	            // /$('.load-more').remove();
 	            $('#loadingDiv').hide();
 	            $('#loadGames').append(html);
-            	var cw = $('.thumb-img').width()/1.3;
-				$('.thumb-img').css({'height':cw+'px'});
+            	/*var cw = $('.thumb-img').width()/1.3;
+				$('.thumb-img').css({'height':cw+'px'});*/
 	        }
 	    });
 	}
