@@ -2414,6 +2414,7 @@ width:100%;
 .game-rating{
 	width:50%;
 	padding: 5px;
+	font-size: 12px;
 }
 .game-rating span{
 	color:#00D63A;
