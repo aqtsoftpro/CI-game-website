@@ -342,6 +342,7 @@ $(document).ready(function() {
     });
     $(document).on('mouseleave','.game-list-box', function(e){
       $(this).parent().find('video').hide();
+      $(this).parent().find('video').load();
     });
     $('#logo_submit').submit(function(e){
       e.preventDefault(); 
