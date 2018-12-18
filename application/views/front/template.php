@@ -253,7 +253,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
         			$popular_url .="?q=".$_REQUEST['q'];
         		}
         	?>
-        	<a href="<?php echo $popular_url; ?>" class="<?php echo ($this->uri->segment(1) == 'best')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('best'); ?></a>
+        	<a href="<?php echo $popular_url; ?>" class="<?php echo ($this->uri->segment(1) == 'popular')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('best'); ?></a>
         </li>
         <li>
         	<?php
