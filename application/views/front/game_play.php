@@ -1,5 +1,5 @@
 <section>
-<div class="container fullscreen">
+<div class="container-fluid">
 
 		<div class="row">
             <div class="col-sm-3">
@@ -150,12 +150,12 @@
                 </div>
                 <div class="card-box">
                     <h4><b>COMMENTS&nbsp;&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $nbRows; ?></b></h4>
-                    <?php if ($session->id) { ?>
+                    <?php if (!isset($session->id)) { ?>
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="What are your thoughts?" name="com_message" id="comments">
                             <input id="related" type="hidden" name="related" value="">
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-default"><?php echo $this->lang->line('send'); ?></button>
+                            <button type="button" class="btn btn-default"><?php echo $this->lang->line('send'); ?></button>
                             </span>
                         </div>
                     <?php } ?>
@@ -174,19 +174,7 @@
                 <div class="card-box">
                     <h4><b>Related Games</b></h4>
                     <div class="row">
-                        <?php foreach ($getRelatedGames as $relatedGame): ?>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="<?= $relatedGame->image; ?>">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b><?= $relatedGame->title; ?></b>
-                                    <p style="margin-top: 10px;"><?= $relatedGame->played ?> times played</p>
-                                </div>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
+                        <?php if(isset($getRelatedGames)) echo $getRelatedGames; ?>                 
                     </div>
                     <div style="text-align: center">
                         <a class="btn btn-default" href="<?php echo site_url('category/'.$category.'/'); ?>">Show More</a>
@@ -195,94 +183,10 @@
                 <div class="card-box">
                     <h4><b>Recommended Games</b></h4>
                     <div class="row">
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="padding: 0px;">
-                                    <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                                </div>
-                                <div class="panel-body" style="padding: 20px 0px;">
-                                    <b>Game Name</b>
-                                    <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                                </div>
-                            </div>
-                        </div>
+                <?php if(isset($getRecGame)) echo $getRecGame;?>
+                    </div>
+                     <div style="text-align: center">
+                        <a class="btn btn-default" href="<?php echo base_url('/popular/'); ?>">Show More</a>
                     </div>
                 </div>
 			</div>
@@ -593,4 +497,12 @@ window.onload = function() {
 		pos.prev().children().removeClass('text-primary');
 	});
 };
+</script>
+<script>
+    window.onload = function() {
+        //sload_data($("#page").val(),$("#orderby").val(),$("#search_para").val());
+        var cw = $('.thumb-img').width()/1.3;
+                $('.thumb-img').css({'height':cw+'px'});      
+       
+    };
 </script>

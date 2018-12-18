@@ -45,7 +45,7 @@ class Home extends CI_Controller
 
         $search = $_REQUEST['q'];
 
-        $data = $this->homeModel->getBlocsGame($getOrder, 1,$search);
+        $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
         $content = $this->load->view('front/index',$data,true);
         $this->load->view('front/template', array('content' => $content));
         // var_dump($this->input->cookie());
