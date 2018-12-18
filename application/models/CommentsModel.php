@@ -99,4 +99,19 @@ class CommentsModel extends CI_Model
         $this->db->query($sql, array($query->num_rows(), $idUser));
     }
 
+    public function user_addComment($postAuthor, $postComment, $postGame) 
+    {        
+        $sql = "INSERT INTO 2d_comments (id_user, comment, id_game, date_creation, ip) VALUES (?, ?, ?, ?, ?)";
+        $this->db->query($sql, array($postAuthor, $postComment, $postGame, date("Y-m-d H:i:s"), $this->input->ip_address()));
+        $this->updateComs($postAuthor);
+        $msg = alert('The comment was created. <a href="/dashboard/comments/edit/'.$this->db->insert_id().'">Edit it</a> now !');
+    return $msg;
+    }
+    public function getComment_game($game_id) 
+    {
+        $sql = "SELECT * FROM 2d_comments WHERE id_game = ?";
+        $query = $this->db->query($sql, array($game_id));
+        
+        return $query->result();
+    }
 }

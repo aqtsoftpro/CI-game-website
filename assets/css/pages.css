@@ -2381,3 +2381,19 @@ width:100%;
 /*.slider-horizontal{
 	width: 100px !important;
 }*/
+
+.media:last-of-type{
+	display:inline-block;
+}
+.media>.user_image{
+	float:left;	
+}
+.comment_detail{
+float:right;
+overflow: hidden;
+padding: 6px 6px;
+background-color: #f7f7f7;
+}
+.comment-details>strong{
+	    line-height: initial;
+}

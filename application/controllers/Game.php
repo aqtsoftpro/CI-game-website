@@ -26,6 +26,7 @@ class Game extends CI_Controller
         if($this->config->item('cache_activation') === 2) {
             $this->output->delete_cache();
         }
+
         $this->load->model(array('KeywordsModel'));
         $data['languages'] = $this->autoloadModel->getLanguages();
         $data['tags'] = $this->KeywordsModel->keywords_tags();
@@ -35,6 +36,7 @@ class Game extends CI_Controller
         $this->load->model(array('gameModel'));
         $this->load->model(array('PagesModel'));
         $this->load->model(array('GamesModel'));
+        $this->load->model(array('CommentsModel'));
     }
 
     public function show($getUrl = '', $getPag = '')
@@ -96,6 +98,10 @@ class Game extends CI_Controller
         // Get users who have the game in favorite
         $data['getUsersFav'] = $this->gameModel->getUsersFav($data['id']);
         // Comment form processing
+
+        // var_dump($this->session->userdata());
+        // exit();
+
         $postCom = $this->input->post('com_message', true);
         $postRelated = $this->input->post('related', true);
         if(isset($postCom) && ($postCom != '')) {
@@ -127,9 +133,13 @@ class Game extends CI_Controller
        $data['getRecGame']=$this->GamesModel->getRecomendedgames();
 
        // var_dump($this->session->userdata());
-       // exit();
+
         // Get comments with pagination
-        $data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
+        //$data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
+       $data['getBestComs']=$this->CommentsModel->getComment_game('2674'); 
+        // echo $data['id'];   
+        // var_dump($data['getBestComs']);
+        // exit();
         $data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
         $data['getPagination'] = $this->createPagination(site_url('game/show/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
         $content = $this->load->view('front/game_play', $data, true);

@@ -20,9 +20,9 @@ class Comments extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if(!isset($this->session->admin)) {
-            redirect('/login/');
-        }
+        // if(!isset($this->session->admin)) {
+        //     redirect('/login/');
+        // }
         $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/comments', array(), true);
 
@@ -80,5 +80,27 @@ class Comments extends CI_Controller
         $data['getGames'] = $this->commentsModel->getGames($data['id_game']);
         $content = $this->load->view('dashboard/comment_edit', $data, true);
         $this->load->view('dashboard/template', array('content' => $content));
+    }
+      public function add_comment()
+    {
+        $data['title'] = $this->lang->line('comments');
+        // Processing the Add Form
+        $postAuthor = $this->input->post('author', true);
+        $postComment = $this->input->post('comments', true);
+        $postGame = $this->input->post('game_id', true);
+        $back_url = $this->input->post('back_url',true);
+       
+
+        if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
+        $data['msg'] = $this->commentsModel->user_addComment($postAuthor, $postComment, $postGame);
+    
+        }   
+        redirect($back_url);    
+        // // Retrieving the list of users for the relations with the comments
+        // $data['getUsers'] = $this->commentsModel->getUsers();
+        // // Retrieving the list of games for the relations with the comments
+        // $data['getGames'] = $this->commentsModel->getGames();
+        // $content = $this->load->view('dashboard/comment_edit', $data, true);
+        // $this->load->view('dashboard/template', array('content' => $content));
     }
 }
