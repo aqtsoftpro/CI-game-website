@@ -245,7 +245,9 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 <a href="#">tags <img border="0" src="data:image/gif;base64,R0lGODlhBwAIALMAAAAAAP///xMTFF1gYlteYCgqKzEzNDo8PTk7PB8gIP///wAAAAAAAAAAAAAAAAAAACH5BAEAAAoALAAAAAAHAAgAAAQTcMg5kLjXjAJ6IhL3UQdInWgaAQA7" alt="arrow" width="7" />
 </a>
 <span>
-<?php if(isset($tags)) echo $tags;?>
+	<?php 
+		if(isset($tags)) echo $tags;
+	?>
 </span>
 </div>
 </li>
@@ -281,17 +283,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 				</div>
 				<div class="col-lg-6"> -->
 						
-							<!-- <ul class="nav navbar-nav">
-								<li><a href="<?php echo site_url(''); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
-								<?php if(isset($getCategories)) echo $getCategories; ?>
-								<li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tags<span class="caret"></span></a>
-									<ul class="dropdown-menu">							
-								    <?php if(isset($tags)) echo $tags;?>
-									</ul>
-								</li>
-							</ul> -->
+						
 
 
 							<!-- <ul class="nav navbar-nav">
@@ -337,28 +329,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 					<!-- 		</ul>
 					</div> -->
 						<!--/.nav-collapse -->
-				<!-- 	</div>
-					<div class="row">
-					<div class="lower-nav">
-						<div class="col-lg-1">
-						</div>
-						<div class="col-lg-11">
-						<ul class="nav navbar-nav">
-								<li><a href="<?php echo site_url(''); ?>" class="waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a></li>
-								<?php if(isset($getCategories)) echo $getCategories; ?>
-								<li><a href="<?php echo site_url('members/'); ?>" class="waves-effect waves-light hidden-xs"><?php echo $this->lang->line('members'); ?></a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tags<span class="caret"></span></a>
-									<ul class="dropdown-menu">							
-								    <?php if(isset($tags)) echo $tags;?>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				</div>
-			</div> -->
+				
 
 			<!-- Top Bar End -->
 
