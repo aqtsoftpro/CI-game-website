@@ -338,11 +338,11 @@ $(document).ready(function() {
     });
     $(document).on('mouseover','.game-list-box img', function(e){
       $(this).parent().next().slideToggle();
+        $(this).parent().find('video').load();
         $(this).parent().find('video').show();
     });
     $(document).on('mouseleave','.game-list-box', function(e){
       $(this).parent().find('video').hide();
-      $(this).parent().find('video').load();
     });
     $('#logo_submit').submit(function(e){
       e.preventDefault(); 
