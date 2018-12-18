@@ -783,7 +783,8 @@
   background-color: #23282D;
 }
 .game-panel-inverse {
-  background-color: #23282D;
+  /*background-color: #23282D;*/
+  background-color: #FFF;
   margin-bottom: 20px;
   padding: 20px;
 }
@@ -793,13 +794,16 @@
     border-radius: 15px;
 }
 .game-panel-inverse a{
-  color: white;
+  color: #000;
 }
 .game-panel-btn {
     float: right;
     padding:10px;
     padding-right: 20px;
 
+}
+.game-panel-inverse h3{
+  font-size: 16px !important;
 }
 .game-panel-btn a i, .game-panel-btn button i{
     font-size: 18px;

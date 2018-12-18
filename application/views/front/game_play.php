@@ -1,9 +1,9 @@
 <section>
-	<div class="container fullscreen">
+<div class="container fullscreen">
 
 		<div class="row">
-            <div class="col-sm-2" style="width: 20%; margin-top: 20px;"">
-                <div style="width: 300px; height: 600px;">
+            <div class="col-sm-3">
+                <div>
                     <img class="img-responsive" src="http://visarity-ad-pakfiles.s3.amazonaws.com/web/images/v3ad-8b8f-9a7f-8ea7-7c30b_regular.jpg" style="width: 80%; height: 100%; float: right;">
                 </div>
                 <div class="panel panel-default" style="width: 80%; float: right; margin-top: 15px;">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
             </div>
-			<div class="col-sm-8" style="width: 60%; margin-top: 20px;"">
+			<div class="col-sm-6">
 
 				<div class="game-full-box text-center">
 <!--					--><?php //if($type != 2) { ?>
@@ -132,8 +132,8 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary waves-effect waves-light" id="fullscreen"> <i class="fa fa-arrows-alt"></i></button>
                             </div>
                         </div>
-                        <div style="width: 720px; height: 90px; margin: 0 auto;">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV3pT1OEqd9RoXvBj9dWm42IfH3SWidy5hRDJdUnVjDOklimyS" style="width: 720px; height: 90px;">
+                        <div>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV3pT1OEqd9RoXvBj9dWm42IfH3SWidy5hRDJdUnVjDOklimyS">
                         </div>
                         <div style="text-align: left; margin-top: 15px;">
                             <?php if(isset($this->session->id)) { ?>
@@ -286,11 +286,11 @@
                     </div>
                 </div>
 			</div>
-            <div class="col-sm-2" style="width: 17%; margin-top: 40px;">
-                <div class="card-box" style="width: 255px;">
+            <div class="col-sm-3">
+                <div class="card-box">
                     <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
                 </div>
-                <div class="card-box" style="width: 255px;">
+                <div class="card-box">
                     <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
                 </div>
                 <div class="panel panel-default" style="margin-top: 50px;">

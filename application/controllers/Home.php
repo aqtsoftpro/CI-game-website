@@ -25,7 +25,7 @@ class Home extends CI_Controller
         }
         if($this->config->item('cache_activation') === 2) {
             $this->output->delete_cache();
-        }
+        }       
         $data['title'] = $this->config->item('sitename').' - '.$this->config->item('description');
         $data['getCategories'] = $this->autoloadModel->getCategories();
         $data['languages'] = $this->autoloadModel->getLanguages();
@@ -42,8 +42,14 @@ class Home extends CI_Controller
     public function index()
     {
         $data['tags'] = $this->KeywordsModel->keywords_tags();
+
+        $search = $_REQUEST['q'];
+
+        $data = $this->homeModel->getBlocsGame($getOrder, 1,$search);
         $content = $this->load->view('front/index',$data,true);
         $this->load->view('front/template', array('content' => $content));
+        // var_dump($this->input->cookie());
+        // exit();
     }
     public function loadGames($getOrder = '', $getPag = '',$search='')
     {

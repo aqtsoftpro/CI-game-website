@@ -2346,3 +2346,38 @@ width:100%;
 	width:100%;
 	height:100%;
 }
+.game_play div:nth-child(1) img,.game_play div:nth-child(3) img{
+	width: 100%;
+}
+#gameBox iframe{
+	width: 100% !important;
+	min-height: 600px;
+}
+.game_details > div{
+	padding: 10px 0;
+
+}
+.game_details > .row:nth-child(1){
+	display:flex;
+}
+.game_details > .row > div{
+	background: #fff;
+
+}
+.game_details .game-panel-btn{
+	float: none; 
+	padding-right:0 !important 
+}
+.game_details .game-panel-inverse{
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.game_details > .row{
+	margin:0 !important;
+}
+.game_details .game_description{
+	margin: 15px 0 0 0;
+}
+/*.slider-horizontal{
+	width: 100px !important;
+}*/
