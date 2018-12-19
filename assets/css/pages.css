@@ -2490,3 +2490,9 @@ height:600px;
 	width: 180px;
 	margin: 0 auto;
 }
+.com_title{
+	    color: #e40606;
+}
+.card-box>.row>.game-div{
+	    background: #ebeff2;
+}
