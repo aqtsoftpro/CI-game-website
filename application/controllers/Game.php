@@ -97,11 +97,15 @@ class Game extends CI_Controller
         $data['getBestGamesClic'] = $this->gameModel->getBestGamesClic($data['id_category']);
         // Get users who have the game in favorite
         $data['getUsersFav'] = $this->gameModel->getUsersFav($data['id']);
+        // $data = array_merge($data, $this->userModel->getFavsGames($data['id']));
+        // var_dump($data['getUsersFav']);
+        // exit();
         // Comment form processing
 
         // var_dump($this->session->userdata());
         // exit();
 
+       
         $postCom = $this->input->post('com_message', true);
         $postRelated = $this->input->post('related', true);
         if(isset($postCom) && ($postCom != '')) {
@@ -131,7 +135,6 @@ class Game extends CI_Controller
         $data['getRelatedGames'] = $this->GamesModel->getRelatedGamesByCategory($data['id_category']);
        
        $data['getRecGame']=$this->GamesModel->getRecomendedgames();
-
        // var_dump($this->session->userdata());
 
         // Get comments with pagination
@@ -141,8 +144,10 @@ class Game extends CI_Controller
         // var_dump($data['getBestComs']);
         // exit();
         $data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
+
         $data['getPagination'] = $this->createPagination(site_url('game/play/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
         $content = $this->load->view('front/game_play', $data, true);
+
         $this->load->view('front/template', array('content' => $content));
     }
 

@@ -59,6 +59,7 @@ $route['search'] = 'search/index/$1';
 $route['members'] = 'members/index/$1';
 $route['myprofile'] = 'myprofile/index/$1';
 $route['dashboard'] = 'dashboard/index/$1';
+$route['favrote/loadGames']='home/loadFavGames';
 
 // Frontend routes
 $route['tags'] = 'tags/index/$1';

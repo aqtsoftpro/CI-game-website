@@ -6,7 +6,10 @@
                 <div>
                     <img class="img-responsive" src="http://visarity-ad-pakfiles.s3.amazonaws.com/web/images/v3ad-8b8f-9a7f-8ea7-7c30b_regular.jpg" style="width: 80%; height: 100%; float: right;">
                 </div>
-                <div class="panel panel-default" style="width: 80%; float: right; margin-top: 15px;">
+                <div id="FavGames">
+
+                </div>
+                <!--<div class="panel panel-default" style="width: 80%; float: right; margin-top: 15px;">
                     <div class="panel-heading" style="padding: 0px;">
                         <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
                     </div>
@@ -68,7 +71,7 @@
                         <b>Game Name</b>
                         <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
                     </div>
-                </div>
+                </div>-->
             </div>
 			<div class="col-sm-6">
 
@@ -136,11 +139,8 @@
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV3pT1OEqd9RoXvBj9dWm42IfH3SWidy5hRDJdUnVjDOklimyS">
                         </div>
                         <div style="text-align: left; margin-top: 15px;">
-                            <?php if(isset($this->session->id)) { ?>
-                                <a href="<?php echo site_url('game/play/'.$url.'/?fav='.(($getFav === 1) ? 'del' : 'add')); ?>" class=""> <i class="<?php echo ($getFav === 1) ? 'fa fa-star text-warning' : 'fa fa-star-o text-warning'; ?>"></i>  </a> <b>Add to your favourites</b>
-                            <?php } else { ?>
-                                <a class="sa-not-registed"><i class="text-warning fa fa-star-o"></i></a> <b>Add to your favourites</b>
-                            <?php } ?>
+                            
+                                <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o"></i></a> <b>Add to your favourites</b>
                         </div>
                     </div>
 				</div>
@@ -274,7 +274,20 @@
                 </div>
             </div>
 		</div>
-  
+        <div class="row">
+            <div class="card-box" style="margin-left: 15px; margin-right: 15px;">
+                <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <?php foreach ($getPages as $page) {
+                            if ($page->display_footer == 1) { ?>
+                                <a href="<?php echo site_url('page/'.$page->url.'/'); ?>" style="margin-right: 40px; color: black;"><b><?= $page->title; ?></b></a>
+                            <?php }
+                        } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 	</div> <!-- end container -->
 </section>
@@ -303,13 +316,39 @@ window.onload = function() {
 		pos.children().toggleClass('text-danger');
 		pos.prev().children().removeClass('text-primary');
 	});
+    $(".make_fav").click(function(e){
+        var game_id = $(this).attr('id');
+        var fav_ids = [];
+        if(localStorage.getItem("favrote_games")){
+            fav_ids=JSON.parse(localStorage.getItem("favrote_games"));
+        }
+        fav_ids.push(game_id);
+        //console.log(fav_ids);
+        localStorage.setItem("favrote_games", JSON.stringify(fav_ids));
+    });
+
+
+    var fav_ids = JSON.parse(localStorage.getItem("favrote_games"));
+
+    $.ajax({
+        type:'POST',
+        url:'<?php echo base_url('favrote/loadGames');?>',
+        data:{fav_ids:fav_ids},
+        beforeSend:function(){
+            //$('.load-more').show();
+            if($("#page").val()>1){
+            $('#loadingDiv').show('');
+            }
+            $("#page").val(Number($("#page").val())+Number(1));
+        },
+        success:function(html){
+            // /$('.load-more').remove();
+            $('#loadingDiv').hide();
+            $('#FavGames').append(html);
+            /*var cw = $('.thumb-img').width()/1.3;
+            $('.thumb-img').css({'height':cw+'px'});*/
+        }
+    });
+
 };
-</script>
-<script>
-    window.onload = function() {
-        //sload_data($("#page").val(),$("#orderby").val(),$("#search_para").val());
-        var cw = $('.thumb-img').width()/1.3;
-                $('.thumb-img').css({'height':cw+'px'});      
-       
-    };
 </script>

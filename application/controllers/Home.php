@@ -80,4 +80,11 @@ class Home extends CI_Controller
         //$content = $this->load->view('front/home', $data, true);
         //$this->load->view('front/template', array('content' => $content));
     }
+
+    public function loadFavGames(){
+        $fav_ids = $this->input->post('fav_ids');
+        $fav_games = $this->homeModel->getFavGames($fav_ids);
+        echo $fav_games;
+        exit;
+    }
 }

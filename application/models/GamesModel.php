@@ -32,7 +32,7 @@ class GamesModel extends CI_Model
 
     public function getRelatedGamesByCategory($category_id)
     {
-        $sql = "SELECT * FROM 2d_games WHERE id_category=".$category_id." ORDER BY RAND() LIMIT 8";
+        $sql = "SELECT * FROM 2d_games WHERE id_category=".$category_id." ORDER BY RAND() LIMIT 6";
         $query = $this->db->query($sql);
        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
@@ -68,7 +68,7 @@ class GamesModel extends CI_Model
     }
     public function getRecomendedgames()
     {
-        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY played DESC LIMIT 8";
+        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY played DESC LIMIT 6";
         $query = $this->db->query($sql);
        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      

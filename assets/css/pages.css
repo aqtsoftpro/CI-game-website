@@ -2486,3 +2486,7 @@ padding:0;
 max-width:300px !important;
 height:600px;
 }
+#FavGames{
+	width: 180px;
+	margin: 0 auto;
+}
