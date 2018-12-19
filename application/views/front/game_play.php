@@ -140,7 +140,7 @@
                         </div>
                         <div style="text-align: left; margin-top: 15px;">
                             
-                                <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o"></i></a> <b>Add to your favourites</b>
+                                <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o"></i><b style="color:#615555;">Add to your favourites</b></a>
                         </div>
                     </div>
 				</div>
@@ -175,7 +175,7 @@
                     </div>                   
                     <hr>
                     <?php if(!isset($this->session->username)){?>
-                    <a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('loginForComment'); ?></a>
+                    <a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('login');?></a><?php echo $this->lang->line('loginForComment'); ?>
                     <?php }else{?>
                         <a href="<?php echo base_url('login/logout/');?>"><?php echo $this->lang->line('logout'); ?></a>
                     <?php }?>
