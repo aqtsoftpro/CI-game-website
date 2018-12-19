@@ -37,25 +37,31 @@ class GamesModel extends CI_Model
        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
          
-            $getBlocGame .= '<div class="col-sm-3"><div class="inner-div">
+            $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
+                                <!--<div class="inner-div">-->
                                 <div class="game-list-box">
                                     <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
                                             <source src="'.$row->video_url.'" type="video/mp4">
                                         </video>
                                         <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
-                                    </a>                                
+                                    </a>
+
+                                    <!--<div class="game-action '.$classShow.'">
+                                        <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
+                                    </div>--> 
                                 </div>
                                     
 
-                              
+                               <!-- </div>-->
                                 <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,20, '...').'</a></h2>
+                                        <h2 class="h5"><a href="'.site_url('game/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,22, '...').'</a></h2>
                                  </div>
-                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>         
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
+                                                                         
                                     
                                    
-                            </div></div>';
+                            </div>';
         }
         return $getBlocGame;      
 
@@ -67,25 +73,31 @@ class GamesModel extends CI_Model
        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
          
-            $getRecGame .= '<div class="col-sm-3"><div class="inner-div">
+            $getRecGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
+                                <!--<div class="inner-div">-->
                                 <div class="game-list-box">
                                     <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
                                         <video autoplay loop muted playsinline>
                                             <source src="'.$row->video_url.'" type="video/mp4">
                                         </video>
                                         <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
-                                    </a>                                
+                                    </a>
+
+                                    <!--<div class="game-action '.$classShow.'">
+                                        <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
+                                    </div>--> 
                                 </div>
                                     
 
-                              
+                               <!-- </div>-->
                                 <div class="game-title">
-                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,20, '...').'</a></h2>
+                                        <h2 class="h5"><a href="'.site_url('game/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,22, '...').'</a></h2>
                                  </div>
-                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>         
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>
+                                                                         
                                     
                                    
-                            </div></div>';
+                            </div>';
         }
         return $getRecGame;      
 
