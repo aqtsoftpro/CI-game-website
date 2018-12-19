@@ -226,6 +226,9 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 	if($this->uri->segment(2)){
 		$search_url.=$this->uri->segment(2)."/";
 	}
+	if($this->uri->segment(1)=='game' || $this->uri->segment(1)=='tags'){
+		$search_url=site_url('/');	
+	}
 ?>
 <input type="button" class="button" value="search" id="search_form_submit" onclick="window.location='<?php echo $search_url; ?>?q='+document.getElementById('search').value;"/>
 </form>
