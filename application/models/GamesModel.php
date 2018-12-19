@@ -34,7 +34,61 @@ class GamesModel extends CI_Model
     {
         $sql = "SELECT * FROM 2d_games WHERE id_category=".$category_id." ORDER BY RAND() LIMIT 8";
         $query = $this->db->query($sql);
-        return $query->result();
+       foreach ($query->result() as $row) {
+            // Comparison of dates for displaying the new tab on the game      
+         
+            $getBlocGame .= '<div class="col-sm-3"><div class="inner-div">
+                                <div class="game-list-box">
+                                    <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+                                        <video autoplay loop muted playsinline>
+                                            <source src="'.$row->video_url.'" type="video/mp4">
+                                        </video>
+                                        <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
+                                    </a>                                
+                                </div>
+                                    
+
+                              
+                                <div class="game-title">
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,20, '...').'</a></h2>
+                                 </div>
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>         
+                                    
+                                   
+                            </div></div>';
+        }
+        return $getBlocGame;      
+
+    }
+    public function getRecomendedgames()
+    {
+        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY played DESC LIMIT 8";
+        $query = $this->db->query($sql);
+       foreach ($query->result() as $row) {
+            // Comparison of dates for displaying the new tab on the game      
+         
+            $getRecGame .= '<div class="col-sm-3"><div class="inner-div">
+                                <div class="game-list-box">
+                                    <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+                                        <video autoplay loop muted playsinline>
+                                            <source src="'.$row->video_url.'" type="video/mp4">
+                                        </video>
+                                        <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
+                                    </a>                                
+                                </div>
+                                    
+
+                              
+                                <div class="game-title">
+                                        <h2 class="h5"><a href="'.site_url('game/show/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,20, '...').'</a></h2>
+                                 </div>
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>         
+                                    
+                                   
+                            </div></div>';
+        }
+        return $getRecGame;      
+
     }
 
     public function getCategories($idCategory = '') 
@@ -178,6 +232,25 @@ class GamesModel extends CI_Model
         // Removing the game
         $sql = 'DELETE FROM 2d_games WHERE id = ?';
         $this->db->query($sql, array($idGame));
+    }
+
+
+     public function getNote($idGame)
+    {
+        $sql = "SELECT note FROM 2d_notes WHERE id_game = ?";
+        $query = $this->db->query($sql, array($idGame));
+        if($query->num_rows() > 0) {
+            $note = 0;
+            $i = 0;
+            foreach ($query->result() as $row) {
+                $note = $note + $row->note;
+                $i++;
+            }
+            $note = $note / $i;
+        } else {
+            $note = 0;
+        }
+        return $note;
     }
 
 }

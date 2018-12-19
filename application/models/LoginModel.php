@@ -5,13 +5,14 @@ class LoginModel extends CI_Model
 
     public function checkConnect($email, $password, $rememberme)
     {
-        $sql = "SELECT id, url, username, image, role, status, passkey FROM 2d_users WHERE email = ? AND password = ?";
+        $sql = "SELECT id, url, username, image, role, status,email, passkey FROM 2d_users WHERE email = ? AND password = ?";
         $query = $this->db->query($sql, array($email, $password));
         if($row = $query->row()) {
             if($row->status) {
                 $this->session->set_userdata('id', $row->id);
                 $this->session->set_userdata('username', $row->username);
                 $this->session->set_userdata('url', $row->url);
+                $this->session->set_userdata('user_email',$row->email);
                 if($row->image) {
                     $this->session->set_userdata('name_image', $row->image);
                 }
