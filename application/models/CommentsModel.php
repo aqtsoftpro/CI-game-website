@@ -109,9 +109,55 @@ class CommentsModel extends CI_Model
     }
     public function getComment_game($game_id) 
     {
-        $sql = "SELECT * FROM 2d_comments WHERE id_game = ?";
+        $sql = "SELECT 2d_comments.id,2d_comments.comment,2d_comments.date_creation,2d_users.url,2d_users.username,2d_users.email,2d_users.image FROM 2d_comments INNER JOIN 2d_users ON 2d_comments.id_user=2d_users.id WHERE 2d_comments.id_game=? ORDER BY date_creation DESC";
+
         $query = $this->db->query($sql, array($game_id));
+        $nbRows = $query->num_rows();
+        // echo $this->db->last_query();
+        // exit();
+         //var_dump($query->result());
+        $getComment='';
+       foreach($query->result() as $row){
+
+         $time = timespan(strtotime($row->date_creation), time(), 1);
+        //getting the user profile 
         
-        return $query->result();
+        $getComment .='<div class="col-sm-6 com_div">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-sm-3 user_img">
+                                                    <img class="img-responsive" src="'.(empty($row->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row->image)).'" alt="'.$user->username.'">
+                                                </div>
+                                                <div class="col-sm-9 user_info">
+                                                    <b class="inline">'.$row->username.'</b><p class="inline"> <small>'.$time.' ago</small></p>
+                                                    <p class="com">'.mb_strimwidth($row->comment, 0,28, '...').'</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div>
+                        </div>'; 
+        }
+       
+       return array(
+         'nbRows' => $nbRows,
+         'getCommments' => $getComment
+         );
+    }
+    public function getUser($idGame) 
+    {
+        $sql = "SELECT username, email, role, status, image FROM 2d_users WHERE id = ?";
+        $query = $this->db->query($sql, array($idGame));
+        if($result = $query->row()) {
+            return array(
+             'username'   => $result->username,
+             'email'      => $result->email,
+             'role'       => $result->role,
+             'status'     => $result->status,
+             'name_image' => $result->image
+             );
+        } else {
+            return null;
+        }
     }
 }

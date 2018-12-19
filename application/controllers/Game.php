@@ -135,13 +135,13 @@ class Game extends CI_Controller
        // var_dump($this->session->userdata());
 
         // Get comments with pagination
-        //$data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
-       $data['getBestComs']=$this->CommentsModel->getComment_game('2674'); 
+        $data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
+       $data['getBestComs']=$this->CommentsModel->getComment_game($data['id']); 
         // echo $data['id'];   
         // var_dump($data['getBestComs']);
         // exit();
         $data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
-        $data['getPagination'] = $this->createPagination(site_url('game/show/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
+        $data['getPagination'] = $this->createPagination(site_url('game/play/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
         $content = $this->load->view('front/game_play', $data, true);
         $this->load->view('front/template', array('content' => $content));
     }

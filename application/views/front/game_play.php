@@ -151,37 +151,34 @@
                 <div class="card-box">
                 <h4><b><?php echo $this->lang->line('comments'); ?></b><?php echo $nbRows; ?></h4>
 
-                    <?php if (isset($this->session->username)) {    ;?>
+                    <?php if(isset($this->session->username)) {    ;?>
                     <form action="<?php echo base_url('comments/add_comment');?>" method="post">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="What are your thoughts?" name="comments" id="comments">
-                            <input type="hidden" name="author" value="<?php echo $this->session->userdata('user_email');?>"> 
+                            <input type="hidden" name="author" value="<?php echo $this->session->userdata('id');?>"> 
                             <input type="hidden" name="game_id" value="<?php echo $id; ?>">
                             <input type="hidden" name="back_url" value="<?php echo current_url();?>">                       
                             <span class="input-group-btn">
-                            <button type="input" class="btn btn-default"><?php echo $this->lang->line('send'); ?></button>
+                            <button type="input" class="btn btn-default" <?php if(!isset($this->session->username)) echo 'disabled';?>><?php echo $this->lang->line('send'); ?></button>
                             </span>
                         </div>
                     </form>
                     <?php } ?>
                     <div class="row" style="margin-top: 20px;">
                         <?php if(isset($getBestComs)) {
-                        echo '<div class="media">
-                            <div class="user_image">
-                            <img src="'.base_url("/uploads/images/users/avatar.png").'">
-                            </div>
-                            <div class="comment_detail">
-                            <strong>user_id</strong>
-                            <p class="com-text">Commetst to be displayed</p>
-                            </div>    
-                                </div>';
-                            
+                        
+                        echo $getBestComs['getCommments'];
+
                         } else { ?>
                             <p>&nbsp;&nbsp;&nbsp;No comments found.</p>
                         <?php } ?>
                     </div>                   
                     <hr>
-                     Please <a href="#">Login</a> for comments
+                    <?php if(!isset($this->session->username)){?>
+                    <a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('loginForComment'); ?></a>
+                    <?php }else{?>
+                        <a href="<?php echo base_url('login/logout/');?>"><?php echo $this->lang->line('logout'); ?></a>
+                    <?php }?>
                     <div style="text-align: center">
                         <?php if(isset($getPagination)) echo $getPagination; ?>
                     </div>

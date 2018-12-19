@@ -2440,3 +2440,11 @@ background-color: #f7f7f7;
 	width:auto !important;
 	display: table;
 }
+.com_div{
+overflow: hidden;
+max-height: 60px;
+margin-bottom:2px;
+}
+.user_info>.com{
+    line-height: 14px;
+}
