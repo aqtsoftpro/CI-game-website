@@ -95,10 +95,8 @@ class Comments extends CI_Controller
         if($this->session->userdata('commented')!='true'){
             if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
             $data['msg'] = $this->commentsModel->user_addComment($postAuthor, $postComment, $postGame);
-            $this->session->set_userdata('commented','true');
+            $this->session->set_userdata('commented',$postGame);
             }
-        }else{
-        redirect($back_url);   
         }
 
         redirect($back_url);   

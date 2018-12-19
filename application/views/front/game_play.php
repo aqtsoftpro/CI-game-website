@@ -314,9 +314,14 @@ window.onload = function() {
         //console.log(fav_ids);
         localStorage.setItem("favrote_games", JSON.stringify(fav_ids));
         alert("Game Has Been Added As Favourites!!!!");
+        loadFavGames();
     });
 
+    loadFavGames();
+    
 
+};
+function loadFavGames(){
     var fav_ids = JSON.parse(localStorage.getItem("favrote_games"));
 
     $.ajax({
@@ -333,11 +338,10 @@ window.onload = function() {
         success:function(html){
             // /$('.load-more').remove();
             $('#loadingDiv').hide();
-            $('#FavGames').append(html);
+            $('#FavGames').html(html);
             /*var cw = $('.thumb-img').width()/1.3;
             $('.thumb-img').css({'height':cw+'px'});*/
         }
     });
-
-};
+}
 </script>

@@ -85,7 +85,8 @@ class Game extends CI_Controller
     }
 
     public function play($getUrl = '', $getPag = '')
-    {
+    {   
+       // $this->session->unset_userdata('commented');
         // Get game data
         $data = $this->gameModel->getGame($getUrl);
         $data['title'] = $data['title_game'].' - '.$data['category'].' - '.$this->config->item('description');
