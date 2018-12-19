@@ -159,7 +159,7 @@
                             <input type="hidden" name="game_id" value="<?php echo $id; ?>">
                             <input type="hidden" name="back_url" value="<?php echo current_url();?>">                       
                             <span class="input-group-btn">
-                            <button type="input" class="btn btn-default" <?php if(!isset($this->session->username)) echo 'disabled';?>><?php echo $this->lang->line('send'); ?></button>
+                            <button type="input" class="btn btn-default" <?php if(isset($this->session->commented)) echo 'disabled';?>><?php echo $this->lang->line('send'); ?></button>
                             </span>
                         </div>
                     </form>

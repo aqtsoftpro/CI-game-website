@@ -91,11 +91,18 @@ class Comments extends CI_Controller
         $back_url = $this->input->post('back_url',true);
        
 
-        if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
-        $data['msg'] = $this->commentsModel->user_addComment($postAuthor, $postComment, $postGame);
-    
-        }   
-        redirect($back_url);    
+       
+        if($this->session->userdata('commented')!='true'){
+            if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
+            $data['msg'] = $this->commentsModel->user_addComment($postAuthor, $postComment, $postGame);
+            $this->session->set_userdata('commented','true');
+            }
+        }else{
+        redirect($back_url);   
+        }
+
+        redirect($back_url);   
+           
         // // Retrieving the list of users for the relations with the comments
         // $data['getUsers'] = $this->commentsModel->getUsers();
         // // Retrieving the list of games for the relations with the comments
