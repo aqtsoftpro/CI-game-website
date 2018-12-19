@@ -123,9 +123,6 @@ class CommentsModel extends CI_Model
         //getting the user profile 
         
         $getComment .='<div class="col-sm-6 com_div">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="row">
                                                 <div class="col-sm-3 user_img">
                                                     <img class="img-responsive" src="'.(empty($row->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row->image)).'" alt="'.$user->username.'">
                                                 </div>
@@ -133,9 +130,6 @@ class CommentsModel extends CI_Model
                                                     <b class="inline">'.$row->username.'</b><p class="inline"> <small>'.$time.' ago</small></p>
                                                     <p class="com">'.mb_strimwidth($row->comment, 0,28, '...').'</p>
                                                 </div>
-                                            </div>
-                                        </div>
-                                   </div>
                         </div>'; 
         }
        
