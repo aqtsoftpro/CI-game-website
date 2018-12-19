@@ -2482,3 +2482,7 @@ padding:0;
 	padding: 0 10px;
 	font-weight: bold;
 }
+.right-col{
+max-width:300px !important;
+height:600px;
+}
