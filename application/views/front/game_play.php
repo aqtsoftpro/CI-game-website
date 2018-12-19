@@ -304,6 +304,7 @@ window.onload = function() {
 		pos.prev().children().removeClass('text-primary');
 	});
     $(".make_fav").click(function(e){
+        e.preventDefault();
         var game_id = $(this).attr('id');
         var fav_ids = [];
         if(localStorage.getItem("favrote_games")){
@@ -312,6 +313,7 @@ window.onload = function() {
         fav_ids.push(game_id);
         //console.log(fav_ids);
         localStorage.setItem("favrote_games", JSON.stringify(fav_ids));
+        alert("Game Has Been Added As Favourites!!!!");
     });
 
 
