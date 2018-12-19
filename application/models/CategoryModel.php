@@ -208,10 +208,10 @@ class CategoryModel extends CI_Model
         return $getComs;
     }
 
-    public function getBlocsGame_keyword($keyword)
+    public function getBlocsGame_keyword($keyword,$search)
     {
         // Total of results in this category (pagination)
-        $sql ="SELECT * FROM 2d_games WHERE FIND_IN_SET('$keyword',`ids_keywords`)"; 
+        $sql ="SELECT * FROM 2d_games WHERE title like '%$search%' and FIND_IN_SET('$keyword',`ids_keywords`)"; 
         //echo $sql = "SELECT * FROM 2d_games WHERE FIND_IN_SET('137',`ids_keywords`)";   
         
         $query = $this->db->query($sql);
