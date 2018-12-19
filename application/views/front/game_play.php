@@ -274,20 +274,7 @@
                 </div>
             </div>
 		</div>
-        <div class="row">
-            <div class="card-box" style="margin-left: 15px; margin-right: 15px;">
-                <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-10">
-                        <?php foreach ($getPages as $page) {
-                            if ($page->display_footer == 1) { ?>
-                                <a href="<?php echo site_url('page/'.$page->url.'/'); ?>" style="margin-right: 40px; color: black;"><b><?= $page->title; ?></b></a>
-                            <?php }
-                        } ?>
-                    </div>
-                </div>
-            </div>
-        </div>
+  
 
 	</div> <!-- end container -->
 </section>
