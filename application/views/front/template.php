@@ -291,7 +291,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 
 <li id="tags" class="cf">
 <div class="d-inline">
-<a href="#">tags <img border="0" src="data:image/gif;base64,R0lGODlhBwAIALMAAAAAAP///xMTFF1gYlteYCgqKzEzNDo8PTk7PB8gIP///wAAAAAAAAAAAAAAAAAAACH5BAEAAAoALAAAAAAHAAgAAAQTcMg5kLjXjAJ6IhL3UQdInWgaAQA7" alt="arrow" width="7" />
+<a href="<?php echo site_url('tags');?>">tags <img border="0" src="data:image/gif;base64,R0lGODlhBwAIALMAAAAAAP///xMTFF1gYlteYCgqKzEzNDo8PTk7PB8gIP///wAAAAAAAAAAAAAAAAAAACH5BAEAAAoALAAAAAAHAAgAAAQTcMg5kLjXjAJ6IhL3UQdInWgaAQA7" alt="arrow" width="7" />
 </a>
 <span>
 	<?php 

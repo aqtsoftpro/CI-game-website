@@ -95,6 +95,7 @@ $lang['keyword'] = "Keyword";
 $lang['newKeyword'] = "New keyword";
 $lang['keywordTitle'] = "Keyword title";
 $lang['keywordUrl'] = "Keyword URL";
+$lang['keywordImage'] = "Image";
 $lang['title'] = "Title";
 $lang['content'] = "Content";
 $lang['dateCreation'] = "Date creation";

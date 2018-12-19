@@ -26,12 +26,13 @@ class KeywordsModel extends CI_Model
 
     public function getKeyword($idKeyword) 
     {
-        $sql = "SELECT id, title, url FROM 2d_keywords WHERE id = ?";
+        $sql = "SELECT * FROM 2d_keywords WHERE id = ?";
         $query = $this->db->query($sql, array($idKeyword));
         if($result = $query->row()) {
             return array(
              'title_keyword' => $result->title,
-             'url_keyword'   => $result->url
+             'url_keyword'   => $result->url,
+             'image'=> $result->image,
              );
         } else {
             return null;
@@ -103,5 +104,41 @@ class KeywordsModel extends CI_Model
         $key = strtolower($keyword);
         $query = $this->db->get_where('2d_keywords', array('url' => $key));      
         return $query->row()->id;
+    }
+    public function getAllTags(){
+        $getKeywords = '';
+        $sql = "SELECT id, title, url,image FROM 2d_keywords order by title";
+        $query = $this->db->query($sql);
+        foreach ($query->result() as $row) {
+            /*$getKeywords .= 
+             '<tr class="text-center">
+                    <td>'.$row->id.'</td>
+                    <td>'.$row->title.'</td>
+                    <td>'.$row->url.'</td>
+                    <td>
+                        <a class="btn btn-icon waves-effect btn-primary waves-light btn-xs" href="'.site_url('keyword/'.$row->url.'/').'"> <i class="fa fa-search"></i> </a>
+                        <a class="btn btn-icon waves-effect btn-default waves-light btn-xs" href="'.site_url('dashboard/keywords/edit/'.$row->id.'/').'"> <i class="fa fa-pencil"></i> </a>
+                        <a class="btn btn-icon waves-effect btn-danger waves-light btn-xs" href="'.site_url('dashboard/keywords/?del='.$row->id.'').'"> <i class="fa fa-trash-o"></i> </a>
+                    </td>
+                </tr>';*/
+                $image = site_url('uploads/images/no-image-keyword.jpg');
+                if($row->image){
+                    $image = site_url($row->image);
+                }
+
+                $getKeywords.='<div class="col-md-3 col-lg-3 col-sm-6 col-xs-12  tags_tab">
+                                    <a title="" href="'.site_url('keyword/'.$row->url).'">
+                                        <div class="keyword_icon">
+                                            <img src="'.$image.'"/>
+                                        </div>
+                                        <div class="keyword_title">'.$row->title.'</div>
+                                    </a>
+                                </div>';
+        }
+        return $getKeywords;
+    }
+    public function editKeywordImage($keyword_id,$image){
+        $query="update 2d_keywords set image='$image' where id='$keyword_id'";
+        $this->db->query($query);
     }
 }
