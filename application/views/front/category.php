@@ -66,11 +66,11 @@
 
 
 <script>
-window.onload = function() {
+/*window.onload = function() {
 	var cw = $('.thumb-img').width()/1.3;
 	$('.thumb-img').css({'height':cw+'px'});
 	$(".game-list-box img").hover(function() {
 	  $(this).parent().next().slideToggle();
 	});
-};
+};*/
 </script>

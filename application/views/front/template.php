@@ -226,6 +226,9 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 	if($this->uri->segment(2)){
 		$search_url.=$this->uri->segment(2)."/";
 	}
+	if($this->uri->segment(1)=='game' || $this->uri->segment(1)=='tags'){
+		$search_url=site_url('/');	
+	}
 ?>
 <input type="button" class="button" value="search" id="search_form_submit" onclick="window.location='<?php echo $search_url; ?>?q='+document.getElementById('search').value;"/>
 </form>
@@ -291,7 +294,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 
 <li id="tags" class="cf">
 <div class="d-inline">
-<a href="#">tags <img border="0" src="data:image/gif;base64,R0lGODlhBwAIALMAAAAAAP///xMTFF1gYlteYCgqKzEzNDo8PTk7PB8gIP///wAAAAAAAAAAAAAAAAAAACH5BAEAAAoALAAAAAAHAAgAAAQTcMg5kLjXjAJ6IhL3UQdInWgaAQA7" alt="arrow" width="7" />
+<a href="<?php echo site_url('tags');?>">tags <img border="0" src="data:image/gif;base64,R0lGODlhBwAIALMAAAAAAP///xMTFF1gYlteYCgqKzEzNDo8PTk7PB8gIP///wAAAAAAAAAAAAAAAAAAACH5BAEAAAoALAAAAAAHAAgAAAQTcMg5kLjXjAJ6IhL3UQdInWgaAQA7" alt="arrow" width="7" />
 </a>
 <span>
 	<?php 

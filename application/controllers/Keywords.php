@@ -66,11 +66,22 @@ class Keywords extends CI_Controller
         // Processing the Change Form
         $postTitle = $this->input->post('title', true);
         $postURL = $this->input->post('url', true);
+
         if(isset($postTitle) && ($postTitle) != '' && !$this->config->item('demo')) {
             if($postURL == '') {
                 $postURL = url_title(convert_accented_characters($postTitle), $separator = '-', $lowercase = true);
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
+            }
+
+            if(isset($_FILES['keyword_image'])){
+                $upload_path = './uploads/images/keywords/';
+                $temp_name = $_FILES['keyword_image']['tmp_name'];
+                $file_name = $upload_path.$_FILES['keyword_image']['name'];
+                if(move_uploaded_file($temp_name,$file_name)){
+                    $image = 'uploads/images/keywords/'.$_FILES['keyword_image']['name'];
+                    $this->keywordsModel->editKeywordImage($idKeyword, $image);
+                }
             }
             $data['msg'] = $this->keywordsModel->editKeyword($idKeyword, $postTitle, $postURL);
         }

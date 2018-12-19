@@ -42,7 +42,8 @@ class Keyword extends CI_Controller
         $key_id = $this->KeywordsModel->keywords_id($keyword);  
       
         // Displaying all the games of this category
-        $data = $this->categoryModel->getBlocsGame_keyword($key_id);
+        $search = $_REQUEST['q'];
+        $data = $this->categoryModel->getBlocsGame_keyword($key_id,$search);
         // var_dump($data);
         // exit();
         // Displaying pagination
