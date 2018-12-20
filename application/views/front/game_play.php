@@ -149,7 +149,7 @@
                     <p class="text-muted"><?php if(isset($description)) echo $description; ?></p>
                 </div>
                 <div class="card-box">
-                <h4><b><?php echo $this->lang->line('comments'); ?></b><?php echo $nbRows; ?></h4>
+                <h4><b><?php echo $this->lang->line('comments'); ?>&nbsp;</b><?php echo $nbRows; ?></h4>
 
                     <?php if(isset($this->session->username)) {    ;?>
                     <form action="<?php echo base_url('comments/add_comment');?>" method="post">
@@ -159,7 +159,7 @@
                             <input type="hidden" name="game_id" value="<?php echo $id; ?>">
                             <input type="hidden" name="back_url" value="<?php echo current_url();?>">                       
                             <span class="input-group-btn">
-                            <button type="input" class="btn btn-default" <?php if(isset($this->session->commented)) echo 'disabled';?>><?php echo $this->lang->line('send'); ?></button>
+                            <button type="input" class="btn btn-default" <?php if(($this->session->game_id)==$id) echo 'disabled';?>><?php echo $this->lang->line('send'); ?></button>
                             </span>
                         </div>
                     </form>
@@ -209,69 +209,12 @@
                 <div class="card-box">
                     <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
                 </div>
-                <div class="panel panel-default" style="margin-top: 50px;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
+              
+                
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
+                   <?php echo $getPlayedGames;?>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img class="img-responsive" src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
+                
             </div>
 		</div>
       

@@ -87,8 +87,15 @@ class Game extends CI_Controller
     public function play($getUrl = '', $getPag = '')
     {   
        // $this->session->unset_userdata('commented');
+
         // Get game data
         $data = $this->gameModel->getGame($getUrl);
+        $ip = $this->input->ip_address();
+        //var_dump($data['id']);
+        $this->GamesModel->addPlayedGames($data['id'],$ip);
+
+        $data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);      
+
         $data['title'] = $data['title_game'].' - '.$data['category'].' - '.$this->config->item('description');
         // Added game statistics (nb of * played)
         $this->gameModel->updateGameStat($data['id']);

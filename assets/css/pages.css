@@ -2410,7 +2410,7 @@ background-color: #f7f7f7;
 	background:#FFF;
 	overflow: hidden;
 	float: left;
-	margin: 4px;
+	margin: 4px 4px 4px 0;
 }
 .game-div .game-list-box{
 	width:inherit;
@@ -2489,6 +2489,7 @@ height:600px;
 #FavGames{
 	width: 180px;
 	margin: 0 auto;
+	float: right;
 }
 .com_title{
 	    color: #e40606;
