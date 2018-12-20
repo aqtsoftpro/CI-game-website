@@ -158,7 +158,13 @@
                     <p class="text-muted"><?php if(isset($description)) echo $description; ?></p>
                 </div>
                 <div class="card-box">                          
-                <?php echo $this->session->userdata('message'); ?>
+                <?php
+                if($this->session->has_userdata('message')){ 
+                echo $this->session->userdata('message');
+                $this->session->unset_userdata('message');
+                }
+
+                ?>
           
                 <h4><b><?php echo $this->lang->line('comments'); ?>&nbsp;</b><?php echo $nbRows; ?></h4>
 

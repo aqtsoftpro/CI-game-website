@@ -94,7 +94,7 @@ class Comments extends CI_Controller
             if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
             $data['msg'] = $this->commentsModel->user_addComment($postAuthor, $postComment, $postGame);
             $this->session->set_userdata('game_id',$postGame);
-            $this->session->set_userdata('message','<div class="alert alert-warning alert-dismissible show" role="alert">Comments been added    
+            $this->session->set_userdata('message','<div class="alert alert-info alert-dismissible show" role="alert">Comments been added    
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -104,7 +104,11 @@ class Comments extends CI_Controller
             }
 
         }else{
-            $this->session->set_userdata('message','Please Write Comments First');
+            $this->session->set_userdata('message','<div class="alert alert-info alert-dismissible show" role="alert">Please Write Comment First   
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
             redirect($back_url); 
         }
         
