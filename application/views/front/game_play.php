@@ -4,7 +4,16 @@
 		<div class="row">
             <div class="col-sm-3">
                 <div>
-                    <img class="img-responsive" src="http://visarity-ad-pakfiles.s3.amazonaws.com/web/images/v3ad-8b8f-9a7f-8ea7-7c30b_regular.jpg" style="width: 80%; height: 100%; float: right;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Banner demo -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1938129054627089"
+     data-ad-slot="8129382331"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
                 </div>
                 <div id="FavGames">
 

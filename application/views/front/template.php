@@ -462,7 +462,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
         <!-- Bootstrap Files  -->
 		<script src="<?php echo site_url('assets/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js');?>"></script>
 		<!-- Google Analytic -->
-		<?php //echo $this->config->item('google_analytics'); ?>
+		<?php echo $this->config->item('google_analytics'); ?>
 
 <script type="text/javascript">
 $(document).ready(function(){
