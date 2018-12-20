@@ -94,7 +94,10 @@ class Game extends CI_Controller
         //var_dump($data['id']);
         $this->GamesModel->addPlayedGames($data['id'],$ip);
 
-        $data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);      
+        $data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);
+
+
+        $data['ClickLikes'] = $this->gameModel->checkLikesComs_ip($data['id']);     
 
         $data['title'] = $data['title_game'].' - '.$data['category'].' - '.$this->config->item('description');
         // Added game statistics (nb of * played)
@@ -179,9 +182,20 @@ class Game extends CI_Controller
 
     // Update likes in comments via Jquery
     public function likesComs($idCom, $likeType)
-    {
-        if(isset($this->session->id)) {
-            $this->gameModel->likesComs($idCom, $likeType);
-        }
+    {   
+        $idCom = $this->uri->segment(3,0);
+        $likeType=$this->uri->segment(4,0);
+
+        // if(isset($this->input->ip_address())) {
+        $this->gameModel->likesComs_ip($idCom, $likeType);
+
+        $data  = $this->gameModel->checkLikesComs_ip($idCom);
+        echo json_encode($data);
+        exit();
+        // }
+        //echo $idCom.$likeType;
+        //echo 'segment 3:'.$idCom.'likeType'.$likeType;
+      
+        //echo $this->input->ip_address();
     }
 }

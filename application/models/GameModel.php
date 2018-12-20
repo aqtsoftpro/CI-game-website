@@ -426,4 +426,66 @@ class GameModel extends CI_Model
          );
     }
 
+    public function likesComs_ip($idCom, $likeType)
+    {
+        $ip = $this->input->ip_address();
+        //$ip="::4";
+        if($likeType == 1) {
+            $sql = 'SELECT nb_like FROM 2d_likes WHERE id_com = ? AND user_ip = ?';
+            $query = $this->db->query($sql, array($idCom, $ip));
+            if($result = $query->row()) {
+                if($result->nb_like == 0) {
+                    $sql = "UPDATE 2d_likes SET nb_like = ?, nb_unlike = ? WHERE id_com = ? AND user_ip= ?";
+                    $this->db->query($sql, array(1, 0, $idCom, $ip));
+                } else {
+                    $sql = "UPDATE 2d_likes SET nb_like = ? WHERE id_com = ? AND user_ip = ?";
+                    $this->db->query($sql, array(0, $idCom, $ip));
+                }
+            } else {
+                $sql = "INSERT INTO 2d_likes (user_ip, id_com, nb_like, date_creation) VALUES (?, ?, ?, ?)";
+                $this->db->query($sql, array($ip, $idCom, 1, date('Y-m-d H:i:s')));
+            }
+        } elseif ($likeType == 0) {
+            $sql = 'SELECT nb_unlike FROM 2d_likes WHERE id_com = ? AND user_ip = ?';
+            $query = $this->db->query($sql, array($idCom,$ip));
+            if($result = $query->row()) {
+                if($result->nb_unlike == 0) {
+                    $sql = "UPDATE 2d_likes SET nb_unlike = ?, nb_like = ? WHERE id_com = ? AND user_ip = ?";
+                    $this->db->query($sql, array(1, 0, $idCom, $ip));
+                } else {
+                    $sql = "UPDATE 2d_likes SET nb_unlike = ? WHERE id_com = ? AND user_ip = ?";
+                    $this->db->query($sql, array(0, $idCom, $ip));
+                }
+            } else {
+                $sql = "INSERT INTO 2d_likes (user_ip, id_com, nb_unlike, date_creation) VALUES (?, ?, ?, ?)";
+                $this->db->query($sql, array($ip, $idCom, 1, date('Y-m-d H:i:s')));
+            }
+        } else {
+        }
+        $sql = 'SELECT nb_like, nb_unlike FROM 2d_likes WHERE id_com = ?';
+        $query = $this->db->query($sql, array($idCom));
+        $score = 0;
+        foreach ($query->result() as $row) {
+            $score += $row->nb_like-$row->nb_unlike;
+        }
+        // $sql = "UPDATE 2d_comments SET score = ? WHERE id = ?";
+        // $this->db->query($sql, array($score, $idCom));
+    }
+    public function checkLikesComs_ip($idCom)
+    {
+        $sql = "SELECT SUM(nb_like) as total_likes, SUM(nb_unlike) as total_unlikes FROM 2d_likes WHERE id_com = ?";
+        $query = $this->db->query($sql, array($idCom));
+        if($result = $query->row()) {
+            return array (
+             'nbLike' => $result->total_likes,
+             'nbUnlike' => $result->total_unlikes
+             );
+        } else {
+            return array (
+             'nbLike' => 0,
+             'nbUnlike' => 0
+             );
+        }
+    }
+
 }

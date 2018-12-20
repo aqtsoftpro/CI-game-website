@@ -32,8 +32,8 @@ class GamesModel extends CI_Model
 
     public function getRelatedGamesByCategory($category_id)
     {
-        $sql = "SELECT * FROM 2d_games WHERE id_category=".$category_id." ORDER BY RAND() LIMIT 6";
-        $query = $this->db->query($sql);
+        $sql = "SELECT * FROM 2d_games WHERE id_category=? ORDER BY RAND() LIMIT 6";
+        $query = $this->db->query($sql,array($category_id));
        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
          
@@ -307,7 +307,7 @@ class GamesModel extends CI_Model
                                                                        
                             </div>';
                         }
-               return $getBlocGame;          
+            return $getBlocGame;          
         
     }
 

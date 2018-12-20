@@ -17,70 +17,7 @@
                 </div>
                 <div id="FavGames">
 
-                </div>
-                <!--<div class="panel panel-default" style="width: 80%; float: right; margin-top: 15px;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default" style="width: 80%; float: right;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default" style="width: 80%; float: right;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default" style="width: 80%; float: right;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default" style="width: 80%; float: right;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default" style="width: 80%; float: right;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>
-                <div class="panel panel-default" style="width: 80%; float: right;">
-                    <div class="panel-heading" style="padding: 0px;">
-                        <img src="http://www.pebhub.com/wp-content/uploads/2015/10/300x200-300x200.jpg" class="img-responsive">
-                    </div>
-                    <div class="panel-body">
-                        <b>Game Name</b>
-                        <p style="margin-top: 10px;">Rating: 80% &nbsp; &middot; &nbsp; 123,231,000 plays</p>
-                    </div>
-                </div>-->
+                </div>              
             </div>
 			<div class="col-sm-6">
 
@@ -131,10 +68,22 @@
                             <div class="col-sm-4" style="text-align: left">
                                 <h4 class="inline">Played <?php if(isset($played)) echo $played; ?> times</h4>
                                 <div class="inline">
-                                    <p>
-                                        <i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;1234&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <i class="fa fa-thumbs-down"></i>&nbsp;&nbsp;1234
-                                    </p>
+                                <p>
+                                <div class="col-sm-2 likes_unlike" style="width: 200px;display: inline;">
+                                
+                                    <div class="nbLikes" style="display:inline-block;float:left;">
+                                    <a href="#" class="finger-up"  id="<?php echo $id;?>">
+                                    <i class="fa fa-thumbs-up" id="like"></i>
+                                    </a><span class="likes_no">
+                                    <?php echo isset($ClickLikes['nbLike'])? $ClickLikes['nbLike']: '0';?></span>
+                                    </div>
+                                    <div class="nbUnLike" style="display:inline-block;float:left;">                                
+                                        <a href="#" class="finger-down"  id="<?php echo $id;?>">
+                                        <i class="fa fa-thumbs-down"></i></a>
+                                        <span class="unlikes_no"><?php echo isset($ClickLikes['nbUnlike'])? $ClickLikes['nbUnlike']: '0';?></span>
+                                    </div>
+                                </div>
+                                </p>
                                 </div>
                             </div>
                             <div class="col-sm-4" style="text-align: left">
@@ -249,24 +198,42 @@ window.onload = function() {
 		var id = $(this).parent().data("id");
 		$("input#related").val(id);
 	});
-	$("a.finger-up").click(function() {
-		var id = $(this).parent().data("id");
-		$.get("/game/likesComs/"+id+"/1");
-		var pos = $(this);
+	$("a.finger-up").click(function(e) {
+        e.preventDefault();
+		var id = $(this).attr('id');
+		$.get("<?php echo site_url('/game/likesComs/')?>"+id+"/1")
+        .done(function( data ) {
+        var res_like = JSON.parse(data);
+        alert("You have liked");       
+        $(".likes_no").html(res_like.nbLike);
+        $(".unlikes_no").html(res_like.nbUnlike);
+        }, "json");
+		/*var pos = $(this);
+        console.log(pos);
 		pos.children().toggleClass('text-primary');
-		pos.next().children().removeClass('text-danger');
+		pos.next().children().removeClass('text-danger');*/
 	});
-	$("a.finger-down").click(function() {
-		var id = $(this).parent().data("id");
+
+	$("a.finger-down").click(function(e) {
+        e.preventDefault();
+		var id = $(this).attr('id');
 		$.get("/game/likesComs/"+id+"/0");
-		var pos = $(this);
-		pos.children().toggleClass('text-danger');
-		pos.prev().children().removeClass('text-primary');
+        $.get("<?php echo site_url('/game/likesComs/')?>"+id+"/0")
+        .done(function( data ) {
+        var res_like = JSON.parse(data);
+        alert("You have unliked");       
+        $(".likes_no").html(res_like.nbLike);
+        $(".unlikes_no").html(res_like.nbUnlike);
+        }, "json");
+		
+		
 	});
     $(".make_fav").click(function(e){
         e.preventDefault();
         var game_id = $(this).attr('id');
+
         var fav_ids = [];
+        
         if(localStorage.getItem("favrote_games")){
             fav_ids=JSON.parse(localStorage.getItem("favrote_games"));
         }
@@ -276,8 +243,12 @@ window.onload = function() {
         alert("Game Has Been Added As Favourites!!!!");
         loadFavGames();
     });
-
     loadFavGames();
+
+    // $("#like").click(function(){
+    //     var game_id = $(this).attr('id');
+    //     alert('You have liked'+game_id);
+    // })
     
 
 };
@@ -304,4 +275,5 @@ function loadFavGames(){
         }
     });
 }
+
 </script>
