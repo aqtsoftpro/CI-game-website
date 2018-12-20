@@ -90,15 +90,28 @@ class Comments extends CI_Controller
         $postGame = $this->input->post('game_id', true);
         $back_url = $this->input->post('back_url',true);
        
-  
-        
-        if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
+        if(!empty($postComment)) {
+            if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
             $data['msg'] = $this->commentsModel->user_addComment($postAuthor, $postComment, $postGame);
             $this->session->set_userdata('game_id',$postGame);
+            $this->session->set_userdata('message','<div class="alert alert-warning alert-dismissible show" role="alert">Comments been added    
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>');
+            redirect($back_url);
+
             }
+
+        }else{
+            $this->session->set_userdata('message','Please Write Comments First');
+            redirect($back_url); 
+        }
+        
+        
         
 
-        redirect($back_url);   
+          
            
         // // Retrieving the list of users for the relations with the comments
         // $data['getUsers'] = $this->commentsModel->getUsers();

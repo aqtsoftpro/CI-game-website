@@ -157,7 +157,9 @@
                     <h4><b>GAME DESCRIPTION</b></h4>
                     <p class="text-muted"><?php if(isset($description)) echo $description; ?></p>
                 </div>
-                <div class="card-box">
+                <div class="card-box">                          
+                <?php echo $this->session->userdata('message'); ?>
+          
                 <h4><b><?php echo $this->lang->line('comments'); ?>&nbsp;</b><?php echo $nbRows; ?></h4>
 
                     <?php if(isset($this->session->username)) {    ;?>
