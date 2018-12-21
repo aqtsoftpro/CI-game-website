@@ -70,7 +70,7 @@
                         <div class="bottom-adds">
                         <?php echo $this->config->item('sidebarbottom'); ?>
                         </div>
-                    <div class="row">
+                    <div class="row" style="margin-top: 8px;">
                         <div class="col-sm-4" style="text-align: left; margin-top: 15px;">                            
                                 <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o"></i><b style="color:#615555;">Add to your favourites</b></a>
                         </div>
