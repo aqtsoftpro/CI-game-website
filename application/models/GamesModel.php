@@ -310,6 +310,38 @@ class GamesModel extends CI_Model
             return $getBlocGame;    
         
     }
-    
+    public function getPlayedGames_main($ip){
+    $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC";
+
+    $query = $this->db->query($sql,array($ip));
+        
+            foreach($query->result() as $row){
+            $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
+                                <!--<div class="inner-div">-->
+                                <div class="game-list-box">
+                                    <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
+                                        <video autoplay loop muted playsinline>
+                                            <source src="'.$row->video_url.'" type="video/mp4">
+                                        </video>
+                                        <img src="'.(empty($row->image) ? site_url('assets/images/default_swf.jpg') : $row->image).'" class="thumb-img" alt="work-thumbnail">
+                                    </a>
+
+                                    <!--<div class="game-action '.$classShow.'">
+                                        <a href="'.site_url('news/').'" class="btn btn-warning btn-sm">New</a>
+                                    </div>--> 
+                                </div>
+                                    
+
+                               <!-- </div>-->
+                                <div class="game-title">
+                                        <h2 class="h5"><a href="'.site_url('game/'.$row->url).'" title="'.$row->title.'">'.mb_strimwidth($row->title, 0,22, '...').'</a></h2>
+                                 </div>
+                                     '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>                                                          
+                                                                       
+                            </div>';
+                        }
+            return $getBlocGame;    
+        
+    }
 
 }
