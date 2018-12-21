@@ -7,10 +7,7 @@
           
 <div id='afscontainer1'></div>
 
-<?php echo $this->config->item('sidebartop'); ?>
-
-
-        
+<?php echo $this->config->item('sidebartop'); ?>        
                 </div>
                 <div id="FavGames">
 
@@ -166,7 +163,7 @@
                 </div>
 			</div>
             <div class="col-sm-3 right-col">             
-            <?php echo $this->config->item('sidebartop');?>
+            <?php echo $this->config->item('sidebarcontent');?>
                 <div class="panel panel-default">
                    <?php echo $getPlayedGames;?>
                 </div>
