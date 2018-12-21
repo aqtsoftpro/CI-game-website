@@ -9,8 +9,7 @@
 
 <?php echo $this->config->item('sidebartop'); ?>
 
-<?php echo $this->config->item('sidebarbottom'); ?>
-<?php echo $this->config->item('sidebarcontent'); ?>
+
         
                 </div>
                 <div id="FavGames">
