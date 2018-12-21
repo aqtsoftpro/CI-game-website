@@ -2499,3 +2499,8 @@ height:600px;
 .card-box>.row>.game-div{
 	    background: #ebeff2;
 }
+.bottom-adds{
+	overflow: hidden;
+    padding-top: 10px;
+    height: 110px;
+}
