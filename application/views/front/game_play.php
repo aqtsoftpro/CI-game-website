@@ -209,12 +209,12 @@ window.onload = function() {
 	$("a.finger-down").click(function(e) {
         e.preventDefault();
 		var id = $(this).attr('id');
-		$.get("/game/likesComs/"+id+"/0");
+		// $.get("/game/likesComs/"+id+"/0");
         $.get("<?php echo site_url('/game/likesComs/')?>"+id+"/0")
         .done(function( data ) {
-        var res_like = JSON.parse(data);              
-        $(".likes_no").html(res_like.nbLike);
-        $(".unlikes_no").html(res_like.nbUnlike);
+        var res_unlike = JSON.parse(data);              
+        $(".likes_no").html(res_unlike.nbLike);
+        $(".unlikes_no").html(res_unlike.nbUnlike);
         }, "json");
 		
 		
