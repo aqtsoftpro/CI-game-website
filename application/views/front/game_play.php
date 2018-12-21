@@ -55,13 +55,30 @@
 				<?php } ?>
                     <div class="card-box">
                         <div class="row">
-                            <div class="col-sm-4" style="text-align: left">
+                            <div class="col-sm-9" style="text-align: left">
                                 <h3 class="inline"><b><a href="<?php echo site_url('game/show/'.$url.'/'); ?>"><?php if(isset($title_game)) echo $title_game; ?></a></b></h3>
                                 <div><div id="<?php echo (isset($this->session->id)) ? 'rating' : 'nr-rating'; ?>" class="inline" data-score="<?php if(isset($getNote)) echo $getNote; ?>" data-game="<?php if(isset($id)) echo $id; ?>"></div></div>
                             </div>
-                            <div class="col-sm-4" style="text-align: left">
-                                <h4 class="inline">Played <?php if(isset($played)) echo $played; ?> times</h4>
-                                <div class="inline">
+                          
+                            <div class="col-sm-3" style="text-align: left">
+                                <div class="slider slider-inverse">
+                                    <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="718" data-slider-value="718" data-slider-tooltip="hide">
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary waves-effect waves-light" id="fullscreen"> <i class="fa fa-arrows-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="bottom-adds">
+                        <?php echo $this->config->item('sidebarbottom'); ?>
+                        </div>
+                    <div class="row">
+                        <div class="col-sm-4" style="text-align: left; margin-top: 15px;">                            
+                                <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o"></i><b style="color:#615555;">Add to your favourites</b></a>
+                        </div>
+                        <div class="col-sm-4">
+                        <h4>Played <?php if(isset($played)) echo $played; ?> times</h4>
+                        </div>
+                        <div class="col-sm-4">
+                        <div class="inline">
                                 <p>
                                 <div class="col-sm-2 likes_unlike" style="width: 200px;display: inline;">
                                 
@@ -79,21 +96,8 @@
                                 </div>
                                 </p>
                                 </div>
-                            </div>
-                            <div class="col-sm-4" style="text-align: left">
-                                <div class="slider slider-inverse">
-                                    <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="718" data-slider-value="718" data-slider-tooltip="hide">
-                                </div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary waves-effect waves-light" id="fullscreen"> <i class="fa fa-arrows-alt"></i></button>
-                            </div>
                         </div>
-                        <div class="bottom-adds">
-                        <?php echo $this->config->item('sidebarbottom'); ?>
-                        </div>
-                        <div style="text-align: left; margin-top: 15px;">
-                            
-                                <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o"></i><b style="color:#615555;">Add to your favourites</b></a>
-                        </div>
+                    </div><!-------------------play and favourit name--->
                     </div>
 				</div>
                 <div class="card-box">
