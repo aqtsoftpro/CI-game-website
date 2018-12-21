@@ -4,16 +4,14 @@
 		<div class="row">
             <div class="col-sm-3">
                 <div>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Banner demo -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1938129054627089"
-     data-ad-slot="8129382331"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+          
+<div id='afscontainer1'></div>
+
+<?php echo $this->config->item('sidebartop'); ?>
+
+<?php echo $this->config->item('sidebarbottom'); ?>
+<?php echo $this->config->item('sidebarcontent'); ?>
+        
                 </div>
                 <div id="FavGames">
 
@@ -71,15 +69,15 @@
                                 <p>
                                 <div class="col-sm-2 likes_unlike" style="width: 200px;display: inline;">
                                 
-                                    <div class="nbLikes" style="display:inline-block;float:left;">
+                                    <div class="nbLikes" style="display:inline-block;float:left; width:60px;">
                                     <a href="#" class="finger-up"  id="<?php echo $id;?>">
-                                    <i class="fa fa-thumbs-up" id="like"></i>
+                                    <i class="fa fa-thumbs-up fa-2x" id="like"></i>
                                     </a><span class="likes_no">
                                     <?php echo isset($ClickLikes['nbLike'])? $ClickLikes['nbLike']: '0';?></span>
                                     </div>
-                                    <div class="nbUnLike" style="display:inline-block;float:left;">                                
+                                    <div class="nbUnLike" style="display:inline-block;float:left;width:60px;">                                
                                         <a href="#" class="finger-down"  id="<?php echo $id;?>">
-                                        <i class="fa fa-thumbs-down"></i></a>
+                                        <i class="fa fa-thumbs-down fa-2x"></i></a>
                                         <span class="unlikes_no"><?php echo isset($ClickLikes['nbUnlike'])? $ClickLikes['nbUnlike']: '0';?></span>
                                     </div>
                                 </div>
@@ -94,7 +92,7 @@
                             </div>
                         </div>
                         <div>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV3pT1OEqd9RoXvBj9dWm42IfH3SWidy5hRDJdUnVjDOklimyS">
+                        <?php echo $this->config->item('sidebarbottom'); ?>
                         </div>
                         <div style="text-align: left; margin-top: 15px;">
                             
@@ -168,19 +166,14 @@
                     </div>
                 </div>
 			</div>
-            <div class="col-sm-3 right-col">
-                <div class="card-box">
-                    <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
-                </div>
-                <div class="card-box">
-                    <img class="img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-W64DLCjhQNC53b6lQaAlO8wLqoGFvF52UoqjRpCm76rkfLpo">
-                </div>
-              
-                
+            <div class="col-sm-3 right-col">             
+            <?php echo $this->config->item('sidebartop');?>
                 <div class="panel panel-default">
                    <?php echo $getPlayedGames;?>
                 </div>
-                
+                <div class="play_show_more" style="padding-left: 40px;">
+                <a href="<?php echo base_url('/?ip=').$this->input->ip_address();?>" class="btn btn-primary">Show More</a>
+                </div>
             </div>
 		</div>
       
@@ -203,8 +196,7 @@ window.onload = function() {
 		var id = $(this).attr('id');
 		$.get("<?php echo site_url('/game/likesComs/')?>"+id+"/1")
         .done(function( data ) {
-        var res_like = JSON.parse(data);
-        alert("You have liked");       
+        var res_like = JSON.parse(data);             
         $(".likes_no").html(res_like.nbLike);
         $(".unlikes_no").html(res_like.nbUnlike);
         }, "json");
@@ -220,8 +212,7 @@ window.onload = function() {
 		$.get("/game/likesComs/"+id+"/0");
         $.get("<?php echo site_url('/game/likesComs/')?>"+id+"/0")
         .done(function( data ) {
-        var res_like = JSON.parse(data);
-        alert("You have unliked");       
+        var res_like = JSON.parse(data);              
         $(".likes_no").html(res_like.nbLike);
         $(".unlikes_no").html(res_like.nbUnlike);
         }, "json");
@@ -233,6 +224,7 @@ window.onload = function() {
         var game_id = $(this).attr('id');
 
         var fav_ids = [];
+        
         
         if(localStorage.getItem("favrote_games")){
             fav_ids=JSON.parse(localStorage.getItem("favrote_games"));

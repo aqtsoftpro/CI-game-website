@@ -154,4 +154,18 @@ class CommentsModel extends CI_Model
             return null;
         }
     }
+     public function getComment_user($id_game,$user_id) 
+    {
+        $sql = "SELECT * FROM 2d_comments WHERE id_user = ? AND id_game=?";
+        $query = $this->db->query($sql, array($user_id,$id_game));
+        if($result = $query->row()) {
+            return array(
+             'comment' => $result->comment,
+             'id_game' => $result->id_game,
+             'id_user' => $result->id_user
+             );
+        } else {
+            return null;
+        }
+    }
 }
