@@ -4,9 +4,6 @@
 		<div class="row">
             <div class="col-sm-3">
                 <div>
-          
-<div id='afscontainer1'></div>
-
 <?php echo $this->config->item('sidebartop'); ?>
 
 
