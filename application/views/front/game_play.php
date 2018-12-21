@@ -87,7 +87,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary waves-effect waves-light" id="fullscreen"> <i class="fa fa-arrows-alt"></i></button>
                             </div>
                         </div>
-                        <div>
+                        <div class="bottom-adds">
                         <?php echo $this->config->item('sidebarbottom'); ?>
                         </div>
                         <div style="text-align: left; margin-top: 15px;">
