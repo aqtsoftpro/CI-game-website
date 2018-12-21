@@ -1,33 +1,22 @@
 <?php
 defined("BASEPATH") OR exit("No direct script access allowed");
-$config["sidebartop"] = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Banner demo -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1938129054627089"
-     data-ad-slot="8129382331"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+$config["sidebartop"] = '';
+$config["sidebarbottom"] = '<script type="text/javascript" charset="utf-8">
+
+  var pageOptions = {
+    "pubId": "pub-9616389000213823", // Make sure this the correct client ID!
+    "query": "cars",
+    "adPage": 1
+  };
+
+  var adblock1 = {
+    "container": "afscontainer1",
+    "width": "300",
+    "number": 3
+  };
+
+  _googCsa(\'ads\', pageOptions, adblock1);
+
 </script>';
-$config["sidebarbottom"] = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Banner demo -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1938129054627089"
-     data-ad-slot="8129382331"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>';
-$config["sidebarcontent"] = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Banner demo -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1938129054627089"
-     data-ad-slot="8129382331"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>';
+$config["sidebarcontent"] = '';
 ?>
