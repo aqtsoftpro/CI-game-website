@@ -525,6 +525,7 @@
 ============= */
 .slider .slider-horizontal {
 	margin: 10px 0;
+	width:100px;
 }
 .slider .slider-vertical {
 	margin: 0 10px;
