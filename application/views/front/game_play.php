@@ -77,10 +77,10 @@
                         <div class="col-sm-4">
                         <h4>Played <?php if(isset($played)) echo $played; ?> times</h4>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 col-sm-push-1">
                         <div class="inline">
                                 <p>
-                                <div class="col-sm-2 likes_unlike" style="width: 200px;display: inline;">
+                                <div class="col-sm-2 likes_unlike" style="width: 150px;display: inline;">
                                 
                                     <div class="nbLikes" style="display:inline-block;float:left; width:60px;">
                                     <a href="#" class="finger-up"  id="<?php echo $id;?>">
