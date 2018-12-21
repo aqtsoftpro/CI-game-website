@@ -3,7 +3,7 @@
 
 		<div class="row">
             <div class="col-sm-3">
-                <div>
+            <div style="margin-left:17px;">
 <?php echo $this->config->item('sidebartop'); ?>
 
 
@@ -55,12 +55,12 @@
 				<?php } ?>
                     <div class="card-box">
                         <div class="row">
-                            <div class="col-sm-9" style="text-align: left">
+                            <div class="col-sm-8" style="text-align: left">
                                 <h3 class="inline"><b><a href="<?php echo site_url('game/show/'.$url.'/'); ?>"><?php if(isset($title_game)) echo $title_game; ?></a></b></h3>
                                 <div><div id="<?php echo (isset($this->session->id)) ? 'rating' : 'nr-rating'; ?>" class="inline" data-score="<?php if(isset($getNote)) echo $getNote; ?>" data-game="<?php if(isset($id)) echo $id; ?>"></div></div>
                             </div>
                           
-                            <div class="col-sm-3" style="text-align: left">
+                            <div class="col-sm-4" style="text-align: left">
                                 <div class="slider slider-inverse">
                                     <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="718" data-slider-value="718" data-slider-tooltip="hide">
                                 </div>
