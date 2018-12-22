@@ -45,9 +45,10 @@ class Home extends CI_Controller
         $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
         $content = $this->load->view('front/index',$data,true);
         $search = $_REQUEST['q'];
-        $ip = $_REQUEST['ip'];
+        $ip = $_REQUEST['playedgames'];
 
         if(isset($ip)) {
+        $ip=$this->input->ip_address();
         $data['getBlocGame'] = $this->GamesModel->getPlayedGames_main($ip);
         $content = $this->load->view('front/user_game',$data,true); 
         }

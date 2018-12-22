@@ -178,7 +178,7 @@
                    <?php echo $getPlayedGames;?>
                 </div>
                 <div class="play_show_more" style="padding-left: 40px;">
-                <a href="<?php echo base_url('/?ip=').$this->input->ip_address();?>" class="btn btn-primary">Show More</a>
+                <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
                 </div>
             </div>
 		</div>
