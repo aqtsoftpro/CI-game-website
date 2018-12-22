@@ -193,6 +193,7 @@ window.onload = function() {
 	  function() {
 	    $(this).toggleClass('slidershow');
 	});
+    $("#exit-fullscreen").css("display","none");
 	$("a#reply").click(function() {
 		var id = $(this).parent().data("id");
 		$("input#related").val(id);
@@ -205,6 +206,7 @@ window.onload = function() {
         var res_like = JSON.parse(data);             
         $(".likes_no").html(res_like.nbLike);
         $(".unlikes_no").html(res_like.nbUnlike);
+        $("a.finger-up").toggleClass("text-danger");
         }, "json");
 		/*var pos = $(this);
         console.log(pos);
