@@ -3,56 +3,54 @@
 
 		<div class="row">
             <div class="col-sm-3">
-            <div style="margin-left:17px;">
-<?php echo $this->config->item('sidebartop'); ?>
-
-
-        
+                <div style="margin-left:17px;">
+                <?php echo $this->config->item('sidebartop'); ?>        
                 </div>
                 <div id="FavGames">
-
                 </div>              
             </div>
 			<div class="col-sm-6">
 
-				<div class="game-full-box text-center">
-<!--					--><?php //if($type != 2) { ?>
-<!--					<div class="row">-->
-<!--						<div class="col-sm-12">-->
-<!--							<div class="slider slider-inverse">-->
-<!--								<input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--					--><?php //} ?>
-				<?php if($type == 1) { ?>
-					<div id="gameBox">
-						<object id="flash" type="application/x-shockwave-flash" data="<?php echo site_url('uploads/files/games/'.$file.''); ?>" title="<?php echo $title_game; ?>" width="800" height="666">
-							<param name="movie" value="<?php echo site_url('uploads/files/games/'.$file); ?>">
-							<param name="quality" value="high">
-							<param name="wmode" value="transparent">
-							<param name="bgcolor" value="#000000">
-							<param name="allowFullScreen" value="true">
+				<!-- <div class="game-full-box text-center"> -->
+<div class="container fullscreen" id="game_video">
+                         
+            <div class="col-sm-12">
+                <div class="game-full-box text-center">                 
+                <?php if($type == 1) { ?>
+                    <div id="gameBox">
+                        <object id="flash" type="application/x-shockwave-flash" data="<?php echo site_url('uploads/files/games/'.$file.''); ?>" title="<?php echo $title_game; ?>" width="800" height="666">
+                            <param name="movie" value="<?php echo site_url('uploads/files/games/'.$file); ?>">
+                            <param name="quality" value="high">
+                            <param name="wmode" value="transparent">
+                            <param name="bgcolor" value="#000000">
+                            <param name="allowFullScreen" value="true">
                             <p><a href="http://get.adobe.com/flashplayer"><?php echo $this->lang->line('installFlash'); ?></a></p>
-						</object>
-					</div>
-				<?php } elseif($type == 2) { ?>
-					<div id="gameBox" class="p-t-20 p-b-20">
-						<object type="application/x-shockwave-flash" data="/assets/flash/emulator.swf" title="<?php echo $title_game; ?>" width="<?php echo emul($console, 'width'); ?>" height="<?php echo emul($console, 'height'); ?>">
-							<param name="movie" value="/assets/flash/emulator.swf">
-							<param name="bgcolor" value="#000000">
-							<param name="allowscriptaccess" value="sameDomain">
-							<param name="allowFullScreen" value="true">
-							<param name="allowFullScreenInteractive" value="true">
-							<param name="flashvars" value="system=<?php if(isset($console)) echo $console; ?>&amp;url=<?php echo site_url('uploads/files/games/'.$file.''); ?>">
+                        </object>
+                    </div>
+                <?php } elseif($type == 2) { ?>
+                    <div id="gameBox" class="p-t-20 p-b-20">
+                        <object type="application/x-shockwave-flash" data="/assets/flash/emulator.swf" title="<?php echo $title_game; ?>" width="<?php echo emul($console, 'width'); ?>" height="<?php echo emul($console, 'height'); ?>">
+                            <param name="movie" value="/assets/flash/emulator.swf">
+                            <param name="bgcolor" value="#000000">
+                            <param name="allowscriptaccess" value="sameDomain">
+                            <param name="allowFullScreen" value="true">
+                            <param name="allowFullScreenInteractive" value="true">
+                            <param name="flashvars" value="system=<?php if(isset($console)) echo $console; ?>&amp;url=<?php echo site_url('uploads/files/games/'.$file.''); ?>">
                             <p><a href="http://get.adobe.com/flashplayer"><?php echo $this->lang->line('installFlash'); ?></a></p>
-						</object>
-					</div>
-				<?php } else { ?>
-					<div id="gameBox">
-						<iframe id="object" src="<?php if(isset($embed)) echo $embed;  ?>" type="application/vnd.adobe.flash-movie" width="850" height="800" scrolling="no" frameborder="0" style="width: 831px; height: 600px;"></iframe>
-					</div>
-				<?php } ?>
+                        </object>
+                    </div>
+                <?php } else { ?>
+                    <div id="gameBox">
+                        <iframe id="object" src="<?php if(isset($embed)) echo $embed;  ?>" type="application/vnd.adobe.flash-movie" width="850" height="800" scrolling="no" frameborder="0"></iframe>
+                    </div>
+                <?php } ?>
+                </div>
+            </div>
+    <div class="game-panel-btn">
+                <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
+                    <i class="fa fa-compress" aria-hidden="true"></i></button>
+                </div>
+    </div> <!-- end container -->
                     <div class="card-box">
                         <div class="row">
                             <div class="col-sm-8" style="text-align: left">
@@ -61,11 +59,19 @@
                             </div>
                           
                             <div class="col-sm-4" style="text-align: left">
-                                <div class="slider slider-inverse">
-                                    <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="718" data-slider-value="718" data-slider-tooltip="hide">
-                                </div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary waves-effect waves-light" id="fullscreen"> <i class="fa fa-arrows-alt"></i></button>
+                                <?php if($type != 2) { ?>
+                  <!--   <div class="row"> -->
+                        <div class="col-sm-6">
+                            <div class="slider slider-inverse">
+                                <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">
                             </div>
+                        </div>
+                    <!-- </div> -->
+                    <?php } ?>
+                        <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
+                        <i class="fa fa-arrows-alt"></i>
+                        </button>
+                        </div>
                         </div>
                         <div class="bottom-adds">
                         <?php echo $this->config->item('sidebarbottom'); ?>
@@ -99,7 +105,7 @@
                         </div>
                     </div><!-------------------play and favourit name--->
                     </div>
-				</div>
+				<!-- </div> -->
                 <div class="card-box">
                     <h4><b>GAME DESCRIPTION</b></h4>
                     <p class="text-muted"><?php if(isset($description)) echo $description; ?></p>
@@ -121,7 +127,7 @@
                             <input type="text" class="form-control" placeholder="What are your thoughts?" name="comments" id="comments">
                             <input type="hidden" name="author" value="<?php echo $this->session->userdata('id');?>"> 
                             <input type="hidden" name="game_id" value="<?php echo $id; ?>">
-                            <input type="hidden" name="back_url" value="<?php echo current_url();?>">                       
+                            <input type="hidden" name="back_url" value="<?php echo current_url();?>"> 
                             <span class="input-group-btn">
                             <button type="input" class="btn btn-default" <?php if(($this->session->game_id)==$id) echo 'disabled';?>><?php echo $this->lang->line('send'); ?></button>
                             </span>
@@ -267,5 +273,42 @@ function loadFavGames(){
         }
     });
 }
+</script>
+<script>
+
+var elem = document.getElementById("game_video");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();    
+    document.getElementById("exit-fullscreen").style.display="block";
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+     document.getElementById("exit-fullscreen").style.display="block";    
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+     document.getElementById("exit-fullscreen").style.display="block";    
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+     document.getElementById("exit-fullscreen").style.display="block";   
+  }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();    
+    $("#exit-fullscreen").css("display", "none");
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+    $("#exit-fullscreen").css("display", "none");
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+    $("#exit-fullscreen").css("display", "none");
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
+    $("#exit-fullscreen").css("display", "none");
+  }
+}
+
 
 </script>
