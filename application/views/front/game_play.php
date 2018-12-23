@@ -78,7 +78,7 @@
                         </div>
                     <div class="row" style="margin-top: 8px;">
                         <div class="col-sm-4" style="text-align: left; margin-top: 15px;">                            
-                                <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o"></i><b style="color:#615555;margin-left: 6px;">Add to your favourites</b></a>
+                                <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o" id="fav_star"></i><b style="color:#615555;margin-left: 6px;">Add to your favourites</b></a>
                         </div>
                         <div class="col-sm-4">
                         <h4>Played <?php if(isset($played)) echo $played; ?> times</h4>
@@ -89,13 +89,13 @@
                                 <div class="col-sm-2 likes_unlike" style="width: 150px;display: inline;">
                                 
                                     <div class="nbLikes" style="display:inline-block;float:left; width:60px;">
-                                    <a href="#" class="finger-up"  id="<?php echo $id;?>">
+                                    <a href="#" class="finger-up text-primary"  id="<?php echo $id;?>">
                                     <i class="fa fa-thumbs-up fa-2x" id="like"></i>
                                     </a><span class="likes_no">
                                     <?php echo isset($ClickLikes['nbLike'])? $ClickLikes['nbLike']: '0';?></span>
                                     </div>
                                     <div class="nbUnLike" style="display:inline-block;float:left;width:60px;">                                
-                                        <a href="#" class="finger-down"  id="<?php echo $id;?>">
+                                        <a href="#" class="finger-down text-primary"  id="<?php echo $id;?>">
                                         <i class="fa fa-thumbs-down fa-2x"></i></a>
                                         <span class="unlikes_no"><?php echo isset($ClickLikes['nbUnlike'])? $ClickLikes['nbUnlike']: '0';?></span>
                                     </div>
@@ -205,8 +205,7 @@ window.onload = function() {
         .done(function( data ) {
         var res_like = JSON.parse(data);             
         $(".likes_no").html(res_like.nbLike);
-        $(".unlikes_no").html(res_like.nbUnlike);
-        $("a.finger-up").toggleClass("text-danger");
+        $(".unlikes_no").html(res_like.nbUnlike);        
         }, "json");
 		/*var pos = $(this);
         console.log(pos);
@@ -222,7 +221,7 @@ window.onload = function() {
         .done(function( data ) {
         var res_unlike = JSON.parse(data);              
         $(".likes_no").html(res_unlike.nbLike);
-        $(".unlikes_no").html(res_unlike.nbUnlike);
+        $(".unlikes_no").html(res_unlike.nbUnlike);        
         }, "json");
 		
 		
@@ -230,18 +229,26 @@ window.onload = function() {
     $(".make_fav").click(function(e){
         e.preventDefault();
         var game_id = $(this).attr('id');
-
+        var starElement = document.getElementById("fav_star");     
         var fav_ids = [];
         
         
         if(localStorage.getItem("favrote_games")){
             fav_ids=JSON.parse(localStorage.getItem("favrote_games"));
         }
-        fav_ids.push(game_id);
-        //console.log(fav_ids);
+       
+        var index = fav_ids.indexOf(game_id);
+        if(index > -1){
+            fav_ids.splice(index,1);           
+            $("#fav_star").toggleClass("fa-star fa-star-o");
+            localStorage.setItem("favrote_games", JSON.stringify(fav_ids));            
+            loadFavGames();
+        }else{
+        fav_ids.push(game_id);     
         localStorage.setItem("favrote_games", JSON.stringify(fav_ids));
-        alert("Game Has Been Added As Favourites!!!!");
+        $("#fav_star").toggleClass("fa-star-o fa-star");             
         loadFavGames();
+        }
     });
     loadFavGames();
 
