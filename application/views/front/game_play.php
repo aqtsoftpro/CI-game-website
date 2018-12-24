@@ -269,7 +269,7 @@ window.onload = function() {
 };
 function loadFavGames(){
     var fav_ids = JSON.parse(localStorage.getItem("favrote_games"));
-        fav_ids = fav_ids.slice(0,16);
+        fav_ids = fav_ids.slice(0,10);
         console.log(fav_ids);
     $.ajax({
         type:'POST',
@@ -285,8 +285,7 @@ function loadFavGames(){
         success:function(html){
             // /$('.load-more').remove();
             $('#loadingDiv').hide();
-            $('#FavGames').html(html);
-            console.log(html);
+            $('#FavGames').html(html);            
             /*var cw = $('.thumb-img').width()/1.3;
             $('.thumb-img').css({'height':cw+'px'});*/
         }
