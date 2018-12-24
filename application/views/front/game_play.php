@@ -6,7 +6,7 @@
                 <div class="col-sm-12" style="margin-left:17px;">
                 <?php echo $this->config->item('sidebartop'); ?>        
                 </div>
-                <div class="col-sm-12" id="FavGames">
+                <div class="col-sm-12" id="FavGames" style="margin-top:10px;">
                 </div> 
                 <div class="col-sm-12 col-sm-push-6 play_show_more">
                 <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
@@ -174,9 +174,9 @@
                     </div>
                 </div>
 			</div>
-            <div class="col-sm-3 right-col">             
+            <div class="col-sm-3 right-col" style="margin-left:-10px;">             
             <?php echo $this->config->item('sidebarcontent');?>
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="margin-top:10px;">
                    <?php echo $getPlayedGames;?>
                 </div>
                 <div class="play_show_more" style="padding-left: 40px;">
