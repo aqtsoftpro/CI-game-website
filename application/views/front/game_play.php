@@ -1,5 +1,5 @@
 <section>
-<div class="container-fluid">
+<div class="container-fluid m-t-20" id="game_play_page">
 
 		<div class="row">
             <div class="col-sm-3">
