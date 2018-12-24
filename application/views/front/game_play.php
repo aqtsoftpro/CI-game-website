@@ -3,11 +3,14 @@
 
 		<div class="row">
             <div class="col-sm-3">
-                <div style="margin-left:17px;">
+                <div class="col-sm-12" style="margin-left:17px;">
                 <?php echo $this->config->item('sidebartop'); ?>        
                 </div>
-                <div id="FavGames">
-                </div>              
+                <div class="col-sm-12" id="FavGames">
+                </div> 
+                <div class="col-sm-12 col-sm-push-6 play_show_more">
+                <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
+                </div>             
             </div>
 			<div class="col-sm-6">
 
@@ -250,18 +253,24 @@ window.onload = function() {
         loadFavGames();
         }
     });
+
+    var game_id = $(".make_fav").attr('id');
+    // console.log(game_id);
+    addFav(game_id);
+
     loadFavGames();
 
     // $("#like").click(function(){
     //     var game_id = $(this).attr('id');
     //     alert('You have liked'+game_id);
-    // })
-    
+    // })    
+
 
 };
 function loadFavGames(){
     var fav_ids = JSON.parse(localStorage.getItem("favrote_games"));
-
+        fav_ids = fav_ids.slice(0,16);
+        console.log(fav_ids);
     $.ajax({
         type:'POST',
         url:'<?php echo base_url('favrote/loadGames');?>',
@@ -277,6 +286,7 @@ function loadFavGames(){
             // /$('.load-more').remove();
             $('#loadingDiv').hide();
             $('#FavGames').html(html);
+            console.log(html);
             /*var cw = $('.thumb-img').width()/1.3;
             $('.thumb-img').css({'height':cw+'px'});*/
         }
@@ -319,5 +329,15 @@ function closeFullscreen() {
   }
 }
 
+function addFav(game_id){    
+    var add_favs = [];
+        if(localStorage.getItem("favrote_games")){
+            add_favs = JSON.parse(localStorage.getItem("favrote_games"));
+            var index = add_favs.indexOf(game_id);
+            if(index > -1 ){
+            $("#fav_star").toggleClass("fa-star-o fa-star");
+            }
+        }
+    }
 
 </script>
