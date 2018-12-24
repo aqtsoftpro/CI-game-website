@@ -438,8 +438,8 @@ class GameModel extends CI_Model
                     $sql = "UPDATE 2d_likes SET nb_like = ?, nb_unlike = ? WHERE id_com = ? AND user_ip= ?";
                     $this->db->query($sql, array(1, 0, $idCom, $ip));
                 } else {
-                    $sql = "UPDATE 2d_likes SET nb_like = ? WHERE id_com = ? AND user_ip = ?";
-                    $this->db->query($sql, array(0, $idCom, $ip));
+                    //$sql = "UPDATE 2d_likes SET nb_like = ? WHERE id_com = ? AND user_ip = ?";
+                    //$this->db->query($sql, array(0, $idCom, $ip));
                 }
             } else {
                 $sql = "INSERT INTO 2d_likes (user_ip, id_com, nb_like, date_creation) VALUES (?, ?, ?, ?)";
@@ -453,8 +453,8 @@ class GameModel extends CI_Model
                     $sql = "UPDATE 2d_likes SET nb_unlike = ?, nb_like = ? WHERE id_com = ? AND user_ip = ?";
                     $this->db->query($sql, array(1, 0, $idCom, $ip));
                 } else {
-                    $sql = "UPDATE 2d_likes SET nb_unlike = ? WHERE id_com = ? AND user_ip = ?";
-                    $this->db->query($sql, array(0, $idCom, $ip));
+                    //$sql = "UPDATE 2d_likes SET nb_unlike = ? WHERE id_com = ? AND user_ip = ?";
+                    //$this->db->query($sql, array(0, $idCom, $ip));
                 }
             } else {
                 $sql = "INSERT INTO 2d_likes (user_ip, id_com, nb_unlike, date_creation) VALUES (?, ?, ?, ?)";
