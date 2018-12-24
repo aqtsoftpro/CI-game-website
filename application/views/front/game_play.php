@@ -15,9 +15,8 @@
 			<div class="col-sm-6">
 
 				<!-- <div class="game-full-box text-center"> -->
-<div class="container fullscreen" id="game_video">
-                         
-            <div class="col-sm-12">
+<div class="container fullscreen" id="game_video">                       
+          
                 <div class="game-full-box text-center">                 
                 <?php if($type == 1) { ?>
                     <div id="gameBox">
@@ -48,7 +47,7 @@
                     </div>
                 <?php } ?>
                 </div>
-            </div>
+        
     <div class="game-panel-btn">
                 <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
                     <i class="fa fa-compress" aria-hidden="true"></i></button>
@@ -181,7 +180,7 @@
                    <?php echo $getPlayedGames;?>
                 </div>
                 <div class="play_show_more" style="padding-left: 40px;">
-                <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
+                <a href="<?php echo base_url('/played_games');?>" class="btn btn-primary">Show More</a>
                 </div>
             </div>
 		</div>
