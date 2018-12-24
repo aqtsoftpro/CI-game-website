@@ -479,7 +479,8 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 $(document).ready(function(){
     $("#burger").click(function(){
         $("#rest").toggleClass("hidden-xs hidden-sm hidden-md hidden-lg");      
-        $("#content").toggleClass("m-t-40 m-t-0");        
+        $("#content").toggleClass("m-t-40 m-t-0"); 
+        $("#game_play_page").toggleClass("m-t-0 m-t-30");       
         $("#caret").toggleClass("fa-caret-down fa-caret-up");
     });
 });
