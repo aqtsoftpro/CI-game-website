@@ -33,9 +33,7 @@ class GameControl extends CI_Controller
 
     public function index()
     {
-        echo 'here';
-        exit();
-        
+     
         $data['controls'] = $this->controlModel->getControls();        
         // $this->createPagination($baseUrl, $totalRows, $perPage);
         $data['title'] = $this->lang->line('gameControl');
