@@ -116,10 +116,11 @@ class GameControl extends CI_Controller
         }
    }
    public function del_control($id){
-    if($this->controlModel->delControl($id)){
-        $this->session->set_userdata('msg','Deleted Successfully');
-        redirect(base_url('dashboard/gamecontrol/'));
+    if(isset($id)){
+        if($this->controlModel->delControl($id)){
+            $this->session->set_userdata('msg','Deleted Successfully');
+            redirect(base_url('dashboard/gamecontrol/'));
+            }
         }
-    }
-   
+    }  
 }
