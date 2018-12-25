@@ -2420,6 +2420,15 @@ background-color: #f7f7f7;
 	float: left;
 	margin: 4px 4px 4px 0;
 }
+.game-div-left{
+	width: 180px;
+    height: 193.187px;
+    border-radius: 5px;
+    background: #FFF;
+    overflow: hidden;
+    float: right;
+    margin: 4px 4px 4px 0;
+}
 .game-div .game-list-box{
 	width:inherit;
 	height: 134px
@@ -2527,7 +2536,8 @@ height:600px;
 }
 #FavGames{	
 	display: inline-block;
-	
+	margin-left: 15px;
+
 }
 .com_title{
 	    color: #e40606;
@@ -2542,4 +2552,8 @@ height:600px;
 }
 #played_games_panel{
 	display:inline-block;
+}
+.left-add{
+	margin-left:10px;
+	text-align:right;
 }

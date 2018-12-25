@@ -110,9 +110,9 @@ class HomeModel extends CI_Model
         $fav_ids = implode(',',$fav_ids);
         $sql = "select * from 2d_games where id in($fav_ids)";
         $query = $this->db->query($sql);
-        $getBlocGame ="<div class='fav_title'><h5>Your Favourite Games</h5></div>";
+        $getBlocGame ="<div class='fav_title text-center'><h4>Your Favourite Games</h4></div>";
         foreach($query->result() as $row){
-            $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
+            $getBlocGame .= '<div class="game-div-left col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
                                     <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">

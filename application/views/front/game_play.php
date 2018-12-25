@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="col-sm-12 left-add" >
-                <?php echo $this->config->item('sidebartop'); ?>        
-                </div>
+                
+                <?php echo $this->config->item('sidebartop'); ?> 
+                </div>       
+               
                 <div class="col-sm-12" id="FavGames">
                 </div> 
                 <div class="col-sm-12 col-sm-push-6 play_show_more">
