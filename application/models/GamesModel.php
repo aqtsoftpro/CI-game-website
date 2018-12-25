@@ -32,7 +32,7 @@ class GamesModel extends CI_Model
 
     public function getRelatedGamesByCategory($category_id)
     {
-        $sql = "SELECT * FROM 2d_games WHERE id_category=? ORDER BY RAND() LIMIT 6";
+        $sql = "SELECT * FROM 2d_games WHERE id_category=? ORDER BY RAND() LIMIT 8";
         $query = $this->db->query($sql,array($category_id));
        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
@@ -68,7 +68,7 @@ class GamesModel extends CI_Model
     }
     public function getRecomendedgames()
     {
-        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY RAND() DESC LIMIT 6";
+        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY RAND() DESC LIMIT 8";
         $query = $this->db->query($sql);
        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
@@ -165,15 +165,15 @@ class GamesModel extends CI_Model
         }
     }
 
-    public function addGame($postTitle, $postURL, $postDescription, $postIdCategory, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order) 
+    public function addGame($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order) 
     {
         $sql = "SELECT title, url FROM 2d_games WHERE title = ? OR url = ?";
         $query = $this->db->query($sql, array($postTitle, $postURL));
         if($query->num_rows() > 0) {
             $msg = alert('The game already exists', 'danger');
         } else {
-            $sql = "INSERT INTO 2d_games (title, url, description, id_category, status, date_upload,video_url,display_home,is_feature,feature_order) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)";
-            $this->db->query($sql, array($postTitle, $postURL, $postDescription, $postIdCategory, $postStatus, date("Y-m-d H:i:s"),$videoURL,$displayHome,$isFeature,$feature_order));
+            $sql = "INSERT INTO 2d_games(title, url, description, control, id_category, status, date_upload,video_url,display_home,is_feature,feature_order) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus, date("Y-m-d H:i:s"),$videoURL,$displayHome,$isFeature,$feature_order)); 
             $msg = alert('The game was created. <a href="/dashboard/games/edit/'.$this->db->insert_id().'">Edit it</a> now !');
         }
         return $msg;
@@ -281,7 +281,7 @@ class GamesModel extends CI_Model
     $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC LIMIT 6";
 
     $query = $this->db->query($sql,array($ip));
-        
+            $getBlocGame='<div class="played_games"><h5>Your Played Games</h5></div>';
             foreach($query->result() as $row){
             $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
@@ -314,7 +314,7 @@ class GamesModel extends CI_Model
     $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC";
 
     $query = $this->db->query($sql,array($ip));
-        
+            $getBlocGame='';
             foreach($query->result() as $row){
             $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
