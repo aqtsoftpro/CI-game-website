@@ -1,25 +1,25 @@
 <section>
-<div class="container-fluid m-t-20" id="game_play_page">
-		<div class="row">
+<div class="container m-t-20" id="game_play_page">
+        <div class="row">
             <div class="col-sm-3">
-                <div class="col-sm-12" style="margin-left:17px;">
+                <div class="col-sm-12 left-add" >
                 <?php echo $this->config->item('sidebartop'); ?>        
                 </div>
-                <div class="col-sm-12" id="FavGames" style="margin-top:10px;">
+                <div class="col-sm-12" id="FavGames">
                 </div> 
                 <div class="col-sm-12 col-sm-push-6 play_show_more">
                 <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
                 </div>             
             </div>
-			<div class="col-sm-6">
+            <div class="col-sm-6">
 
-				<!-- <div class="game-full-box text-center"> -->
+                <!-- <div class="game-full-box text-center"> -->
 <div class="container fullscreen" id="game_video">                       
           
                 <div class="game-full-box text-center">                 
                 <?php if($type == 1) { ?>
                     <div id="gameBox">
-                        <object id="flash" type="application/x-shockwave-flash" data="<?php echo site_url('uploads/files/games/'.$file.''); ?>" title="<?php echo $title_game; ?>" width="800" height="666">
+                        <object id="flash" type="application/x-shockwave-flash" data="<?php echo site_url('uploads/files/games/'.$file.''); ?>" title="<?php echo $title_game; ?>" width="800" height="600">
                             <param name="movie" value="<?php echo site_url('uploads/files/games/'.$file); ?>">
                             <param name="quality" value="high">
                             <param name="wmode" value="transparent">
@@ -42,14 +42,14 @@
                     </div>
                 <?php } else { ?>
                     <div id="gameBox">
-                        <iframe id="object" src="<?php if(isset($embed)) echo $embed;  ?>" type="application/vnd.adobe.flash-movie" width="850" height="800" scrolling="no" frameborder="0"></iframe>
+                        <iframe id="object" src="<?php if(isset($embed)) echo $embed;  ?>" type="application/vnd.adobe.flash-movie" width="850" height="600" scrolling="no" frameborder="0"></iframe>
                     </div>
                 <?php } ?>
                 </div>
         
     <div class="game-panel-btn">
-                <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
-                    <i class="fa fa-compress" aria-hidden="true"></i></button>
+                <!-- <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
+                    <i class="fa fa-compress" aria-hidden="true"></i></button> -->
                 </div>
     </div> <!-- end container -->
                     <div class="card-box">
@@ -63,15 +63,15 @@
                                 <?php if($type != 2) { ?>
                   <!--   <div class="row"> -->
                         <div class="col-sm-6">
-                            <div class="slider slider-inverse">
+                            <!-- <div class="slider slider-inverse">
                                 <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">
-                            </div>
+                            </div> -->
                         </div>
                     <!-- </div> -->
                     <?php } ?>
-                        <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
+                        <!-- <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
                         <i class="fa fa-arrows-alt"></i>
-                        </button>
+                        </button> -->
                         </div>
                         </div>
                         <div class="bottom-adds">
@@ -106,7 +106,7 @@
                         </div>
                     </div><!-------------------play and favourit name--->
                     </div>
-				<!-- </div> -->
+                <!-- </div> -->
                 <div class="card-box">
                     <h4><b>GAME DESCRIPTION</b></h4>
                     <p class="text-muted"><?php if(isset($description)) echo $description; ?></p>
@@ -172,21 +172,22 @@
                         <a class="btn btn-default" href="<?php echo base_url('/popular/'); ?>">Show More</a>
                     </div>
                 </div>
-			</div>
-            <div class="col-sm-3 right-col" style="margin-left:-10px;">             
+            </div>
+            <div class="col-sm-3 right-col side_bars">             
             <?php echo $this->config->item('sidebarcontent');?>
-                <div class="panel panel-default" style="margin-top:10px;">
+                <div id="played_games_panel">
                    <?php echo $getPlayedGames;?>
                 </div>
-                <div class="play_show_more" style="padding-left: 40px;">
+                <div class="play_show_more">
                 <a href="<?php echo base_url('/played_games');?>" class="btn btn-primary">Show More</a>
                 </div>
             </div>
-		</div>
+        </div>
       
 
-	</div> <!-- end container -->
+    </div> <!-- end container -->
 </section>
+
 
 <script>
 window.onload = function() {

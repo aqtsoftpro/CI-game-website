@@ -1794,6 +1794,9 @@
 /* Game page */
 .game-full-box {
 	background: black;
+	height: 600px;
+    width: 850px;
+    margin: 0 auto;
 }
 @media(max-width:768px){
 #menu li#tags{display:none;}
@@ -2352,6 +2355,10 @@ width:100%;
 .game_play div:nth-child(1) img,.game_play div:nth-child(3) img{
 	width: 100%;
 }
+#game_video{
+	background-color: black;
+    height: 670px;
+}
 #gameBox iframe{
 	width: 100% !important;
 	min-height: 600px;
@@ -2438,10 +2445,35 @@ background-color: #f7f7f7;
 	color:#00D63A;
 }
 #loadGames{
-	width:auto !important;
-	display: table;
-	padding-left:25px;
+   display: block;
+   /* padding-left: 25px; */
 }
+@media(max-width:1280px){
+  #loadGames{
+     width: 93%;
+    /* border:1px solid red;*/
+     margin: auto 2% auto 5%; 
+    }  
+}
+@media(max-width:450px){
+  #loadGames{
+     width: 100%;
+     margin: auto 3% auto 8%; 
+    }  
+}
+@media(min-width:1300px){
+  #loadGames{
+     width: 98%;
+     margin: auto 1% auto 2%; 
+    }  
+}
+@media(min-width:1400px){
+    #loadGames{
+     width: 95%;
+     margin: auto 3% auto 4%; 
+    }
+}
+
 .com_div{
 overflow: hidden;
 /*max-height: 60px;*/
@@ -2485,13 +2517,17 @@ padding:0;
 	font-weight: bold;
 }
 .right-col{
-max-width:300px !important;
+  /*max-width:300px !important;*/
 height:600px;
 }
-#FavGames{
-	width: 180px;
-	margin: 0 auto;
-	float: right;
+.side_bars {
+   /* border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: gainsboro;*/
+}
+#FavGames{	
+	display: inline-block;
+	
 }
 .com_title{
 	    color: #e40606;
@@ -2503,4 +2539,7 @@ height:600px;
 	overflow: hidden;
     padding-top: 10px;
     margin-top: 5px;    
+}
+#played_games_panel{
+	display:inline-block;
 }
