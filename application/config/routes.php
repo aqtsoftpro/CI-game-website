@@ -73,6 +73,8 @@ $route['category/(:any)/(:any)'] = 'category/index/$1/$2';
 $route['category/(:any)/(:any)/(:any)'] = 'category/index/$1/$2/$3';
 $route['game/(:any)']="game/play/$1";
 $rout['game/likesComs/(:any)']='game/likesComs/$1';
+$route['user/played_games'] = 'user/played_games/$1';
+
 
 $route['(:num)'] = 'home/index//$1';
 $route['(:any)'] = 'home/index/$1';
@@ -85,3 +87,4 @@ $route['(:any)/langswitch/switchlang/(:any)'] = 'langswitch/switchlang/$2';
 $route['dashboard/(:any)'] = '$1';
 $route['dashboard/(:any)/(:any)'] = '$1/$2';
 $route['dashboard/(:any)/(:any)/(:any)'] = '$1/$2/$3';
+$route['dashboard/gamecontrol/']='dashboard/gamecontrol/index';
