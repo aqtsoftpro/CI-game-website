@@ -87,4 +87,4 @@ $route['(:any)/langswitch/switchlang/(:any)'] = 'langswitch/switchlang/$2';
 $route['dashboard/(:any)'] = '$1';
 $route['dashboard/(:any)/(:any)'] = '$1/$2';
 $route['dashboard/(:any)/(:any)/(:any)'] = '$1/$2/$3';
-$route['dashboard/gamecontrol']='GameControl/index';
+$route['dashboard/gamecontrol']='gamecontrol/index';
