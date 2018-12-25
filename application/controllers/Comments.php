@@ -90,9 +90,8 @@ class Comments extends CI_Controller
         $postGame = $this->input->post('game_id', true);
         $back_url = $this->input->post('back_url',true);
        
-        if(!empty($postComment)) {
-            if(!$this->commentsModel->getComment_user($postGame,$postAuthor)){
-           
+        if(!empty($postComment)){
+            if(!empty($this->commentsModel->getComment_user($postGame,$postAuthor))) {           
                 if(isset($postAuthor) && isset($postComment) && isset($postGame)) {
                 $data['msg'] = $this->commentsModel->user_addComment($postAuthor, $postComment, $postGame);
                 $this->session->set_userdata('game_id',$postGame);
@@ -103,20 +102,15 @@ class Comments extends CI_Controller
                     </div>');
                 redirect($back_url);
                 }                
-            }
-        $this->session->set_userdata('message','<div class="alert alert-info alert-dismissible show" role="alert">Already Commented    
+            }else{
+                $this->session->set_userdata('game_id',$postGame);
+                $this->session->set_userdata('message','<div class="alert alert-info alert-dismissible show" role="alert">Already Commented    
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>');
-        redirect($back_url);
-        }else{
-            $this->session->set_userdata('message','<div class="alert alert-info alert-dismissible show" role="alert">Please Write Comment First   
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>');
-            redirect($back_url); 
+                    redirect($back_url);
+            }
         }
         
         

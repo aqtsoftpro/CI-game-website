@@ -44,16 +44,7 @@ class Home extends CI_Controller
         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
         $content = $this->load->view('front/index',$data,true);
-        $search = $_REQUEST['q'];
-        $ip = $_REQUEST['playedgames'];
-
-        if(isset($ip)) {
-        $ip=$this->input->ip_address();
-        $data['getBlocGame'] = $this->GamesModel->getPlayedGames_main($ip);
-        $content = $this->load->view('front/user_game',$data,true); 
-        }
-
-        
+        $search = $_REQUEST['q'];       
         
         $getOrder = $this->uri->segment(1);
         
@@ -99,5 +90,28 @@ class Home extends CI_Controller
         $fav_games = $this->homeModel->getFavGames($fav_ids);
         echo $fav_games;
         exit;
+    }
+     public function played_games()
+    {
+        $data['tags'] = $this->KeywordsModel->keywords_tags();
+        $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
+        $content = $this->load->view('front/index',$data,true);
+        $search = $_REQUEST['q'];
+      
+        
+        
+        $ip=$this->input->ip_address();
+        $data['getBlocGame'] = $this->GamesModel->getPlayedGames_main($ip);
+        $content = $this->load->view('front/user_game',$data,true); 
+
+        
+        
+        $getOrder = $this->uri->segment(1);
+        
+    
+        $this->load->view('front/template', array('content' => $content));
+
+        // var_dump($this->input->cookie());
+        // exit();
     }
 }

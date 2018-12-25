@@ -223,3 +223,4 @@ $lang['displayHome'] = "Display on Home Page";
 $lang['isFeature'] = "是功能";
 $lang['featured'] = "Featured";
 $lang['languageSettings'] = 'Language Settings';
+$lang['gameControl']='Game Control';

@@ -221,6 +221,10 @@
 							<li class="text-muted menu-title"><?php echo $this->lang->line('navigation'); ?></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/'); ?>" class="waves-effect"><i class="ti-home"></i><span> <?php echo $this->lang->line('dashboard'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/games/'); ?>" class="waves-effect"><i class="ti-game"></i><span> <?php echo $this->lang->line('games'); ?> </span> </a></li>
+
+							<li class="has_sub"><a href="<?php echo site_url('dashboard/gamecontrol/'); ?>" class="waves-effect"><i class="fa fa-gamepad" aria-hidden="true"></i>
+							<span> <?php echo $this->lang->line('gameControl'); ?> </span> </a></li>
+
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/categories/'); ?>" class="waves-effect"><i class="ti-package"></i><span> <?php echo $this->lang->line('categories'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/keywords/'); ?>" class="waves-effect"><i class="ti-pin-alt"></i><span> <?php echo $this->lang->line('keywords'); ?> </span> </a></li>
 							<li class="has_sub"><a href="<?php echo site_url('dashboard/pages/'); ?>" class="waves-effect"><i class="ti-files"></i><span> <?php echo $this->lang->line('pages'); ?> </span> </a></li>
