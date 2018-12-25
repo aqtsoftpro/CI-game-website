@@ -52,17 +52,19 @@ class GameControl extends CI_Controller
                 $config['max_height']           = 768;
 
                 $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('control_image'))
-        {
-        $data['errors'] = array('error' => $this->upload->display_errors());
-        }
-        else
-        {
-            $control_image = $this->upload->data('file_name');
-            if($this->controlModel->addControl($control_title,$control_image)) {
-            $this->session->set_userdata('msg','Inserted Successfully');
-            redirect(base_url('dashboard/gamecontrol/'));
-            }                       
+        if(isset($control_title)) {
+            if (!$this->upload->do_upload('control_image'))
+            {
+            $data['errors'] = array('error' => $this->upload->display_errors());
+            }
+            else
+            {
+                $control_image = $this->upload->data('file_name');
+                if($this->controlModel->addControl($control_title,$control_image)) {
+                $this->session->set_userdata('msg','Inserted Successfully');
+                redirect(base_url('dashboard/gamecontrol/'));
+                }                       
+            }
         }  
 
         
