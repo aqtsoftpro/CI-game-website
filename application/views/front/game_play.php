@@ -2,14 +2,13 @@
 <div class="container m-t-20" id="game_play_page">
         <div class="row">
             <div class="col-sm-3">
-                <div class="col-sm-12 left-add" >
-                
+                <div class="col-sm-12 left-add" >                
                 <?php echo $this->config->item('sidebartop'); ?> 
                 </div>       
                
                 <div class="col-sm-12" id="FavGames">
                 </div> 
-                <div class="col-sm-12 col-sm-push-6 play_show_more">
+                <div class="col-sm-12 col-sm-push-5 play_show_more">
                 <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
                 </div>             
             </div>
@@ -175,14 +174,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3 right-col side_bars">             
-            <?php echo $this->config->item('sidebarcontent');?>
+            <div class="col-sm-3 right-col side_bars"> 
+                <div class="col-sm-12 right-add" >             
+                <?php echo $this->config->item('sidebarcontent');?>
+                </div>
                 <div id="played_games_panel">
                    <?php echo $getPlayedGames;?>
                 </div>
-                <div class="play_show_more">
+                <div class="col-sm-12 col-sm-push-4 play_show_more-right">
                 <a href="<?php echo base_url('/played_games');?>" class="btn btn-primary">Show More</a>
-                </div>
+                </div> 
+               
             </div>
         </div>
       
