@@ -28,7 +28,7 @@ class GameControl extends CI_Controller
         // $content = $this->load->view('dashboard/games', array(), true);
         $this->load->model(array('controlModel'));
         $this->load->helper('form','url');
-        $this->load->library('user_agent');
+      
     }
 
     public function index()
