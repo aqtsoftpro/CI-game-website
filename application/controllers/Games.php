@@ -26,7 +26,7 @@ class Games extends CI_Controller
         
         $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/games', array(), true);
-        $this->load->model(array('gamesModel'));
+        $this->load->model(array('gamesModel','controlModel'));
     }
 
     public function index()
@@ -54,6 +54,9 @@ class Games extends CI_Controller
         $postStatus = $this->input->post('status', true);
         $postVideo = $this->input->post('video_url', true);
         $feature_order=$this->input->post('feature_order',true);
+        $controls = $this->input->post('controls', true);
+        $controls = (!empty($controls)) ? implode(",", array_map('intval', $controls)) : $controls; 
+          
         $displayHome = 0;
         $isFeature = 0;
 
@@ -70,11 +73,15 @@ class Games extends CI_Controller
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription, $postIdCategory, $postStatus,$postVideo,$displayHome,$isFeature,$feature_order);
+            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postStatus,$postVideo,$displayHome,$isFeature,$feature_order);
+           
         }
         $data['status_game'] = '1';
         // Retrieving categories
         $data['getCategories'] = $this->gamesModel->getCategories();
+        //Retrieving the controls
+        $data['controls'] = $this->controlModel->getAllControls();
+      
         $content = $this->load->view('dashboard/game_edit', $data, true);
         $this->load->view('dashboard/template', array('content' => $content));
     }
@@ -95,6 +102,10 @@ class Games extends CI_Controller
         $postStatus = $this->input->post('status', true);
         $postVideo = $this->input->post('video_url', true);
         $feature_order=$this->input->post('feature_order', true);
+        $controls = $this->input->post('controls', true);
+        $controls = (!empty($controls)) ? implode(",", array_map('intval', $controls)) : $controls;
+
+
 
         $displayHome = 0;
         $isFeature = 0;
@@ -121,7 +132,7 @@ class Games extends CI_Controller
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->gamesModel->editGame($idGame, $postTitle, $postURL, $postDescription, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$postVideo,$displayHome, $isFeature,$feature_order);
+            $data['msg'] = $this->gamesModel->editGame($idGame, $postTitle, $postURL, $postDescription, $controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$postVideo,$displayHome, $isFeature,$feature_order);
         
         }
         // Processing the form for sending the image
@@ -158,6 +169,8 @@ class Games extends CI_Controller
         // exit();
         // Retrieving categories
         $data['getCategories'] = $this->gamesModel->getCategories($data['id_category']);
+        //getting all controls
+        $data['controls'] = $this->controlModel->getAllControls();
         // Retrieving keywords
         $data['getKeywords'] = $this->gamesModel->getKeywords($idGame);
         $content = $this->load->view('dashboard/game_edit', $data, true);

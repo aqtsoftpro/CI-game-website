@@ -179,23 +179,23 @@ class GamesModel extends CI_Model
         return $msg;
     }
 
-    public function editGame($idGame, $postTitle, $postURL, $postDescription, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order) 
+    public function editGame($idGame, $postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order) 
     {
         $sql = "SELECT title, url FROM 2d_games WHERE title = ? OR url = ?";
         $query = $this->db->query($sql, array($postTitle, $postURL));
         if($result = $query->row()) {
             if($result->title === $postTitle) {
-                $sql = "UPDATE 2d_games SET url = ?, description = ?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url= ?,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
-                $this->db->query($sql, array($postURL, $postDescription, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature,$feature_order,$idGame));
+                $sql = "UPDATE 2d_games SET url = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url= ?,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
+                $this->db->query($sql, array($postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature,$feature_order,$idGame));
                 $msg = alert('Saved changes');
             } elseif($result->url === $postURL) {
-                $sql = "UPDATE 2d_games SET title = ?, description = ?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url=?,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
-                $this->db->query($sql, array($postTitle, $postDescription, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature,$feature_order,$idGame));
+                $sql = "UPDATE 2d_games SET title = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url=?,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
+                $this->db->query($sql, array($postTitle, $postDescription, $controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature,$feature_order,$idGame));
                 $msg = alert('Saved changes');
             }
         } else {
-            $sql = "UPDATE 2d_games SET title = ?, url = ?, description = ?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
-            $this->db->query($sql, array($postTitle, $postURL, $postDescription, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order, $idGame));
+            $sql = "UPDATE 2d_games SET title = ?, url = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
+            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order, $idGame));
             $msg = alert('Saved changes');
         }
         return $msg;
