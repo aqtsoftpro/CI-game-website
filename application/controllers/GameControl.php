@@ -90,10 +90,10 @@ class GameControl extends CI_Controller
         $this->load->view('dashboard/template', array('content' => $content));
     }
 
-    public function update_control()
+    public function update_control($id)
     {           
-        echo 'here';
-        exit();
+
+       
           // Processing the Add Form
         $control_title = $this->input->post('control_title', true);
         $config['upload_path']          = './uploads/controls';
@@ -106,7 +106,7 @@ class GameControl extends CI_Controller
         if (!$this->upload->do_upload('control_image'))
         {
         $data['errors'] = array('error' => $this->upload->display_errors());
-        redirect(base_url('gamecontrol/edit/'.$this->uri->segment(3,0).''));
+        redirect(base_url('gamecontrol/edit/'.$this->uri->segment(4,0).''));
         }
         else
         {
