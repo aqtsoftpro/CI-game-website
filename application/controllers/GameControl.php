@@ -90,8 +90,10 @@ class GameControl extends CI_Controller
         $this->load->view('dashboard/template', array('content' => $content));
     }
 
-    public function update_control($id)
+    public function update_control()
     {           
+        echo 'here';
+        exit();
           // Processing the Add Form
         $control_title = $this->input->post('control_title', true);
         $config['upload_path']          = './uploads/controls';
