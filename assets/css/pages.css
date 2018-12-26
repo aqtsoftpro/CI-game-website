@@ -1807,12 +1807,11 @@
 		/*padding: 0 5px;*/
 	}
 	.col-lg-game-9 {
-		/*width: calc(100%/7.35);*/
-		/*height:193px;*/
+		background-color: #fff;
+		border-radius: 5px;
+		overflow: hidden;		
 		float: left;
-		/*margin: 4px;*/
-		background-color:#fbfbea;
-		/*padding: 0 5px;*/
+	
 	}
 	.col-lg-game-8 {
 		/*width: calc(100%/7);
@@ -2653,7 +2652,7 @@ margin: 0 auto;
 .rec_games{
 margin: 46px 0px 0px 45px;
 }
-.card-box>.row>.game-div {   
- margin: 0px 20px 19px 15px;
+.card-box>.row>.game-div { 
+margin: 0px 10px 19px 10px
 }
 }/*ends media for 1900*/
