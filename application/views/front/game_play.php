@@ -115,14 +115,19 @@
                 <div class="card-box">
                     <h4>GAME CONTROLS</h4>
                 <div class="row">
-                <?php foreach($controls as $control) {?>
+                <?php
+                if(empty($controls)){
+                echo '<h4>No Controls Specified Yet!!!</h4>';
+                }else{
+                foreach($controls as $control) {
+                ?>
                     <div class="col-sm-2">
                         <div class="control">
-                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" width="100%" height="50px">
+                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" width="100%" height="70px">
                         <div class="text-center control-title"><h5><?php echo $control->control_name; ?></h5></div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php } } ?>
                 </div>
                 </div>
                 <div class="card-box">                          
@@ -152,7 +157,7 @@
                     <div class="row" style="margin-top: 20px;">
                         <?php if(isset($getBestComs)) {
                         
-                        echo $getBestComs['getComs'];
+                        echo $getBestComs['getCommments'];
 
                         } else { ?>
                             <p>&nbsp;&nbsp;&nbsp;No comments found.</p>

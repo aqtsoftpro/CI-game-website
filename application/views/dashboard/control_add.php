@@ -8,7 +8,7 @@
 		?>
 				<div class="col-sm-9">
 					<div class="card-box">
-					<form method="post" action="<?php echo base_url('gamecontrol/add'); ?>" enctype="multipart/form-data" role="form">
+					<form method="post" action="<?php echo base_url('dashboard/gamecontrol/add'); ?>" enctype="multipart/form-data" role="form">
 						<div class="form-group m-b-20">
 							<label for="title">Control Title</label>
 							<input type="text" class="form-control" name="control_title" placeholder="Game Control">
