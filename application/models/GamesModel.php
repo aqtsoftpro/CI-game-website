@@ -144,7 +144,7 @@ class GamesModel extends CI_Model
 
     public function getGame($idGame)
     {
-        $sql = "SELECT ga.title AS title, ga.url AS url, id_category, ga.description AS description, ga.type AS type, ga.console AS console, ga.embed AS embed, ga.status AS status, ga.image AS image, ga.file AS file,ga.video_url,ga.display_home,ga.is_feature,ga.feature_order,ca.title AS category, ca.id AS id_category FROM 2d_games ga, 2d_categories ca WHERE ((ga.id = ?) AND (ga.id_category = ca.id))";
+        $sql = "SELECT ga.title AS title, ga.url AS url, id_category, ga.description AS description, ga.type AS type, ga.console AS console, ga.embed AS embed, ga.status AS status, ga.image AS image, ga.file AS file,ga.video_url,ga.display_home,ga.is_feature,ga.feature_order, ga.home_order, ca.title AS category, ca.id AS id_category FROM 2d_games ga, 2d_categories ca WHERE ((ga.id = ?) AND (ga.id_category = ca.id))";
         $query = $this->db->query($sql, array($idGame));
         if($result = $query->row()) {
             return array(
@@ -162,6 +162,7 @@ class GamesModel extends CI_Model
                 'video_url'        => $result->video_url,
                 'display_home'     => $result->display_home,
                 'is_feature'       => $result->is_feature,
+                'home_order'    =>$result->home_order,
                 'feature_order'    =>$result->feature_order
             );
         } else {
@@ -198,10 +199,11 @@ class GamesModel extends CI_Model
                 $msg = alert('Saved changes');
             }
         } else {
-            $sql = "UPDATE 2d_games SET title = ?, url = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
-            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order, $idGame));
+            $sql = "UPDATE 2d_games SET title = ?, url = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url,display_home=?,is_feature=?, home_order=?,feature_order=? WHERE id = ?";
+            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$home_order,$feature_order, $idGame));
             $msg = alert('Saved changes');
         }
+        echo $this->db->last_query();  exit;
         return $msg;
     }
 
