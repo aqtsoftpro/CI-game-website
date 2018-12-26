@@ -487,5 +487,11 @@ class GameModel extends CI_Model
              );
         }
     }
+    public function getGameControls($control_ids){
+        $control_ids = implode(',',$control_ids);
+        $sql = "SELECT * FROM 2d_control WHERE id in($control_ids)";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
 
 }

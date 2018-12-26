@@ -112,6 +112,19 @@
                     <h4><b>GAME DESCRIPTION</b></h4>
                     <p class="text-muted"><?php if(isset($description)) echo $description; ?></p>
                 </div>
+                <div class="card-box">
+                    <h4>GAME CONTROLS</h4>
+                <div class="row">
+                <?php foreach($controls as $control) {?>
+                    <div class="col-sm-2">
+                        <div class="control">
+                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" width="100%" height="50px">
+                        <div class="text-center control-title"><h5><?php echo $control->control_name; ?></h5></div>
+                        </div>
+                    </div>
+                <?php } ?>
+                </div>
+                </div>
                 <div class="card-box">                          
                 <?php
                 if($this->session->has_userdata('message')){ 

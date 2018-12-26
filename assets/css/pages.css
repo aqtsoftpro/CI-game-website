@@ -2567,6 +2567,10 @@ border: none;
 .rec_games{ 
 border: none;	
 }
+.control-title{
+display:block;
+background-color:#fffeee;
+}
 /*added media for 1900rs*/
 @media(min-width:1900px){
 .game-full-box{
