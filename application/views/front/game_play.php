@@ -5,10 +5,10 @@
                 <div class="col-sm-12 left-add" >                
                 <?php echo $this->config->item('sidebartop'); ?> 
                 </div>       
-               
+               <div class='col-sm-12 fav_title text-center'><div class="card-box"><h4>Your Favourite Games</h4></div></div>
                 <div class="col-sm-12" id="FavGames">
                 </div> 
-                <div class="col-sm-12 col-sm-push-5 play_show_more">
+                <div class="col-sm-12 col-sm-push-2 play_show_more text-center">
                 <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
                 </div>             
             </div>
@@ -139,7 +139,7 @@
                     <div class="row" style="margin-top: 20px;">
                         <?php if(isset($getBestComs)) {
                         
-                        echo $getBestComs['getCommments'];
+                        echo $getBestComs['getComs'];
 
                         } else { ?>
                             <p>&nbsp;&nbsp;&nbsp;No comments found.</p>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="card-box">
                     <h4><b>Related Games</b></h4>
-                    <div class="row" style="all: inherit; border: none;">
+                    <div class="row related_games" >
                         <?php if(isset($getRelatedGames)) echo $getRelatedGames; ?>                 
                     </div>
                     <div style="text-align: center">
@@ -166,7 +166,7 @@
                 </div>
                 <div class="card-box">
                     <h4><b>Recommended Games</b></h4>
-                    <div class="row" style="all: inherit; border: none;">
+                    <div class="row rec_games">
                 <?php if(isset($getRecGame)) echo $getRecGame;?>
                     </div>
                      <div style="text-align: center">
@@ -178,11 +178,11 @@
                 <div class="col-sm-12 right-add" >             
                 <?php echo $this->config->item('sidebarcontent');?>
                 </div>
-                <div id="played_games_panel">
+                <div class="col-sm-12" id="played_games_panel">
                    <?php echo $getPlayedGames;?>
                 </div>
-                <div class="col-sm-12 col-sm-push-4 play_show_more-right">
-                <a href="<?php echo base_url('/played_games');?>" class="btn btn-primary">Show More</a>
+                <div class="col-sm-12 col-sm-pull-2 play_show_more play_show_more-right text-center">
+                <a href="<?php echo base_url('/played_games');?>" class="btn btn-primary show_more" >Show More</a>
                 </div> 
                
             </div>
@@ -262,6 +262,8 @@ window.onload = function() {
     addFav(game_id);
 
     loadFavGames();
+    // get the max length of localstorage
+    displayShowMore();
 
     // $("#like").click(function(){
     //     var game_id = $(this).attr('id');
@@ -341,5 +343,16 @@ function addFav(game_id){
             }
         }
     }
+
+function displayShowMore(){
+    var fav_games = [];
+        if(localStorage.getItem("favrote_games")){
+            fav_games = JSON.parse(localStorage.getItem("favrote_games"));
+            if(fav_games.length>10){
+            $(".play_show_more").css("display","block");
+            
+            }
+        }
+}
 
 </script>

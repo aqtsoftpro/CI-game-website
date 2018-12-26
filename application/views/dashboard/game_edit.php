@@ -71,6 +71,18 @@
 							<label for="video_url">Order<?php //echo $this->lang->line('videoURL'); ?></label>
 							<input type="text" class="form-control" name="feature_order" placeholder="Enter Number Display Place On Homepage" value="<?php if(isset($feature_order)) echo $feature_order; ?>">							
 						</div>
+					    <div class="form-group m-b-20">
+							<label for="keywords">Game Controls<?php //echo $this->lang->line('gameKeywords'); ?></label>
+							<select class="select2 select2-multiple select2-hidden-accessible" multiple="" data-placeholder="<?php echo $this->lang->line('choose'); ?> ..." tabindex="-1" aria-hidden="true" name="controls[]">
+								<?php if(isset($controls))
+								foreach ($controls as $control) {
+								echo '<option value="'.$control->id.'" class="gb-primary">'.$control->control_name.'</option>';
+								}
+
+
+								; ?>
+							</select>
+						</div>
 						<div class="form-group m-b-20">
 							<label for="display_home"><?php echo $this->lang->line('displayHome'); ?></label>
 							<br/>

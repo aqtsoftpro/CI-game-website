@@ -1794,9 +1794,6 @@
 /* Game page */
 .game-full-box {
 	background: black;
-	height: 600px;
-    width: 850px;
-    margin: 0 auto;
 }
 @media(max-width:768px){
 #menu li#tags{display:none;}
@@ -2355,10 +2352,6 @@ width:100%;
 .game_play div:nth-child(1) img,.game_play div:nth-child(3) img{
 	width: 100%;
 }
-#game_video{
-	background-color: black;
-    height: 670px;
-}
 #gameBox iframe{
 	width: 100% !important;
 	min-height: 600px;
@@ -2419,15 +2412,6 @@ background-color: #f7f7f7;
 	overflow: hidden;
 	float: left;
 	margin: 4px 4px 4px 0;
-}
-.game-div-left{
-	width: 180px;
-    height: 193.187px;
-    border-radius: 5px;
-    background: #FFF;
-    overflow: hidden;
-    float: right;
-    margin: 8px 15px 16px 15px;
 }
 .game-div .game-list-box{
 	width:inherit;
@@ -2525,48 +2509,151 @@ padding:0;
 	padding: 0 10px;
 	font-weight: bold;
 }
+.fav_title{
+margin-top: 20px;
+}
+.fav_title>.card-box{
+	margin-right: -9px;
+}
 .right-col{
   /*max-width:300px !important;*/
 height:600px;
+margin-left: -7px;
 }
 .side_bars {
-   /* border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     border-radius: 5px;
-    background-color: gainsboro;*/
+    /*background-color: gainsboro;*/
 }
-#FavGames{	
-	display: inline-block;
-	/*margin-left: 15px;*/
-
+#FavGames{
+	width: 180px;
+	margin: -16px 28px 0px 0px;
+	float: right;
 }
 .com_title{
 	    color: #e40606;
 }
-#played_games_panel  .game-div{
-  margin: 14px 4px 4px 24px;
-}
-#FavGames . .game-div-left{
-  margin: 14px 4px 4px 24px;
-}
 .card-box>.row>.game-div{
-	    background: #ebeff2;
+	background: #ebeff2;
+	margin: 0px 13px 18px 10px;
 }
 .bottom-adds{
 	overflow: hidden;
     padding-top: 10px;
     margin-top: 5px;    
 }
-#played_games_panel{
-	display:inline-block;
+.played_games_panel{
+	display:inline;
+}
+.played_games > .card-box {
+margin-top: 20px;
+}
+.play_show_more{
+    display:none;
+    margin-top: 15px;
+}
+
+#FavGames .game-div-left{
+	width:180px;
+    margin: 14px 4px -4px 15px;
+    padding-bottom: 13px;
+}
+.related_games{
+border: none;
 }
 .left-add{
-	
-	text-align:right;
+    text-align:right;
+    /*margin-left: 7px;*/
+}
+.rec_games{ 
+border: none;	
+}
+/*added media for 1900rs*/
+@media(min-width:1900px){
+.game-full-box{
+height: 600px;
+width: 850px;
+margin: 0 auto;
+}
+#game_video{
+    background-color: black;
+    height: 670px;
+}
+#loadGames{
+    display:block;
+}
+#FavGames{  
+    display: inline-block;
+    margin-left: 15px;
+    width:100%;
+    /*margin-left: 15px;*/
+}
+
+
+#played_games_panel  .game-div{
+  margin: 14px 4px 4px 24px;
+}
+#FavGames .game-div-left{
+  margin: 14px 4px 4px 24px;
+}
+#played_games_panel{
+    display:inline-block;
+}
+.left-add{
+    text-align:right;
 }
 .right-add{
-	margin-right:10px;
+    margin-right:10px;
     text-align:left;
 }
 .play_show_more-right{
-	margin-top:12px;
+    margin-top:12px;
 }
+
+.play_show_more{
+    display:none;
+    margin: 10px 0px 0px -70px;
+}
+.play_show_more-right{
+    margin-top:12px;
+    margin-left: 70px;
+}
+.game-div-left{
+    width: 180px;
+    height: 193.187px;
+    border-radius: 5px;
+    background: #FFF;
+    overflow: hidden;
+    float: right;
+    margin: 8px 15px 16px 15px;
+}
+
+.right-add{
+    margin-right:10px;
+    text-align:left;
+}
+.game-div-left{
+        width: 180px;
+    height: 193.187px;
+    border-radius: 5px;
+    background: #FFF;
+    overflow: hidden;
+    float: right;
+    margin: 4px 4px 4px 0;
+}
+.left-add{
+    margin-left:10px;
+    text-align:right;
+}
+.related_games {
+    all: inherit;
+    border: none;
+    margin-left: 36px;
+}
+.rec_games{
+margin-left: 20px;
+}
+.card-box>.row>.game-div {   
+ margin: 0px 20px 19px 15px;
+}
+}/*ends media for 1900*/

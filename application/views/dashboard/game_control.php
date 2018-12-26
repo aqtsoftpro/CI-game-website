@@ -2,8 +2,12 @@
 	<div class="col-sm-12">
 
 		<?php
-		if(isset($this->session->msg)) echo $this->session->msg;
+		if(isset($this->session->msg)){
+		echo $this->session->msg;
+		$this->session->unset_userdata('msg');
+		} 
 		if(isset($error)) echo alert($error, 'danger');
+
 		?>
 
 		<div class="card-box">

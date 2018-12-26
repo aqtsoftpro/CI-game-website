@@ -27,6 +27,7 @@ class Comments extends CI_Controller
         $content = $this->load->view('dashboard/comments', array(), true);
 
         $this->load->model(array('commentsModel'));
+        $this->load->helper('form','url');
     }
 
     public function index()
@@ -124,5 +125,14 @@ class Comments extends CI_Controller
         // $data['getGames'] = $this->commentsModel->getGames();
         // $content = $this->load->view('dashboard/comment_edit', $data, true);
         // $this->load->view('dashboard/template', array('content' => $content));
+    }
+     public function createPagination($baseUrl, $totalRows, $perPage)
+    {
+        $this->load->library('pagination');
+        $config["base_url"] = $baseUrl;
+        $config['total_rows'] = $totalRows;
+        $config['per_page'] = $perPage;
+        $this->pagination->initialize($config);
+        return $this->pagination->create_links();
     }
 }

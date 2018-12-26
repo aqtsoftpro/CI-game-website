@@ -294,7 +294,7 @@ class GameModel extends CI_Model
         $query = $this->db->query($sql, array($idGame));
         $nbRows = $query->num_rows();
         if($getOrder == true) {
-            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0) AND (score > 0)) ORDER BY score DESC LIMIT 3";
+            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0) ) ORDER BY score DESC LIMIT 3";
             $query1 = $this->db->query($sql, array($idGame));
         } else {
             $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0)) ORDER BY date_creation DESC LIMIT ?,?";

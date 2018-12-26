@@ -46,4 +46,12 @@ class ControlModel extends CI_Model
     return $this->db->query($sql,array($id));
     }
 
+    public   function  getAllControls(){
+        $this->db->select("*");
+        $this->db->from("2d_control");
+        $query = $this->db->get();
+        return $query->result();
+   }
+
+
 }
