@@ -254,45 +254,45 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
         <li>
         	<?php
         		$home_url = site_url('');
-        		if($_REQUEST['q']){
+        		/*if($_REQUEST['q']){
         			$home_url .="?q=".$_REQUEST['q'];
-        		}
+        		}*/
         	?>
         	<a href="<?php echo $home_url; ?>" class="<?php echo ($this->uri->segment(1) == '')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('home'); ?></a>
         </li>
         <li>
         	<?php
         		$popular_url = site_url('popular/');
-        		if($_REQUEST['q']){
+        		/*if($_REQUEST['q']){
         			$popular_url .="?q=".$_REQUEST['q'];
-        		}
+        		}*/
         	?>
         	<a href="<?php echo $popular_url; ?>" class="<?php echo ($this->uri->segment(1) == 'popular')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('best'); ?></a>
         </li>
         <li>
         	<?php
         		$news_url = site_url('news/');
-        		if($_REQUEST['q']){
+        		/*if($_REQUEST['q']){
         			$news_url .="?q=".$_REQUEST['q'];
-        		}
+        		}*/
         	?>
         	<a href="<?php echo $news_url; ?>" class="<?php echo ($this->uri->segment(1) == 'news')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('news'); ?></a>
         </li>        
         <li>
         	<?php
         		$rated_url = site_url('rated/');
-        		if($_REQUEST['q']){
+        		/*if($_REQUEST['q']){
         			$rated_url .="?q=".$_REQUEST['q'];
-        		}
+        		}*/
         	?>
         	<a href="<?php echo $rated_url; ?>" class="<?php echo ($this->uri->segment(1) == 'rated')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('topRated'); ?></a>
         </li>
         <li>
         	<?php
         		$featured_url = site_url('featured/');
-        		if($_REQUEST['q']){
+        		/*if($_REQUEST['q']){
         			$featured_url .="?q=".$_REQUEST['q'];
-        		}
+        		}*/
         	?>
         	<a href="<?php echo $featured_url; ?>" class="<?php echo ($this->uri->segment(1) == 'featured')?'active':'';?> waves-effect waves-light"><?php echo $this->lang->line('featured'); ?></a>
         </li>
