@@ -48,8 +48,6 @@ class Home extends CI_Controller
         $content = $this->load->view('front/index',$data,true);
         $this->load->view('front/template', array('content' => $content));
 
-        // var_dump($this->input->cookie());
-        // exit();
     }
     public function loadGames($getOrder = '', $getPag = '',$search='')
     {
