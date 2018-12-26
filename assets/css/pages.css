@@ -2648,10 +2648,10 @@ margin: 0 auto;
 .related_games {
     all: inherit;
     border: none;
-    margin-left: 36px;
+    margin-left: 20px;
 }
 .rec_games{
-margin-left: 20px;
+margin: 46px 0px 0px 45px;
 }
 .card-box>.row>.game-div {   
  margin: 0px 20px 19px 15px;
