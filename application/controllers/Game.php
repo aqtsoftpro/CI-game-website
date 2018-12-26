@@ -86,13 +86,23 @@ class Game extends CI_Controller
 
     public function play($getUrl = '', $getPag = '')
     {   
+
        // $this->session->unset_userdata('commented');
 
         // Get game data
         $data = $this->gameModel->getGame($getUrl);
+
+        if(is_numeric($data['control'])){
+        $data['controls'] = $this->gameModel->getGameControls(array($data['control']));
+        }else{
+        $data['controls'] = '';
+        }
+        
+
         $ip = $this->input->ip_address();
         //var_dump($data['id']);
-        $this->GamesModel->addPlayedGames($data['id'],$ip);
+        //$this->GamesModel->addPlayedGames($data['id'],$ip);
+
 
         $data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);
 
@@ -149,14 +159,16 @@ class Game extends CI_Controller
        // var_dump($this->session->userdata());
 
         // Get comments with pagination
-        $data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
-       $data['getBestComs']=$this->CommentsModel->getComment_game($data['id']); 
-        // echo $data['id'];   
+        //$data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
+
+        $data['getBestComs']=$this->CommentsModel->getComment_game($data['id']); 
+     
         // var_dump($data['getBestComs']);
         // exit();
-        $data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
+        //$data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
 
         $data['getPagination'] = $this->createPagination(site_url('game/play/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
+     
         $content = $this->load->view('front/game_play', $data, true);
 
         $this->load->view('front/template', array('content' => $content));
