@@ -10,7 +10,7 @@
 
 				<div class="col-sm-9">
 					<div class="card-box">
-					<form method="post" action="<?php echo base_url('gamecontrol/update_control/'.$this->uri->segment(3,0).''); ?>" enctype="multipart/form-data" role="form">
+					<form method="post" action="<?php echo base_url('gamecontrol/update_control/'.$this->uri->segment(4,0).''); ?>" enctype="multipart/form-data" role="form">
 						<div class="form-group m-b-20">
 							<label for="title">Control Title</label>
 							<input type="text" class="form-control" name="control_title" placeholder="Game Control" value="<?php if(isset($control->control_name)) echo $control->control_name; ?>">
