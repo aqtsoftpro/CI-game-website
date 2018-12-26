@@ -6,7 +6,7 @@ class GamesModel extends CI_Model
     public function getGames() 
     {
         $getGames = '';
-        $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.played AS played, ga.status AS status, ga.date_upload AS date_upload,ga.video_url,ca.title AS title_category FROM 2d_games ga, 2d_categories ca WHERE ga.id_category = ca.id";
+        $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.played AS played, ga.status AS status, ga.date_upload AS date_upload,ga.video_url,ca.title, ga.display_home,ga.is_feature, ga.home_order, ga.feature_order AS title_category FROM 2d_games ga, 2d_categories ca WHERE ga.id_category = ca.id";
         $query = $this->db->query($sql);
         foreach ($query->result() as $row) {
             $status = ($row->status === '1') ? '<span class="label label-table label-success">Active</span>' : '<span class="label label-table label-inverse">Inactive</span>';
@@ -17,6 +17,8 @@ class GamesModel extends CI_Model
 					<td>'.$row->id.'</td>
 					<td>'.$row->title.'</td>
 					<td>'.$row->title_category.'</td>
+					<td>'.($row->display_home > 0)?'Yes':'No'.' | '.$row->home_order.'</td>
+					<td>'.($row->is_feature > 0)?'Yes':'No'.' | '.$row->feature_order.'</td>
 					<td>'.$row->played.'</td>
 					<td>'.$status.'</td>
 					<td>'.$date_upload.'</td>
@@ -165,32 +167,32 @@ class GamesModel extends CI_Model
         }
     }
 
-    public function addGame($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order) 
+    public function addGame($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus,$videoURL,$displayHome,$isFeature,$home_order,$feature_order)
     {
         $sql = "SELECT title, url FROM 2d_games WHERE title = ? OR url = ?";
         $query = $this->db->query($sql, array($postTitle, $postURL));
         if($query->num_rows() > 0) {
             $msg = alert('The game already exists', 'danger');
         } else {
-            $sql = "INSERT INTO 2d_games(title, url, description, control, id_category, status, date_upload,video_url,display_home,is_feature,feature_order) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
-            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus, date("Y-m-d H:i:s"),$videoURL,$displayHome,$isFeature,$feature_order)); 
+            $sql = "INSERT INTO 2d_games(title, url, description, control, id_category, status, date_upload,video_url,display_home,is_feature,home_order,feature_order) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus, date("Y-m-d H:i:s"),$videoURL,$displayHome,$isFeature,$home_order,$feature_order));
             $msg = alert('The game was created. <a href="/dashboard/games/edit/'.$this->db->insert_id().'">Edit it</a> now !');
         }
         return $msg;
     }
 
-    public function editGame($idGame, $postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$feature_order) 
+    public function editGame($idGame, $postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$videoURL,$displayHome,$isFeature,$home_order, $feature_order)
     {
         $sql = "SELECT title, url FROM 2d_games WHERE title = ? OR url = ?";
         $query = $this->db->query($sql, array($postTitle, $postURL));
         if($result = $query->row()) {
             if($result->title === $postTitle) {
-                $sql = "UPDATE 2d_games SET url = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url= ?,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
-                $this->db->query($sql, array($postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature,$feature_order,$idGame));
+                $sql = "UPDATE 2d_games SET url = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url= ?,display_home=?,is_feature=?,home_order=?, feature_order=? WHERE id = ?";
+                $this->db->query($sql, array($postURL, $postDescription,$controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature, $home_order, $feature_order,$idGame));
                 $msg = alert('Saved changes');
             } elseif($result->url === $postURL) {
-                $sql = "UPDATE 2d_games SET title = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url=?,display_home=?,is_feature=?,feature_order=? WHERE id = ?";
-                $this->db->query($sql, array($postTitle, $postDescription, $controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature,$feature_order,$idGame));
+                $sql = "UPDATE 2d_games SET title = ?, description = ?,control=?, id_category = ?, ids_keywords = ?, type = ?, embed = ?, console = ?, status = ?,video_url=?,display_home=?,is_feature=?, home_order=?,feature_order=? WHERE id = ?";
+                $this->db->query($sql, array($postTitle, $postDescription, $controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus, $videoURL,$displayHome,$isFeature,$home_order,$feature_order,$idGame));
                 $msg = alert('Saved changes');
             }
         } else {

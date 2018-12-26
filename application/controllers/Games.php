@@ -53,6 +53,7 @@ class Games extends CI_Controller
         $postIdCategory = $this->input->post('category', true);
         $postStatus = $this->input->post('status', true);
         $postVideo = $this->input->post('video_url', true);
+        $home_order=$this->input->post('home_order',true);
         $feature_order=$this->input->post('feature_order',true);
         $controls = $this->input->post('controls', true);
         $controls = (!empty($controls)) ? implode(",", array_map('intval', $controls)) : $controls; 
@@ -73,7 +74,7 @@ class Games extends CI_Controller
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postStatus,$postVideo,$displayHome,$isFeature,$feature_order);
+            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postStatus,$postVideo,$displayHome,$isFeature,$home_order,$feature_order);
            
         }
         $data['status_game'] = '1';
@@ -101,6 +102,7 @@ class Games extends CI_Controller
         $postConsole = $this->input->post('console', true);
         $postStatus = $this->input->post('status', true);
         $postVideo = $this->input->post('video_url', true);
+        $home_order=$this->input->post('home_order', true);
         $feature_order=$this->input->post('feature_order', true);
         $controls = $this->input->post('controls', true);
         $controls = (!empty($controls)) ? implode(",", array_map('intval', $controls)) : $controls;
@@ -132,7 +134,7 @@ class Games extends CI_Controller
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->gamesModel->editGame($idGame, $postTitle, $postURL, $postDescription, $controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$postVideo,$displayHome, $isFeature,$feature_order);
+            $data['msg'] = $this->gamesModel->editGame($idGame, $postTitle, $postURL, $postDescription, $controls, $postIdCategory, $postKeywords, $postType, $postEmbed, $postConsole, $postStatus,$postVideo,$displayHome, $isFeature,$home_order,$feature_order);
         
         }
         // Processing the form for sending the image

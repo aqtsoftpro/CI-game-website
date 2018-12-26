@@ -12,20 +12,23 @@ class HomeModel extends CI_Model
                 $sql.=" title like '%$search%' and ";
             }
             $sql.=" status = 1 and display_home=1 GROUP BY id ORDER BY note DESC";
-        } elseif($getOrder === 'news') {
+        }
+        elseif($getOrder === 'news') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE";
             if($search){
                 $sql.=" title like '%$search%' and ";
             }
             $sql.=" status = 1 GROUP BY id DESC";
-        } elseif($getOrder === 'popular') {
+        }
+        elseif($getOrder === 'popular') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,is_feature FROM 2d_games WHERE";
             if($search){
                 $sql.=" title like '%$search%' and ";
             }
             $sql.=" status = 1 and display_home=1 GROUP BY id ORDER BY played DESC";
 
-        } elseif($getOrder === 'featured') {
+        }
+        elseif($getOrder === 'featured') {
             $sql = "SELECT id, title, url, id_category, played, note, image, date_upload,video_url,feature_order FROM 2d_games WHERE";
 
             if($search){
@@ -38,7 +41,7 @@ class HomeModel extends CI_Model
             if($search){
                 $sql.=" title like '%$search%' and ";
             }
-            $sql.=" status = 1 and display_home=1 GROUP BY id ORDER BY feature_order ASC";
+            $sql.=" status = 1 and display_home=1 GROUP BY id ORDER BY home_order ASC, title ASC, date_publish ASC ";
         }
         $limit = ' limit '.(int)$getPag.','.(int)$this->config->item('home_pag');
         $sql.=$limit;

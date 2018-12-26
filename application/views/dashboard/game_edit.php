@@ -68,11 +68,25 @@
 							<input type="file" class="form-control" name="game_video">
 						</div>
 						<div class="form-group m-b-20">
-							<label for="video_url">Order<?php //echo $this->lang->line('videoURL'); ?></label>
-							<input type="text" class="form-control" name="feature_order" placeholder="Enter Number Display Place On Homepage" value="<?php if(isset($feature_order)) echo $feature_order; ?>">							
+							<label for="display_home"><?php echo $this->lang->line('displayHome'); ?></label>
+							<br/>
+							<input type="checkbox" <?php if($display_home==1){ echo "checked";} ?> name="display_home">
+						</div>
+						<div class="form-group m-b-20">
+							<label for="video_url"><?php echo $this->lang->line('home_order'); ?></label>
+							<input type="text" class="form-control" name="home_order" placeholder="Enter Number Display Place On Homepage" value="<?php if(isset($home_order)) echo $home_order; ?>">
+						</div>
+						<div class="form-group m-b-20">
+							<label for="is_feature"><?php echo $this->lang->line('isFeature'); ?></label>
+							<br/>
+							<input type="checkbox" <?php if($is_feature==1){ echo "checked";} ?> name="is_feature">
+						</div>
+						<div class="form-group m-b-20">
+							<label for="video_url"><?php echo $this->lang->line('feature_order'); ?></label>
+							<input type="text" class="form-control" name="feature_order" placeholder="Enter Number Display Place On Homepage" value="<?php if(isset($feature_order)) echo $feature_order; ?>">
 						</div>
 					    <div class="form-group m-b-20">
-							<label for="keywords">Game Controls<?php //echo $this->lang->line('gameKeywords'); ?></label>
+							<label for="keywords"><?php echo $this->lang->line('game_controls'); ?></label>
 							<select class="select2 select2-multiple select2-hidden-accessible" multiple="" data-placeholder="<?php echo $this->lang->line('choose'); ?> ..." tabindex="-1" aria-hidden="true" name="controls[]">
 								<?php if(isset($controls))
 								foreach ($controls as $control) {
@@ -82,16 +96,6 @@
 
 								; ?>
 							</select>
-						</div>
-						<div class="form-group m-b-20">
-							<label for="display_home"><?php echo $this->lang->line('displayHome'); ?></label>
-							<br/>
-							<input type="checkbox" <?php if($display_home==1){ echo "checked";} ?> name="display_home">
-						</div>
-						<div class="form-group m-b-20">
-							<label for="is_feature"><?php echo $this->lang->line('isFeature'); ?></label>
-							<br/>
-							<input type="checkbox" <?php if($is_feature==1){ echo "checked";} ?> name="is_feature">
 						</div>
 						<div class="form-group text-right m-b-0">
 							<button class="btn btn-inverse waves-effect waves-light" type="submit"><?php echo $this->lang->line('submit'); ?></button>

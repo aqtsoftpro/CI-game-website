@@ -8,6 +8,8 @@
 						<th class="text-center"><?php echo $this->lang->line('id'); ?></th>
 						<th class="text-center"><?php echo $this->lang->line('game'); ?></th>
 						<th class="text-center"><?php echo $this->lang->line('category'); ?></th>
+						<th class="text-center"><?php echo $this->lang->line('displayHome').'|'.$this->lang->line('home_order'); ?></th>
+						<th class="text-center"><?php echo $this->lang->line('isFeature').'|'.$this->lang->line('feature_order'); ?></th>
 						<th class="text-center"><?php echo $this->lang->line('played'); ?></th>
 						<th class="text-center"><?php echo $this->lang->line('status'); ?></th>
 						<th class="text-center"><?php echo $this->lang->line('uploaded'); ?></th>
