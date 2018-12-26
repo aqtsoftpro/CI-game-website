@@ -3,22 +3,24 @@
 class GamesModel extends CI_Model
 {
 
-    public function getGames() 
+    public function getGames()
     {
         $getGames = '';
-        $sql = "SELECT ga.id AS id, ga.title AS title, ga.url AS url, ga.played AS played, ga.status AS status, ga.date_upload AS date_upload,ga.video_url,ca.title, ga.display_home,ga.is_feature, ga.home_order, ga.feature_order AS title_category FROM 2d_games ga, 2d_categories ca WHERE ga.id_category = ca.id";
+        $sql = "SELECT ga.id AS id, ga.title AS g_title, ga.url AS url, ga.played AS played, ga.status AS status, ga.date_upload AS date_upload,ga.video_url,ca.title, ga.display_home,ga.is_feature, ga.home_order, ga.feature_order, ca.title AS title_category FROM 2d_games ga, 2d_categories ca WHERE ga.id_category = ca.id";
         $query = $this->db->query($sql);
         foreach ($query->result() as $row) {
             $status = ($row->status === '1') ? '<span class="label label-table label-success">Active</span>' : '<span class="label label-table label-inverse">Inactive</span>';
             $date_upload = date_parse($row->date_upload);
             $date_upload = $date_upload['day'].'/'.$date_upload['month'].'/'.$date_upload['year'];
-            $getGames .= 
-             '<tr class="text-center">
+            $getGames .=
+                '<tr class="text-center">
 					<td>'.$row->id.'</td>
-					<td>'.$row->title.'</td>
-					<td>'.$row->title_category.'</td>
-					<td>'.($row->display_home > 0)?'Yes':'No'.' | '.$row->home_order.'</td>
-					<td>'.($row->is_feature > 0)?'Yes':'No'.' | '.$row->feature_order.'</td>
+					<td>'.$row->g_title.'</td>
+					<td>'.$row->title_category.'</td>';
+            if($row->display_home > 0){ $d_h = 'Yes'; }else{ $d_h = 'No'; }
+            $getGames .= '<td>'.$d_h.' | '.$row->home_order.'</td>';
+            if($row->is_feature > 0){ $i_f = 'Yes'; }else{ $i_f = 'No'; }
+            $getGames .= '<td>'.$i_f.' | '.$row->feature_order.'</td>
 					<td>'.$row->played.'</td>
 					<td>'.$status.'</td>
 					<td>'.$date_upload.'</td>
@@ -36,9 +38,9 @@ class GamesModel extends CI_Model
     {
         $sql = "SELECT * FROM 2d_games WHERE id_category=? ORDER BY RAND() LIMIT 8";
         $query = $this->db->query($sql,array($category_id));
-       foreach ($query->result() as $row) {
+        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
-         
+
             $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
@@ -65,16 +67,16 @@ class GamesModel extends CI_Model
                                    
                             </div>';
         }
-        return $getBlocGame;      
+        return $getBlocGame;
 
     }
     public function getRecomendedgames()
     {
         $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY RAND() DESC LIMIT 8";
         $query = $this->db->query($sql);
-       foreach ($query->result() as $row) {
+        foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
-         
+
             $getRecGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
@@ -101,11 +103,11 @@ class GamesModel extends CI_Model
                                    
                             </div>';
         }
-        return $getRecGame;      
+        return $getRecGame;
 
     }
 
-    public function getCategories($idCategory = '') 
+    public function getCategories($idCategory = '')
     {
         $getCategories = '';
         $sql = "SELECT id, title FROM 2d_categories";
@@ -140,28 +142,28 @@ class GamesModel extends CI_Model
         return $getKeywords;
     }
 
-    public function getGame($idGame) 
+    public function getGame($idGame)
     {
         $sql = "SELECT ga.title AS title, ga.url AS url, id_category, ga.description AS description, ga.type AS type, ga.console AS console, ga.embed AS embed, ga.status AS status, ga.image AS image, ga.file AS file,ga.video_url,ga.display_home,ga.is_feature,ga.feature_order,ca.title AS category, ca.id AS id_category FROM 2d_games ga, 2d_categories ca WHERE ((ga.id = ?) AND (ga.id_category = ca.id))";
         $query = $this->db->query($sql, array($idGame));
         if($result = $query->row()) {
             return array(
-             'title_game'       => $result->title,
-             'url_game'         => $result->url,
-             'description_game' => $result->description,
-             'id_category'      => $result->id_category,
-             'category_game'    => $result->category,
-             'type_game'        => $result->type,
-             'console'          => $result->console,
-             'embed_url'        => $result->embed,
-             'status_game'      => $result->status,
-             'image'            => $result->image,
-             'file'             => $result->file,
-             'video_url'        => $result->video_url,
-             'display_home'     => $result->display_home,
-             'is_feature'       => $result->is_feature,
-             'feature_order'    =>$result->feature_order
-             );
+                'title_game'       => $result->title,
+                'url_game'         => $result->url,
+                'description_game' => $result->description,
+                'id_category'      => $result->id_category,
+                'category_game'    => $result->category,
+                'type_game'        => $result->type,
+                'console'          => $result->console,
+                'embed_url'        => $result->embed,
+                'status_game'      => $result->status,
+                'image'            => $result->image,
+                'file'             => $result->file,
+                'video_url'        => $result->video_url,
+                'display_home'     => $result->display_home,
+                'is_feature'       => $result->is_feature,
+                'feature_order'    =>$result->feature_order
+            );
         } else {
             return null;
         }
@@ -203,19 +205,19 @@ class GamesModel extends CI_Model
         return $msg;
     }
 
-    public function updateImage($idGame, $imgGame) 
+    public function updateImage($idGame, $imgGame)
     {
         $sql = "UPDATE 2d_games SET image = ? WHERE id = ?";
         $this->db->query($sql, array($imgGame, $idGame));
     }
 
-    public function updateFile($idGame, $fileGame) 
+    public function updateFile($idGame, $fileGame)
     {
         $sql = "UPDATE 2d_games SET file = ? WHERE id = ?";
         $this->db->query($sql, array($fileGame, $idGame));
     }
 
-    public function delGame($idGame) 
+    public function delGame($idGame)
     {
         // Removing image and swf related to the game
         $sql = "SELECT image, file FROM 2d_games WHERE id = ?";
@@ -249,7 +251,7 @@ class GamesModel extends CI_Model
     }
 
 
-     public function getNote($idGame)
+    public function getNote($idGame)
     {
         $sql = "SELECT note FROM 2d_notes WHERE id_game = ?";
         $query = $this->db->query($sql, array($idGame));
@@ -266,25 +268,25 @@ class GamesModel extends CI_Model
         }
         return $note;
     }
-    public function addPlayedGames($game_id,$ip){       
+    public function addPlayedGames($game_id,$ip){
         $data=array(
-        'game_id'=>$game_id,
-        'ip_add'=>$ip,
-        'created_at'=>date("Y-m-d H:i:s")
-        ); 
-        $sql ="SELECT * FROM `2d_played` WHERE `game_id`=? AND `ip_add`= ?";   
+            'game_id'=>$game_id,
+            'ip_add'=>$ip,
+            'created_at'=>date("Y-m-d H:i:s")
+        );
+        $sql ="SELECT * FROM `2d_played` WHERE `game_id`=? AND `ip_add`= ?";
         $query = $this->db->query($sql,array($game_id,$ip));
         if($query->num_rows()==NULL){
-        $this->db->insert('2d_played',$data);
+            $this->db->insert('2d_played',$data);
         }
-        
+
     }
     public function getPlayedGames($ip){
-    $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC LIMIT 10";
+        $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC LIMIT 10";
 
-    $query = $this->db->query($sql,array($ip));
-            $getBlocGame='<div class="played_games text-center"><div class="card-box"><h4>Your Played Games</h4></div></div>';
-            foreach($query->result() as $row){
+        $query = $this->db->query($sql,array($ip));
+        $getBlocGame='<div class="played_games text-center"><div class="card-box"><h4>Your Played Games</h4></div></div>';
+        foreach($query->result() as $row){
             $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
@@ -308,16 +310,16 @@ class GamesModel extends CI_Model
                                      '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>                                                          
                                                                        
                             </div>';
-                        }
-            return $getBlocGame;    
-        
+        }
+        return $getBlocGame;
+
     }
     public function getPlayedGames_main($ip){
-    $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC";
+        $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC";
 
-    $query = $this->db->query($sql,array($ip));
-            $getBlocGame='';
-            foreach($query->result() as $row){
+        $query = $this->db->query($sql,array($ip));
+        $getBlocGame='';
+        foreach($query->result() as $row){
             $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
@@ -341,9 +343,9 @@ class GamesModel extends CI_Model
                                      '.rating($this->getNote($row->id), 'game-rating').'<span class="p-num">'.$row->played.'&nbsp;plays</span>                                                          
                                                                        
                             </div>';
-                        }
-            return $getBlocGame;    
-        
+        }
+        return $getBlocGame;
+
     }
 
 }
