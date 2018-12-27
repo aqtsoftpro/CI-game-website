@@ -116,7 +116,7 @@ class HomeModel extends CI_Model
             $sql = "select * from 2d_games where id='$g_id'";
             $query = $this->db->query($sql);
             $row = $query->row();
-            $getBlocGame .= '<li class="game-div col-lg-game-'.$this->config->item('home_nb').'">
+            $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
                                     <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
@@ -140,7 +140,7 @@ class HomeModel extends CI_Model
                                                                          
                                     
                                    
-                            </li>';
+                            </div>';
         }
         return $getBlocGame;
     }
