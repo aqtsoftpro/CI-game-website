@@ -13,9 +13,15 @@
                 </div>             
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-12">
+                 <div class="col-sm-6">
+                            <div class="slider slider-inverse">
+                                <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">
+                            </div>
+                        </div>
 
                 <!-- <div class="game-full-box text-center"> -->
               <div class="col-12 fullscreen" id="game_video">
+
                 <div class="game-full-box text-center">                 
                 <?php if($type == 1) { ?>
                     <div id="gameBox">
@@ -47,10 +53,10 @@
                 <?php } ?>
                 </div>
         
-    <div class="game-panel-btn">
-                <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
+    <!-- <div class="game-panel-btn">
+                <button class="btn btn-primary waves-effect waves-light;" id="exit-fullscreen" style="float:right;display:none; z-index:2;" onclick="closeFullscreen();">
                     <i class="fa fa-compress" aria-hidden="true"></i></button>
-                </div>
+                </div> -->
     </div> <!-- end container -->
                     <div class="card-box">
                         <div class="row">
@@ -62,11 +68,7 @@
                             <div class="col-sm-4" style="text-align: left">
                                 <?php if($type != 2) { ?>
                   <!--   <div class="row"> -->
-                        <div class="col-sm-6">
-                            <!-- <div class="slider slider-inverse">
-                                <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">
-                            </div> -->
-                        </div>
+                       
                     <!-- </div> -->
                     <?php } ?>
                          <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
@@ -129,49 +131,41 @@
                 <?php } } ?>
                 </div>
                 </div>
-                <div class="card-box">                          
-                <?php
-                if($this->session->has_userdata('message')){ 
-                echo $this->session->userdata('message');
-                $this->session->unset_userdata('message');
-                }
+               <div class="card-box">
+                        <div class="row">
+                            <div class="col-sm-12">
 
-                ?>
-          
-                <h4><b><?php echo $this->lang->line('comments'); ?>&nbsp;</b><?php echo $nbRows; ?></h4>
+                                <h2 class="header-title m-t-0 m-b-20"><?php echo $this->lang->line('comments'); ?></h2>
+                            <?php if(isset($this->session->id)) { ?>
+                                <form method="post" class="well">
+                                    <span class="input-icon icon-right">
+                                        <textarea rows="2" class="form-control" placeholder="Post a new message" name="com_message" id="comments"></textarea>
+                                    </span>
+                                    <input id="related" type="hidden" name="related" value="">
+                                    <div class="p-t-10 pull-right">
+                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light"><?php echo $this->lang->line('send'); ?></button>
+                                    </div>
+                                    <div class="m-t-30"></div>
+                                </form>
+                            <?php } else { ?>
+                                <div class="well">
+                                    <span><?php echo $this->lang->line('loginForComment'); ?></span>
+                                </div>
+                            <?php } ?>
 
-                    <?php if(isset($this->session->username)) {    ;?>
-                    <form action="<?php echo base_url('comments/add_comment');?>" method="post">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="What are your thoughts?" name="comments" id="comments">
-                            <input type="hidden" name="author" value="<?php echo $this->session->userdata('id');?>"> 
-                            <input type="hidden" name="game_id" value="<?php echo $id; ?>">
-                            <input type="hidden" name="back_url" value="<?php echo current_url();?>"> 
-                            <span class="input-group-btn">
-                            <button type="input" class="btn btn-default" <?php if(($this->session->game_id)==$id) echo 'disabled';?>><?php echo $this->lang->line('send'); ?></button>
-                            </span>
-                        </div>
-                    </form>
-                    <?php } ?>
-                    <div class="row" style="margin-top: 20px;">
-                        <?php if(isset($getBestComs)) {
-                        
-                        echo $getBestComs['getCommments'];
+                                <div id="comments-list">
+                                <?php if(!empty($getBestComs['getComs'])) { ?>
+                                    <h3 class="header-title"><?php echo $this->lang->line('bestComments'); ?></h3>
+                                    <?php echo $getBestComs['getComs']; ?>
+                                <?php } ?>                              
+                                    <?php echo $getComs; ?>
+                                    <div class="text-center"><?php if(isset($getPagination)) echo $getPagination; ?></div>
+                                <?php } ?>
+                                </div>
 
-                        } else { ?>
-                            <p>&nbsp;&nbsp;&nbsp;No comments found.</p>
-                        <?php } ?>
-                    </div>                   
-                    <hr>
-                    <?php if(!isset($this->session->username)){?>
-                    <a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('login');?></a><?php echo $this->lang->line('loginForComment'); ?>
-                    <?php }else{?>
-                        <a href="<?php echo base_url('login/logout/');?>"><?php echo $this->lang->line('logout'); ?></a>
-                    <?php }?>
-                    <div style="text-align: center">
-                        <?php if(isset($getPagination)) echo $getPagination; ?>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
                     </div>
-                </div>
                 <div class="card-box">
                     <h4><b>Related Games</b></h4>
                     <div class="row related_games" >
@@ -267,7 +261,7 @@ window.onload = function() {
             localStorage.setItem("favrote_games", JSON.stringify(fav_ids));            
             loadFavGames();
         }else{
-        fav_ids.unshift(game_id);
+        fav_ids.push(game_id);     
         localStorage.setItem("favrote_games", JSON.stringify(fav_ids));
         $("#fav_star").toggleClass("fa-star-o fa-star");             
         loadFavGames();
@@ -321,15 +315,19 @@ function openFullscreen() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();    
     document.getElementById("exit-fullscreen").style.display="block";
+    document.getElementById("gameBox").style.height="100%";
   } else if (elem.mozRequestFullScreen) { /* Firefox */
     elem.mozRequestFullScreen();
-     document.getElementById("exit-fullscreen").style.display="block";    
+     document.getElementById("exit-fullscreen").style.display="block";
+     document.getElementById("gameBox").style.height="100%";   
   } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
     elem.webkitRequestFullscreen();
-     document.getElementById("exit-fullscreen").style.display="block";    
+     document.getElementById("exit-fullscreen").style.display="block";
+     document.getElementById("gameBox").style.height="100%";    
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();
-     document.getElementById("exit-fullscreen").style.display="block";   
+     document.getElementById("exit-fullscreen").style.display="block"; 
+     document.getElementById("gameBox").style.height="100%";  
   }
 }
 
@@ -373,3 +371,12 @@ function displayShowMore(){
 }
 
 </script>
+<style>
+/* Chrome, Safari and Opera syntax */
+:-webkit-full-screen {
+#object{
+    width:100%;
+    height:100%;
+}
+}
+</style>
