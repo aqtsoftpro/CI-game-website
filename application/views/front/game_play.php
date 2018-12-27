@@ -1,22 +1,21 @@
 <section>
 <div class="container m-t-20" id="game_play_page">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="col-sm-12 left-add" >                
+            <div class="hidden-xs hidden-sm hidden-md col-lg-2 col-xl-2">
+                <div class="left-add" >
                 <?php echo $this->config->item('sidebartop'); ?> 
                 </div>       
-               <div class='col-sm-12 fav_title text-center'><div class="card-box"><h4>Your Favourite Games</h4></div></div>
+               <div class='fav_title text-center'><div class="card-box-sm block-right"><h4>Your Favourite Games</h4></div></div>
                 <div class="col-sm-12" id="FavGames">
                 </div> 
                 <div class="col-sm-12 col-sm-push-2 play_show_more text-center">
                 <a href="<?php echo base_url('/?playedgames');?>" class="btn btn-primary">Show More</a>
                 </div>             
             </div>
-            <div class="col-sm-6">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-12">
 
                 <!-- <div class="game-full-box text-center"> -->
-<div class="container fullscreen" id="game_video">                       
-          
+              <div class="col-12 fullscreen" id="game_video">
                 <div class="game-full-box text-center">                 
                 <?php if($type == 1) { ?>
                     <div id="gameBox">
@@ -49,8 +48,8 @@
                 </div>
         
     <div class="game-panel-btn">
-                <!-- <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
-                    <i class="fa fa-compress" aria-hidden="true"></i></button> -->
+                <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
+                    <i class="fa fa-compress" aria-hidden="true"></i></button>
                 </div>
     </div> <!-- end container -->
                     <div class="card-box">
@@ -70,9 +69,9 @@
                         </div>
                     <!-- </div> -->
                     <?php } ?>
-                        <!-- <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
+                         <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
                         <i class="fa fa-arrows-alt"></i>
-                        </button> -->
+                        </button>
                         </div>
                         </div>
                         <div class="bottom-adds">
@@ -192,8 +191,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3 right-col side_bars"> 
-                <div class="col-sm-12 right-add" >             
+            <div class="hidden-xs hidden-sm col-md-2 col-lg-2 col-xl-2 right-col side_bars">
+                <div class="col-sm-12 right-add" >
                 <?php echo $this->config->item('sidebarcontent');?>
                 </div>
                 <div class="col-sm-12" id="played_games_panel">
