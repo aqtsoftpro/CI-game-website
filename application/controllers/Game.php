@@ -85,23 +85,21 @@ class Game extends CI_Controller
     }
 
     public function play($getUrl = '', $getPag = '')
-    {   
-
-       // $this->session->unset_userdata('commented');
+    {     
 
         // Get game data
         $data = $this->gameModel->getGame($getUrl);
+        $ip = $this->input->ip_address();
+        //var_dump($data['id']);
+        //adding played games using ip
+        $this->GamesModel->addPlayedGames($data['id'],$ip);
+       
 
         if(is_numeric($data['control'])){
         $data['controls'] = $this->gameModel->getGameControls(array($data['control']));
         }else{
         $data['controls'] = '';
-        }
-        
-
-        $ip = $this->input->ip_address();
-        //var_dump($data['id']);
-        //$this->GamesModel->addPlayedGames($data['id'],$ip);
+        }       
 
 
         $data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);

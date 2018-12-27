@@ -271,6 +271,7 @@ class GamesModel extends CI_Model
         return $note;
     }
     public function addPlayedGames($game_id,$ip){
+        //date_default_timezone_set("Asia/Karachi");
         $data=array(
             'game_id'=>$game_id,
             'ip_add'=>$ip,
@@ -278,8 +279,16 @@ class GamesModel extends CI_Model
         );
         $sql ="SELECT * FROM `2d_played` WHERE `game_id`=? AND `ip_add`= ?";
         $query = $this->db->query($sql,array($game_id,$ip));
+        $palyed_game =  $query->row(); 
+        // return (int)$palyed_game->id;    
         if($query->num_rows()==NULL){
-            $this->db->insert('2d_played',$data);
+          $this->db->insert('2d_played',$data);
+          //return $this->db->last_query();  
+        }else{
+            $id = (int)$palyed_game->id;
+            $this->db->where('id',$id);
+            $this->db->update('2d_played',$data); 
+            //return $this->db->last_query();      
         }
 
     }
