@@ -177,8 +177,8 @@ class GameModel extends CI_Model
         $getNote = $this->getNote($idGame);
         $sql = "UPDATE 2d_games SET note = ? WHERE id = ?";
         echo $this->db->query($sql, array($getNote['getNote'], $idGame));
-        $this->updateNotes($ip);
-        echo $this->db->last_query();
+        //$this->updateNotes($ip);
+        echo $this->db->last_query();        
     }
 
     public function updateNotes($idUser)
