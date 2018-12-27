@@ -90,7 +90,7 @@ class Game extends CI_Controller
         // Get game data
         $data = $this->gameModel->getGame($getUrl);
         $ip = $this->input->ip_address();
-        //var_dump($data['id']);
+        
         //adding played games using ip
         $this->GamesModel->addPlayedGames($data['id'],$ip);
        
@@ -104,7 +104,6 @@ class Game extends CI_Controller
 
         $data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);
 
-
         $data['ClickLikes'] = $this->gameModel->checkLikesComs_ip($data['id']);     
 
         $data['title'] = $data['title_game'].' - '.$data['category'].' - '.$this->config->item('description');
@@ -117,13 +116,7 @@ class Game extends CI_Controller
         // Get users who have the game in favorite
         $data['getUsersFav'] = $this->gameModel->getUsersFav($data['id']);
         // $data = array_merge($data, $this->userModel->getFavsGames($data['id']));
-        // var_dump($data['getUsersFav']);
-        // exit();
-        // Comment form processing
-
-        // var_dump($this->session->userdata());
-        // exit();
-
+        
        
         $postCom = $this->input->post('com_message', true);
         $postRelated = $this->input->post('related', true);
@@ -185,9 +178,11 @@ class Game extends CI_Controller
     // Update of the note via Jquery
     public function updateNote($idGame, $score)
     {
-        if(isset($this->session->id)) {
-            $this->gameModel->updateNote($idGame, $score);
-        }
+        
+        $this->gameModel->updateNote($idGame, $score);
+      
+
+        
     }
 
     // Update likes in comments via Jquery

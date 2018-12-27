@@ -4,8 +4,8 @@
 			score: function () {
 				return $(this).attr('data-score');
 			},
-			click: function (score) {
-				$.get("/game/updateNote/"+$(this).attr('data-game')+'/'+score);
+			click: function (score) {			
+				$.get(site_base_url + "game/updateNote/"+$(this).attr('data-game')+'/'+score);
 				swal({
 					title: "Note saved!",
 					text: "I will close in 2 seconds.",
