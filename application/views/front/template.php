@@ -33,6 +33,8 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 
 		<title><?php if(isset($title)) echo $title; ?></title>
 
+<script> var site_base_url = "<?php echo base_url(); ?>"; </script>
+
 		<!-- Alert js -->
         <link href="<?php echo site_url('assets/css/sweet-alert.css'); ?>" rel="stylesheet" type="text/css">
 		<!-- Slider -->
