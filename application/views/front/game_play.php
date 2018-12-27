@@ -48,8 +48,8 @@
                 </div>
         
     <div class="game-panel-btn">
-                <!-- <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
-                    <i class="fa fa-compress" aria-hidden="true"></i></button> -->
+                <button class="btn btn-primary waves-effect waves-light" id="exit-fullscreen" style="float:right;display:none;" onclick="closeFullscreen();">
+                    <i class="fa fa-compress" aria-hidden="true"></i></button>
                 </div>
     </div> <!-- end container -->
                     <div class="card-box">
@@ -69,9 +69,9 @@
                         </div>
                     <!-- </div> -->
                     <?php } ?>
-                        <!-- <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
+                         <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
                         <i class="fa fa-arrows-alt"></i>
-                        </button> -->
+                        </button>
                         </div>
                         </div>
                         <div class="bottom-adds">

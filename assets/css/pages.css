@@ -2520,7 +2520,7 @@ ul.social-icons li a i {
 .played_games_panel{
 	display:inline;
 }
-.played_games > .card-box {
+.played_games {
 	margin-top: 20px;
 }
 .play_show_more{
