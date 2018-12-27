@@ -110,11 +110,11 @@ class HomeModel extends CI_Model
     }
 
     public function getFavGames($fav_ids){
-        $fav_ids = implode(',',$fav_ids);
-        $sql = "select * from 2d_games where id in($fav_ids)";
-        $query = $this->db->query($sql);
         $getBlocGame ="";
-        foreach($query->result() as $row){
+        foreach($fav_ids as $g_id){
+            $sql = "select * from 2d_games where id='$g_id'";
+            $query = $this->db->query($sql);
+            $row = $query->row();
             $getBlocGame .= '<div class="game-div-left col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
