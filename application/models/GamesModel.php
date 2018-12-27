@@ -271,7 +271,7 @@ class GamesModel extends CI_Model
         return $note;
     }
     public function addPlayedGames($game_id,$ip){
-        //date_default_timezone_set("Asia/Karachi");
+        date_default_timezone_set("Asia/Karachi");
         $data=array(
             'game_id'=>$game_id,
             'ip_add'=>$ip,
@@ -293,9 +293,9 @@ class GamesModel extends CI_Model
 
     }
     public function getPlayedGames($ip){
-        $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY 2d_played.created_at DESC LIMIT 10";
+        $sql ="SELECT 2d_played.game_id,2d_played.created_at,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY 2d_played.created_at DESC LIMIT 10";
 
-        $query = $this->db->query($sql,array($ip));
+        $query = $this->db->query($sql,array($ip));      
         $getBlocGame='<div class="played_games text-center"><div class="card-box"><h4>Your Played Games</h4></div></div>';
         foreach($query->result() as $row){
             $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
