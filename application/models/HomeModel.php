@@ -111,11 +111,12 @@ class HomeModel extends CI_Model
 
     public function getFavGames($fav_ids){
         $getBlocGame ="";
+
         foreach($fav_ids as $g_id){
             $sql = "select * from 2d_games where id='$g_id'";
             $query = $this->db->query($sql);
             $row = $query->row();
-            $getBlocGame .= '<div class="game-div-left col-lg-game-'.$this->config->item('home_nb').'">
+            $$getBlocGame .= '<li class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
                                 <div class="game-list-box">
                                     <a href="'.site_url('game/'.$row->url).'/" class="image-popup" title="'.$row->title.'">
@@ -139,7 +140,7 @@ class HomeModel extends CI_Model
                                                                          
                                     
                                    
-                            </div>';
+                            </li>';
         }
         return $getBlocGame;
     }
