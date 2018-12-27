@@ -163,19 +163,22 @@ class GameModel extends CI_Model
 
     public function updateNote($idGame, $score)
     {
+        $ip = $this->input->ip_address();        
         $sql = "SELECT id FROM 2d_notes WHERE id_user = ? AND id_game = ?";
-        $query = $this->db->query($sql, array($this->session->id, $idGame));
+        $query = $this->db->query($sql, array($ip, $idGame));
+
         if($query->num_rows() > 0) {
             $sql = "UPDATE 2d_notes SET note = ?, date_creation = ? WHERE id_user = ? AND id_game = ?";
-            $this->db->query($sql, array($score, date("Y-m-d H:i:s"), $this->session->id, $idGame));
+            $this->db->query($sql, array($score, date("Y-m-d H:i:s"), $ip, $idGame));
         } else {
             $sql = "INSERT INTO 2d_notes (id_user, id_game, note, date_creation) VALUES (?, ?, ?, ?)";
-            $this->db->query($sql, array($this->session->id, $idGame, $score, date("Y-m-d H:i:s")));
+            $this->db->query($sql, array($ip, $idGame, $score, date("Y-m-d H:i:s")));
         }
         $getNote = $this->getNote($idGame);
         $sql = "UPDATE 2d_games SET note = ? WHERE id = ?";
-        $this->db->query($sql, array($getNote['getNote'], $idGame));
-        $this->updateNotes($this->session->id);
+        echo $this->db->query($sql, array($getNote['getNote'], $idGame));
+        $this->updateNotes($ip);
+        echo $this->db->last_query();
     }
 
     public function updateNotes($idUser)

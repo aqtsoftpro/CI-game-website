@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-sm-8" style="text-align: left">
                                 <h3 class="inline"><b><?php if(isset($title_game)) echo $title_game; ?></b></h3>
-                                <div><div id="<?php echo (isset($this->session->id)) ? 'rating' : 'nr-rating'; ?>" class="inline" data-score="<?php if(isset($getNote)) echo $getNote; ?>" data-game="<?php if(isset($id)) echo $id; ?>"></div></div>
+                                <div><div id="rating" class="inline" data-score="<?php if(isset($getNote)) echo $getNote; ?>" data-game="<?php if(isset($id)) echo $id; ?>"></div></div>
                             </div>
                           
                             <div class="col-sm-4" style="text-align: left">
@@ -199,8 +199,8 @@
                 <div class="col-sm-12" id="played_games_panel">
                    <?php echo $getPlayedGames;?>
                 </div>
-                <div class="col-sm-12 col-sm-pull-2 play_show_more play_show_more-right text-center">
-                <a href="<?php echo base_url('/played_games');?>" class="btn btn-primary show_more" >Show More</a>
+                <div class="col-sm-12 col-sm-pull-2 play_show_more-right text-center">
+                <a href="<?php echo base_url('home/played_games');?>" class="btn btn-primary show_more" >Show More</a>
                 </div> 
                
             </div>
