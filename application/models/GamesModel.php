@@ -271,7 +271,7 @@ class GamesModel extends CI_Model
         return $note;
     }
     public function addPlayedGames($game_id,$ip){
-        date_default_timezone_set("Asia/Karachi");
+        //date_default_timezone_set("Asia/Karachi");
         $data=array(
             'game_id'=>$game_id,
             'ip_add'=>$ip,
