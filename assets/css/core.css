@@ -366,6 +366,17 @@ a:focus {
     display: none;
 }
 /* Card Box */
+.card-box-sm {
+  padding: 17px;
+  border: 1px solid rgba(54, 64, 74, 0.05);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  width:180px;
+}
 .card-box {
   padding: 17px;
   border: 1px solid rgba(54, 64, 74, 0.05);

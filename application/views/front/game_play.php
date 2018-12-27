@@ -5,7 +5,7 @@
                 <div class="left-add" >
                 <?php echo $this->config->item('sidebartop'); ?> 
                 </div>       
-               <div class='col-sm-12 fav_title text-center'><div class="card-box"><h4>Your Favourite Games</h4></div></div>
+               <div class='col-sm-12 fav_title text-center'><div class="card-box-sm"><h4>Your Favourite Games</h4></div></div>
                 <div class="col-sm-12" id="FavGames">
                 </div> 
                 <div class="col-sm-12 col-sm-push-2 play_show_more text-center">
