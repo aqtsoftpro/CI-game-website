@@ -143,7 +143,7 @@
                                         <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit"  <?php echo ($this->session->commented == $id)? 'disabled':'';?>><?php echo $this->lang->line('send'); 
                                      ?></button>     
                                     </div>
-                               
+
                                     <div class="m-t-30"></div>
                                 </form>
                             <?php } else { ?>
@@ -190,10 +190,12 @@
                     <div class="row rec_games">
                 <?php if(isset($getRecGame)) echo $getRecGame;?>
                     </div>
+                    <?php if(!empty($getRecGame)){?>
                      <div style="text-align: center">
                         <a class="btn btn-default" href="<?php echo base_url('/popular/'); ?>">Show More</a>
                     </div>
-                </div>
+                    <?php } ?>
+                    </div>
             </div>
             <div class="hidden-xs hidden-sm col-md-2 col-lg-2 col-xl-2 right-col side_bars">
                 <div class="col-sm-12 right-add" >
