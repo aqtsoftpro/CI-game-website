@@ -140,8 +140,10 @@
                                     </span>
                                     <input id="related" type="hidden" name="related" value="">
                                     <div class="p-t-10 pull-right">
-                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit" <?php echo isset($this->session->commented)? 'disabled':'';?>><?php echo $this->lang->line('send'); ?></button>     
+                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit"  <?php echo ($this->session->commented == $id)? 'disabled':'';?>><?php echo $this->lang->line('send'); 
+                                     ?></button>     
                                     </div>
+                               
                                     <div class="m-t-30"></div>
                                 </form>
                             <?php } else { ?>

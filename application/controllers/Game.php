@@ -26,7 +26,7 @@ class Game extends CI_Controller
         if($this->config->item('cache_activation') === 2) {
             $this->output->delete_cache();
         }
-
+        $this->load->library('user_agent');
         $this->load->model(array('KeywordsModel'));
         $data['languages'] = $this->autoloadModel->getLanguages();
         $data['tags'] = $this->KeywordsModel->keywords_tags();
@@ -120,7 +120,7 @@ class Game extends CI_Controller
             $postCom = $this->input->post('com_message', true);
             $postRelated = $this->input->post('related', true);
             if(isset($postCom) && ($postCom != '')) {
-                $this->session->set_userdata('commented','true');
+                $this->session->set_userdata('commented',$data['id']);
                 $this->gameModel->addCom($data['id'], $postCom, $postRelated);
                 redirect($this->agent->referrer(), 'refresh');
             }
