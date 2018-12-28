@@ -65,7 +65,7 @@
                        
                     <!-- </div> -->
                     <?php } ?>
-                         <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();">
+                         <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onClick="openFullscreen();">
                         <i class="fa fa-arrows-alt"></i>
                         </button>                      
 
