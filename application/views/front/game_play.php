@@ -204,7 +204,7 @@
                 <div class="col-sm-12" id="played_games_panel">
                    <?php echo $getPlayedGames['getBlockGame'];?>
                 </div>
-                <?php if($getPlayedGames['nbPlayed'] >8){ ?>
+                <?php if($getPlayedGames['nbPlayed']>10){ ?>
                 <div class="col-sm-12 play_show_more-right text-center">
                 <a href="<?php echo base_url('home/played_games');?>" class="btn btn-primary show_more" >Show More</a>
                 </div> 
