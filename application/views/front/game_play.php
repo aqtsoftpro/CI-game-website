@@ -269,7 +269,7 @@ window.onload = function() {
             localStorage.setItem("favrote_games", JSON.stringify(fav_ids));            
             loadFavGames();
         }else{
-        fav_ids.push(game_id);     
+        fav_ids.unshift(game_id);
         localStorage.setItem("favrote_games", JSON.stringify(fav_ids));
         $("#fav_star").toggleClass("fa-star-o fa-star");             
         loadFavGames();
