@@ -122,16 +122,18 @@
                 }else{
                 foreach($controls as $control) {
                 ?>
-                    <div class="col-sm-2">
-                        <div class="control">
-                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" width="100%" height="70px">
-                        <div class="text-center control-title"><h5><?php echo $control->control_name; ?></h5></div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-2">
+                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" width="100%">         
+                        </div>
+                        <div class="col-sm-10">
+                        <p><?php echo $control->control_name; ?></p>
                         </div>
                     </div>
                 <?php } } ?>
                 </div>
                 </div>
-               <div class="card-box">
+                 <div class="card-box">
                         <div class="row">
                             <div class="col-sm-12">
 
@@ -156,8 +158,10 @@
                                 <div id="comments-list">
                                 <?php if(!empty($getBestComs['getComs'])) { ?>
                                     <h3 class="header-title"><?php echo $this->lang->line('bestComments'); ?></h3>
-                                    <?php echo $getBestComs['getComs']; ?>
-                                <?php } ?>                              
+                                    <?php// echo $getBestComs['getComs']; ?>
+                                <?php } ?>
+                                <?php if(!empty($getComs)) { ?>
+                                    <h3 class="header-title"><?php echo $this->lang->line('lastComments'); ?></h3>
                                     <?php echo $getComs; ?>
                                     <div class="text-center"><?php if(isset($getPagination)) echo $getPagination; ?></div>
                                 <?php } ?>
@@ -165,7 +169,17 @@
 
                             </div> <!-- end col -->
                         </div> <!-- end row -->
+                         <hr>
+                    <?php if(!isset($this->session->username)){?>
+                    <a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('login');?></a><?php echo $this->lang->line('loginForComment'); ?>
+                    <?php }else{?>
+                        <a href="<?php echo base_url('login/logout/');?>"><?php echo $this->lang->line('logout'); ?></a>
+                    <?php }?>
                     </div>
+                                  
+                   
+                 
+                
                 <div class="card-box">
                     <h4><b>Related Games</b></h4>
                     <div class="row related_games" >
