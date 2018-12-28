@@ -8,7 +8,7 @@
                <div class='fav_title text-center'><div class="card-box-sm block-right"><h4>Your Favourite Games</h4></div></div>
                 <div class="col-sm-12" id="FavGames">
                 </div> 
-                <div class="col-sm-12 col-sm-push-2 play_show_more text-center">
+                <div class="col-sm-12 play_show_more text-center">
                 <a href="<?php echo base_url('home/favourities');?>" class="btn btn-primary">Show More</a>
                 </div>             
             </div>
@@ -204,8 +204,8 @@
                 <div class="col-sm-12" id="played_games_panel">
                    <?php echo $getPlayedGames['getBlockGame'];?>
                 </div>
-                <?php if($getPlayedGames['nbPlayed'] >8 ){ ?>
-                <div class="col-sm-12 col-sm-pull-2 play_show_more-right text-center">
+                <?php if($getPlayedGames['nbPlayed'] >8){ ?>
+                <div class="col-sm-12 play_show_more-right text-center">
                 <a href="<?php echo base_url('home/played_games');?>" class="btn btn-primary show_more" >Show More</a>
                 </div> 
             <?php } ?>
