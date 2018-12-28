@@ -333,19 +333,18 @@ class GameModel extends CI_Model
 //		                            </div>
 //		                        </div>';
                     $related2 .= '<div class="col-sm-4" >
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                    <div class="panel panel-default com-panel"> 
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <img class="img-responsive" src="'.(empty($row3->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row3->image)).'" alt="'.$row3->username.'">
                                                 </div>
-                                                <div class="col-sm-9" style="margin-top: 5px;">
-                                                    <b class="inline">'.$row3->username.'</b><p class="inline"> '.$time.' hrs ago</p>
+                                                <div class="col-sm-9 com-title">
+                                                    <b class="inline uname">'.$row3->username.'</b>
+                                                    <p class="inline"><small style="margin-left:-1px;">'.$time.' hrs ago</small></p>
                                                     <p>'.$row3->comment.'</p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                  </div>';
                 }
                 $time = timespan(strtotime($row2->date_creation), time(), 1);
@@ -370,18 +369,16 @@ class GameModel extends CI_Model
 //	                           	'.$related2.'
 //	                        </div>';
                     $related1 .= '<div class="col-sm-4" >
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                    <div class="panel panel-default com-panel"> 
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <img class="img-responsive" src="'.(empty($row2->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row2->image)).'" alt="'.$row2->username.'">
                                                 </div>
-                                                <div class="col-sm-9" style="margin-top: 5px;">
-                                                    <b class="inline">'.$row2->username.'</b><p class="inline"> '.$time.' hrs ago</p>
+                                                <div class="col-sm-9 com-title">
+                                                    <b class="inline uname">'.$row2->username.'</b><p class="inline"><small style="margin-left:-1px;">'.$time.' hrs ago</small></p>
                                                     <p>'.$row2->comment.'</p>
                                                 </div>
-                                            </div>
-                                        </div>
+                                       </div>
                                     </div>
                                  </div>';
             }
@@ -408,18 +405,16 @@ class GameModel extends CI_Model
 //							'.$related1.'
 //						</div>';
             $getComs .= '<div class="col-sm-4">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                    <div class="panel panel-default com-panel">                                       
                                             <div class="row">
                                                 <div class="col-sm-3">
                                                     <img class="img-responsive" src="'.(empty($row1->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row1->image)).'" alt="'.$row1->username.'">
                                                 </div>
-                                                <div class="col-sm-9" style="margin-top: 5px;">
-                                                    <b class="inline">'.$row1->username.'</b><p class="inline"> '.$time.' ago</p>
+                                                <div class="col-sm-9 com-title">
+                                                    <b class="inline uname">'.$row1->username.'</b><p class="inline"><small style="margin-left:-1px;">'.$time.' ago</small></p>
                                                     <p>'.$row1->comment.'</p>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </div>                                       
                                     </div>
                                  </div>';
         }

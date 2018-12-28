@@ -12,12 +12,7 @@
                 <a href="<?php echo base_url('home/favourities');?>" class="btn btn-primary">Show More</a>
                 </div>             
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-12">
-                 <div class="col-sm-6">
-                            <div class="slider slider-inverse">
-                                <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">
-                            </div>
-                        </div>
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-12">                
 
                 <!-- <div class="game-full-box text-center"> -->
               <div class="col-12 fullscreen" id="game_video">
@@ -145,36 +140,35 @@
                                     </span>
                                     <input id="related" type="hidden" name="related" value="">
                                     <div class="p-t-10 pull-right">
-                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light"><?php echo $this->lang->line('send'); ?></button>
+                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit" <?php echo isset($this->session->commented)? 'disabled':'';?>><?php echo $this->lang->line('send'); ?></button>     
                                     </div>
                                     <div class="m-t-30"></div>
                                 </form>
                             <?php } else { ?>
                                 <div class="well">
-                                    <span><?php echo $this->lang->line('loginForComment'); ?></span>
+                                    <span><a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('login');?></a><?php echo $this->lang->line('loginForComment'); ?></span>
                                 </div>
                             <?php } ?>
 
                                 <div id="comments-list">
                                 <?php if(!empty($getBestComs['getComs'])) { ?>
-                                    <h3 class="header-title"><?php echo $this->lang->line('bestComments'); ?></h3>
+                                    <h3 class="header-title"><?php //echo $this->lang->line('bestComments'); ?></h3>
                                     <?php// echo $getBestComs['getComs']; ?>
                                 <?php } ?>
                                 <?php if(!empty($getComs)) { ?>
                                     <h3 class="header-title"><?php echo $this->lang->line('lastComments'); ?></h3>
-                                    <?php echo $getComs; ?>
-                                    <div class="text-center"><?php if(isset($getPagination)) echo $getPagination; ?></div>
+                                    <?php echo $getComs; ?>                                   
                                 <?php } ?>
                                 </div>
-
-                            </div> <!-- end col -->
+                            </div> <!-- end col --> 
+                     <div class="col-sm-12 text-center">
+                        <?php if(isset($getPagination)) echo $getPagination; ?>                            
+                    </div>                      
                         </div> <!-- end row -->
                          <hr>
-                    <?php if(!isset($this->session->username)){?>
-                    <a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('login');?></a><?php echo $this->lang->line('loginForComment'); ?>
-                    <?php }else{?>
+                <?php if(isset($this->session->username)){?>                    
                         <a href="<?php echo base_url('login/logout/');?>"><?php echo $this->lang->line('logout'); ?></a>
-                    <?php }?>
+                    <?php }?>                    
                     </div>
                                   
                    

@@ -2547,3 +2547,14 @@ ul.social-icons li a i {
 	display:block;
 	background-color:#fffeee;
 }
+.com-title{
+	margin: -4px 0px 0px -9px;
+    padding: 0px 4px 0px 6px;
+}
+.com-title>.uname{
+	color: #ec0f0f;
+    padding-right: 2px;
+}
+.com-panel{
+    background-color: #e6e0e0;
+}

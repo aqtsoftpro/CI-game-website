@@ -89,8 +89,7 @@ class Game extends CI_Controller
 
         // Get game data
         $data = $this->gameModel->getGame($getUrl);
-        $ip = $this->input->ip_address();
-        
+        $ip = $this->input->ip_address();        
         //adding played games using ip
         $this->GamesModel->addPlayedGames($data['id'],$ip); 
       
@@ -117,12 +116,15 @@ class Game extends CI_Controller
         $data['getUsersFav'] = $this->gameModel->getUsersFav($data['id']);
         // $data = array_merge($data, $this->userModel->getFavsGames($data['id']));
         
-       
-        $postCom = $this->input->post('com_message', true);
-        $postRelated = $this->input->post('related', true);
-        if(isset($postCom) && ($postCom != '')) {
-            $this->gameModel->addCom($data['id'], $postCom, $postRelated);
-        }
+      
+            $postCom = $this->input->post('com_message', true);
+            $postRelated = $this->input->post('related', true);
+            if(isset($postCom) && ($postCom != '')) {
+                $this->session->set_userdata('commented','true');
+                $this->gameModel->addCom($data['id'], $postCom, $postRelated);
+                redirect($this->agent->referrer(), 'refresh');
+            }
+      
         // Add / remove site to favorites
         $postFav = $this->input->get('fav', true);
         if($postFav != '' && isset($this->session->id)) {
@@ -152,7 +154,7 @@ class Game extends CI_Controller
        // Get comments with pagination
         $data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
         $data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
-        $data['getPagination'] = $this->createPagination(site_url('game/show/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
+        $data['getPagination'] = $this->createPagination(site_url('game/play/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
 
        //////////////////////////
      
