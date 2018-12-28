@@ -202,12 +202,13 @@
                 <?php echo $this->config->item('sidebarcontent');?>
                 </div>
                 <div class="col-sm-12" id="played_games_panel">
-                   <?php echo $getPlayedGames;?>
+                   <?php echo $getPlayedGames['getBlockGame'];?>
                 </div>
+                <?php if($getPlayedGames['nbPlayed'] >8 ){ ?>
                 <div class="col-sm-12 col-sm-pull-2 play_show_more-right text-center">
                 <a href="<?php echo base_url('home/played_games');?>" class="btn btn-primary show_more" >Show More</a>
                 </div> 
-               
+            <?php } ?>
             </div>
         </div>
       

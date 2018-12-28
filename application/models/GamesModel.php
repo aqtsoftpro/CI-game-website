@@ -304,6 +304,10 @@ class GamesModel extends CI_Model
 
     }
     public function getPlayedGames($ip){
+        $sql ="SELECT 2d_played.game_id,2d_played.created_at,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY 2d_played.created_at";
+        $query = $this->db->query($sql,array($ip));
+        $nbPlayed = $query->num_rows();
+
         $sql ="SELECT 2d_played.game_id,2d_played.created_at,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY 2d_played.created_at DESC LIMIT 8";
 
         $query = $this->db->query($sql,array($ip));
@@ -333,8 +337,10 @@ class GamesModel extends CI_Model
                                                                        
                             </div>';
         }
-        return $getBlocGame;
-
+        return array(
+        'getBlockGame'=>$getBlocGame,
+        'nbPlayed'=>$nbPlayed
+        );
     }
     public function getPlayedGames_main($ip){
         $sql ="SELECT 2d_played.game_id,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY created_at DESC";
