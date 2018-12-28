@@ -327,20 +327,15 @@ var elem = document.getElementById("game_video");
 function openFullscreen() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();    
-    document.getElementById("exit-fullscreen").style.display="block";
-    document.getElementById("gameBox").style.height="100%";
+  
   } else if (elem.mozRequestFullScreen) { /* Firefox */
     elem.mozRequestFullScreen();
-     document.getElementById("exit-fullscreen").style.display="block";
-     document.getElementById("gameBox").style.height="100%";   
+     
   } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
     elem.webkitRequestFullscreen();
-     document.getElementById("exit-fullscreen").style.display="block";
-     document.getElementById("gameBox").style.height="100%";    
+       
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-     document.getElementById("exit-fullscreen").style.display="block"; 
-     document.getElementById("gameBox").style.height="100%";  
+    elem.msRequestFullscreen();    
   }
 }
 
