@@ -43,7 +43,7 @@ class Home extends CI_Controller
     {
         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $search = $_REQUEST['q'];
-        $getOrder = $this->uri->segment(1);
+        $getOrder = $this->uri->segment(1);       
         $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
         $content = $this->load->view('front/index',$data,true);
         $this->load->view('front/template', array('content' => $content));
@@ -88,6 +88,7 @@ class Home extends CI_Controller
     }
      public function played_games()
     {
+        $getOrder = $this->uri->segment(1);
         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
         $content = $this->load->view('front/index',$data,true);
@@ -97,16 +98,28 @@ class Home extends CI_Controller
         
         $ip=$this->input->ip_address();
         $data['getBlocGame'] = $this->GamesModel->getPlayedGames_main($ip);
-        $content = $this->load->view('front/user_game',$data,true); 
-
-        
-        
-        $getOrder = $this->uri->segment(1);
-        
-    
+        $content = $this->load->view('front/user_game',$data,true);    
         $this->load->view('front/template', array('content' => $content));
-
-        // var_dump($this->input->cookie());
-        // exit();
     }
+    public function favourities()
+    {
+
+        $data['tags'] = $this->KeywordsModel->keywords_tags();
+        $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
+        //$content = $this->load->view('front/index',$data,true);
+        
+      
+        
+        
+        
+        $data['getBlocGame'] = $this->GamesModel->getPlayedGames_main($ip);
+        $content = $this->load->view('front/user_favourite',$data,true); 
+
+        
+        
+        $getOrder = $this->uri->segment(1);    
+        $this->load->view('front/template', array('content' => $content));
+    }
+
+
 }

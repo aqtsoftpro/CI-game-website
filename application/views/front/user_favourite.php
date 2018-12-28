@@ -25,7 +25,7 @@
 	            load_data($("#page").val(),$("#orderby").val(),$("#search_para").val());
 	        }
 		});
-		//getFavGames();
+		getFavGames();
 	};
 	function load_data(page,orderby,search){
 		$.ajax({
