@@ -15,14 +15,7 @@
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-12">                
 
                 <!-- <div class="game-full-box text-center"> -->
-              <div class="col-12 fullscreen" id="game_video">
-                <div class="row">
-                        <div class="col-sm-12">
-                            <div class="slider slider-inverse">
-                                <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">
-                            </div>
-                        </div>
-                </div>
+              <div class="col-12 fullscreen" id="game_video">                
                 <div class="game-full-box text-center">                 
                 <?php if($type == 1) { ?>
                     <div id="gameBox">
