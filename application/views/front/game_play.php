@@ -140,7 +140,7 @@
                                     </span>
                                     <input id="related" type="hidden" name="related" value="">
                                     <div class="p-t-10 pull-right">
-                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit" ><?php echo $this->lang->line('send'); 
+                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit"  <?php echo ($this->session->commented == $id)? 'disabled':'';?>><?php echo $this->lang->line('send'); 
                                      ?></button>     
                                     </div>
                                
