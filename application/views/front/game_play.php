@@ -16,7 +16,13 @@
 
                 <!-- <div class="game-full-box text-center"> -->
               <div class="col-12 fullscreen" id="game_video">
-
+                <div class="row">
+                        <div class="col-sm-12">
+                            <div class="slider slider-inverse">
+                                <input id="slider" type="text" data-plugin="range-slider" value="" data-slider-orientation="horizontal" data-slider-min="200" data-slider-max="1300" data-slider-value="800" data-slider-tooltip="hide">
+                            </div>
+                        </div>
+                </div>
                 <div class="game-full-box text-center">                 
                 <?php if($type == 1) { ?>
                     <div id="gameBox">
@@ -55,20 +61,21 @@
     </div> <!-- end container -->
                     <div class="card-box">
                         <div class="row">
-                            <div class="col-sm-8" style="text-align: left">
+                            <div class="col-sm-11" style="text-align: left">
                                 <h3 class="inline"><b><?php if(isset($title_game)) echo $title_game; ?></b></h3>
                                 <div><div id="rating" class="inline" data-score="<?php if(isset($getNote)) echo $getNote; ?>" data-game="<?php if(isset($id)) echo $id; ?>"></div></div>
                             </div>
                           
-                            <div class="col-sm-4" style="text-align: left">
+                            <div class="col-sm-1" style="text-align:left">
                                 <?php if($type != 2) { ?>
                   <!--   <div class="row"> -->
                        
                     <!-- </div> -->
                     <?php } ?>
-                         <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();" style="margin-left:25px;">
+                         <button class="btn btn-primary waves-effect waves-light" id="fullscreen" onclick="openFullscreen();">
                         <i class="fa fa-arrows-alt"></i>
-                        </button>
+                        </button>                      
+
                         </div>
                         </div>
                         <div class="bottom-adds">
