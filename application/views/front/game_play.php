@@ -81,7 +81,7 @@
                         <div class="col-sm-4">
                         <h4>Played <?php if(isset($played)) echo $played; ?> times</h4>
                         </div>
-                        <div class="col-sm-4 col-sm-push-1">
+                        <div class="col-sm-2 col-sm-offset-2 thumbs">
                         <div class="inline">
                                 <p>
                                 <div class="col-sm-2 likes_unlike" style="width: 150px;display: inline;">
@@ -204,7 +204,7 @@
                 <div class="col-sm-12" id="played_games_panel">
                    <?php echo $getPlayedGames['getBlockGame'];?>
                 </div>
-                <?php if($getPlayedGames['nbPlayed']>10){ ?>
+                <?php if($getPlayedGames['nbPlayed']>9){ ?>
                 <div class="col-sm-12 play_show_more-right text-center">
                 <a href="<?php echo base_url('home/played_games');?>" class="btn btn-primary show_more" >Show More</a>
                 </div> 
@@ -298,7 +298,7 @@ window.onload = function() {
 };
 function loadFavGames(){
     var fav_ids = JSON.parse(localStorage.getItem("favrote_games"));
-        fav_ids = fav_ids.slice(0,10);
+        fav_ids = fav_ids.slice(0,9);
         console.log(fav_ids);
     $.ajax({
         type:'POST',
@@ -323,7 +323,7 @@ function loadFavGames(){
 </script>
 <script>
 
-var elem = document.getElementById("game_video");
+var elem = document.getElementById("gameBox");
 function openFullscreen() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();    
@@ -371,7 +371,7 @@ function displayShowMore(){
     var fav_games = [];
         if(localStorage.getItem("favrote_games")){
             fav_games = JSON.parse(localStorage.getItem("favrote_games"));
-            if(fav_games.length>10){
+            if(fav_games.length>8){
             $(".play_show_more").css("display","block");
             
             }

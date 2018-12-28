@@ -1793,7 +1793,7 @@
 }
 /* Game page */
 .game-full-box {
-	/*background: black;*/
+	background:black;
 }
 @media(max-width:768px){
 	#menu li#tags{display:none;}
@@ -2352,7 +2352,7 @@ ul.social-icons li a i {
 	width: 100%;
 }
 #gameBox iframe{
-	width: 100% !important;
+	width: 850px !important;
 	min-height: 600px;
 }
 .game_details > div{
@@ -2557,4 +2557,10 @@ ul.social-icons li a i {
 }
 .com-panel{
     background-color: #e6e0e0;
+}
+.thumbs{
+padding-left: 70%;
+}
+.play_show_more-right{
+	margin-top:15px;
 }
