@@ -188,9 +188,9 @@
                 <div class="card-box">
                     <h4><b>Recommended Games</b></h4>
                     <div class="row rec_games">
-                <?php if(isset($getRecGame)) echo $getRecGame;?>
+                <?php if(isset($getRecGame)) echo $getRecGame['getRecGame'];?>
                     </div>
-                    <?php if(!empty($getRecGame)){?>
+                    <?php if($getRecGame['nbRec']>8){?>
                      <div style="text-align: center">
                         <a class="btn btn-default" href="<?php echo base_url('/popular/'); ?>">Show More</a>
                     </div>

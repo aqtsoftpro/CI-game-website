@@ -71,9 +71,13 @@ class GamesModel extends CI_Model
 
     }
     public function getRecomendedgames()
-    {
-        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY RAND() DESC LIMIT 8";
+    {   
+        $sql ="SELECT * FROM 2d_games WHERE status = 1";
         $query = $this->db->query($sql);
+        $nbRec = $query->num_rows();
+
+        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY RAND() DESC LIMIT 8";        
+        $query = $this->db->query($sql);       ;
         foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
 
@@ -103,8 +107,10 @@ class GamesModel extends CI_Model
                                    
                             </div>';
         }
-        return $getRecGame;
-
+        return array(
+        'getRecGame'=> $getRecGame,
+        'nbRec'=>$nbRec
+        );
     }
 
     public function getCategories($idCategory = '')
