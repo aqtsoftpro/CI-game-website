@@ -81,9 +81,14 @@ class Home extends CI_Controller
     }
 
     public function loadFavGames(){
-        $fav_ids = $this->input->post('fav_ids');
-        $fav_games = $this->homeModel->getFavGames($fav_ids);
-        echo $fav_games;
+        $ip=$this->input->ip_address();
+        $getfavoriteGames = $this->homeModel->getFavGames($ip);
+        echo $getfavoriteGames['getBlockGame'];
+        if($getfavoriteGames['nbPlayed']>9){
+            echo '<div class="col-sm-12 play_show_more-right text-center">
+                <a href="'.base_url('home/played_games').'" class="btn btn-primary show_more" >Show More</a>
+                </div>';
+        }
         exit;
     }
      public function played_games()

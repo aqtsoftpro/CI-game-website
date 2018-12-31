@@ -2352,8 +2352,10 @@ ul.social-icons li a i {
 	width: 100%;
 }
 #gameBox iframe{
-	width: 850px !important;
+	/*width: 850px !important;*/
 	min-height: 600px;
+	width:100% !important;
+	height: 100%;
 }
 .game_details > div{
 	padding: 10px 0;
@@ -2522,6 +2524,7 @@ ul.social-icons li a i {
 }
 .played_games {
 	margin-top: 20px;
+	padding: 0 10px;
 }
 .play_show_more{
 	display:none;
@@ -2563,4 +2566,8 @@ padding-left: 70%;
 }
 .play_show_more-right{
 	margin-top:15px;
+}
+.loadingDiv{
+	display: none;
+	text-align: center;
 }

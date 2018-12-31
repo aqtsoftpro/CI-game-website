@@ -3,7 +3,7 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		          
+	<script src="<?php echo site_url('assets/js/jquery.min.js'); ?>"></script> 
 <script async="async" src="https://www.google.com/adsense/search/ads.js"></script>
 
 <!-- other head elements from your page -->
@@ -450,7 +450,6 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 			var resizefunc = [];
 		</script>
 		<!-- jQuery  -->
-		<script src="<?php echo site_url('assets/js/jquery.min.js'); ?>"></script>
 		<script src="<?php echo site_url('assets/js/bootstrap.min.js'); ?>"></script>
 		<script src="<?php echo site_url('assets/js/detect.js'); ?>"></script>
 		<script src="<?php echo site_url('assets/js/fastclick.js'); ?>"></script>

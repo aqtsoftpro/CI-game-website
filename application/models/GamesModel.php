@@ -76,7 +76,7 @@ class GamesModel extends CI_Model
         $query = $this->db->query($sql);
         $nbRec = $query->num_rows();
 
-        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY RAND() DESC LIMIT 8";        
+        $sql = "SELECT * FROM 2d_games WHERE status = 1 ORDER BY played DESC LIMIT 8";        
         $query = $this->db->query($sql);       ;
         foreach ($query->result() as $row) {
             // Comparison of dates for displaying the new tab on the game      
@@ -311,7 +311,7 @@ class GamesModel extends CI_Model
         $sql ="SELECT 2d_played.game_id,2d_played.created_at,2d_games.title, 2d_games.url, 2d_games.id_category, 2d_games.played, 2d_games.note, 2d_games.image, 2d_games.date_upload,2d_games.video_url,2d_games.is_feature FROM `2d_played` INNER JOIN `2d_games` ON 2d_played.game_id=2d_games.id WHERE `ip_add`= ? ORDER BY 2d_played.created_at DESC LIMIT 9";
 
         $query = $this->db->query($sql,array($ip));
-        $getBlocGame='<div class="played_games text-center"><div class="card-box-sm"><h4>Your Played<br>Games</h4></div></div>';
+        $getBlocGame='';
         foreach($query->result() as $row){
             $getBlocGame .= '<div class="game-div col-lg-game-'.$this->config->item('home_nb').'">
                                 <!--<div class="inner-div">-->
@@ -374,6 +374,30 @@ class GamesModel extends CI_Model
         }
         return $getBlocGame;
 
+    }
+
+    public function makeFavorite($game_id,$ip){
+        $sql="select * from 2d_favorite where game_id='$game_id' and ip_add='$ip'";
+        $result = $this->db->query($sql);
+        if($result->num_rows()<1){
+            $sql = "insert into 2d_favorite values('','$game_id','$ip','".date('Y-m-d H:i:s')."')";
+            $this->db->query($sql);
+        }
+        else{
+            $sql = "delete from 2d_favorite where game_id='$game_id' and ip_add='$ip'";
+            $this->db->query($sql);
+        }
+    }
+
+    public function checkFavorite($game_id,$ip){
+        $sql="select * from 2d_favorite where game_id='$game_id' and ip_add='$ip'";
+        $result = $this->db->query($sql);
+        if($result->num_rows()>0){
+            echo "Yes";
+        }
+        else{
+            echo "No";
+        }
     }
 
 }

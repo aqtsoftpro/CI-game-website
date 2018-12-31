@@ -101,7 +101,7 @@ class Game extends CI_Controller
         }
 
 
-        $data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);
+        //$data['getPlayedGames'] = $this->GamesModel->getPlayedGames($ip);
 
         $data['ClickLikes'] = $this->gameModel->checkLikesComs_ip($data['id']);     
 
@@ -162,6 +162,17 @@ class Game extends CI_Controller
 
         $this->load->view('front/template', array('content' => $content));
     }
+    public function getPlayedGames(){
+
+        $ip=$this->input->ip_address();
+        $getPlayedGames = $this->GamesModel->getPlayedGames($ip);
+        echo $getPlayedGames['getBlockGame'];
+        if($getPlayedGames['nbPlayed']>9){
+            echo '<div class="col-sm-12 play_show_more-right text-center">
+                <a href="'.base_url('home/played_games').'" class="btn btn-primary show_more" >Show More</a>
+                </div>';
+        }
+    }
 
     public function createPagination($baseUrl, $totalRows, $perPage)
     {
@@ -200,5 +211,16 @@ class Game extends CI_Controller
         //echo 'segment 3:'.$idCom.'likeType'.$likeType;
       
         //echo $this->input->ip_address();
+    }
+    public function makeFavorite(){
+        $game_id = $this->input->post('game_id');
+        $ip = $this->input->ip_address();
+        $this->GamesModel->makeFavorite($game_id,$ip);
+    }
+    public function checkfavorite(){
+        $game_id = $this->input->post('game_id');
+        $ip = $this->input->ip_address();
+        echo $this->GamesModel->checkFavorite($game_id,$ip);
+        exit;
     }
 }

@@ -7,6 +7,7 @@
                 </div>       
                <div class='fav_title text-center'><div class="card-box-sm block-right"><h4>Your Favourite Games</h4></div></div>
                 <div class="col-sm-12" id="FavGames">
+                    <div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
                 </div> 
                 <div class="col-sm-12 play_show_more text-center">
                 <a href="<?php echo base_url('home/favourities');?>" class="btn btn-primary">Show More</a>
@@ -201,14 +202,11 @@
                 <div class="col-sm-12 right-add" >
                 <?php echo $this->config->item('sidebarcontent');?>
                 </div>
+                <div class="played_games text-center"><div class="card-box-sm"><h4>Your Played<br>Games</h4></div></div>
                 <div class="col-sm-12" id="played_games_panel">
-                   <?php echo $getPlayedGames['getBlockGame'];?>
-                </div>
-                <?php if($getPlayedGames['nbPlayed']>9){ ?>
-                <div class="col-sm-12 play_show_more-right text-center">
-                <a href="<?php echo base_url('home/played_games');?>" class="btn btn-primary show_more" >Show More</a>
+                    <div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
+                   <?php //echo $getPlayedGames['getBlockGame'];?>
                 </div> 
-            <?php } ?>
             </div>
         </div>
       
@@ -260,25 +258,15 @@ window.onload = function() {
         e.preventDefault();
         var game_id = $(this).attr('id');
         var starElement = document.getElementById("fav_star");     
-        var fav_ids = [];
-        
-        
-        if(localStorage.getItem("favrote_games")){
-            fav_ids=JSON.parse(localStorage.getItem("favrote_games"));
-        }
-       
-        var index = fav_ids.indexOf(game_id);
-        if(index > -1){
-            fav_ids.splice(index,1);           
-            $("#fav_star").toggleClass("fa-star fa-star-o");
-            localStorage.setItem("favrote_games", JSON.stringify(fav_ids));            
-            loadFavGames();
-        }else{
-        fav_ids.unshift(game_id);
-        localStorage.setItem("favrote_games", JSON.stringify(fav_ids));
-        $("#fav_star").toggleClass("fa-star-o fa-star");             
-        loadFavGames();
-        }
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url('favrote/makeFavorite');?>',
+            data:{game_id:game_id},
+            success:function(html){
+                $("#fav_star").toggleClass("fa-star-o fa-star");
+                loadFavGames();            
+            }
+        });
     });
 
     var game_id = $(".make_fav").attr('id');
@@ -286,6 +274,7 @@ window.onload = function() {
     addFav(game_id);
 
     loadFavGames();
+    loadPlayedGames();
     // get the max length of localstorage
     displayShowMore();
 
@@ -297,26 +286,50 @@ window.onload = function() {
 
 };
 function loadFavGames(){
-    var fav_ids = JSON.parse(localStorage.getItem("favrote_games"));
-        fav_ids = fav_ids.slice(0,9);
-        console.log(fav_ids);
+    
     $.ajax({
         type:'POST',
         url:'<?php echo base_url('favrote/loadGames');?>',
-        data:{fav_ids:fav_ids},
         beforeSend:function(){
-            //$('.load-more').show();
-            if($("#page").val()>1){
-            $('#loadingDiv').show('');
-            }
+            $('#FavGames .loadingDiv').show('');
             $("#page").val(Number($("#page").val())+Number(1));
         },
         success:function(html){
-            // /$('.load-more').remove();
-            $('#loadingDiv').hide();
+            $('#FavGames .loadingDiv').hide();
             $('#FavGames').html(html);            
-            /*var cw = $('.thumb-img').width()/1.3;
-            $('.thumb-img').css({'height':cw+'px'});*/
+        }
+    });
+}
+/*function loadFavGames(){
+    var fav_ids = JSON.parse(localStorage.getItem("favrote_games"));
+    if(fav_ids){
+        fav_ids = fav_ids.slice(0,9);
+        console.log(fav_ids);
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url('favrote/loadGames');?>',
+            data:{fav_ids:fav_ids},
+            beforeSend:function(){
+                $('#FavGames .loadingDiv').show('');
+                $("#page").val(Number($("#page").val())+Number(1));
+            },
+            success:function(html){
+                $('#FavGames .loadingDiv').hide();
+                $('#FavGames').html(html);            
+            }
+        });
+    }
+}*/
+function loadPlayedGames(){
+    $.ajax({
+        type:'POST',
+        url:'<?php echo base_url('played_games');?>',
+        beforeSend:function(){
+            $('#played_games_panel .loadingDiv').show();
+        },
+        success:function(html){
+            $('#played_games_panel .loadingDiv').hide();
+            $('#played_games_panel').html(html);         
         }
     });
 }
@@ -356,28 +369,52 @@ function closeFullscreen() {
   }
 }
 
-function addFav(game_id){    
-    var add_favs = [];
-        if(localStorage.getItem("favrote_games")){
-            add_favs = JSON.parse(localStorage.getItem("favrote_games"));
-            var index = add_favs.indexOf(game_id);
-            if(index > -1 ){
-            $("#fav_star").toggleClass("fa-star-o fa-star");
+function addFav(game_id){ 
+    $.ajax({
+        type:'POST',
+        url:'<?php echo base_url('checkfavorite');?>',
+        data:{game_id:game_id},
+        beforeSend:function(){
+            //$('#played_games_panel .loadingDiv').show();
+        },
+        success:function(response){
+            if(response=='Yes'){
+                $("#fav_star").toggleClass("fa-star-o fa-star");
             }
         }
-    }
+    });   
+}
 
 function displayShowMore(){
-    var fav_games = [];
+    /*var fav_games = [];
         if(localStorage.getItem("favrote_games")){
             fav_games = JSON.parse(localStorage.getItem("favrote_games"));
-            if(fav_games.length>8){
+            if(fav_games.length>9){
             $(".play_show_more").css("display","block");
             
             }
-        }
+        }*/
 }
-
+/*
+$(document).ready( function(){
+    var elementPosTop = $('#game_play_page .row .hidden-md').position().top;
+    $(window).scroll(function()
+    {
+        var wintop = $(window).scrollTop(), docheight = $(document).height(), winheight = $(window).height();
+        //if top of element is in view
+        if (wintop > elementPosTop)
+        {
+            //always in view
+            $('#game_play_page .row .hidden-md').css({ "overflow":"hidden","position":"fixed", "top":"10px" });
+        }
+        else
+        {
+            //reset back to normal viewing
+            $('#game_play_page .row .hidden-md').css({ "position":"inherit" });
+        }
+    });
+});
+*/
 </script>
 <style>
 /* Chrome, Safari and Opera syntax */

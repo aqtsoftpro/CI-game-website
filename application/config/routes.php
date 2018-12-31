@@ -60,6 +60,7 @@ $route['members'] = 'members/index/$1';
 $route['myprofile'] = 'myprofile/index/$1';
 $route['dashboard'] = 'dashboard/index/$1';
 $route['favrote/loadGames']='home/loadFavGames';
+$route['favrote/makeFavorite']= 'game/makeFavorite';
 
 // Frontend routes
 $route['tags'] = 'tags/index/$1';
@@ -72,8 +73,10 @@ $route['category/(:any)/(:num)'] = 'category/index/$1//$2';
 $route['category/(:any)/(:any)'] = 'category/index/$1/$2';
 $route['category/(:any)/(:any)/(:any)'] = 'category/index/$1/$2/$3';
 $route['game/(:any)']="game/play/$1";
+$route['played_games']="game/getPlayedGames";
 $rout['game/likesComs/(:any)']='game/likesComs/$1';
 $route['user/played_games'] = 'user/played_games/$1';
+$route['checkfavorite'] = 'game/checkfavorite';
 
 
 $route['(:num)'] = 'home/index//$1';
