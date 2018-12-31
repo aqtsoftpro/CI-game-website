@@ -2525,6 +2525,7 @@ ul.social-icons li a i {
 .played_games {
 	margin-top: 20px;
 	padding: 0 10px;
+	display: inline-block;
 }
 .play_show_more{
 	display:none;
