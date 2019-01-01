@@ -229,9 +229,9 @@ class Game extends CI_Controller
         $game_id = $this->input->post('game_id');
         $page = $this->input->post('page');
         $data = $this->gameModel->getComs($game_id, $page, true);
-        $pagination =  $this->createPagination(site_url('game/show/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
+        //$pagination =  $this->createPagination(site_url('game/show/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
         echo $data['getComs'];
-        echo "<div class='col-md-12 text-center'>".$pagination."</div>";
+        //echo "<div class='col-md-12 text-center'>".$pagination."</div>";
     }
     public function postComment(){
         $postCom = $this->input->post('com_message', true);

@@ -155,6 +155,9 @@
                                 <h3 class="header-title"><?php echo $this->lang->line('lastComments'); ?></h3>
                                 <div id="comments-list">
                                 </div>
+                                <div class="col-md-12 text-center">
+                                    <a class="btn btn-default load_more" href="#">Load More Comments</a>
+                                </div>
                                 <input type="hidden" name="comments_page" id="comments_page" value="1">
                                 <input type="hidden" name="game_id" id="game_id" value="<?php echo $id; ?>">
                             </div> <!-- end col -->                       
@@ -275,13 +278,17 @@ window.onload = function() {
     //     alert('You have liked'+game_id);
     // })    
 
-    $(document).on("click", '.pagination li a', function(event) { 
+    /*$(document).on("click", '.pagination li a', function(event) { 
         event.preventDefault();
         var page = $(this).attr('data-ci-pagination-page');
         if(page!="undefined"){
             $('#comments_page').val(page);
             getComments();
         }
+    });*/
+    $('.load_more').click(function(e){
+        e.preventDefault();
+        getComments();
     });
 
     $('#submitComment').click(function(e){
@@ -302,6 +309,8 @@ window.onload = function() {
                 /*$('#comments-list').html('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');*/
             },
             success:function(){
+                //Temp
+                $('#comments_page').val(1);
                 getComments();
             }
         });
@@ -317,13 +326,22 @@ function getComments(){
         data:{game_id:game_id,page:page},
         beforeSend:function(){
             $('.loadingDiv').show();
-            $('#comments-list').html('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');
+            $('#comments-list').append('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');
             $('.loadingDiv').show();
         },
         success:function(html){
             $('.loadingDiv').hide();
-            $('#comments-list').html('');
-            $('#comments-list').html(html);            
+            $('#comments-list .loadingDiv').remove('');
+            $('#comments-list').append(html); 
+            if(html){
+                $('#comments_page').val(Number($('#comments_page').val())+Number(1));
+                $('.load_more').show();  
+            }
+            else
+            {
+                $('.load_more').hide();
+            }
+                       
         }
     });
 }

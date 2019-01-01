@@ -2575,3 +2575,6 @@ padding-left: 70%;
 .error{
 	border:1px solid red;
 }
+.load_more{
+	display: none;
+}
