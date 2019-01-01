@@ -2352,10 +2352,10 @@ ul.social-icons li a i {
 	width: 100%;
 }
 #gameBox iframe{
-	/*width: 850px !important;*/
+	width: 850px;
 	min-height: 600px;
-	width:100% !important;
-	height: 100%;
+	/*width:100% !important;
+	height: 100%;*/
 }
 .game_details > div{
 	padding: 10px 0;
@@ -2574,4 +2574,11 @@ padding-left: 70%;
 }
 .error{
 	border:1px solid red;
+}
+.load_more{
+	display: none;
+}
+.fullscreen{
+	width: 100% !important;
+	height: 100% !important;
 }

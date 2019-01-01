@@ -155,6 +155,9 @@
                                 <h3 class="header-title"><?php echo $this->lang->line('lastComments'); ?></h3>
                                 <div id="comments-list">
                                 </div>
+                                <div class="col-md-12 text-center">
+                                    <a class="btn btn-default load_more" href="#">Load More Comments</a>
+                                </div>
                                 <input type="hidden" name="comments_page" id="comments_page" value="1">
                                 <input type="hidden" name="game_id" id="game_id" value="<?php echo $id; ?>">
                             </div> <!-- end col -->                       
@@ -275,13 +278,17 @@ window.onload = function() {
     //     alert('You have liked'+game_id);
     // })    
 
-    $(document).on("click", '.pagination li a', function(event) { 
+    /*$(document).on("click", '.pagination li a', function(event) { 
         event.preventDefault();
         var page = $(this).attr('data-ci-pagination-page');
         if(page!="undefined"){
             $('#comments_page').val(page);
             getComments();
         }
+    });*/
+    $('.load_more').click(function(e){
+        e.preventDefault();
+        getComments();
     });
 
     $('#submitComment').click(function(e){
@@ -302,6 +309,8 @@ window.onload = function() {
                 /*$('#comments-list').html('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');*/
             },
             success:function(){
+                //Temp
+                $('#comments_page').val(1);
                 getComments();
             }
         });
@@ -316,11 +325,29 @@ function getComments(){
         url:'<?php echo base_url('get_comments');?>',
         data:{game_id:game_id,page:page},
         beforeSend:function(){
-            $('#comments-list').html('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');
+            $('.loadingDiv').show();
+            $('#comments-list').append('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');
+            $('.loadingDiv').show();
         },
         success:function(html){
-            $('#comments-list').html('');
-            $('#comments-list').html(html);            
+            $('.loadingDiv').hide();
+            $('#comments-list .loadingDiv').remove('');
+            if(page==1){
+                $('#comments-list').html(html);
+            }
+            else{
+                $('#comments-list').append(html);    
+            }
+             
+            if(html){
+                $('#comments_page').val(Number($('#comments_page').val())+Number(1));
+                $('.load_more').show();  
+            }
+            else
+            {
+                $('.load_more').hide();
+            }
+                       
         }
     });
 }
@@ -378,7 +405,7 @@ function loadPlayedGames(){
 var elem = document.getElementById("gameBox");
 function openFullscreen() {
   if (elem.requestFullscreen) {
-    elem.requestFullscreen();    
+    elem.requestFullscreen();
   
   } else if (elem.mozRequestFullScreen) { /* Firefox */
     elem.mozRequestFullScreen();
@@ -389,10 +416,12 @@ function openFullscreen() {
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();    
   }
+  $("#gameBox iframe").addClass('fullscreen');
 }
 
 /* Close fullscreen */
 function closeFullscreen() {
+    $("#gameBox iframe").removeClass('fullscreen');
   if (document.exitFullscreen) {
     document.exitFullscreen();    
     $("#exit-fullscreen").css("display", "none");
@@ -454,6 +483,17 @@ $(document).ready( function(){
     });
 });
 */
+
+document.addEventListener('fullscreenchange', exitHandler);
+document.addEventListener('webkitfullscreenchange', exitHandler);
+document.addEventListener('mozfullscreenchange', exitHandler);
+document.addEventListener('MSFullscreenChange', exitHandler);
+
+function exitHandler() {
+    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+        $("#gameBox iframe").removeClass('fullscreen');        
+    }
+}  
 </script>
 <style>
 /* Chrome, Safari and Opera syntax */
