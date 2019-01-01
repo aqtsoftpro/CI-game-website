@@ -405,7 +405,7 @@ function loadPlayedGames(){
 var elem = document.getElementById("gameBox");
 function openFullscreen() {
   if (elem.requestFullscreen) {
-    elem.requestFullscreen();    
+    elem.requestFullscreen();
   
   } else if (elem.mozRequestFullScreen) { /* Firefox */
     elem.mozRequestFullScreen();
@@ -416,10 +416,13 @@ function openFullscreen() {
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();    
   }
+  $("#gameBox iframe").addClass('fullscreen');
 }
 
 /* Close fullscreen */
 function closeFullscreen() {
+    alert('hello');
+    $("#gameBox iframe").removeClass('fullscreen');
   if (document.exitFullscreen) {
     document.exitFullscreen();    
     $("#exit-fullscreen").css("display", "none");
