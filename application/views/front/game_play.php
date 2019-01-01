@@ -421,7 +421,6 @@ function openFullscreen() {
 
 /* Close fullscreen */
 function closeFullscreen() {
-    alert('hello');
     $("#gameBox iframe").removeClass('fullscreen');
   if (document.exitFullscreen) {
     document.exitFullscreen();    
