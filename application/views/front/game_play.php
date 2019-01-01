@@ -332,7 +332,13 @@ function getComments(){
         success:function(html){
             $('.loadingDiv').hide();
             $('#comments-list .loadingDiv').remove('');
-            $('#comments-list').append(html); 
+            if(page==1){
+                $('#comments-list').html(html);
+            }
+            else{
+                $('#comments-list').append(html);    
+            }
+             
             if(html){
                 $('#comments_page').val(Number($('#comments_page').val())+Number(1));
                 $('.load_more').show();  
