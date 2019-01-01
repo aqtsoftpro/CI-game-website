@@ -4,7 +4,7 @@
 			<input type="hidden" name="page" id="page" value="2">
 			<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(1);?>">
 			<input type="hidden" name="search_para" id="search_para" value="<?php echo $_REQUEST['q']; ?>">
-			<ul id="loadGames">
+			<ul id="loadGames"><!-- Games -->
 				<?php echo $getBlocGame['getBlocGame']; ?>
 			</ul> <!-- end col -->
 			<div id="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
