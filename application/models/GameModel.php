@@ -298,10 +298,10 @@ class GameModel extends CI_Model
         $query = $this->db->query($sql, array($idGame));
         $nbRows = $query->num_rows();
         if($getOrder == true) {
-            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0) ) ORDER BY score DESC LIMIT ?,?";
+            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0) ) ORDER BY co.date_creation DESC LIMIT ?,?";
             $query1 = $this->db->query($sql, array($idGame, (int)$getPag, (int)$this->config->item('coms_pag')));
         } else {
-            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0)) ORDER BY date_creation DESC LIMIT ?,?";
+            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0)) ORDER BY co.date_creation DESC LIMIT ?,?";
             $query1 = $this->db->query($sql, array($idGame, (int)$getPag, (int)$this->config->item('coms_pag')));
         }
         $getComs = '';
@@ -333,6 +333,7 @@ class GameModel extends CI_Model
 //		                                </div>
 //		                            </div>
 //		                        </div>';
+
                     $related2 .= '<div class="col-sm-4" >
                                     <div class="panel panel-default com-panel"> 
                                             <div class="row">
@@ -405,6 +406,10 @@ class GameModel extends CI_Model
 //							</div>
 //							'.$related1.'
 //						</div>';
+            $comment = $row1->comment;
+                    if(strlen($comment)>60){
+                        $comment = substr($comment,0,60).'...';
+                    }
             $getComs .= '<div class="col-sm-4">
                                     <div class="panel panel-default com-panel">                                       
                                             <div class="row">
@@ -413,7 +418,7 @@ class GameModel extends CI_Model
                                                 </div>
                                                 <div class="col-sm-9 com-title">
                                                     <b class="inline uname">'.$row1->username.'</b><p class="inline"><small style="margin-left:-1px;">'.$time.' ago</small></p>
-                                                    <p>'.$row1->comment.'</p>
+                                                    <p>'.$comment.'</p>
                                                 </div>
                                             </div>                                       
                                     </div>

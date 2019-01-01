@@ -2582,3 +2582,12 @@ padding-left: 70%;
 	width: 100% !important;
 	height: 100% !important;
 }
+.no-account{
+	margin-top: 25px;
+}
+#comments-list .com-title{
+	min-height: 100px;
+}
+#comments-list > div > div .row{
+	padding: 10px;
+}
