@@ -310,6 +310,7 @@ window.onload = function() {
                     $('#modalForm').modal('hide');
                     $('#responseError').html('');
                     $('#commentBox > .well').replaceWith('<form method="post" class="well"><span class="input-icon icon-right"><textarea rows="2" class="form-control" placeholder="Post a new message" name="com_message" id="comments"></textarea></span><input id="related" type="hidden" name="related" value=""><div class="p-t-10 pull-right"><button id="submitComment" type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit"><?php echo $this->lang->line('send');?></button></div><div class="m-t-30"></div></form>');
+                    $('hr').after('<a href="<?php echo base_url('login/logout/');?>"><?php echo $this->lang->line('logout'); ?></a>');
 
                 }else{
                     $('#responseError').html(response);
