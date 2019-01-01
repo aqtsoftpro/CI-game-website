@@ -52,6 +52,12 @@ class ControlModel extends CI_Model
         $query = $this->db->get();
         return $query->result();
    }
+   public function getGameControl($game_id){
+    $sql="SELECT control FROM 2d_games WHERE id=?";
+    $query =  $this->db->query($sql,array($game_id)); 
+    return $query->row('control');
+
+   }
 
 
 }
