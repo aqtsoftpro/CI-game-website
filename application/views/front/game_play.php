@@ -316,9 +316,12 @@ function getComments(){
         url:'<?php echo base_url('get_comments');?>',
         data:{game_id:game_id,page:page},
         beforeSend:function(){
+            $('.loadingDiv').show();
             $('#comments-list').html('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');
+            $('.loadingDiv').show();
         },
         success:function(html){
+            $('.loadingDiv').hide();
             $('#comments-list').html('');
             $('#comments-list').html(html);            
         }
