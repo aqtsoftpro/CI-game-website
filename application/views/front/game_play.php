@@ -141,7 +141,7 @@
                                     </span>
                                     <input id="related" type="hidden" name="related" value="">
                                     <div class="p-t-10 pull-right">
-                                        <button type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit"  <?php echo ($this->session->commented == $id)? 'disabled':'';?>><?php echo $this->lang->line('send'); 
+                                        <button id="submitComment" type="submit" class="btn btn-sm btn-primary waves-effect waves-light" name="submit"  <?php //echo ($this->session->commented == $id)? 'disabled':'';?>><?php echo $this->lang->line('send'); 
                                      ?></button>     
                                     </div>
 
@@ -152,21 +152,12 @@
                                     <span><a href="<?php echo base_url('/login/');?>"><?php echo $this->lang->line('login');?></a><?php echo $this->lang->line('loginForComment'); ?></span>
                                 </div>
                             <?php } ?>
-
+                                <h3 class="header-title"><?php echo $this->lang->line('lastComments'); ?></h3>
                                 <div id="comments-list">
-                                <?php if(!empty($getBestComs['getComs'])) { ?>
-                                    <h3 class="header-title"><?php //echo $this->lang->line('bestComments'); ?></h3>
-                                    <?php// echo $getBestComs['getComs']; ?>
-                                <?php } ?>
-                                <?php if(!empty($getComs)) { ?>
-                                    <h3 class="header-title"><?php echo $this->lang->line('lastComments'); ?></h3>
-                                    <?php echo $getComs; ?>                                   
-                                <?php } ?>
                                 </div>
-                            </div> <!-- end col --> 
-                     <div class="col-sm-12 text-center">
-                        <?php if(isset($getPagination)) echo $getPagination; ?>                            
-                    </div>                      
+                                <input type="hidden" name="comments_page" id="comments_page" value="1">
+                                <input type="hidden" name="game_id" id="game_id" value="<?php echo $id; ?>">
+                            </div> <!-- end col -->                       
                         </div> <!-- end row -->
                          <hr>
                 <?php if(isset($this->session->username)){?>                    
@@ -277,14 +268,62 @@ window.onload = function() {
     loadPlayedGames();
     // get the max length of localstorage
     displayShowMore();
+    getComments(game_id);
 
     // $("#like").click(function(){
     //     var game_id = $(this).attr('id');
     //     alert('You have liked'+game_id);
     // })    
 
+    $(document).on("click", '.pagination li a', function(event) { 
+        event.preventDefault();
+        var page = $(this).attr('data-ci-pagination-page');
+        if(page!="undefined"){
+            $('#comments_page').val(page);
+            getComments();
+        }
+    });
+
+    $('#submitComment').click(function(e){
+        e.preventDefault();
+        var com_message = $('#comments').val();
+        if(com_message==""){
+            $('#comments').addClass('error');
+            return false;
+        }
+         $('#comments').removeClass('error');
+        var related= $('#related').val();
+        var game_id = $('#game_id').val();
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url('postComment');?>',
+            data:{com_message:com_message,related:related,game_id:game_id},
+            beforeSend:function(){
+                /*$('#comments-list').html('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');*/
+            },
+            success:function(){
+                getComments();
+            }
+        });
+    });
 
 };
+function getComments(){
+    var page = Number($('#comments_page').val());
+    var game_id = Number($('#game_id').val());
+    $.ajax({
+        type:'POST',
+        url:'<?php echo base_url('get_comments');?>',
+        data:{game_id:game_id,page:page},
+        beforeSend:function(){
+            $('#comments-list').html('<div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>');
+        },
+        success:function(html){
+            $('#comments-list').html('');
+            $('#comments-list').html(html);            
+        }
+    });
+}
 function loadFavGames(){
     
     $.ajax({
