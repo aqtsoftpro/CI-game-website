@@ -26,7 +26,7 @@ class Games extends CI_Controller
         
         $data['languages'] = $this->autoloadModel->getLanguages();
         $content = $this->load->view('dashboard/games', array(), true);
-        $this->load->model(array('gamesModel','controlModel'));
+        $this->load->model(array('gamesModel','controlModel','keywordsModel'));
     }
 
     public function index()
@@ -61,6 +61,23 @@ class Games extends CI_Controller
         $displayHome = 0;
         $isFeature = 0;
 
+        // Processing the form for sending the image
+        if(null !== $this->input->post('embedImage', true) && !$this->config->item('demo')) {
+            $config['upload_path']   = './uploads/images/games/';
+            $config['allowed_types'] = 'jpg|jpeg|gif|png';
+            $config['max_size']      = 1000;
+            $config['max_width']     = 2048;
+            $config['max_height']    = 1536;
+            $this->load->library('upload', $config);
+            if(!$this->upload->do_upload('userImage')) {
+                $data['error'] = $this->upload->display_errors();
+            } else {
+                $data['msg'] = alert('The file was successfully sent');
+                $gameCover =base_url('uploads/images/games/'.$this->upload->data('file_name'));
+            }
+        }
+        
+       
         if($this->input->post('display_home',true)){
             $displayHome = 1;
         }
@@ -74,7 +91,7 @@ class Games extends CI_Controller
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
             }
-            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription,$controls, $postIdCategory, $postStatus,$postVideo,$displayHome,$isFeature,$home_order,$feature_order);
+            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription,$controls, $postIdCategory,$postStatus,$gameCover,$postVideo,$displayHome,$isFeature,$home_order,$feature_order);
            
         }
         $data['status_game'] = '1';
@@ -82,7 +99,9 @@ class Games extends CI_Controller
         $data['getCategories'] = $this->gamesModel->getCategories();
         //Retrieving the controls
         $data['controls'] = $this->controlModel->getAllControls();
-      
+        //getting the keywords
+        $data['getKeywords'] = $this->gamesModel->getKeywords();
+
         $content = $this->load->view('dashboard/game_edit', $data, true);
         $this->load->view('dashboard/template', array('content' => $content));
     }
@@ -166,9 +185,7 @@ class Games extends CI_Controller
             }
         }
         // Recovering game data
-        $data = array_merge($data, $this->gamesModel->getGame($idGame));
-        // var_dump($this->gamesModel->getGame($idGame));
-        // exit();
+        $data = array_merge($data, $this->gamesModel->getGame($idGame));    
         // Retrieving categories
         $data['getCategories'] = $this->gamesModel->getCategories($data['id_category']);
         //getting all controls
