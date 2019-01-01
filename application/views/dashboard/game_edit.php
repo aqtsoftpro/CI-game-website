@@ -97,10 +97,10 @@
 							<select class="select2 select2-multiple select2-hidden-accessible" multiple="" data-placeholder="<?php echo $this->lang->line('choose'); ?> ..." tabindex="-1" aria-hidden="true" name="controls[]">
 								<?php if(isset($controls))
 								foreach ($controls as $control) {
-								echo '<option value="'.$control->id.'" class="gb-primary">'.$control->control_name.'</option>';
+								$select = (in_array($control->id,explode(",",$gControls))) ? 'selected' : '';
+								
+								echo '<option value="'.$control->id.'" class="gb-primary"'.$select.'>'.$control->control_name.'</option>';
 								}
-
-
 								; ?>
 							</select>
 						</div>
