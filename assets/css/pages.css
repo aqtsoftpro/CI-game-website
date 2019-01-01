@@ -2572,3 +2572,6 @@ padding-left: 70%;
 	display: none;
 	text-align: center;
 }
+.error{
+	border:1px solid red;
+}

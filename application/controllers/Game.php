@@ -117,13 +117,13 @@ class Game extends CI_Controller
         // $data = array_merge($data, $this->userModel->getFavsGames($data['id']));
         
       
-            $postCom = $this->input->post('com_message', true);
+            /*$postCom = $this->input->post('com_message', true);
             $postRelated = $this->input->post('related', true);
             if(isset($postCom) && ($postCom != '')) {
                 $this->session->set_userdata('commented',$data['id']);
                 $this->gameModel->addCom($data['id'], $postCom, $postRelated);
                 redirect($this->agent->referrer(), 'refresh');
-            }
+            }*/
       
         // Add / remove site to favorites
         $postFav = $this->input->get('fav', true);
@@ -152,9 +152,9 @@ class Game extends CI_Controller
        // var_dump($this->session->userdata());
 
        // Get comments with pagination
-        $data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
+        /*$data['getBestComs'] = $this->gameModel->getComs($data['id'], $getPag, true);
         $data = array_merge($data, $this->gameModel->getComs($data['id'], $getPag));
-        $data['getPagination'] = $this->createPagination(site_url('game/play/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
+        $data['getPagination'] = $this->createPagination(site_url('game/play/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));*/
 
        //////////////////////////
      
@@ -176,10 +176,12 @@ class Game extends CI_Controller
 
     public function createPagination($baseUrl, $totalRows, $perPage)
     {
+
         $this->load->library('pagination');
         $config["base_url"] = $baseUrl;
         $config['total_rows'] = $totalRows;
         $config['per_page'] = $perPage;
+        $config['use_page_numbers'] = FALSE;
         $this->pagination->initialize($config);
         return $this->pagination->create_links();
     }
@@ -222,5 +224,22 @@ class Game extends CI_Controller
         $ip = $this->input->ip_address();
         echo $this->GamesModel->checkFavorite($game_id,$ip);
         exit;
+    }
+    public function getComments(){
+        $game_id = $this->input->post('game_id');
+        $page = $this->input->post('page');
+        $data = $this->gameModel->getComs($game_id, $page, true);
+        $pagination =  $this->createPagination(site_url('game/show/'.$data['url'].'/'), $data['nbRows'], $this->config->item('coms_pag'));
+        echo $data['getComs'];
+        echo "<div class='col-md-12 text-center'>".$pagination."</div>";
+    }
+    public function postComment(){
+        $postCom = $this->input->post('com_message', true);
+        $postRelated = $this->input->post('related', true);
+        $game_id = $this->input->post('game_id', true);
+        if(isset($postCom) && $postCom != '') {
+            $this->session->set_userdata('commented',$game_id);
+            $this->gameModel->addCom($game_id, $postCom, $postRelated);
+        }
     }
 }

@@ -293,12 +293,13 @@ class GameModel extends CI_Model
 
     public function getComs($idGame, $getPag, $getOrder = false)
     {
+        $getPag = $getPag*$this->config->item('coms_pag')-$this->config->item('coms_pag');
         $sql = "SELECT id FROM 2d_comments WHERE ((id_game = ?) AND (id_relation = 0))";
         $query = $this->db->query($sql, array($idGame));
         $nbRows = $query->num_rows();
         if($getOrder == true) {
-            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0) ) ORDER BY score DESC LIMIT 3";
-            $query1 = $this->db->query($sql, array($idGame));
+            $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0) ) ORDER BY score DESC LIMIT ?,?";
+            $query1 = $this->db->query($sql, array($idGame, (int)$getPag, (int)$this->config->item('coms_pag')));
         } else {
             $sql = "SELECT co.id AS id, co.comment AS comment, co.date_creation AS date_creation, us.username AS username, us.url AS url, us.image AS image FROM 2d_comments co, 2d_users us WHERE ((co.id_game = ?) AND (co.id_user = us.id) AND (id_relation = 0)) ORDER BY date_creation DESC LIMIT ?,?";
             $query1 = $this->db->query($sql, array($idGame, (int)$getPag, (int)$this->config->item('coms_pag')));

@@ -77,6 +77,8 @@ $route['played_games']="game/getPlayedGames";
 $rout['game/likesComs/(:any)']='game/likesComs/$1';
 $route['user/played_games'] = 'user/played_games/$1';
 $route['checkfavorite'] = 'game/checkfavorite';
+$route['get_comments'] = 'game/getComments';
+$route['postComment']=	'game/postComment';
 
 
 $route['(:num)'] = 'home/index//$1';
