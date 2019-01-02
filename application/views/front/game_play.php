@@ -84,7 +84,7 @@
                         </div>
                         <div class="col-sm-2 col-sm-offset-2 thumbs">
                         <div class="inline">
-                                <p>
+                               
                                 <div class="col-sm-2 likes_unlike" style="width: 150px;display: inline;">
                                 
                                     <div class="nbLikes" style="display:inline-block;float:left; width:60px;">
@@ -98,8 +98,7 @@
                                         <i class="fa fa-thumbs-down fa-2x"></i></a>
                                         <span class="unlikes_no"><?php echo isset($ClickLikes['nbUnlike'])? $ClickLikes['nbUnlike']: '0';?></span>
                                     </div>
-                                </div>
-                                </p>
+                                </div>                             
                                 </div>
                         </div>
                     </div><!-------------------play and favourit name--->
