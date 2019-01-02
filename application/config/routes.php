@@ -79,7 +79,7 @@ $route['user/played_games'] = 'user/played_games/$1';
 $route['checkfavorite'] = 'game/checkfavorite';
 $route['get_comments'] = 'game/getComments';
 $route['postComment']=	'game/postComment';
-
+$route['login_for_comment']=	'login/LoginForComment';
 
 $route['(:num)'] = 'home/index//$1';
 $route['(:any)'] = 'home/index/$1';

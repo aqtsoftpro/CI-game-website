@@ -47,6 +47,30 @@ class Login extends CI_Controller
         $this->load->view('landing', array('content' => $content));
     }
 
+     public function LoginForComment(){
+        $data = '';
+        $email = $this->input->post('email', true);
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+        $password = $this->input->post('password', true);
+        $rememberme = $this->input->post('rememberme', true);
+        if(isset($email) && isset($password)) {
+            $data['msg'] = $this->loginModel->checkConnectComment($email, $password, $rememberme);
+            echo $data['msg'];
+            exit;
+        }
+        $send = $this->input->get('send', true);
+        $key = $this->input->get('key', true);
+        if(isset($send) && isset($key)) {
+            $data['msg'] = $this->loginModel->sendConfirmation($send, $key);
+        }
+        $data['rememberMe'] = $this->input->cookie('remember_me', true);
+
+        
+        //$content = $this->load->view('front/login', $data, true);
+        //$this->load->view('landing', array('content' => $content));
+    }
+
+
     public function register()
     {
         $data['title'] = 'Registration - '.$this->config->item('sitename');

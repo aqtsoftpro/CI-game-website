@@ -86,7 +86,7 @@ class Home extends CI_Controller
         echo $getfavoriteGames['getBlockGame'];
         if($getfavoriteGames['nbPlayed']>9){
             echo '<div class="col-sm-12 play_show_more-right text-center">
-                <a href="'.base_url('home/played_games').'" class="btn btn-primary show_more" >Show More</a>
+                <a href="'.base_url('home/favourities').'" class="btn btn-primary show_more" >Show More</a>
                 </div>';
         }
         exit;
