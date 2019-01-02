@@ -3,7 +3,9 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 <!DOCTYPE html>
 <html>
 	<head>
-	<script src="<?php echo site_url('assets/js/jquery.min.js'); ?>"></script> 
+	<script src="<?php echo site_url('assets/js/jquery.min.js'); ?>"></script>	
+	<script src="<?php echo site_url('assets/js/jquery.ihavecookies.js');?>"></script>
+
 <script async="async" src="https://www.google.com/adsense/search/ads.js"></script>
 
 <!-- other head elements from your page -->
@@ -319,82 +321,11 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 </ul>
 </div>
 </div>
+
 		<!-- Begin page -->
 		<div id="wrapper">
 
-			<!-- Top Bar Start -->
-		<!-- 	<div class="topbar">
-
-				<!-- LOGO -->
-				
-				<!-- Button mobile view to collapse sidebar menu -->
-				<!-- <div class="navbar navbar-default" role="navigation">
-
-				<div class="container bg-primary">
-				<div class="col-lg-6">
-				<div class="col-lg-1">
-				 <button class="toggle-button" data-toggle="collapse" data-target="#"
-    				aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">    				
-    				<i class="glyphicon glyphicon-align-justify"></i>
-    			</button>
-				</div>
-				<div class="col-lg-5 col-lg-offset-4">
-					<div class="topbar-left">
-						<div class="text-center">
-							<a href="<?php echo site_url(''); ?>" class="logo"><?php if(NULL!==$this->config->item('logo')) echo $this->config->item('logo'); ?></a>
-						</div>
-				    </div>
-				</div>
-				</div>
-				<div class="col-lg-6"> -->
-						
-						
-
-
-							<!-- <ul class="nav navbar-nav">
-								<li>
-								<form role="search" class="navbar-left app-search pull-left hidden-xs hidden-md">
-								 <input type="text" id="search" name="q" placeholder="<?php echo $this->lang->line('searchForm'); ?>" value="<?php echo $_REQUEST['q'] ?>" class="form-control">
-								 <a href="#" onclick="window.location.href='<?php echo site_url('search?q='); ?>'+document.getElementById('search').value;"><i class="fa fa-search"></i></a>
-							    </form>
-								</li> -->
-							<!-- 	<li class="language_switch dropdown top-menu-item-xs">
-									<?php
-									if(!$this->session->userdata('site_lang')){
-										$this->session->set_userdata('site_lang','english');
-									}
-									?>
-									<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon <?php if($this->session->userdata('site_lang')=='english'){ echo "flag-icon-us";} if($this->session->userdata('site_lang')=='french'){ echo "flag-icon-fr";} ?>"> </span><?php echo ucfirst($this->session->userdata('site_lang'));?></a>
-		                            <div class="dropdown-menu" aria-labelledby="dropdown09">
-		                                <a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/english"><span class="flag-icon flag-icon-us"> </span>  English</a>
-		                                <a class="dropdown-item" href="<?php echo CUSTOM_BASE_URL;?>langswitch/switchlang/french"><span class="flag-icon flag-icon-fr"> </span>French</a>
-		                            </div>
-								</li> -->
-							<!-- 	<li class="dropdown top-menu-item-xs">
-									<a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="<?php echo (isset($this->session->name_image)) ? (site_url('uploads/images/users/'.$this->session->name_image)) : (site_url('assets/images/default-user.png')); ?>" alt="<?php echo $this->session->username; ?>" class="img-circle"> </a>
-									<ul class="dropdown-menu">
-
-									<?php if($this->session->id) { ?>
-										<li><a href="<?php echo site_url('user/'.$this->session->url.'/'); ?>"><i class="ti-user m-r-10 text-custom"></i> <?php echo $this->lang->line('profile'); ?></a></li>
-										<li><a href="<?php echo site_url('myprofile/'); ?>"><i class="ti-agenda m-r-10 text-custom"></i> <?php echo $this->lang->line('settings'); ?></a></li>
-									<?php } ?>
-
-									<?php if($this->session->admin) { ?>
-										<li><a href="<?php echo site_url('dashboard/'); ?>"><i class="ti-settings m-r-10 text-custom"></i> <?php echo $this->lang->line('dashboard'); ?></a></li>
-									<?php } ?>
-
-									<?php if(!$this->session->id) { ?>
-										<li><a href="<?php echo site_url('login/register/'); ?>"><i class="ti-lock m-r-10 text-custom"></i><?php echo $this->lang->line('signup'); ?></a></li>
-									<?php } ?>
-
-										<li class="divider"></li>
-										<li><a href="<?php echo site_url((isset($_SESSION['username'])) ? 'login/logout' : 'login/'); ?>"><i class="ti-power-off m-r-10 <?php echo (isset($_SESSION['username'])) ? 'text-danger' : 'text-success'; ?>"></i> <?php echo (isset($_SESSION['username'])) ? $this->lang->line('logout') : $this->lang->line('login'); ?></a></li>
-									</ul>
-								</li> -->
-					<!-- 		</ul>
-					</div> -->
-						<!--/.nav-collapse -->
-				
+			<!-- Top Bar Start -->			
 
 			<!-- Top Bar End -->
 
@@ -484,7 +415,18 @@ $(document).ready(function(){
         $("#game_play_page").toggleClass("m-t-0 m-t-30");       
         $("#caret").toggleClass("fa-caret-down fa-caret-up");
     });
+// $('#exampleModal').modal('show');
+$('body').ihavecookies({
+  title: "<?php echo $this->config->item('sitename')." ".ucfirst($this->config->item('terms'))." Policy";?>",
+  message: "We and our partners collect data and use cookies for ad personalization and measurement, content personalization and traffic analysis. By continuing on our website you consent to it. Learn how reading our Privacy Policy and Cookie Policy.",
+  link:"<?php echo base_url('page/privacy-policy/');?>",
+  delay: 2000,
+  expires: 30, // 30 days  
 });
+	
+});
+
+
 </script>
 
 </body>
