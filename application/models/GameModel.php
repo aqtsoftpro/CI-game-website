@@ -407,8 +407,8 @@ class GameModel extends CI_Model
 //							'.$related1.'
 //						</div>';
             $comment = $row1->comment;
-                    if(strlen($comment)>50){
-                        $comment = substr($comment,0,50).'...';
+                    if(strlen($comment)>40){
+                        $comment = substr($comment,0,45).'...';
                     }
             $getComs .= '<div class="col-sm-4">
                                     <div class="panel panel-default com-panel">                                       
