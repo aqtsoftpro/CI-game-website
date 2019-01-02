@@ -173,8 +173,10 @@
                 
                 <div class="card-box">
                     <h4><b>Related Games</b></h4>
-                    <div class="row related_games" >
-                        <?php if(isset($getRelatedGames)) echo $getRelatedGames; ?>                 
+                    <div class="related_games" >
+                        <div class="games_inner_container">
+                        <?php if(isset($getRelatedGames)) echo $getRelatedGames; ?>
+                        </div>
                     </div>
                     <div style="text-align: center">
                         <a class="btn btn-default" href="<?php echo site_url('category/'.$category.'/'); ?>">Show More</a>
@@ -182,7 +184,8 @@
                 </div>
                 <div class="card-box">
                     <h4><b>Recommended Games</b></h4>
-                    <div class="row rec_games">
+                    <div class="rec_games">
+                     <div class="games_inner_container">
                 <?php if(isset($getRecGame)) echo $getRecGame['getRecGame'];?>
                     </div>
                     <?php if($getRecGame['nbRec']>8){?>
@@ -191,6 +194,7 @@
                     </div>
                     <?php } ?>
                     </div>
+                </div>
             </div>
             <div class="hidden-xs hidden-sm col-md-2 col-lg-2 col-xl-2 right-col side_bars">
                 <div class="col-sm-12 right-add" >
