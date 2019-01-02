@@ -2701,7 +2701,7 @@ button#ihavecookiesBtn {
     transition: all 0.3s ease-in;
 }
 #gdpr-cookie-message a:hover {
-    color: white;
+    color:black;
     border-bottom-color: var(--red);
     transition: all 0.3s ease-in;
 }
