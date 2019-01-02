@@ -64,7 +64,7 @@ function rating($nb, $class = '')
 				</div>';                   
     return $rating;*/
     $rating = '<div class="'.$class.' rating">Rating:<span>';
-    $rating .= round(($nb/5)*100,2);
+    $rating .= .round(($nb/5)*100,2).;
     $rating .='%</span></div>';
 
     return $rating;
