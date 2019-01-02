@@ -84,12 +84,15 @@ class Home extends CI_Controller
         $ip=$this->input->ip_address();
         $getfavoriteGames = $this->homeModel->getFavGames($ip);
         echo $getfavoriteGames['getBlockGame'];
-        if($getfavoriteGames['nbPlayed']>9){
-            echo '<div class="col-sm-12 play_show_more-right text-center">
-                <a href="'.base_url('home/favourities').'" class="btn btn-primary show_more" >Show More</a>
-                </div>';
+
+        if($this->input->post('action')) {
+            if($getfavoriteGames['nbPlayed']>9){
+                echo '<div class="col-sm-12 play_show_more-right text-center">
+                    <a href="'.base_url('home/favourities').'" class="btn btn-primary show_more" >Show More</a>
+                    </div>';
+            }
+            exit;
         }
-        exit;
     }
      public function played_games()
     {
@@ -111,20 +114,13 @@ class Home extends CI_Controller
 
         $data['tags'] = $this->KeywordsModel->keywords_tags();
         $data['getBlocGame'] = $this->homeModel->getBlocsGame($getOrder, 1,$search);
-        //$content = $this->load->view('front/index',$data,true);
-        
-      
-        
-        
+        //$content = $this->load->view('front/index',$data,true);       
         
         $data['getBlocGame'] = $this->GamesModel->getPlayedGames_main($ip);
-        $content = $this->load->view('front/user_favourite',$data,true); 
-
-        
+        $content = $this->load->view('front/user_favourite',$data,true);        
         
         $getOrder = $this->uri->segment(1);    
         $this->load->view('front/template', array('content' => $content));
     }
-
 
 }
