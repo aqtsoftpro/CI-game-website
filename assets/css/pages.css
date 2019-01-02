@@ -2539,6 +2539,7 @@ ul.social-icons li a i {
 	overflow: hidden;
 	padding-top: 10px;
 	margin-top: 5px;
+	text-align: center;
 }
 .played_games_panel{
 	display:inline;
