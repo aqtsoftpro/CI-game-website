@@ -388,7 +388,7 @@ function loadFavGames(){
     $.ajax({
         type:'POST',
         url:'<?php echo base_url('favrote/loadGames');?>',
-        data:{action:ajax},
+        data:{action:'ajax'},
         beforeSend:function(){
             $('#FavGames .loadingDiv').show('');
             $("#page").val(Number($("#page").val())+Number(1));
