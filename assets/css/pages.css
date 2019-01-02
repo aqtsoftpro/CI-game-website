@@ -2580,7 +2580,8 @@ ul.social-icons li a i {
     background-color: #e6e0e0;
 }
 .thumbs{
-line-height:40px;
+line-height:42px;
+font-size:1em;
 }
 .play_show_more-right{
 	margin-top:15px;
@@ -2763,4 +2764,6 @@ button#gdpr-cookie-advanced {
 }
 .played-times{
 	line-height:40px;
+	font-size:14px;
+	font-weight:bold;
 }
