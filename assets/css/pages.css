@@ -2526,7 +2526,7 @@ ul.social-icons li a i {
 	text-align:left;
 	background: #ebeff2;
 }
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1366px) {
 	.games_inner_container > .game-div{
 		margin: 4px 5px 4px 0;
 	}
