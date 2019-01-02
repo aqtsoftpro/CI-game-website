@@ -2580,7 +2580,7 @@ ul.social-icons li a i {
     background-color: #e6e0e0;
 }
 .thumbs{
-/*padding-left: 70%;*/
+line-height:40px;
 }
 .play_show_more-right{
 	margin-top:15px;
@@ -2760,4 +2760,7 @@ button#gdpr-cookie-advanced {
 }
 .like{
 	    font-size: 1.5em;
+}
+.played-times{
+	line-height:40px;
 }

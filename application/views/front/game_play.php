@@ -80,7 +80,7 @@
                                 <a id="<?php echo $id; ?>" href="#" class="make_fav"><i class="text-warning fa fa-star-o" id="fav_star"></i><b style="color:#615555;margin-left: 6px;">Add to your favourites</b></a>
                         </div>
                         <div class="col-sm-4">
-                        <h4>Played <?php if(isset($played)) echo $played; ?> times</h4>
+                        <span class="played-times">Played <?php if(isset($played)) echo $played; ?> times</span>
                         </div>
                         <div class="col-sm-2 col-sm-offset-2 thumbs">
                         <div class="inline">
