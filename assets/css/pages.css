@@ -2526,6 +2526,11 @@ ul.social-icons li a i {
 	text-align:left;
 	background: #ebeff2;
 }
+@media only screen and (max-width: 1300px) {
+	.games_inner_container > .game-div{
+		margin: 4px 5px 4px 0;
+	}
+}
 .card-box>.row>.game-div{
 	background: #ebeff2;
 	margin: 0px 8px 18px 10px;
