@@ -2510,9 +2510,24 @@ ul.social-icons li a i {
 .com_title{
 	color: #e40606;
 }
+.games_inner_container{
+	display: inline-block;
+	width: 850px;
+	margin: 0px 3px 0px 32px;
+}
+.games_inner_container > .game-div{
+	margin: 4px 32px 4px 0;
+	display: inline-block;
+	width: 180px;
+	height: 193.187px;
+	border-radius: 5px;
+	overflow: hidden;
+	float: left;
+	background: #ebeff2;
+}
 .card-box>.row>.game-div{
 	background: #ebeff2;
-	margin: 0px 13px 18px 10px;
+	margin: 0px 8px 18px 10px;
 }
 .bottom-adds{
 	overflow: hidden;
@@ -2538,22 +2553,16 @@ ul.social-icons li a i {
 	padding-bottom: 13px;
 }
 .related_games{
-	border: none;
-	border: none;
-	width: 90%;
-	margin: auto;
-	padding-left: 8px;
+	width: 100%;
+	text-align:center;
 }
 .left-add{
 	text-align:right;
 	/*margin-left: 7px;*/
 }
 .rec_games{
-	border: none;
-	border: none;
-	width: 90%;
-	margin: auto;
-	padding-left: 8px;
+	width: 100%;
+	text-align:center;
 }
 .control-title{
 	display:block;
