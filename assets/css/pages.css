@@ -2539,6 +2539,10 @@ ul.social-icons li a i {
 }
 .related_games{
 	border: none;
+	border: none;
+	width: 90%;
+	margin: auto;
+	padding-left: 8px;
 }
 .left-add{
 	text-align:right;
@@ -2546,6 +2550,10 @@ ul.social-icons li a i {
 }
 .rec_games{
 	border: none;
+	border: none;
+	width: 90%;
+	margin: auto;
+	padding-left: 8px;
 }
 .control-title{
 	display:block;
