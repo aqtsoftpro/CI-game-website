@@ -49,7 +49,7 @@
             delay: 2000,
             expires: 30,
             moreInfoLabel: 'More information',
-            acceptBtnLabel: 'Accept Cookies',
+            acceptBtnLabel: 'Got It',
             advancedBtnLabel: 'Customise Cookies',
             cookieTypesTitle: 'Select cookies to accept',
             fixedCookieTypeLabel:'Necessary',
@@ -80,7 +80,7 @@
             });
 
             // Display cookie message on page
-            var cookieMessage = '<div id="gdpr-cookie-message"><h4>' + settings.title + '</h4><p>' + settings.message + ' <a href="' + settings.link + '">' + settings.moreInfoLabel + '</a><div id="gdpr-cookie-types" style="display:none;"><h5>' + settings.cookieTypesTitle + '</h5><ul>' + cookieTypes + '</ul></div><p><button id="gdpr-cookie-accept" type="button">' + settings.acceptBtnLabel + '</button><button id="gdpr-cookie-advanced" type="button">' + settings.advancedBtnLabel + '</button></p></div>';
+            var cookieMessage = '<div id="gdpr-cookie-message"><h4>' + settings.title + '</h4><p>' + settings.message + ' <a href="' + settings.link + '">' + settings.moreInfoLabel + '</a><div id="gdpr-cookie-types" style="display:none;"><h5>' + settings.cookieTypesTitle + '</h5><ul>' + cookieTypes + '</ul></div><p><button id="gdpr-cookie-accept" type="button">' + settings.acceptBtnLabel + '</button></p></div>';
             setTimeout(function(){
                 $($element).append(cookieMessage);
                 $('#gdpr-cookie-message').hide().fadeIn('slow', function(){
