@@ -2678,7 +2678,7 @@ button#ihavecookiesBtn {
 }
 #gdpr-cookie-message p:last-child {
     margin-bottom: 0;
-    text-align: right;
+    text-align:left;
 }
 #gdpr-cookie-message li {
     width: 49%;
@@ -2736,4 +2736,7 @@ button#gdpr-cookie-advanced {
 #comments-list > div > div .row{
 	padding: 10px;
 }
-
+.cookie-text{
+	width: 91%;
+    float: left;
+}
