@@ -2645,7 +2645,7 @@ button#ihavecookiesBtn {
 /* Cookie Dialog */
 #gdpr-cookie-message {	
     position: fixed;
-    right: 26%;
+    right: 21%;
     bottom:30px;
     max-width:756px;
     background-color: #fcfbff;
