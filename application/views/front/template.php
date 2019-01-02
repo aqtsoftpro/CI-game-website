@@ -61,6 +61,9 @@ if($this->config->item('maintenance')) { redirect('maintenance/index/'); } ?>
 			vertical-align:middle;
 			padding-bottom:12px;
 		}
+		#gdpr-cookie-message button{
+		 background-color : <?php echo $this->config->item('header_background'); ?> ! important;
+		}
 		</style>
 
 		<?php if(isset($JaxonCSS)) echo $JaxonCSS; ?>
