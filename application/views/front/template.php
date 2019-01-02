@@ -417,7 +417,7 @@ $(document).ready(function(){
     });
 // $('#exampleModal').modal('show');
 $('body').ihavecookies({
-  title: "<?php echo $this->config->item('sitename')." ".ucfirst($this->config->item('terms'))." Policy";?>",
+  title: "<?php echo ucfirst($this->config->item('sitename'))." ".ucfirst($this->config->item('terms'))." Policy";?>",
   message: "We and our partners collect data and use cookies for ad personalization and measurement, content personalization and traffic analysis. By continuing on our website you consent to it. Learn how reading our Privacy Policy and Cookie Policy.",
   link:"<?php echo base_url('page/privacy-policy/');?>",
   delay: 2000,
