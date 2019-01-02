@@ -2582,12 +2582,7 @@ padding-left: 70%;
 	width: 100% !important;
 	height: 100% !important;
 }
-.modal-open .modal {
-overflow-x:visible; 
-overflow-y:visible;
-top: 350px;
-left: 724px;
-}
+
 /*CSS for cookies*/
 :root {
     --purple: #3B3646;
@@ -2732,4 +2727,13 @@ button#gdpr-cookie-advanced {
     margin-top: 0;
     margin-right: 5px;
 }
- 
+.no-account{
+	margin-top: 25px;
+}
+#comments-list .com-title{
+	min-height: 76px;
+}
+#comments-list > div > div .row{
+	padding: 10px;
+}
+
