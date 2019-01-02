@@ -421,7 +421,7 @@ $(document).ready(function(){
 // $('#exampleModal').modal('show');
 $('body').ihavecookies({
   title: "<?php echo ucfirst($this->config->item('sitename'))." ".ucfirst($this->config->item('terms'))." Policy";?>",
-  message: "We and our partners collect data and use cookies for ad personalization and measurement, content personalization and traffic analysis. By continuing on our website you consent to it. Learn how reading our <a href='<?php echo base_url('page/privacy-policy/');?>'>Privacy Policy </a> and <a href='<?php echo base_url('page/privacy-policy/');?>'>Cookie Policy</a>.",  
+  message: "We and our partners collect data and use cookies for ad personalization and measurement, content personalization and traffic analysis. By continuing on our website you consent to it. Learn how reading our <a href='<?php echo base_url('page/privacy-policy/');?>'>Privacy Policy </a> and <a href='<?php echo base_url('page/cookie-policy/');?>'>Cookie Policy</a>.",  
   delay: 2000,
   expires: 30, // 30 days  
 });
