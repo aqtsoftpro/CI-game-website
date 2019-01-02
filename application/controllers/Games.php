@@ -48,10 +48,10 @@ class Games extends CI_Controller
         $data['title'] = $this->lang->line('games');
         // Processing the Add Form
         $postTitle = $this->input->post('title', true);
-        $postURL = $this->input->post('url', true);
+        $postURL = $this->input->post('embed', true);
         $postDescription = $this->input->post('description', true);
         $postIdCategory = $this->input->post('category', true);
-        $postStatus = $this->input->post('status', true);
+        $postStatus = $this->input->post('status', true);        
         $postVideo = $this->input->post('video_url', true);
         $home_order=$this->input->post('home_order',true);
         $feature_order=$this->input->post('feature_order',true);
@@ -60,6 +60,7 @@ class Games extends CI_Controller
           
         $displayHome = 0;
         $isFeature = 0;
+   
 
         // Processing the form for sending the image
         if(null !== $this->input->post('embedImage', true) && !$this->config->item('demo')) {
