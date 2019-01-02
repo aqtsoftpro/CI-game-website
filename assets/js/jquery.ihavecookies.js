@@ -80,7 +80,7 @@
             });
 
             // Display cookie message on page
-            var cookieMessage = '<div id="gdpr-cookie-message"><h4>' + settings.title + '</h4><div class="cookie-text"><p>' + settings.message + ' <a href="' + settings.link + '">' + settings.moreInfoLabel + '</a></div><p><button id="gdpr-cookie-accept" type="button">' + settings.acceptBtnLabel + '</button></p></div>';
+            var cookieMessage = '<div id="gdpr-cookie-message"><div class="cookie-text"><p>' + settings.message + ' <a href="' + settings.link + '">' + settings.moreInfoLabel + '</a></div><p><button id="gdpr-cookie-accept" type="button">' + settings.acceptBtnLabel + '</button></p></div>';
             setTimeout(function(){
                 $($element).append(cookieMessage);
                 $('#gdpr-cookie-message').hide().fadeIn('slow', function(){

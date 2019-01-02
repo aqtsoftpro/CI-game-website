@@ -2653,16 +2653,16 @@ button#ihavecookiesBtn {
 /* Cookie Dialog */
 #gdpr-cookie-message {	
     position: fixed;
-     right: 10%;
-    left: 10%;   
+    right: 10%;
+    left: 18%;   
     bottom:30px; 
-    max-width: 88%;
+    max-width: 60%;
     background-color: #fcfbff;
     color:#000000;
-    padding:15px;
+    padding: 15px;
     border-radius: 5px;
     box-shadow: 0 6px 6px rgba(0,0,0,0.25);
-    margin-left: 30px;
+   /* margin-left: 30px;*/
     font-family: system-ui;
 }
 #gdpr-cookie-message h4 {
@@ -2712,12 +2712,12 @@ button#ihavecookiesBtn {
     background:#0180c5;
     color: white;
     font-family: 'Quicksand', sans-serif;
-    font-size: 12px;
-    padding: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
     border-radius: 3px;
-    margin-left: 6px;
+    margin-left: 30px;
     cursor: pointer;
-    transition: all 0.3s ease-in;   
+    transition: all 0.3s ease-in;  
 }
 #gdpr-cookie-message button:hover {
     background:black;
@@ -2746,6 +2746,6 @@ button#gdpr-cookie-advanced {
 	padding: 10px;
 }
 .cookie-text{
-	width: 91%;
+	width: 85%;
     float: left;
 }
