@@ -84,6 +84,7 @@ class Home extends CI_Controller
         $ip=$this->input->ip_address();
         $getfavoriteGames = $this->homeModel->getFavGames($ip);
         echo $getfavoriteGames['getBlockGame'];
+
         if($this->input->post('action')) {
             if($getfavoriteGames['nbPlayed']>9){
                 echo '<div class="col-sm-12 play_show_more-right text-center">
