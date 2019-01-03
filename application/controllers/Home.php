@@ -88,7 +88,7 @@ class Home extends CI_Controller
         if($this->input->post('action')) {
             if($getfavoriteGames['nbPlayed']>9){
                 echo '<div class="col-sm-12 play_show_more-right text-center">
-                    <a href="'.base_url('home/favourities').'" class="btn btn-primary show_more" >Show More</a>
+                    <a href="'.base_url('home/favorite_games').'" class="btn btn-primary show_more" >Show More</a>
                     </div>';
             }
             exit;
@@ -109,7 +109,7 @@ class Home extends CI_Controller
         $content = $this->load->view('front/user_game',$data,true);    
         $this->load->view('front/template', array('content' => $content));
     }
-    public function favourities()
+    public function favorite_games()
     {
 
         $data['tags'] = $this->KeywordsModel->keywords_tags();

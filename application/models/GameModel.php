@@ -336,12 +336,12 @@ class GameModel extends CI_Model
                     $related2 .= '<div class="col-sm-4" >
                                     <div class="panel panel-default com-panel"> 
                                             <div class="row">
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <img class="img-responsive" src="'.(empty($row3->image) ? site_url('assets/images/default-user.png') : site_url('uploads/images/users/'.$row3->image)).'" alt="'.$row3->username.'">
                                                 </div>
-                                                <div class="col-sm-9 com-title">
+                                                <div class="col-sm-10 com-title">
                                                     <b class="inline uname">'.$row3->username.'</b>
-                                                    <p class="inline"><small style="margin-left:-1px;">'.$time.' hrs ago</small></p>
+                                                    <p class="inline"><small style="margin-left:10px;">'.$time.' hrs ago</small></p>
                                                     <p>'.$row3->comment.'</p>
                                                 </div>
                                             </div>
