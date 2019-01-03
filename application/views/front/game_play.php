@@ -20,8 +20,9 @@
                 <div class="game-full-box text-center">                 
                 <?php if($type == 1) { ?>
                     <div id="gameBox">
-                        <object id="flash" type="application/x-shockwave-flash" data="<?php echo site_url('uploads/files/games/'.$file.''); ?>" title="<?php echo $title_game; ?>" width="800" height="600">
-                            <param name="movie" value="<?php echo site_url('uploads/files/games/'.$file); ?>">
+                        <object id="flash" type="application/x-shockwave-flash" data="<?php echo $embed; ?>" title="<?php echo $title_game; ?>" width="800" height="600">
+                            <param name="movie" value="<?php echo $embed; ?>">
+                        <!----------------1-------------->
                             <param name="quality" value="high">
                             <param name="wmode" value="transparent">
                             <param name="bgcolor" value="#000000">
@@ -31,18 +32,20 @@
                     </div>
                 <?php } elseif($type == 2) { ?>
                     <div id="gameBox" class="p-t-20 p-b-20">
+                    <!-------------------2----------------------->
                         <object type="application/x-shockwave-flash" data="/assets/flash/emulator.swf" title="<?php echo $title_game; ?>" width="<?php echo emul($console, 'width'); ?>" height="<?php echo emul($console, 'height'); ?>">
                             <param name="movie" value="/assets/flash/emulator.swf">
                             <param name="bgcolor" value="#000000">
                             <param name="allowscriptaccess" value="sameDomain">
                             <param name="allowFullScreen" value="true">
                             <param name="allowFullScreenInteractive" value="true">
-                            <param name="flashvars" value="system=<?php if(isset($console)) echo $console; ?>&amp;url=<?php echo site_url('uploads/files/games/'.$file.''); ?>">
+                            <param name="flashvars" value="system=<?php if(isset($console)) echo $console; ?>&amp;url=<?php echo $file; ?>">
                             <p><a href="http://get.adobe.com/flashplayer"><?php echo $this->lang->line('installFlash'); ?></a></p>
                         </object>
                     </div>
                 <?php } else { ?>
                     <div id="gameBox">
+                        <!-----------------------------0--------------->
                         <iframe id="object" src="<?php if(isset($embed)) echo $embed;  ?>" type="application/vnd.adobe.flash-movie" width="850" height="600" scrolling="no" frameborder="0"></iframe>
                     </div>
                 <?php } ?>

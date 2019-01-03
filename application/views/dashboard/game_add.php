@@ -108,7 +108,7 @@
 						</div>			
 						<div class="form-group m-b-20" id="userFile" >
 							<label class="control-label"><?php echo $this->lang->line('gameFile'); ?></label> <span class="text-muted">(<?php echo (($this->config->item('roms')) ? '.nes, .smc, .gen, .smd, .gb, .gbc, .gba' : '.swf'); ?>)</span>
-							<input type="file" name="userFile" class="filestyle" data-buttontext="Select file"  placeholder="<?php if(isset($file)) echo $file; ?>">
+							<input type="file" name="userFile" class="filestyle" data-buttontext="Select file" data-buttonname="btn-inverse" placeholder="<?php if(isset($file)) echo $file; ?>">
 							<!-- <input type="hidden" name="hiddenFile"> -->
 						</div>
 							<div class="form-group text-right m-b-0">
@@ -131,7 +131,7 @@
 		    var str = $(this).val();
 		    console.log(str);		    
 		    if(str == 1) {
-		    	$("#embed").hide();
+		    	$("#embed").show();
 		    	$("#console").hide();
 		    	$("#userFile").show();
 		    	$("#gameCover").css("display","none");
@@ -141,7 +141,7 @@
 		    	$("#userFile").show();
 		    	$("#gameCover").css("display","none");
 		    } else {
-		    	$("#embed").show();
+		    	$("#embed").hide();
 		    	$("#gameCover").css("display","block");
 		    	$("#console").hide();
 		    	$("#userFile").hide();

@@ -36,16 +36,10 @@
 						<div class="form-group m-b-20">
 							<label for="type"><?php echo $this->lang->line('gameType'); ?></label>
 							<select class="form-control selectpicker show-tick" data-style="btn-white" name="type">
-								<option value="1" <?php if(isset($type_game) && $type_game === '1') echo 'selected'; ?>><?php echo $this->lang->line('hostedFlashGame'); ?></option>
-								<option value="0" <?php if(isset($type_game) && $type_game === '0') echo 'selected'; ?>><?php echo $this->lang->line('embedHtml5Game'); ?></option>
+								<option value="0" <?php if(isset($type_game) && $type_game === '0') echo 'selected'; ?>><?php echo $this->lang->line('hostedFlashGame'); ?></option>
+								<option value="1" <?php if(isset($type_game) && $type_game === '1') echo 'selected'; ?>><?php echo $this->lang->line('embedHtml5Game'); ?></option>
 								<option value="2" <?php if(isset($type_game) && $type_game === '2') echo 'selected'; ?>><?php echo $this->lang->line('hostedRomGame'); ?></option>
 							</select>						
-						</div>
-
-						<div class="form-group m-b-20" id="gameCover" style="display:none;">
-							<label class="control-label"><?php echo $this->lang->line('gameCover'); ?></label> <span class="text-muted">(.gif, .jpg, .png)</span>
-							<input type="file" name="userImage" class="filestyle" data-buttontext="Select file" data-buttonname="btn-inverse" data-placeholder="<?php if(isset($image)) echo $image; ?>">
-							<input type="hidden" name="embedImage">
 						</div>
 
 						<div id="embed" class="form-group m-b-20" <?php if(isset($type_game) && $type_game != 0) echo 'style="display:none;' ?>>
@@ -150,16 +144,13 @@
 		    if(str == 1) {
 		    	$("#embed").hide();
 		    	$("#console").hide();
-		    	$("#userFile").show();
-		    	$("#gameCover").css("display","none");
+		    	$("#userFile").show();		    	
 		    } else if(str == 2) {
 		    	$("#embed").hide();
 		    	$("#console").show();
-		    	$("#userFile").show();
-		    	$("#gameCover").css("display","none");
+		    	$("#userFile").show();		    	
 		    } else {
-		    	$("#embed").show();
-		    	$("#gameCover").css("display","block");
+		    	$("#embed").show();		    	
 		    	$("#console").hide();
 		    	$("#userFile").hide();
 		    }
