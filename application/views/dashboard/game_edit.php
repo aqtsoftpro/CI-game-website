@@ -142,7 +142,7 @@
 		    var str = $(this).val();
 		    console.log(str);		    
 		    if(str == 1) {
-		    	$("#embed").hide();
+		    	$("#embed").show();
 		    	$("#console").hide();
 		    	$("#userFile").show();		    	
 		    } else if(str == 2) {
@@ -150,7 +150,7 @@
 		    	$("#console").show();
 		    	$("#userFile").show();		    	
 		    } else {
-		    	$("#embed").show();		    	
+		    	$("#embed").hide();		    	
 		    	$("#console").hide();
 		    	$("#userFile").hide();
 		    }
