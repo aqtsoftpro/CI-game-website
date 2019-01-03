@@ -41,7 +41,7 @@
 								<option value="2" <?php if(isset($type_game) && $type_game === '2') echo 'selected'; ?>><?php echo $this->lang->line('hostedRomGame'); ?></option>
 							</select>						
 						</div>
-						<div id="embed" class="form-group m-b-20" <?php if(isset($type_game) && $type_game != 0) echo 'style="display:none;' ?>>
+						<div id="embed" class="form-group m-b-20"  style="display:none;">
 							<label for="embed_url"><?php echo $this->lang->line('externalGameUrl'); ?></label> <span class="text-muted">(embed)</span>
 							<input type="text" class="form-control" name="embed" placeholder="External game URL" value="<?php if(isset($embed_url)) echo $embed_url; ?>">
 						</div>
@@ -106,7 +106,7 @@
 							<input type="file" name="userImage" class="filestyle" data-buttontext="Select file" data-buttonname="btn-inverse" data-placeholder="<?php if(isset($image)) echo $image; ?>">
 							<input type="hidden" name="hiddenImage">
 						</div>			
-						<div class="form-group m-b-20" id="userFile" >
+						<div class="form-group m-b-20" id="userFile" style="display:none;" >
 							<label class="control-label"><?php echo $this->lang->line('gameFile'); ?></label> <span class="text-muted">(<?php echo (($this->config->item('roms')) ? '.nes, .smc, .gen, .smd, .gb, .gbc, .gba' : '.swf'); ?>)</span>
 							<input type="file" name="userFile" class="filestyle" data-buttontext="Select file" data-buttonname="btn-inverse" placeholder="<?php if(isset($file)) echo $file; ?>">
 							<!-- <input type="hidden" name="hiddenFile"> -->
@@ -133,7 +133,7 @@
 		    if(str == 1) {
 		    	$("#embed").show();
 		    	$("#console").hide();
-		    	$("#userFile").show();
+		    	$("#userFile").hide();
 		    	$("#gameCover").css("display","none");
 		    } else if(str == 2) {
 		    	$("#embed").hide();
@@ -141,7 +141,7 @@
 		    	$("#userFile").show();
 		    	$("#gameCover").css("display","none");
 		    } else {
-		    	$("#embed").hide();
+		    	$("#embed").show();
 		    	$("#gameCover").css("display","block");
 		    	$("#console").hide();
 		    	$("#userFile").hide();
