@@ -89,6 +89,9 @@ class Game extends CI_Controller
 
         // Get game data
         $data = $this->gameModel->getGame($getUrl);
+        var_dump($data);
+        exit();
+
         $ip = $this->input->ip_address();        
         //adding played games using ip
         $this->GamesModel->addPlayedGames($data['id'],$ip); 
