@@ -36,8 +36,8 @@
 						<div class="form-group m-b-20">
 							<label for="type"><?php echo $this->lang->line('gameType'); ?></label>
 							<select class="form-control selectpicker show-tick" data-style="btn-white" name="type">
-								<option value="1" <?php if(isset($type_game) && $type_game === '1') echo 'selected'; ?>><?php echo $this->lang->line('hostedFlashGame'); ?></option>
-								<option value="0" <?php if(isset($type_game) && $type_game === '0') echo 'selected'; ?>><?php echo $this->lang->line('embedHtml5Game'); ?></option>
+								<option value="0" <?php if(isset($type_game) && $type_game === '0') echo 'selected'; ?>><?php echo $this->lang->line('hostedFlashGame'); ?></option>
+								<option value="1" <?php if(isset($type_game) && $type_game === '1') echo 'selected'; ?>><?php echo $this->lang->line('embedHtml5Game'); ?></option>
 								<option value="2" <?php if(isset($type_game) && $type_game === '2') echo 'selected'; ?>><?php echo $this->lang->line('hostedRomGame'); ?></option>
 							</select>						
 						</div>
