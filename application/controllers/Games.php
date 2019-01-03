@@ -46,21 +46,52 @@ class Games extends CI_Controller
     public function add()
     {
         $data['title'] = $this->lang->line('games');
-        // Processing the Add Form
+        
+        // Processing the Change Form
         $postTitle = $this->input->post('title', true);
-        $postURL = $this->input->post('embed', true);
+        $postURL = $this->input->post('url', true);
         $postDescription = $this->input->post('description', true);
         $postIdCategory = $this->input->post('category', true);
-        $postStatus = $this->input->post('status', true);        
+        $postKeywords = $this->input->post('keywords', true);
+        $postKeywords = (!empty($postKeywords)) ? implode(",", $postKeywords) : $postKeywords;
+        $postType = $this->input->post('type', true);
+        $postEmbed = $this->input->post('embed', true);
+        $postConsole = $this->input->post('console', true);
+        $postStatus = $this->input->post('status', true);
         $postVideo = $this->input->post('video_url', true);
-        $home_order=$this->input->post('home_order',true);
-        $feature_order=$this->input->post('feature_order',true);
+        $home_order=$this->input->post('home_order', true);
+        $feature_order=$this->input->post('feature_order', true);
         $controls = $this->input->post('controls', true);
-        $controls = (!empty($controls)) ? implode(",", array_map('intval', $controls)) : $controls; 
-          
+        $controls = (!empty($controls)) ? implode(",", array_map('intval', $controls)) : $controls;
+
+
+
         $displayHome = 0;
         $isFeature = 0;
-   
+        if($this->input->post('display_home',true)){
+            $displayHome = 1;
+        }
+        if($this->input->post('is_feature',true)){
+            $isFeature = 1;
+        }
+        //videos for mouse over
+        if(isset($_FILES['game_video'])){
+            $upload_path = './uploads/videos/';
+            $temp_name = $_FILES['game_video']['tmp_name'];
+            $file_name = $upload_path.$_FILES['game_video']['name'];
+            if(move_uploaded_file($temp_name,$file_name)){
+                $postVideo = site_url('uploads/videos/'.$_FILES['game_video']['name']);
+            }
+        }
+        //videos for mouse over
+        if(isset($_FILES['userFile'])){
+            $upload_path = './uploads/files/games/';
+            $temp_name = $_FILES['userFile']['tmp_name'];
+            $file_name = $upload_path.$_FILES['userFile']['name'];
+            if(move_uploaded_file($temp_name,$file_name)){
+                $swfFile = site_url('uploads/videos/'.$_FILES['userFile']['name']);
+            }
+        }
 
         // Processing the form for sending the image
         if(null !== $this->input->post('embedImage', true) && !$this->config->item('demo')) {
@@ -76,25 +107,30 @@ class Games extends CI_Controller
                 $data['msg'] = alert('The file was successfully sent');
                 $gameCover =base_url('uploads/images/games/'.$this->upload->data('file_name'));
             }
-        }
-
+        }//ends game cover
        
-        if($this->input->post('display_home',true)){
-            $displayHome = 1;
-        }
-        if($this->input->post('is_feature',true)){
-            $isFeature = 1;
-        }
-
         if(($postTitle) != '' && !$this->config->item('demo')) {
             if($postURL == '') {
                 $postURL = url_title(convert_accented_characters($postTitle), $separator = '-', $lowercase = true);
             } else {
                 $postURL = url_title(convert_accented_characters($postURL), $separator = '-', $lowercase = true);
-            }
-            $data['msg'] = $this->gamesModel->addGame($postTitle, $postURL, $postDescription,$controls, $postIdCategory,$postStatus,$gameCover,$postVideo,$displayHome,$isFeature,$home_order,$feature_order);
-           
+            
         }
+        $data['msg'] = $this->gamesModel->addGame($postTitle,$postURL, $postDescription,$controls, $postIdCategory,$postType,$postStatus,$gameCover,$swfFile,$postVideo,$postEmbed,$displayHome,$isFeature,$home_order,$feature_order);           
+        }
+      
+// var_dump("title".$postTitle."<br>Post url" .
+// $postURL."<br>Embed code".$postEmbed.
+// "<br>Description".$postDescription.
+// "<br>Post Id categor".$postIdCategory.
+// "<br>Post Type".$postType.
+// "<br>Post Statuse".$postStatus.
+// "<br>Post Video".$postVideo.
+// "<br>Post Order".$home_order.
+// "<br>Feature".$feature_order.
+// "<br>cotnrols".$controls."<br>swf video".$swfFile
+//     ."<br>game cover".$gameCover);
+// exit();
         $data['status_game'] = '1';
         // Retrieving categories
         $data['getCategories'] = $this->gamesModel->getCategories();
@@ -103,7 +139,7 @@ class Games extends CI_Controller
         //getting the keywords
         $data['getKeywords'] = $this->gamesModel->getKeywords();
 
-        $content = $this->load->view('dashboard/game_edit', $data, true);
+        $content = $this->load->view('dashboard/game_add', $data, true);
         $this->load->view('dashboard/template', array('content' => $content));
     }
 
@@ -186,7 +222,9 @@ class Games extends CI_Controller
             }
         }
         // Recovering game data
-        $data = array_merge($data, $this->gamesModel->getGame($idGame));   
+        $data = array_merge($data, $this->gamesModel->getGame($idGame)); 
+        // var_dump($data);
+        // exit();  
 
         // Retrieving categories
         $data['getCategories'] = $this->gamesModel->getCategories($data['id_category']);

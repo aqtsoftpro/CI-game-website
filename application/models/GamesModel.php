@@ -175,8 +175,8 @@ class GamesModel extends CI_Model
             return null;
         }
     }
-
-    public function addGame($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus,$gameCover,$videoURL,$displayHome,$isFeature,$home_order,$feature_order)
+   
+    public function addGame($postTitle, $postURL, $postDescription,$control,$postType,$postIdCategory, $postStatus,$gameCover,$swfFile,$videoURL,$embed,$displayHome,$isFeature,$home_order,$feature_order)
     {
         $sql = "SELECT title, url FROM 2d_games WHERE title = ? OR url = ?";
         $query = $this->db->query($sql, array($postTitle, $postURL));
@@ -185,8 +185,8 @@ class GamesModel extends CI_Model
         } else {
             if($home_order == '') { $home_order = '99999'; }
             if($feature_order == '') { $feature_order = '99999'; }
-            $sql = "INSERT INTO 2d_games SET title = ?, url = ?, description = ?,control=?, id_category = ?, status = ?,image=?, date_upload=?, video_url=?,display_home=?,is_feature=?, home_order=?,feature_order=?";
-            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$control, $postIdCategory, $postStatus,$gameCover, date("Y-m-d H:i:s"),$videoURL,$displayHome,$isFeature,$home_order,$feature_order));
+            $sql = "INSERT INTO 2d_games SET title = ?, url = ?, description = ?,control=?, id_category = ?, type=?, status = ?,image=?, file=?, date_upload=?, video_url=?,embed=?,display_home=?,is_feature=?, home_order=?,feature_order=?";
+            $this->db->query($sql, array($postTitle, $postURL, $postDescription,$control,$postType,$postIdCategory, $postStatus,$gameCover,$swfFile, date("Y-m-d H:i:s"),$videoURL,$embed,$displayHome,$isFeature,$home_order,$feature_order));
             $msg = alert('The game was created. <a href="/dashboard/games/edit/'.$this->db->insert_id().'">Edit it</a> now !');
         }
         //echo $this->db->last_query();  exit;
