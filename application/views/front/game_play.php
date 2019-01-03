@@ -157,7 +157,7 @@
                                 </div>
                             <?php } ?>
                                 <h3 class="header-title"><?php echo $this->lang->line('lastComments'); ?></h3>
-                                <div id="comments-list">
+                                <div id="row comments-list">
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <a class="btn btn-default load_more" href="#">Load More Comments</a>

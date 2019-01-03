@@ -144,8 +144,8 @@ class Settings extends CI_Controller
             $sql = "SELECT url FROM 2d_games";
             $query = $this->db->query($sql);
             foreach ($query->result() as $row) {
-                $corps .= '<url><loc>'.site_url('game/show/'.$row->url.'/').'</loc></url>';
-                $corps .= '<url><loc>'.site_url('game/play/'.$row->url.'/').'</loc></url>';
+                $corps .= '<url><loc>'.site_url('game/'.$row->url.'/').'</loc></url>';
+                $corps .= '<url><loc>'.site_url('game/'.$row->url.'/').'</loc></url>';
             }
             // List of members
             $sql = "SELECT url FROM 2d_users";
