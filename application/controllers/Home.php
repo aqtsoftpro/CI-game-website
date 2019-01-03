@@ -109,7 +109,7 @@ class Home extends CI_Controller
         $content = $this->load->view('front/user_game',$data,true);    
         $this->load->view('front/template', array('content' => $content));
     }
-    public function favourities()
+    public function favorite_games()
     {
 
         $data['tags'] = $this->KeywordsModel->keywords_tags();

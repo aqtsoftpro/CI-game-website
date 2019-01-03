@@ -10,7 +10,7 @@
                     <div class="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
                 </div> 
                 <div class="col-sm-12 play_show_more text-center">
-                <a href="<?php echo base_url('home/favourities');?>" class="btn btn-primary">Show More</a>
+                <a href="<?php echo base_url('home/favorite_games');?>" class="btn btn-primary">Show More</a>
                 </div>             
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-xl-12">                
