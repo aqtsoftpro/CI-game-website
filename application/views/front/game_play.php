@@ -126,7 +126,8 @@
                     </li>
                 <?php } } ?>
                 </ul>
-                </div>
+                    </div>
+                 </div>
                  <div class="card-box">
                         <div class="row">
                             <div id="commentBox" class="col-sm-12">
