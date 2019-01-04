@@ -1,11 +1,13 @@
 <section>
 	<div class="container-grid">
-		<div class="m-t-20" style="width: 90%; margin: 0 8%;">
+		<div class="m-t-20 game_grid">
 			<input type="hidden" name="page" id="page" value="2">
 			<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(1);?>">
 			<input type="hidden" name="search_para" id="search_para" value="<?php echo $_REQUEST['q']; ?>">
-			<div id="loadGames" style="display:inline-block;"><!-- Games -->
+			<div id="loadGames_container">
+				<div id="loadGames"><!-- Games -->
 				<?php echo $getBlocGame['getBlocGame']; ?>
+				</div>
 			</div> <!-- end col -->
 			<div id="loadingDiv"><img src="<?php echo base_url('assets/images/load_page.gif');?>" width="100px"/></div>
 		</div> <!-- end row -->

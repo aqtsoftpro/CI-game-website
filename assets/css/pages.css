@@ -2427,9 +2427,27 @@ ul.social-icons li a i {
 .game-div .game-title{
 	overflow: hidden;
 }
-#loadGames{
-	align-content: center;
+
+.game_grid{
+	width: 80%; margin: 0 auto;
 }
+#loadGames_container{
+	align-content: center;
+	padding: 0 25px 0 25px;
+}
+#loadGames{
+	display: block;
+	padding: 0 6% 0 8%;
+}
+#loadGames > .game-div{
+	margin: 4px 10px 4px 2px;
+}
+/*
+@media only screen and (max-width: 1366px) {
+
+}
+*/
+
 .game-rating{
 	width:50%;
 	padding: 5px;
@@ -2437,10 +2455,6 @@ ul.social-icons li a i {
 }
 .game-rating span{
 	color:#00D63A;
-}
-#loadGames{
-	display: block;
-	/* padding-left: 25px; */
 }
 
 
