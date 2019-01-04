@@ -1,5 +1,5 @@
 <section>
-<div class="container m-t-20" id="game_play_page">
+<div class="container m-t-0" id="game_play_page">
         <div class="row">
             <div class="hidden-xs hidden-sm hidden-md col-lg-2 col-xl-2">
                 <div class="left-add" >
@@ -113,23 +113,19 @@
                 </div>
                 <div class="card-box">
                     <h4>GAME CONTROLS</h4>
-                <div class="row">
+                <div class="controls_block">
+                    <ul class="control_p">
                 <?php
                 if(empty($controls)){
                 echo '<p>No controls specified yet</p>';
                 }else{
                 foreach($controls as $control) {
                 ?>
-                    <div class="col-sm-4" style="margin-top:10px;">
-                        <div class="col-sm-5">
-                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" style="height: 45px; width: auto;">
-                        </div>
-                        <div class="col-sm-7" style="text-align:center;">
-                        <p><?php echo $control->control_name; ?></p>
-                        </div>
-                    </div>
+                    <li><img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>">
+                        <span><?php echo $control->control_name; ?></span>
+                    </li>
                 <?php } } ?>
-                </div>
+                </ul>
                 </div>
                  <div class="card-box">
                         <div class="row">

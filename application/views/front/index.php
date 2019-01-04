@@ -1,6 +1,6 @@
 <section>
 	<div class="container-grid">
-		<div class="m-t-20 game_grid">
+		<div class="m-t-0 game_grid">
 			<input type="hidden" name="page" id="page" value="2">
 			<input type="hidden" name="orderby" id="orderby" value="<?php  echo $this->uri->segment(1);?>">
 			<input type="hidden" name="search_para" id="search_para" value="<?php echo $_REQUEST['q']; ?>">
