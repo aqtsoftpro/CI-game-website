@@ -121,10 +121,10 @@
                 foreach($controls as $control) {
                 ?>
                     <div class="col-sm-4">
-                        <div class="col-sm-2">
+                        <div class="col-sm-5">
                         <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" width="100%">         
                         </div>
-                        <div class="col-sm-10">
+                        <div class="col-sm-7">
                         <p><?php echo $control->control_name; ?></p>
                         </div>
                     </div>
