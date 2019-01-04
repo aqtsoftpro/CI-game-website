@@ -116,13 +116,13 @@
                 <div class="row">
                 <?php
                 if(empty($controls)){
-                echo '<h4>No Controls Specified Yet!!!</h4>';
+                echo '<p>No controls specified yet</p>';
                 }else{
                 foreach($controls as $control) {
                 ?>
                     <div class="col-sm-4">
                         <div class="col-sm-5">
-                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" width="100%">         
+                        <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" style="height: 45px; width: auto;">
                         </div>
                         <div class="col-sm-7">
                         <p><?php echo $control->control_name; ?></p>
