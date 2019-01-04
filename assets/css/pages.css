@@ -2592,9 +2592,9 @@ ul.social-icons li a i {
 	text-align:center;
 }
 .controls_block { width: 90%; margin-left: 15px; }
-ul.control_p { padding:0px !important; margin: 0px !important; list-style: none; }
-ul.control_p > li { padding: 10px; border-right: 2px solid #565656; float:left; }
-ul.control_p > li > img { height: 45px; width: auto; }
+ul.control_p { padding:0px !important; margin: 0px !important; list-style: none; display: inline-block; }
+ul.control_p > li { padding: 10px; border-right: 2px solid #eee; float:left; width: 150px; }
+ul.control_p > li > img { height: 35px; width: auto; }
 ul.control_p > li > span { font-size: 12px; }
 
 .control-title{
