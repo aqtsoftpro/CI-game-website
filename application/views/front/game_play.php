@@ -120,11 +120,11 @@
                 }else{
                 foreach($controls as $control) {
                 ?>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" style="margin-top:10px;">
                         <div class="col-sm-5">
                         <img src="<?php echo base_url('/uploads/controls/'.$control->image.'')?>" style="height: 45px; width: auto;">
                         </div>
-                        <div class="col-sm-7">
+                        <div class="col-sm-7" style="text-align:center;">
                         <p><?php echo $control->control_name; ?></p>
                         </div>
                     </div>
